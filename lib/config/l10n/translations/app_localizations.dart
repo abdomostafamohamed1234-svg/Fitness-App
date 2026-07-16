@@ -97,6 +97,60 @@ abstract class AppLocalizations {
     Locale('ar'),
     Locale('en'),
   ];
+
+  /// No description provided for @connectionTimeout.
+  ///
+  /// In en, this message translates to:
+  /// **'Connection timeout'**
+  String get connectionTimeout;
+
+  /// No description provided for @requestTimeout.
+  ///
+  /// In en, this message translates to:
+  /// **'Request timeout'**
+  String get requestTimeout;
+
+  /// No description provided for @responseTimeout.
+  ///
+  /// In en, this message translates to:
+  /// **'Response timeout'**
+  String get responseTimeout;
+
+  /// No description provided for @noInternetConnection.
+  ///
+  /// In en, this message translates to:
+  /// **'No internet connection'**
+  String get noInternetConnection;
+
+  /// No description provided for @badCertificate.
+  ///
+  /// In en, this message translates to:
+  /// **'Bad certificate'**
+  String get badCertificate;
+
+  /// No description provided for @requestCancelled.
+  ///
+  /// In en, this message translates to:
+  /// **'Request cancelled'**
+  String get requestCancelled;
+
+  /// No description provided for @serverError.
+  ///
+  /// In en, this message translates to:
+  /// **'Server error'**
+  String get serverError;
+
+  /// No description provided for @transformTimeout.
+  ///
+  /// In en, this message translates to:
+  /// **'Transform timeout'**
+  String get transformTimeout;
+
+  /// No description provided for @unexpectedError.
+  ///
+  /// In en, this message translates to:
+  /// **'Unexpected error'**
+  String get unexpectedError;
 }
 
 class _AppLocalizationsDelegate

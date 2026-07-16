@@ -1,3 +1,11 @@
 {
-  
+  "connectionTimeout": "Connection timeout",
+  "requestTimeout": "Request timeout",
+  "responseTimeout": "Response timeout",
+  "noInternetConnection": "No internet connection",
+  "badCertificate": "Bad certificate",
+  "requestCancelled": "Request cancelled",
+  "serverError": "Server error",
+  "transformTimeout": "Transform timeout",
+  "unexpectedError": "Unexpected error"
 }

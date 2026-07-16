@@ -17,13 +17,13 @@ void main() async {
   runApp(
     MultiBlocProvider(
       providers: [BlocProvider(create: (context) => getIt<LocaleCubit>())],
-      child: const DriverApp(),
+      child: const FitnessApp(),
     ),
   );
 }
 
-class DriverApp extends StatelessWidget {
-  const DriverApp({super.key});
+class FitnessApp extends StatelessWidget {
+  const FitnessApp({super.key});
 
   @override
   Widget build(BuildContext context) {

@@ -1,3 +1,11 @@
 {
-  
+  "connectionTimeout": "انتهت مهلة الاتصال",
+  "requestTimeout": "انتهت مهلة الطلب",
+  "responseTimeout": "انتهت مهلة الاستجابة",
+  "noInternetConnection": "لا يوجد اتصال بالإنترنت",
+  "badCertificate": "شهادة غير صالحة",
+  "requestCancelled": "تم إلغاء الطلب",
+  "serverError": "خطأ في الخادم",
+  "transformTimeout": "انتهت مهلة المعالجة",
+  "unexpectedError": "حدث خطأ غير متوقع"
 }
