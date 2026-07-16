@@ -1,3 +1,4 @@
+import 'package:flowery/core/widgets/glass_container.dart';
 import 'package:flutter/material.dart';
 
 class TestScreen extends StatelessWidget {
@@ -168,7 +169,7 @@ class TestScreen extends StatelessWidget {
               trailing: Icon(Icons.arrow_forward_ios),
             ),
 
-            // GlassContainer(),
+            const GlassContainer(),
           ],
         ),
       ),
