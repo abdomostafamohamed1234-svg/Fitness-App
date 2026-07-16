@@ -56,9 +56,22 @@ dev_dependencies:
   injectable_generator: ^2.12.1
   json_serializable: ^6.13.0
   retrofit_generator: ^10.2.3
+  flutter_native_splash: ^2.4.6
 
 flutter:
   uses-material-design: true
   generate: true
   assets:
   - assets/
+
+flutter_native_splash:
+  color: "#1A1A1A"
+  image: assets/image.png
+
+  android: true
+  ios: true
+  web: false
+  
+  android_12:
+    color: "#1A1A1A"
+    image: assets/image.png
