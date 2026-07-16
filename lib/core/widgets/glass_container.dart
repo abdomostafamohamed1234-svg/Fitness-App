@@ -4,10 +4,7 @@ import 'package:flutter/material.dart';
 class GlassContainer extends StatelessWidget {
   final List<Widget> children;
 
-  const GlassContainer({
-    super.key,
-    required this.children,
-  });
+  const GlassContainer({super.key, required this.children});
 
   @override
   Widget build(BuildContext context) {
@@ -16,13 +13,10 @@ class GlassContainer extends StatelessWidget {
       child: ClipRRect(
         borderRadius: BorderRadius.circular(32),
         child: BackdropFilter(
-          filter: ImageFilter.blur(sigmaX: 18, sigmaY: 18),
+          filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
           child: Container(
             width: double.infinity,
-            padding: const EdgeInsets.symmetric(
-              horizontal: 28,
-              vertical: 30,
-            ),
+            padding: const EdgeInsets.symmetric(horizontal: 28, vertical: 30),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(32),
               gradient: LinearGradient(
@@ -38,10 +32,7 @@ class GlassContainer extends StatelessWidget {
                 width: 1,
               ),
             ),
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: children,
-            ),
+            child: Column(mainAxisSize: MainAxisSize.min, children: children),
           ),
         ),
       ),
