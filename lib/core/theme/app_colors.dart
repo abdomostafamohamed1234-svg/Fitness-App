@@ -10,7 +10,7 @@ abstract final class AppColors {
   static const darkColor = Color(0xff121212);
   static const darkGreyColor = Color(0xff242424);
   static const cardColor = Color(0xff1C1C1E);
-
+  static const splashBackgroundColor = Color(0x1A1A1A80);
   // Text
   static const whiteColor = Color(0xffffffff);
   static const greyColor = Color(0xffD9D9D9);
