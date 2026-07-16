@@ -1,3 +1,1 @@
-abstract class AppRoutes {
-  static const String login = "/login";
-}
+abstract class AppRoutes {}
