@@ -39,7 +39,7 @@ class GlassContainer extends StatelessWidget {
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
-                Text(
+                const Text(
                   "Fitness Has Never Been So\nMuch Fun",
                   textAlign: TextAlign.center,
                   style: TextStyle(

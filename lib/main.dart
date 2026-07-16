@@ -1,12 +1,10 @@
 import 'package:flowery/config/di/di_config.dart';
 import 'package:flowery/config/helpers/bloc/bloc_observer.dart';
 import 'package:flowery/config/l10n/translations/app_localizations.dart';
-import 'package:flowery/config/routing/app_routes.dart';
 import 'package:flowery/config/routing/routing_generator.dart';
 import 'package:flowery/core/cubits/locale/locale_cubit.dart';
 import 'package:flowery/core/cubits/locale/locale_state.dart';
 import 'package:flowery/core/theme/app_theme.dart';
-import 'package:flowery/core/widgets/glass_container.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -154,11 +152,11 @@ class TestScreen extends StatelessWidget {
             const SizedBox(height: 30),
 
             /// Card
-            Card(
-              child: Padding(
-                padding: const EdgeInsets.all(20),
-                child: Column(
-                  children: const [
+            const Card(
+              child:  Padding(
+                padding: EdgeInsets.all(20),
+                child:  Column(
+                  children: [
                     Text("Card Title"),
                     SizedBox(height: 8),
                     Text("This card uses your CardTheme."),
