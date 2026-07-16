@@ -76,4 +76,3 @@ android/**/GeneratedPluginRegistrant.java
 # Build Runner generated files
 **/*.g.dart
 **/*.freezed.dart
-**/*.config.dart
