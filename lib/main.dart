@@ -1,121 +1,229 @@
+import 'package:flowery/config/di/di_config.dart';
+import 'package:flowery/config/helpers/bloc/bloc_observer.dart';
+import 'package:flowery/config/l10n/translations/app_localizations.dart';
+import 'package:flowery/config/routing/app_routes.dart';
+import 'package:flowery/config/routing/routing_generator.dart';
+import 'package:flowery/core/cubits/locale/locale_cubit.dart';
+import 'package:flowery/core/cubits/locale/locale_state.dart';
+import 'package:flowery/core/theme/app_theme.dart';
+import 'package:flowery/core/widgets/glass_container.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-void main() {
-  runApp(const MyApp());
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await configureDependencies();
+  Bloc.observer = MyBlocObserver();
+  runApp(
+    MultiBlocProvider(
+      providers: [BlocProvider(create: (context) => getIt<LocaleCubit>())],
+      child: const DriverApp(),
+    ),
+  );
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+class DriverApp extends StatelessWidget {
+  const DriverApp({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        // This is the theme of your application.
-        //
-        // TRY THIS: Try running your application with "flutter run". You'll see
-        // the application has a purple toolbar. Then, without quitting the app,
-        // try changing the seedColor in the colorScheme below to Colors.green
-        // and then invoke "hot reload" (save your changes or press the "hot
-        // reload" button in a Flutter-supported IDE, or press "r" if you used
-        // the command line to start the app).
-        //
-        // Notice that the counter didn't reset back to zero; the application
-        // state is not lost during the reload. To reset the state, use hot
-        // restart instead.
-        //
-        // This works for code too, not just values: Most code changes can be
-        // tested with just a hot reload.
-        colorScheme: .fromSeed(seedColor: Colors.deepPurple),
-      ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+    return ScreenUtilInit(
+      designSize: const Size(375, 812),
+      minTextAdapt: true,
+      splitScreenMode: true,
+      builder: (context, child) {
+        return BlocBuilder<LocaleCubit, LocaleState>(
+          builder: (context, state) {
+            return MaterialApp(
+              title: 'Fitness-App',
+              localizationsDelegates: AppLocalizations.localizationsDelegates,
+              supportedLocales: AppLocalizations.supportedLocales,
+              locale: state.locale,
+              onGenerateRoute: RouteGenerator.getRoute,
+              debugShowCheckedModeBanner: false,
+              theme: AppTheme.darkTheme,
+              // initialRoute: AppRoutes.,
+              home: const TestScreen(),
+            );
+          },
+        );
+      },
     );
   }
 }
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
-
-  // This widget is the home page of your application. It is stateful, meaning
-  // that it has a State object (defined below) that contains fields that affect
-  // how it looks.
-
-  // This class is the configuration for the state. It holds the values (in this
-  // case the title) provided by the parent (in this case the App widget) and
-  // used by the build method of the State. Fields in a Widget subclass are
-  // always marked "final".
-
-  final String title;
-
-  @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      // This call to setState tells the Flutter framework that something has
-      // changed in this State, which causes it to rerun the build method below
-      // so that the display can reflect the updated values. If we changed
-      // _counter without calling setState(), then the build method would not be
-      // called again, and so nothing would appear to happen.
-      _counter++;
-    });
-  }
+class TestScreen extends StatelessWidget {
+  const TestScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    // This method is rerun every time setState is called, for instance as done
-    // by the _incrementCounter method above.
-    //
-    // The Flutter framework has been optimized to make rerunning build methods
-    // fast, so that you can just rebuild anything that needs updating rather
-    // than having to individually change instances of widgets.
     return Scaffold(
       appBar: AppBar(
-        // TRY THIS: Try changing the color here to a specific color (to
-        // Colors.amber, perhaps?) and trigger a hot reload to see the AppBar
-        // change color while the other colors stay the same.
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        // Here we take the value from the MyHomePage object that was created by
-        // the App.build method, and use it to set our appbar title.
-        title: Text(widget.title),
-      ),
-      body: Center(
-        // Center is a layout widget. It takes a single child and positions it
-        // in the middle of the parent.
-        child: Column(
-          // Column is also a layout widget. It takes a list of children and
-          // arranges them vertically. By default, it sizes itself to fit its
-          // children horizontally, and tries to be as tall as its parent.
-          //
-          // Column has various properties to control how it sizes itself and
-          // how it positions its children. Here we use mainAxisAlignment to
-          // center the children vertically; the main axis here is the vertical
-          // axis because Columns are vertical (the cross axis would be
-          // horizontal).
-          //
-          // TRY THIS: Invoke "debug painting" (choose the "Toggle Debug Paint"
-          // action in the IDE, or press "p" in the console), to see the
-          // wireframe for each widget.
-          mainAxisAlignment: .center,
-          children: [
-            const Text('You have pushed the button this many times:'),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headlineMedium,
-            ),
-          ],
-        ),
+        title: const Text("Theme Test"),
+        actions: [
+          IconButton(
+            onPressed: () {},
+            icon: const Icon(Icons.notifications_none),
+          ),
+        ],
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
+        onPressed: () {},
         child: const Icon(Icons.add),
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        currentIndex: 0,
+        onTap: (_) {},
+        items: const [
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home_outlined),
+            label: "Home",
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.favorite_border),
+            label: "Favorite",
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.person_outline),
+            label: "Profile",
+          ),
+        ],
+      ),
+      body: SingleChildScrollView(
+        padding: const EdgeInsets.all(20),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            /// Typography
+            Text(
+              "Display Large",
+              style: Theme.of(context).textTheme.displayLarge,
+            ),
+            const SizedBox(height: 8),
+            Text(
+              "Headline Large",
+              style: Theme.of(context).textTheme.headlineLarge,
+            ),
+            const SizedBox(height: 8),
+            Text("Title Large", style: Theme.of(context).textTheme.titleLarge),
+            const SizedBox(height: 8),
+            Text("Body Large", style: Theme.of(context).textTheme.bodyLarge),
+            Text("Body Medium", style: Theme.of(context).textTheme.bodyMedium),
+
+            const SizedBox(height: 30),
+
+            /// TextFields
+            const TextField(
+              decoration: InputDecoration(
+                hintText: "Email",
+                prefixIcon: Icon(Icons.email_outlined),
+              ),
+            ),
+
+            const SizedBox(height: 16),
+
+            const TextField(
+              obscureText: true,
+              decoration: InputDecoration(
+                hintText: "Password",
+                prefixIcon: Icon(Icons.lock_outline),
+                suffixIcon: Icon(Icons.visibility_off_outlined),
+              ),
+            ),
+
+            const SizedBox(height: 30),
+
+            /// Buttons
+            ElevatedButton(
+              onPressed: () {},
+              child: const Text("Elevated Button"),
+            ),
+
+            const SizedBox(height: 16),
+
+            OutlinedButton(
+              onPressed: () {},
+              child: const Text("Outlined Button"),
+            ),
+
+            const SizedBox(height: 16),
+
+            FilledButton(onPressed: () {}, child: const Text("Filled Button")),
+
+            const SizedBox(height: 30),
+
+            /// Card
+            Card(
+              child: Padding(
+                padding: const EdgeInsets.all(20),
+                child: Column(
+                  children: const [
+                    Text("Card Title"),
+                    SizedBox(height: 8),
+                    Text("This card uses your CardTheme."),
+                  ],
+                ),
+              ),
+            ),
+
+            const SizedBox(height: 30),
+
+            /// Checkbox
+            Row(
+              children: [
+                Checkbox(value: true, onChanged: (_) {}),
+                const Text("Checkbox"),
+              ],
+            ),
+
+            /// Switch
+            Row(
+              children: [
+                Switch(value: true, onChanged: (_) {}),
+                const SizedBox(width: 8),
+                const Text("Switch"),
+              ],
+            ),
+
+            const SizedBox(height: 20),
+
+            /// Progress Indicators
+            const LinearProgressIndicator(value: .6),
+
+            const SizedBox(height: 20),
+
+            const Center(child: CircularProgressIndicator()),
+
+            const SizedBox(height: 30),
+
+            /// Chips
+            Wrap(
+              spacing: 10,
+              children: [
+                Chip(label: const Text("Chip"), onDeleted: () {}),
+                ActionChip(label: const Text("Action Chip"), onPressed: () {}),
+              ],
+            ),
+
+            const SizedBox(height: 30),
+
+            /// Divider
+            const Divider(),
+
+            const SizedBox(height: 20),
+
+            /// List Tile
+            const ListTile(
+              leading: CircleAvatar(child: Icon(Icons.person)),
+              title: Text("Ahmed Mohamed"),
+              subtitle: Text("Flutter Developer"),
+              trailing: Icon(Icons.arrow_forward_ios),
+            ),
+
+            // GlassContainer(),
+          ],
+        ),
       ),
     );
   }

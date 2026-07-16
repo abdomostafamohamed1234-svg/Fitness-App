@@ -1,0 +1,40 @@
+name: Validate PR Title
+
+on:
+  pull_request:
+    branches:
+      - development
+    types:
+      - opened
+      - edited
+      - synchronize
+      - reopened
+
+jobs:
+  validate-pr-title:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Validate PR title
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const title = context.payload.pull_request.title;
+
+            // Allowed prefixes
+            const regex = /^(Feature|Bugfix|Hotfix|Refactor|Docs|Test|Chore)\/.+$/;
+
+            if (!regex.test(title)) {
+              core.setFailed(
+                `Invalid PR title: "${title}".
+                
+Expected format:
+- Feature/...
+- Bugfix/...
+- Hotfix/...
+- Refactor/...
+- Docs/...
+- Test/...
+- Chore/...`
+              );
+            }
