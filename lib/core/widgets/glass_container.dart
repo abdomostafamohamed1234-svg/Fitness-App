@@ -2,7 +2,12 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 
 class GlassContainer extends StatelessWidget {
-  const GlassContainer({super.key});
+  final List<Widget> children;
+
+  const GlassContainer({
+    super.key,
+    required this.children,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -14,7 +19,10 @@ class GlassContainer extends StatelessWidget {
           filter: ImageFilter.blur(sigmaX: 18, sigmaY: 18),
           child: Container(
             width: double.infinity,
-            padding: const EdgeInsets.symmetric(horizontal: 28, vertical: 30),
+            padding: const EdgeInsets.symmetric(
+              horizontal: 28,
+              vertical: 30,
+            ),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(32),
               gradient: LinearGradient(
@@ -32,20 +40,7 @@ class GlassContainer extends StatelessWidget {
             ),
             child: Column(
               mainAxisSize: MainAxisSize.min,
-              children: [
-                FilledButton(
-                  style: FilledButton.styleFrom(
-                    backgroundColor: const Color(0xffFF5B00),
-                    shape: const StadiumBorder(),
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 24,
-                      vertical: 14,
-                    ),
-                  ),
-                  onPressed: () {},
-                  child: const Text("Next"),
-                ),
-              ],
+              children: children,
             ),
           ),
         ),

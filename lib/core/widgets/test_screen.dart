@@ -169,7 +169,35 @@ class TestScreen extends StatelessWidget {
               trailing: Icon(Icons.arrow_forward_ios),
             ),
 
-            const GlassContainer(),
+            const GlassContainer(
+              children: [
+                Text(
+                  "Welcome Back",
+                  style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+                ),
+                SizedBox(height: 24),
+
+                TextField(decoration: InputDecoration(hintText: "Email")),
+                SizedBox(height: 16),
+
+                TextField(
+                  obscureText: true,
+                  decoration: InputDecoration(hintText: "Password"),
+                ),
+                SizedBox(height: 24),
+
+                SizedBox(
+                  width: double.infinity,
+                  child: ElevatedButton(
+                    onPressed: null,
+                    child: Text("Sign In"),
+                  ),
+                ),
+                SizedBox(height: 12),
+
+                TextButton(onPressed: null, child: Text("Forgot Password?")),
+              ],
+            ),
           ],
         ),
       ),
