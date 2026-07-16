@@ -1,6 +1,7 @@
 import 'package:flowery/config/di/di_config.dart';
 import 'package:flowery/config/helpers/bloc/bloc_observer.dart';
 import 'package:flowery/config/l10n/translations/app_localizations.dart';
+import 'package:flowery/config/routing/app_routes.dart';
 import 'package:flowery/config/routing/routing_generator.dart';
 import 'package:flowery/core/cubits/locale/locale_cubit.dart';
 import 'package:flowery/core/cubits/locale/locale_state.dart';
@@ -42,8 +43,7 @@ class FitnessApp extends StatelessWidget {
               onGenerateRoute: RouteGenerator.getRoute,
               debugShowCheckedModeBanner: false,
               theme: AppTheme.darkTheme,
-              // initialRoute: AppRoutes.,
-              home: const TestScreen(),
+              initialRoute: AppRoutes.onBoarding,
             );
           },
         );

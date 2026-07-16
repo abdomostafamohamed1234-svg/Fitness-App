@@ -1,23 +1,17 @@
+import 'package:flowery/config/routing/app_routes.dart';
+import 'package:flowery/features/on_boarding/presentation/screens/on_boarding_screen.dart';
 import 'package:flutter/material.dart';
 
 class RouteGenerator {
   static Route<dynamic> getRoute(RouteSettings settings) {
     try {
       switch (settings.name) {
-
-        // case AppRoutes.:
-        //   return MaterialPageRoute(
-        //     builder: (context) {
-        //       return MultiBlocProvider(
-        //         providers: [
-        //           BlocProvider(
-        //             create: (_) => 
-        //           ),
-        //         ],
-        //         child: ,
-        //       );
-        //     },
-        //   );
+        case AppRoutes.onBoarding:
+          return MaterialPageRoute(
+            builder: (context) {
+              return const OnBoardingScreen();
+            },
+          );
 
         default:
           return unDefinedRoute();
