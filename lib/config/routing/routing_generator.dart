@@ -1,6 +1,9 @@
+import 'package:flowery/config/di/di_config.dart';
 import 'package:flowery/config/routing/app_routes.dart';
 import 'package:flowery/features/on_boarding/presentation/screens/on_boarding_screen.dart';
+import 'package:flowery/features/on_boarding/presentation/view_model/cubit/on_boarding_cubit.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class RouteGenerator {
   static Route<dynamic> getRoute(RouteSettings settings) {
@@ -8,9 +11,10 @@ class RouteGenerator {
       switch (settings.name) {
         case AppRoutes.onBoarding:
           return MaterialPageRoute(
-            builder: (context) {
-              return const OnBoardingScreen();
-            },
+            builder: (_) => BlocProvider(
+              create: (_) => getIt<OnBoardingCubit>(),
+              child: const OnBoardingScreen(),
+            ),
           );
 
         default:

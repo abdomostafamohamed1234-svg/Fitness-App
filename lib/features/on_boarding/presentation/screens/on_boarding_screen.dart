@@ -1,9 +1,12 @@
-import 'dart:ui';
 import 'package:flowery/config/l10n/translations/app_localizations.dart';
-import 'package:flowery/core/widgets/glass_container.dart';
-import 'package:flowery/features/on_boarding/presentation/assets/on_boarding_assets_navigation.dart';
+import 'package:flowery/features/on_boarding/presentation/view_model/cubit/on_boarding_cubit.dart';
+import 'package:flowery/features/on_boarding/presentation/view_model/state/on_boarding_state.dart';
+import 'package:flowery/features/on_boarding/presentation/widgets/blurred_background_image.dart';
+import 'package:flowery/features/on_boarding/presentation/widgets/blurred_container.dart';
+import 'package:flowery/features/on_boarding/presentation/widgets/pose_image.dart';
+import 'package:flowery/features/on_boarding/presentation/widgets/skip_button.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class OnBoardingScreen extends StatefulWidget {
   const OnBoardingScreen({super.key});
@@ -15,6 +18,7 @@ class OnBoardingScreen extends StatefulWidget {
 class _OnBoardingScreenState extends State<OnBoardingScreen> {
   late AppLocalizations localizations;
   late TextTheme textTheme;
+  final PageController controller = PageController();
   @override
   void didChangeDependencies() {
     localizations = AppLocalizations.of(context)!;
@@ -26,33 +30,43 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Stack(
+        alignment: Alignment.topRight,
         children: [
-          Positioned.fill(
-            child: ImageFiltered(
-              imageFilter: ImageFilter.blur(sigmaX: 3, sigmaY: 3),
-              child: Image.asset(
-                OnBoardingAssetsNavigation.background,
-                fit: BoxFit.cover,
+          // Background blur image
+          const BlurredBackgroundImage(),
+
+          // Pose Image & Blurred Container
+          Stack(
+            alignment: Alignment.bottomCenter,
+            children: [
+              // Pose Image
+              PoseImage(controller: controller),
+
+              // Container
+              BlocConsumer<OnBoardingCubit, OnBoardingState>(
+                builder: (BuildContext context, state) {
+                  return BlurredContainer(
+                    state: state,
+                    localizations: localizations,
+                    textTheme: textTheme,
+                    controller: controller,
+                  );
+                },
+                listenWhen: (previous, current) =>
+                    previous.pageNumber != current.pageNumber,
+                listener: (context, state) {
+                  controller.animateToPage(
+                    state.pageNumber,
+                    duration: const Duration(milliseconds: 300),
+                    curve: Curves.easeInOut,
+                  );
+                },
               ),
-            ),
+            ],
           ),
-          SafeArea(
-            child: Column(
-              children: [
-                Transform.scale(
-                  scale: 1.5,
-                  child: Image(
-                    image: const AssetImage(OnBoardingAssetsNavigation.pose1),
-                    width: 375.w,
-                    height: 594.h,
-                  ),
-                ),
-                GlassContainer(
-                  children: [Text("Title Large", style: textTheme.titleLarge)],
-                ),
-              ],
-            ),
-          ),
+
+          // Skip Button
+          SkipButton(skip: localizations.skip),
         ],
       ),
     );
