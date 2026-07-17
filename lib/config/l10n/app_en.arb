@@ -7,5 +7,9 @@
   "requestCancelled": "Request cancelled",
   "serverError": "Server error",
   "transformTimeout": "Transform timeout",
-  "unexpectedError": "Unexpected error"
+  "unexpectedError": "Unexpected error",
+  "navExplore": "Explore",
+  "navChat": "Chat",
+  "navWorkouts": "Workouts",
+  "navProfile": "Profile"
 }

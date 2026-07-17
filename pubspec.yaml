@@ -46,6 +46,7 @@ dependencies:
   url_launcher: ^6.3.2
   googleapis_auth: ^2.3.2
   geolocator: ^14.0.2
+  flutter_svg: ^2.2.3
 
 dev_dependencies:
   fake_cloud_firestore: ^4.1.1
@@ -62,3 +63,4 @@ flutter:
   generate: true
   assets:
   - assets/
+  - assets/svg/

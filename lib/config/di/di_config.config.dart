@@ -16,6 +16,8 @@ import 'package:injectable/injectable.dart' as _i526;
 import 'package:shared_preferences/shared_preferences.dart' as _i460;
 
 import '../../core/cubits/locale/locale_cubit.dart' as _i273;
+import '../../features/app_sections/presentation/view_model/cubit/app_sections_cubit.dart'
+    as _i1038;
 import '../helpers/shared_preferences/shared_preferences_helper.dart' as _i425;
 import 'di_module.dart' as _i211;
 
@@ -31,6 +33,7 @@ extension GetItInjectableX on _i174.GetIt {
       () => diModule.sharedPreferences(),
       preResolve: true,
     );
+    gh.factory<_i1038.AppSectionsCubit>(() => _i1038.AppSectionsCubit());
     gh.singleton<_i361.Dio>(() => diModule.dio());
     gh.lazySingleton<_i558.FlutterSecureStorage>(
       () => diModule.secureStorage(),

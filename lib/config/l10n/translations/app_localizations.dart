@@ -151,6 +151,30 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Unexpected error'**
   String get unexpectedError;
+
+  /// No description provided for @navExplore.
+  ///
+  /// In en, this message translates to:
+  /// **'Explore'**
+  String get navExplore;
+
+  /// No description provided for @navChat.
+  ///
+  /// In en, this message translates to:
+  /// **'Chat'**
+  String get navChat;
+
+  /// No description provided for @navWorkouts.
+  ///
+  /// In en, this message translates to:
+  /// **'Workouts'**
+  String get navWorkouts;
+
+  /// No description provided for @navProfile.
+  ///
+  /// In en, this message translates to:
+  /// **'Profile'**
+  String get navProfile;
 }
 
 class _AppLocalizationsDelegate

@@ -34,4 +34,16 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get unexpectedError => 'Unexpected error';
+
+  @override
+  String get navExplore => 'Explore';
+
+  @override
+  String get navChat => 'Chat';
+
+  @override
+  String get navWorkouts => 'Workouts';
+
+  @override
+  String get navProfile => 'Profile';
 }

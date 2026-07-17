@@ -34,4 +34,16 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get unexpectedError => 'حدث خطأ غير متوقع';
+
+  @override
+  String get navExplore => 'استكشاف';
+
+  @override
+  String get navChat => 'المحادثة';
+
+  @override
+  String get navWorkouts => 'التمارين';
+
+  @override
+  String get navProfile => 'الملف الشخصي';
 }

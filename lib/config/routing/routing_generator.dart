@@ -1,9 +1,16 @@
+import 'package:flowery/config/routing/app_routes.dart';
+import 'package:flowery/features/app_sections/presentation/view/pages/app_sections_page.dart';
 import 'package:flutter/material.dart';
 
 class RouteGenerator {
   static Route<dynamic> getRoute(RouteSettings settings) {
     try {
       switch (settings.name) {
+
+        case AppRoutes.appSections:
+          return MaterialPageRoute(
+            builder: (_) => const AppSectionsPage(),
+          );
 
         // case AppRoutes.:
         //   return MaterialPageRoute(
