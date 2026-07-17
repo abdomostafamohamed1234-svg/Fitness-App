@@ -21,20 +21,21 @@ jobs:
           script: |
             const title = context.payload.pull_request.title;
 
-            // Allowed prefixes
             const regex = /^(Feature|Bugfix|Hotfix|Refactor|Docs|Test|Chore)\/.+$/;
 
             if (!regex.test(title)) {
               core.setFailed(
-                `Invalid PR title: "${title}".
-                
-Expected format:
-- Feature/...
-- Bugfix/...
-- Hotfix/...
-- Refactor/...
-- Docs/...
-- Test/...
-- Chore/...`
+                [
+                  `Invalid PR title: "${title}"`,
+                  "",
+                  "Expected format:",
+                  "• Feature/your-feature",
+                  "• Bugfix/your-bugfix",
+                  "• Hotfix/your-hotfix",
+                  "• Refactor/your-refactor",
+                  "• Docs/update-readme",
+                  "• Test/add-widget-tests",
+                  "• Chore/update-dependencies"
+                ].join("\n")
               );
             }
