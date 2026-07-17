@@ -35,7 +35,7 @@ class FitnessApp extends StatelessWidget {
         return BlocBuilder<LocaleCubit, LocaleState>(
           builder: (context, state) {
             return MaterialApp(
-              title: 'Fitness-App',
+              title: 'Fitness App',
               localizationsDelegates: AppLocalizations.localizationsDelegates,
               supportedLocales: AppLocalizations.supportedLocales,
               locale: state.locale,
