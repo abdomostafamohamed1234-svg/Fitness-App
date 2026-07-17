@@ -1,23 +1,18 @@
+import 'package:flowery/config/routing/app_routes.dart';
+import 'package:flowery/features/register/presentation/view/pages/register_page.dart';
 import 'package:flutter/material.dart';
 
 class RouteGenerator {
   static Route<dynamic> getRoute(RouteSettings settings) {
     try {
       switch (settings.name) {
+        case AppRoutes.register:
+          return MaterialPageRoute(
+            builder: (_) => const RegisterPage(),
+          );
 
-        // case AppRoutes.:
-        //   return MaterialPageRoute(
-        //     builder: (context) {
-        //       return MultiBlocProvider(
-        //         providers: [
-        //           BlocProvider(
-        //             create: (_) => 
-        //           ),
-        //         ],
-        //         child: ,
-        //       );
-        //     },
-        //   );
+        // case AppRoutes.login:
+        //   return MaterialPageRoute(builder: (_) => const LoginPage());
 
         default:
           return unDefinedRoute();
