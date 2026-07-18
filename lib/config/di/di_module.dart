@@ -32,7 +32,7 @@ abstract class DiModule {
   Dio mealsDio() {
     final dio = Dio(
       BaseOptions(
-        baseUrl: AppEndPoints.baseUrl,
+        baseUrl: AppEndPoints.mealsBaseUrl,
         sendTimeout: const Duration(seconds: 45),
         connectTimeout: const Duration(seconds: 45),
       ),
