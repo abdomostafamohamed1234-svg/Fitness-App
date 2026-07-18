@@ -26,4 +26,18 @@ abstract class DiModule {
     dio.interceptors.add(ApiInterceptor(dio: dio, fss: secureStorage()));
     return dio;
   }
+
+  @Named('mealsDio')
+  @singleton
+  Dio mealsDio() {
+    final dio = Dio(
+      BaseOptions(
+        baseUrl: AppEndPoints.baseUrl,
+        sendTimeout: const Duration(seconds: 45),
+        connectTimeout: const Duration(seconds: 45),
+      ),
+    );
+    dio.interceptors.add(ApiInterceptor(dio: dio, fss: secureStorage()));
+    return dio;
+  }
 }
