@@ -105,7 +105,7 @@ class _RegisterPageState extends State<RegisterPage> {
 
   @override
   Widget build(BuildContext context) {
-    final height = MediaQuery.of(context).size.height;
+  
 
     return BlocProvider<RegisterCubit>(
       create: (_) => registerCubit,
@@ -132,7 +132,7 @@ class _RegisterPageState extends State<RegisterPage> {
                       width: 100,
                     ),
 
-                    const SizedBox(height: 16),
+                    const SizedBox(height: 50),
                     BlocBuilder<RegisterCubit, RegisterStates>(
                       builder: (context, state) {
                         final int currentState = state.registerState?.data ?? 0;

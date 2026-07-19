@@ -33,12 +33,12 @@ class _ChooseGenderWidgetState extends State<ChooseGenderWidget> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          'Tell Us About Yourself',
-          style: Theme.of(context).textTheme.headlineLarge,
+          'Tell Us About Yourself!',
+          style: Theme.of(context).textTheme.headlineLarge?.copyWith(fontSize: 20),
         ),
         Text(
           'We need to know your gender',
-          style: Theme.of(context).textTheme.bodyLarge,
+          style: Theme.of(context).textTheme.bodyLarge?.copyWith(fontSize: 12),
         ),
         SizedBox(height: height * 0.02),
         GlassContainer(
@@ -51,7 +51,7 @@ class _ChooseGenderWidgetState extends State<ChooseGenderWidget> {
                 setState(() {});
               },
               child: Container(
-                padding: const EdgeInsets.symmetric(horizontal: 50, vertical: 35),
+                padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 20),
                 decoration: BoxDecoration(
                   color: male == true ? AppColors.primaryColor : null,
                   border: Border.all(color: Colors.white, width: 2),
@@ -60,10 +60,10 @@ class _ChooseGenderWidgetState extends State<ChooseGenderWidget> {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    const Icon(Icons.male_outlined, color: Colors.white, size: 80),
+                    const Icon(Icons.male_outlined, color: Colors.white, size: 60),
                     Text(
                       'Male',
-                      style: Theme.of(context).textTheme.headlineLarge,
+                      style: Theme.of(context).textTheme.headlineLarge?.copyWith(fontSize: 15),
                     ),
                   ],
                 ),
@@ -78,7 +78,7 @@ class _ChooseGenderWidgetState extends State<ChooseGenderWidget> {
                 setState(() {});
               },
               child: Container(
-                padding: const EdgeInsets.symmetric(horizontal: 50, vertical: 35),
+                padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 20),
                 decoration: BoxDecoration(
                   color: feMale == true ? AppColors.primaryColor : null,
                   border: Border.all(color: Colors.white, width: 2),
@@ -87,10 +87,10 @@ class _ChooseGenderWidgetState extends State<ChooseGenderWidget> {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    const Icon(Icons.female_outlined, color: Colors.white, size: 80),
+                    const Icon(Icons.female_outlined, color: Colors.white, size: 60),
                     Text(
                       'Female',
-                      style: Theme.of(context).textTheme.headlineLarge,
+                      style: Theme.of(context).textTheme.headlineLarge?.copyWith(fontSize: 15),
                     ),
                   ],
                 ),

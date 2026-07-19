@@ -37,7 +37,7 @@ class _ChooseHeightWidgetState extends State<ChooseHeightWidget> {
         ),
         Text(
           'This helps us create your personalized plan',
-          style: Theme.of(context).textTheme.bodyLarge,
+          style: Theme.of(context).textTheme.bodyLarge?.copyWith(fontSize: 12),
         ),
         SizedBox(height: height * 0.04),
         GlassContainer(

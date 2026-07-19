@@ -48,9 +48,9 @@ class _ChooseRpalWidgetState extends State<ChooseRpalWidget> {
                 child: Container(
                   margin: const EdgeInsets.symmetric(vertical: 6),
                   padding:
-                      const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
+                      const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
                   decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(12),
+                    borderRadius: BorderRadius.circular(50),
                     color: isSelected
                         ? AppColors.primaryColor.withValues(alpha: 0.15)
                         : Colors.white.withValues(alpha: 0.05),
@@ -65,7 +65,7 @@ class _ChooseRpalWidgetState extends State<ChooseRpalWidget> {
                     children: [
                       Text(
                         label,
-                        style: Theme.of(context).textTheme.titleLarge,
+                        style: Theme.of(context).textTheme.titleLarge?.copyWith(fontSize: 12),
                       ),
                       const Spacer(),
                       Container(
