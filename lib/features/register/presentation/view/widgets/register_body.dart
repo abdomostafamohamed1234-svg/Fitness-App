@@ -45,18 +45,24 @@ class _RegisterBodyState extends State<RegisterBody> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Text('Hey there', style: TextStyle(color: Colors.white,fontSize: 12 ,)),
+          const Text(
+            'Hey there',
+            style: TextStyle(color: Colors.white, fontSize: 12),
+          ),
           Text(
             'Create an Account',
-            style: Theme.of(context).textTheme.headlineLarge?.copyWith(fontSize: 20),
+            style: Theme.of(
+              context,
+            ).textTheme.headlineLarge?.copyWith(fontSize: 20),
           ),
           SizedBox(height: height * 0.02),
           GlassContainer(
             children: [
-              
               Text(
                 'Register',
-                style: Theme.of(context).textTheme.headlineLarge?.copyWith(fontSize: 20),
+                style: Theme.of(
+                  context,
+                ).textTheme.headlineLarge?.copyWith(fontSize: 20),
               ),
               SizedBox(height: height * 0.02),
 
@@ -80,7 +86,7 @@ class _RegisterBodyState extends State<RegisterBody> {
                   filled: true,
                   fillColor: Colors.transparent,
                   contentPadding: const EdgeInsets.symmetric(
-                   // horizontal: 30,
+                    // horizontal: 30,
                     vertical: 10,
                   ),
                   enabledBorder: OutlineInputBorder(
@@ -104,17 +110,10 @@ class _RegisterBodyState extends State<RegisterBody> {
                   ),
                 ),
               ),
-              // TextFormField(
-              //   validator: (v) => _validateName(v, 'First name'),
-              //   controller: widget.registerCubit.firstNameController,
-              //   decoration: const InputDecoration(
-              //     prefixIcon: Icon(Icons.person_outline),
-              //     hintText: 'First Name',
-              //   ),
-              // ),
+
               SizedBox(height: height * 0.02),
-                       TextFormField(
-               controller: widget.registerCubit.lastNameController,
+              TextFormField(
+                controller: widget.registerCubit.lastNameController,
                 validator: (v) => _validateName(v, 'Last Name'),
                 style: const TextStyle(color: Colors.white, fontSize: 16),
                 cursorColor: Colors.white,
@@ -133,7 +132,7 @@ class _RegisterBodyState extends State<RegisterBody> {
                   filled: true,
                   fillColor: Colors.transparent,
                   contentPadding: const EdgeInsets.symmetric(
-                   // horizontal: 30,
+                    // horizontal: 30,
                     vertical: 10,
                   ),
                   enabledBorder: OutlineInputBorder(
@@ -157,16 +156,9 @@ class _RegisterBodyState extends State<RegisterBody> {
                   ),
                 ),
               ),
-              // TextFormField(
-              //   controller: widget.registerCubit.lastNameController,
-              //   validator: (v) => _validateName(v, 'Last name'),
-              //   decoration: const InputDecoration(
-              //     prefixIcon: Icon(Icons.person_outline),
-              //     hintText: 'Last Name',
-              //   ),
-              // ),
+
               SizedBox(height: height * 0.02),
-                       TextFormField(
+              TextFormField(
                 controller: widget.registerCubit.emailController,
                 validator: (v) => _validateName(v, 'Email'),
                 style: const TextStyle(color: Colors.white, fontSize: 16),
@@ -186,7 +178,7 @@ class _RegisterBodyState extends State<RegisterBody> {
                   filled: true,
                   fillColor: Colors.transparent,
                   contentPadding: const EdgeInsets.symmetric(
-                   // horizontal: 30,
+                    // horizontal: 30,
                     vertical: 10,
                   ),
                   enabledBorder: OutlineInputBorder(
@@ -210,101 +202,62 @@ class _RegisterBodyState extends State<RegisterBody> {
                   ),
                 ),
               ),
-              // TextFormField(
-              //   controller: widget.registerCubit.emailController,
-              //   validator: _validateEmail,
-              //   keyboardType: TextInputType.emailAddress,
-              //   decoration: const InputDecoration(
-              //     prefixIcon: Icon(Icons.email_outlined),
-              //     hintText: 'Email',
-              //   ),
-              // ),
+
               SizedBox(height: height * 0.02),
 
-TextFormField(
-  controller: widget.registerCubit.passwordController,
-  validator: _validatePassword,
-  obscureText: _obscure,
-  style: const TextStyle(
-    color: Colors.white,
-    fontSize: 16,
-  ),
-  cursorColor: Colors.white,
-  decoration: InputDecoration(
-    hintText: 'Password',
-    hintStyle: TextStyle(
-      // ignore: deprecated_member_use
-      color: Colors.white.withOpacity(0.7),
-      fontSize: 12,
-    ),
-    prefixIcon: const Icon(
-      Icons.lock_outline_rounded,
-      color: Colors.white,
-      size: 18,
-    ),
-    suffixIcon: IconButton(
-      icon: Icon(
-        _obscure ? Icons.visibility_off : Icons.visibility,
-        color: Colors.white,
-        size: 18,
-      ),
-      onPressed: () => setState(() => _obscure = !_obscure),
-    ),
-    filled: true,
-    fillColor: Colors.transparent,
-    contentPadding: const EdgeInsets.symmetric(
-      vertical: 10,
-    ),
-    enabledBorder: OutlineInputBorder(
-      borderRadius: BorderRadius.circular(30),
-      borderSide: const BorderSide(
-        color: Colors.white,
-        width: 1.5,
-      ),
-    ),
-    focusedBorder: OutlineInputBorder(
-      borderRadius: BorderRadius.circular(30),
-      borderSide: const BorderSide(
-        color: Colors.white,
-        width: 2,
-      ),
-    ),
-    errorBorder: OutlineInputBorder(
-      borderRadius: BorderRadius.circular(30),
-      borderSide: const BorderSide(
-        color: Colors.red,
-        width: 1.5,
-      ),
-    ),
-    focusedErrorBorder: OutlineInputBorder(
-      borderRadius: BorderRadius.circular(30),
-      borderSide: const BorderSide(
-        color: Colors.red,
-        width: 2,
-      ),
-    ),
-  ),
-),
+              TextFormField(
+                controller: widget.registerCubit.passwordController,
+                validator: _validatePassword,
+                obscureText: _obscure,
+                style: const TextStyle(color: Colors.white, fontSize: 16),
+                cursorColor: Colors.white,
+                decoration: InputDecoration(
+                  hintText: 'Password',
+                  hintStyle: TextStyle(
+                    // ignore: deprecated_member_use
+                    color: Colors.white.withOpacity(0.7),
+                    fontSize: 12,
+                  ),
+                  prefixIcon: const Icon(
+                    Icons.lock_outline_rounded,
+                    color: Colors.white,
+                    size: 18,
+                  ),
+                  suffixIcon: IconButton(
+                    icon: Icon(
+                      _obscure ? Icons.visibility_off : Icons.visibility,
+                      color: Colors.white,
+                      size: 18,
+                    ),
+                    onPressed: () => setState(() => _obscure = !_obscure),
+                  ),
+                  filled: true,
+                  fillColor: Colors.transparent,
+                  contentPadding: const EdgeInsets.symmetric(vertical: 10),
+                  enabledBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(30),
+                    borderSide: const BorderSide(
+                      color: Colors.white,
+                      width: 1.5,
+                    ),
+                  ),
+                  focusedBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(30),
+                    borderSide: const BorderSide(color: Colors.white, width: 2),
+                  ),
+                  errorBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(30),
+                    borderSide: const BorderSide(color: Colors.red, width: 1.5),
+                  ),
+                  focusedErrorBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(30),
+                    borderSide: const BorderSide(color: Colors.red, width: 2),
+                  ),
+                ),
+              ),
 
-
-              // TextFormField(
-              //   validator: _validatePassword,
-              //   controller: widget.registerCubit.passwordController,
-              //   obscureText: _obscure,
-              //   decoration: InputDecoration(
-              //     suffixIcon: IconButton(
-              //       icon: Icon(
-              //         _obscure ? Icons.visibility_off : Icons.visibility,
-              //         color: AppColors.primaryColor,
-              //       ),
-              //       onPressed: () => setState(() => _obscure = !_obscure),
-              //     ),
-              //     prefixIcon: const Icon(Icons.lock_outline_rounded),
-              //     hintText: 'Password',
-              //   ),
-              // ),
-              SizedBox(height: height * 0.04),
-                   // ── Divider with "Or" ─────────────────────────
+              SizedBox(height: height * 0.02),
+              // ── Divider with "Or" ─────────────────────────
               const Row(
                 children: [
                   Expanded(child: Divider(color: Colors.white24, thickness: 1)),
@@ -318,7 +271,7 @@ TextFormField(
                   Expanded(child: Divider(color: Colors.white24, thickness: 1)),
                 ],
               ),
-              const SizedBox(height: 20),
+              const SizedBox(height: 10),
 
               // ── Social Login Icons ────────────────────────
               Row(
@@ -331,7 +284,7 @@ TextFormField(
                   SocialButton(icon: Icons.apple, onTap: () {}),
                 ],
               ),
-              const SizedBox(height: 28),
+              const SizedBox(height: 15),
               SizedBox(
                 height: 40,
                 width: double.infinity,
@@ -343,11 +296,33 @@ TextFormField(
                   },
                   child: Text(
                     'Register',
-                    style: Theme.of(context).textTheme.titleLarge?.copyWith(fontSize: 12),
+                    style: Theme.of(
+                      context,
+                    ).textTheme.titleLarge?.copyWith(fontSize: 12),
                   ),
                 ),
               ),
               SizedBox(height: height * 0.02),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  const Text(
+                    "Already Have An Account Yet ? ",
+                    style: TextStyle(color: Colors.white70, fontSize: 13),
+                  ),
+                  GestureDetector(
+                    onTap: () {},
+                    child: const Text(
+                      'Login',
+                      style: TextStyle(
+                        color: Colors.deepOrange,
+                        fontSize: 13,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
             ],
           ),
         ],
