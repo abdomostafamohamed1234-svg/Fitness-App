@@ -7,7 +7,8 @@ import 'dart:async' as _i4;
 
 import 'package:flowery/features/register/api/api_client/register_api_client.dart'
     as _i3;
-import 'package:flowery/features/register/data/models/register_dto.dart' as _i2;
+import 'package:flowery/features/register/data/models/register_dto_request.dart'
+    as _i2;
 import 'package:mockito/mockito.dart' as _i1;
 
 // ignore_for_file: type=lint

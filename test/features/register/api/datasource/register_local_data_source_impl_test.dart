@@ -1,7 +1,7 @@
 import 'package:flowery/core/base/base_response.dart';
 import 'package:flowery/features/register/api/api_client/register_api_client.dart';
 import 'package:flowery/features/register/api/datasources/register_local_data_source_impl.dart';
-import 'package:flowery/features/register/data/models/register_dto.dart';
+import 'package:flowery/features/register/data/models/register_dto_request.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';

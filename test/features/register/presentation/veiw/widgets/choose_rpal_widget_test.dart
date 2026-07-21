@@ -1,5 +1,5 @@
 import 'package:flowery/core/base/base_response.dart';
-import 'package:flowery/features/register/domain/entities/register_model.dart';
+import 'package:flowery/features/register/domain/entities/register_entity.dart';
 import 'package:flowery/features/register/domain/use_cases/register_usecase.dart';
 import 'package:flowery/features/register/presentation/view/widgets/choose_rpal_widget.dart';
 import 'package:flowery/features/register/presentation/view_model/cubit/register_cubit.dart';
@@ -36,8 +36,8 @@ void main() {
 
   testWidgets('Pressing Submit calls RegisterUsecase.invoke', (tester) async {
     when(() => mockUsecase.invoke(any())).thenAnswer(
-      (_) async => Success<RegisterModel>(
-        data: RegisterModel(massage: 'Success'),
+      (_) async => Success<RegisterEntity>(
+        data: RegisterEntity(massage: 'Success'),
       ),
     );
 

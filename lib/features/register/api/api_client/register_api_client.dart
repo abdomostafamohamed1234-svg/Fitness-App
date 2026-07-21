@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:flowery/config/api/api_endpoints.dart';
-import 'package:flowery/features/register/data/models/register_dto.dart';
+import 'package:flowery/features/register/data/models/register_dto_request.dart';
 import 'package:injectable/injectable.dart';
 import 'package:retrofit/retrofit.dart';
 

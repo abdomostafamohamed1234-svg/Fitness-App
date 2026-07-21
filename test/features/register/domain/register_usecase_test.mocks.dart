@@ -6,7 +6,7 @@
 import 'dart:async' as _i3;
 
 import 'package:flowery/core/base/base_response.dart' as _i4;
-import 'package:flowery/features/register/domain/entities/register_model.dart'
+import 'package:flowery/features/register/domain/entities/register_entity.dart'
     as _i5;
 import 'package:flowery/features/register/domain/repositories/register_repository.dart'
     as _i2;
@@ -38,17 +38,17 @@ class MockRegisterRepository extends _i1.Mock
   }
 
   @override
-  _i3.Future<_i4.Result<_i5.RegisterModel>> register(
+  _i3.Future<_i4.Result<_i5.RegisterEntity>> register(
     Map<String, dynamic>? body,
   ) =>
       (super.noSuchMethod(
             Invocation.method(#register, [body]),
-            returnValue: _i3.Future<_i4.Result<_i5.RegisterModel>>.value(
-              _i6.dummyValue<_i4.Result<_i5.RegisterModel>>(
+            returnValue: _i3.Future<_i4.Result<_i5.RegisterEntity>>.value(
+              _i6.dummyValue<_i4.Result<_i5.RegisterEntity>>(
                 this,
                 Invocation.method(#register, [body]),
               ),
             ),
           )
-          as _i3.Future<_i4.Result<_i5.RegisterModel>>);
+          as _i3.Future<_i4.Result<_i5.RegisterEntity>>);
 }

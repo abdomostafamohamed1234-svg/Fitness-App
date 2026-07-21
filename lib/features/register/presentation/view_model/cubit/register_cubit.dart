@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'package:flowery/core/base/base_response.dart';
 import 'package:flowery/core/base/custom_cubit.dart';
-import 'package:flowery/features/register/domain/entities/register_model.dart';
+import 'package:flowery/features/register/domain/entities/register_entity.dart';
 import 'package:flowery/features/register/domain/use_cases/register_usecase.dart';
 import 'package:flowery/features/register/presentation/view_model/cubit/register_events.dart';
 import 'package:flowery/features/register/presentation/view_model/cubit/register_states.dart';
@@ -12,8 +12,8 @@ import 'package:flutter/material.dart';
 import 'package:injectable/injectable.dart';
 
 @injectable
-class RegisterCubit extends CustomCubit<RegisterTempEvents, RegisterStates> {
-  RegisterCubit(this._registerUsecase) : super(RegisterStates());
+class RegisterCubit extends CustomCubit<RegisterTempEvents, RegisterState> {
+  RegisterCubit(this._registerUsecase) : super(RegisterState());
 
   bool firstTime = true;
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
@@ -33,7 +33,7 @@ class RegisterCubit extends CustomCubit<RegisterTempEvents, RegisterStates> {
   String? goal;
   String? physicalActivityLevel;
 
-  void doIntent(RegisterEvents event) {
+  void doIntent(RegisterEvent event) {
     switch (event) {
       case Register():
         _register();
@@ -68,7 +68,7 @@ class RegisterCubit extends CustomCubit<RegisterTempEvents, RegisterStates> {
       'activityLevel': physicalActivityLevel,
     });
     switch (response) {
-      case Success<RegisterModel>():
+      case Success<RegisterEntity>():
         doIntent(HideLoadingEvent());
         doIntent(ShowMassageEvent(response.data?.massage ?? 'Success!'));
         Future.delayed(
@@ -76,7 +76,7 @@ class RegisterCubit extends CustomCubit<RegisterTempEvents, RegisterStates> {
           () => streamController.add(NavigateToLoginTempEvent()),
         );
         emit(state);
-      case Error<RegisterModel>():
+      case Error<RegisterEntity>():
         doIntent(HideLoadingEvent());
         doIntent(ShowMassageEvent(response.exception?.toString() ?? 'Error'));
         emit(state);

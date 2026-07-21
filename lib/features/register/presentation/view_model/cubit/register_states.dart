@@ -1,12 +1,12 @@
 import 'package:flowery/core/base/base_state.dart';
 
-class RegisterStates {
+class RegisterState {
   BaseState<int>? registerState = const BaseState(data: 0);
 
-  RegisterStates({this.registerState});
+  RegisterState({this.registerState});
 
-  RegisterStates copyWith({BaseState<int>? newRegisterState}) {
-    return RegisterStates(
+  RegisterState copyWith({BaseState<int>? newRegisterState}) {
+    return RegisterState(
       registerState: newRegisterState ?? registerState,
     );
   }

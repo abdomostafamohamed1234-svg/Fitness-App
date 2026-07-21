@@ -8,7 +8,8 @@ import 'dart:async' as _i3;
 import 'package:flowery/core/base/base_response.dart' as _i4;
 import 'package:flowery/features/register/data/datasources/register_local_data_source_contract.dart'
     as _i2;
-import 'package:flowery/features/register/data/models/register_dto.dart' as _i5;
+import 'package:flowery/features/register/data/models/register_dto_request.dart'
+    as _i5;
 import 'package:mockito/mockito.dart' as _i1;
 import 'package:mockito/src/dummies.dart' as _i6;
 

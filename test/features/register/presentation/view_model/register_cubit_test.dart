@@ -1,6 +1,6 @@
 import 'package:flowery/core/base/base_response.dart';
 import 'package:flowery/core/base/base_state.dart';
-import 'package:flowery/features/register/domain/entities/register_model.dart';
+import 'package:flowery/features/register/domain/entities/register_entity.dart';
 import 'package:flowery/features/register/domain/use_cases/register_usecase.dart';
 import 'package:flowery/features/register/presentation/view_model/cubit/register_cubit.dart';
 import 'package:flowery/features/register/presentation/view_model/cubit/register_events.dart';
@@ -16,12 +16,12 @@ void main() {
   late RegisterCubit cubit;
   late MockRegisterUsecase mockUsecase;
 
-  final tRegisterModel = RegisterModel(massage: 'Success', error: null);
+  final tRegisterEntity = RegisterEntity(massage: 'Success', error: null);
 
   setUpAll(() {
-    // dummy لـ Result<RegisterModel> علشان Mockito عارف يبني الـ mock method
-    provideDummy<Result<RegisterModel>>(
-      const Success<RegisterModel>(data: null),
+    // dummy لـ Result<RegisterEntity> علشان Mockito عارف يبني الـ mock method
+    provideDummy<Result<RegisterEntity>>(
+      const Success<RegisterEntity>(data: null),
     );
   });
 
@@ -39,7 +39,7 @@ void main() {
       'success: يبعت ShowLoading -> HideLoading -> ShowMassage -> NavigateToLogin',
       () async {
         when(mockUsecase.invoke(any)).thenAnswer(
-          (_) async => Success<RegisterModel>(data: tRegisterModel),
+          (_) async => Success<RegisterEntity>(data: tRegisterEntity),
         );
 
         final events = <RegisterTempEvents>[];
@@ -68,7 +68,7 @@ void main() {
       () async {
         final exception = Exception('Network error');
         when(mockUsecase.invoke(any)).thenAnswer(
-          (_) async => Error<RegisterModel>(exception: exception),
+          (_) async => Error<RegisterEntity>(exception: exception),
         );
 
         final events = <RegisterTempEvents>[];

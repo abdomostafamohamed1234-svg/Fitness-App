@@ -133,7 +133,7 @@ class _RegisterPageState extends State<RegisterPage> {
                     ),
 
                     const SizedBox(height: 50),
-                    BlocBuilder<RegisterCubit, RegisterStates>(
+                    BlocBuilder<RegisterCubit, RegisterState>(
                       builder: (context, state) {
                         final int currentState = state.registerState?.data ?? 0;
 
@@ -152,7 +152,7 @@ class _RegisterPageState extends State<RegisterPage> {
                     const SizedBox(height: 16),
                     Expanded(
                       child: SingleChildScrollView(
-                        child: BlocBuilder<RegisterCubit, RegisterStates>(
+                        child: BlocBuilder<RegisterCubit, RegisterState>(
                           builder: (context, state) {
                             final step = state.registerState?.data ?? 0;
                             if (step == 0) {

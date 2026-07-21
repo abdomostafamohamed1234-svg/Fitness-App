@@ -1,17 +1,17 @@
 
-sealed class RegisterEvents {}
-class Register extends RegisterEvents {}
+sealed class RegisterEvent {}
+class Register extends RegisterEvent {}
 
-class RegisterNextStep extends RegisterEvents{}
+class RegisterNextStep extends RegisterEvent{}
 
-class RegisterPreviousStep extends RegisterEvents{}
+class RegisterPreviousStep extends RegisterEvent{}
 
-class NavigateToLoginEvent extends RegisterEvents{}
+class NavigateToLoginEvent extends RegisterEvent{}
 
-class ShowMassageEvent extends RegisterEvents{
+class ShowMassageEvent extends RegisterEvent{
     final String massage;
     ShowMassageEvent(this.massage);
 }
 
-class ShowLoadingEvent extends RegisterEvents{}
-class HideLoadingEvent extends RegisterEvents{}
+class ShowLoadingEvent extends RegisterEvent{}
+class HideLoadingEvent extends RegisterEvent{}

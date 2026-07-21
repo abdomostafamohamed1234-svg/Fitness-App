@@ -1,8 +1,8 @@
-import 'package:flowery/features/register/domain/entities/register_model.dart';
+import 'package:flowery/features/register/domain/entities/register_entity.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 
-part 'register_dto.g.dart';
+part 'register_dto_request.g.dart';
 
 @JsonSerializable()
 class RegisterDto {
@@ -20,8 +20,8 @@ class RegisterDto {
         this.token,
         this.error
     });
-    RegisterModel toModel(){
-      return RegisterModel(massage: message, error: error);
+    RegisterEntity toModel(){
+      return RegisterEntity(massage: message, error: error);
     }
     factory RegisterDto.fromJson(Map<String, dynamic> json) => _$RegisterDtoFromJson(json);
 

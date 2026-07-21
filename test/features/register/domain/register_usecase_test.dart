@@ -1,6 +1,6 @@
 // NOTE: adjust this import path if RegisterUsecase lives elsewhere in your project.
 import 'package:flowery/core/base/base_response.dart';
-import 'package:flowery/features/register/domain/entities/register_model.dart';
+import 'package:flowery/features/register/domain/entities/register_entity.dart';
 import 'package:flowery/features/register/domain/repositories/register_repository.dart';
 import 'package:flowery/features/register/domain/use_cases/register_usecase.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -14,8 +14,8 @@ void main() {
   late RegisterUsecase useCase;
   late MockRegisterRepository mockRepository;
   setUpAll(() {
-    provideDummy<Result<RegisterModel>>(
-      const Success<RegisterModel>(data: null),
+    provideDummy<Result<RegisterEntity>>(
+      const Success<RegisterEntity>(data: null),
     );
   });
   setUp(() {
@@ -29,7 +29,7 @@ void main() {
     'password': '123456',
   };
 
-  final tRegisterModel = RegisterModel(massage: 'Success', error: null);
+  final tRegisterEntity = RegisterEntity(massage: 'Success', error: null);
 
   group('RegisterUsecase.invoke', () {
     test(
@@ -38,15 +38,15 @@ void main() {
       () async {
         // arrange
         when(mockRepository.register(any)).thenAnswer(
-          (_) async => Success<RegisterModel>(data: tRegisterModel),
+          (_) async => Success<RegisterEntity>(data: tRegisterEntity),
         );
 
         // act
         final result = await useCase.invoke(tBody);
 
         // assert
-        expect(result, isA<Success<RegisterModel>>());
-        expect((result as Success<RegisterModel>).data?.massage, 'Success');
+        expect(result, isA<Success<RegisterEntity>>());
+        expect((result as Success<RegisterEntity>).data?.massage, 'Success');
         verify(mockRepository.register(tBody)).called(1);
         verifyNoMoreInteractions(mockRepository);
       },
@@ -58,15 +58,15 @@ void main() {
         // arrange
         final exception = Exception('Something went wrong');
         when(mockRepository.register(any)).thenAnswer(
-          (_) async => Error<RegisterModel>(exception: exception),
+          (_) async => Error<RegisterEntity>(exception: exception),
         );
 
         // act
         final result = await useCase.invoke(tBody);
 
         // assert
-        expect(result, isA<Error<RegisterModel>>());
-        expect((result as Error<RegisterModel>).exception, exception);
+        expect(result, isA<Error<RegisterEntity>>());
+        expect((result as Error<RegisterEntity>).exception, exception);
         verify(mockRepository.register(tBody)).called(1);
       },
     );
@@ -76,7 +76,7 @@ void main() {
       () async {
         // arrange
         when(mockRepository.register(any)).thenAnswer(
-          (_) async => Success<RegisterModel>(data: tRegisterModel),
+          (_) async => Success<RegisterEntity>(data: tRegisterEntity),
         );
 
         // act
