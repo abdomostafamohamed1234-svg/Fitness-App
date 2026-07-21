@@ -39,7 +39,6 @@ class FoodCubit extends Cubit<FoodState> {
     switch (response) {
       case Success<MealDetailsEntity>():
         emit(state.copyWith(detailsState: BaseState.success(response.data)));
-        print(response.data?.ingredients);
       case Error<MealDetailsEntity>():
         emit(state.copyWith(detailsState: BaseState.error(response.exception)));
     }
