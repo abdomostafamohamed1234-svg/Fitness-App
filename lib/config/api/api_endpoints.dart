@@ -25,8 +25,7 @@ class AppEndPoints {
   static const String muscles = "/muscles";
   static const String musclesByGroup = "/musclesGroup";
   static const String randomMuscles = "/muscles/random";
-  static const String primeMoverByMuscleGroup =
-      "/musclesGroup/by-muscle-group";
+  static const String primeMoverByMuscleGroup = "/musclesGroup/by-muscle-group";
 
   // ===================== Exercises =====================
   static const String exercises = "/exercises";
@@ -38,4 +37,10 @@ class AppEndPoints {
   static const String mealCategories = "/categories.php";
   static const String mealsByCategory = "/filter.php";
   static const String mealDetails = "/lookup.php";
+
+  // ===================== Home =====================
+
+  static const String recommendationToDay = "/muscles/random";
+  static const String upcomingWorkOut = "/muscles";
+  static const String foodForYou ="https://www.themealdb.com/api/json/v1/1/categories.php";
 }

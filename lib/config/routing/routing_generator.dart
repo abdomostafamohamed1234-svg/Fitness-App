@@ -1,10 +1,15 @@
+import 'package:flowery/config/routing/app_routes.dart';
+import 'package:flowery/features/home/presentation/view/screen/home_Page.dart';
 import 'package:flutter/material.dart';
 
 class RouteGenerator {
   static Route<dynamic> getRoute(RouteSettings settings) {
     try {
       switch (settings.name) {
-
+             case AppRoutes.Home:
+          return MaterialPageRoute(
+            builder: (_) => const HomePage(),
+          );
         // case AppRoutes.:
         //   return MaterialPageRoute(
         //     builder: (context) {
