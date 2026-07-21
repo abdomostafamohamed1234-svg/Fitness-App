@@ -15,5 +15,34 @@
   "skip" : "Skip",
   "next" : "Next",
   "back" : "Back",
-  "do_it" : "Do IT"
+  "do_it" : "Do IT",
+  "message": "Message",
+  "ok": "OK",
+  "howOldAreYou": "How Old Are You?",
+  "personalizedPlanHint": "This helps us create your personalized plan",
+  "year": "Year",
+  "tellUsAboutYourself": "Tell Us About Yourself!",
+  "weNeedToKnowYourGender": "We need to know your gender",
+  "male": "Male",
+  "female": "Female",
+  "whatIsYourGoal": "What is Your Goal?",
+  "gainWeight": "Gain Weight",
+  "loseWeight": "Lose Weight",
+  "getFitter": "Get Fitter",
+  "gainMoreFlexible": "Gain More Flexible",
+  "learnTheBasics": "Learn The Basics",
+  "whatIsYourHeight": "What is Your Height?",
+  "cm": "CM",
+  "physicalActivityLevel": "Your Regular Physical Activity Level",
+  "rookie": "Rookie",
+  "beginner": "Beginner",
+  "intermediate": "Intermediate",
+  "advance": "Advance",
+  "trueBeast": "True Beast",
+  "submit": "Submit",
+  "whatIsYourWeight": "What is Your Weight?",
+  "kg": "Kg"
+
+ 
+
 }

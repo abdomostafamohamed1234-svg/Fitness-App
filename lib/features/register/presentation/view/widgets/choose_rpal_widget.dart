@@ -1,3 +1,4 @@
+import 'package:flowery/config/l10n/translations/app_localizations.dart';
 import 'package:flowery/core/theme/app_colors.dart';
 import 'package:flowery/core/widgets/glass_container.dart';
 import 'package:flowery/features/register/presentation/view_model/cubit/register_cubit.dart';
@@ -31,7 +32,7 @@ class _ChooseRpalWidgetState extends State<ChooseRpalWidget> {
       children: [
         SizedBox(height: height * 0.02),
         Text(
-          'Your Regular Physical Activity Level',
+          AppLocalizations.of(context)!.physicalActivityLevel,
           style: Theme.of(context).textTheme.headlineLarge,
         ),
         SizedBox(height: height * 0.02),
@@ -93,7 +94,7 @@ class _ChooseRpalWidgetState extends State<ChooseRpalWidget> {
                     widget.registerCubit.doIntent(Register());
                   },
                   child: Text(
-                    'Submit',
+                    AppLocalizations.of(context)!.submit,
                     style: Theme.of(context).textTheme.titleLarge,
                   ),
                 ),

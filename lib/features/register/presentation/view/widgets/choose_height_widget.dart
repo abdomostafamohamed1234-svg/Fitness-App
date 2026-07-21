@@ -1,3 +1,4 @@
+import 'package:flowery/config/l10n/translations/app_localizations.dart';
 import 'package:flowery/core/theme/app_colors.dart';
 import 'package:flowery/core/widgets/glass_container.dart';
 import 'package:flowery/features/register/presentation/view_model/cubit/register_cubit.dart';
@@ -27,22 +28,24 @@ class _ChooseHeightWidgetState extends State<ChooseHeightWidget> {
   @override
   Widget build(BuildContext context) {
     final height = MediaQuery.of(context).size.height;
+        final locale = AppLocalizations.of(context)!;
+
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          'What is Your Height?',
+          locale.whatIsYourHeight,
           style: Theme.of(context).textTheme.headlineLarge,
         ),
         Text(
-          'This helps us create your personalized plan',
+          locale.personalizedPlanHint,
           style: Theme.of(context).textTheme.bodyLarge?.copyWith(fontSize: 12),
         ),
         SizedBox(height: height * 0.04),
         GlassContainer(
           children: [
-            Text('CM', style: Theme.of(context).textTheme.bodyMedium?.copyWith(color: AppColors.primaryColor )),
+            Text(locale.cm, style: Theme.of(context).textTheme.bodyMedium?.copyWith(color: AppColors.primaryColor )),
             SizedBox(height: height * 0.02),
 
             Center(
@@ -76,7 +79,7 @@ class _ChooseHeightWidgetState extends State<ChooseHeightWidget> {
                   widget.registerCubit.doIntent(RegisterNextStep());
                 },
                 child: Text(
-                  'Next',
+                  locale.next,
                   style: Theme.of(context).textTheme.titleLarge,
                 ),
               ),

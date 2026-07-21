@@ -1,3 +1,4 @@
+import 'package:flowery/config/l10n/translations/app_localizations.dart';
 import 'package:flowery/core/theme/app_colors.dart';
 import 'package:flowery/core/widgets/glass_container.dart';
 import 'package:flowery/features/register/presentation/view_model/cubit/register_cubit.dart';
@@ -25,17 +26,19 @@ class _ChooseGoalWidgetState extends State<ChooseGoalWidget> {
   @override
   Widget build(BuildContext context) {
     final height = MediaQuery.of(context).size.height;
+    final locale = AppLocalizations.of(context)!;
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         SizedBox(height: height * 0.02),
         Text(
-          'What is Your Goal?',
+          locale.whatIsYourGoal,
           style: Theme.of(context).textTheme.headlineLarge,
         ),
         Text(
-          'This helps us create your personalized plan',
+          locale.personalizedPlanHint,
+          
           style: Theme.of(context).textTheme.bodyLarge?.copyWith(fontSize: 12),
         ),
         SizedBox(height: height * 0.02),
@@ -97,7 +100,7 @@ class _ChooseGoalWidgetState extends State<ChooseGoalWidget> {
                     widget.registerCubit.doIntent(RegisterNextStep());
                   },
                   child: Text(
-                    'Next',
+                    locale.next,
                     style: Theme.of(context).textTheme.titleLarge,
                   ),
                 ),

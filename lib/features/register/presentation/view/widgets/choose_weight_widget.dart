@@ -1,3 +1,4 @@
+import 'package:flowery/config/l10n/translations/app_localizations.dart';
 import 'package:flowery/core/theme/app_colors.dart';
 import 'package:flowery/core/widgets/glass_container.dart';
 import 'package:flowery/features/register/presentation/view_model/cubit/register_cubit.dart';
@@ -32,18 +33,18 @@ class _ChooseWeightWidgetState extends State<ChooseWeightWidget> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          'What is Your Weight?',
+          AppLocalizations.of(context)!.whatIsYourWeight,
           style: Theme.of(context).textTheme.headlineLarge,
         ),
         Text(
-          'This helps us create your personalized plan',
+         AppLocalizations.of(context)!.personalizedPlanHint,
           style: Theme.of(context).textTheme.bodyLarge?.copyWith(fontSize: 12),
         ),
         SizedBox(height: height * 0.04),
         GlassContainer(
           children: [
             Text(
-              'Kg',
+              AppLocalizations.of(context)!.kg,
               style: Theme.of(
                 context,
               ).textTheme.bodyMedium?.copyWith(color: AppColors.primaryColor),
