@@ -1,24 +1,28 @@
+import 'package:flowery/config/di/di_config.dart';
+import 'package:flowery/config/routing/app_routes.dart';
+import 'package:flowery/featrures/food/presentation/screens/food_recommendation_screen.dart';
+import 'package:flowery/featrures/food/presentation/view_model/cubit/food_cubit.dart';
+import 'package:flowery/featrures/food/presentation/view_model/events/food_events.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class RouteGenerator {
   static Route<dynamic> getRoute(RouteSettings settings) {
     try {
       switch (settings.name) {
-
-        // case AppRoutes.:
-        //   return MaterialPageRoute(
-        //     builder: (context) {
-        //       return MultiBlocProvider(
-        //         providers: [
-        //           BlocProvider(
-        //             create: (_) => 
-        //           ),
-        //         ],
-        //         child: ,
-        //       );
-        //     },
-        //   );
-
+        case AppRoutes.food:
+          return MaterialPageRoute(
+            builder: (context) {
+              return MultiBlocProvider(
+                providers: [
+                  BlocProvider(
+                    create: (_) => getIt<FoodCubit>()..doEvent(GetMealsCategoriesEvent())
+                  ),
+                ],
+                child: const FoodRecommendationScreen(),
+              );
+            },
+          );
         default:
           return unDefinedRoute();
       }

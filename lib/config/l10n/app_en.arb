@@ -7,5 +7,12 @@
   "requestCancelled": "Request cancelled",
   "serverError": "Server error",
   "transformTimeout": "Transform timeout",
-  "unexpectedError": "Unexpected error"
+  "unexpectedError": "Unexpected error",
+  "food_recommendation": "Food Recommendation",
+  "instructions": "Instructions",
+  "ingredients": "Ingredients",
+  "energy" : "Energy",
+  "protein" : "Protein",
+  "carbs" : "Carbs",
+  "fats" : "Fats"
 }

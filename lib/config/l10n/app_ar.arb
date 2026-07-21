@@ -7,5 +7,12 @@
   "requestCancelled": "تم إلغاء الطلب",
   "serverError": "خطأ في الخادم",
   "transformTimeout": "انتهت مهلة المعالجة",
-  "unexpectedError": "حدث خطأ غير متوقع"
+  "unexpectedError": "حدث خطأ غير متوقع",
+  "food_recommendation": "اقتراحات الطعام",
+  "instructions": "الوصفة",
+  "ingredients": "المقادير",
+  "energy" : "الطاقة",
+  "protein" : "البروتين",
+  "carbs" : "الكربوهيدرات",
+  "fats" : "الدهون"
 }
