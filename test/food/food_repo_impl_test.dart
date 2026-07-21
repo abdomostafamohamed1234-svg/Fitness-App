@@ -63,7 +63,7 @@ void main() {
     test('maps meal details response to domain entity', () async {
       final dataSource = MockFoodRemoteDataSource();
       when(() => dataSource.getMealDetails(any())).thenAnswer(
-        (_) async => Success(
+        (_) async => const Success(
           data: MealDetailsResponseModel(
             meals: [
               MealDetailsModel(
