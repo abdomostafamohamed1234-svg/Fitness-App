@@ -16,6 +16,8 @@ import 'package:injectable/injectable.dart' as _i526;
 import 'package:shared_preferences/shared_preferences.dart' as _i460;
 
 import '../../core/cubits/locale/locale_cubit.dart' as _i273;
+import '../../features/on_boarding/presentation/view_model/cubit/on_boarding_cubit.dart'
+    as _i786;
 import '../../features/register/api/api_client/register_api_client.dart'
     as _i656;
 import '../../features/register/api/datasources/register_local_data_source_impl.dart'
@@ -45,6 +47,7 @@ extension GetItInjectableX on _i174.GetIt {
       () => diModule.sharedPreferences(),
       preResolve: true,
     );
+    gh.factory<_i786.OnBoardingCubit>(() => _i786.OnBoardingCubit());
     gh.singleton<_i361.Dio>(() => diModule.dio());
     gh.lazySingleton<_i558.FlutterSecureStorage>(
       () => diModule.secureStorage(),
@@ -57,6 +60,10 @@ extension GetItInjectableX on _i174.GetIt {
     );
     gh.factory<_i656.RegisterApiClient>(
       () => _i656.RegisterApiClient(gh<_i361.Dio>()),
+    );
+    gh.singleton<_i361.Dio>(
+      () => diModule.mealsDio(),
+      instanceName: 'mealsDio',
     );
     gh.factory<_i1000.RegisterLocalDataSourceContract>(
       () => _i240.RegisterLocalDataSourceImpl(gh<_i656.RegisterApiClient>()),

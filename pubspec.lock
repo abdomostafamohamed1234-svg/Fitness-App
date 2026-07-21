@@ -559,10 +559,10 @@ packages:
     dependency: "direct dev"
     description:
       name: flutter_native_splash
-      sha256: "9db4b80b044e9af17cc4b1272137fc7ace0054d879ef8210a76adc34aaf4cdff"
+      sha256: "4fb9f4113350d3a80841ce05ebf1976a36de622af7d19aca0ca9a9911c7ff002"
       url: "https://pub.dev"
     source: hosted
-    version: "2.4.8"
+    version: "2.4.7"
   flutter_plugin_android_lifecycle:
     dependency: transitive
     description:
@@ -1022,7 +1022,7 @@ packages:
     source: hosted
     version: "0.8.2"
   mockito:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: mockito
       sha256: eff30d002f0c8bf073b6f929df4483b543133fcafce056870163587b03f1d422
@@ -1030,7 +1030,7 @@ packages:
     source: hosted
     version: "5.6.4"
   mocktail:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: mocktail
       sha256: "5e1bf53cc7baa8062a33b84424deb61513858ea05c601b8509e683815b5914aa"
@@ -1522,6 +1522,14 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
+  smooth_page_indicator:
+    dependency: "direct main"
+    description:
+      name: smooth_page_indicator
+      sha256: "4b497e9898d095de40d246db943371183fa7482492a88391cfa8415ef94d57ba"
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.0.1"
   source_gen:
     dependency: transitive
     description:
