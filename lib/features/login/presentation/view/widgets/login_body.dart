@@ -1,9 +1,12 @@
+import 'package:flowery/core/base/base_state.dart';
 import 'package:flowery/core/theme/app_colors.dart';
 import 'package:flowery/core/widgets/glass_container.dart';
 import 'package:flowery/core/widgets/social_button.dart';
 import 'package:flowery/features/login/presentation/view_model/cubit.dart';
 import 'package:flowery/features/login/presentation/view_model/event.dart';
+import 'package:flowery/features/login/presentation/view_model/state.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 // ignore: must_be_immutable
 class LoginBody extends StatefulWidget {
@@ -164,26 +167,7 @@ class _LoginBodyState extends State<LoginBody> {
               ),
               SizedBox(height: height * 0.03),
 
-              SizedBox(
-                height: 44,
-                width: double.infinity,
-                child: ElevatedButton(
-                  onPressed: () {
-                    if (widget.loginCubit.formKey.currentState!.validate()) {
-                      widget.loginCubit.doEvent(
-                        LoginEvent(
-                          email: widget.loginCubit.emailController.text,
-                          password: widget.loginCubit.passwordController.text,
-                        ),
-                      );
-                    }
-                  },
-                  child: Text(
-                    'Login',
-                    style: Theme.of(context).textTheme.titleLarge?.copyWith(fontSize: 14),
-                  ),
-                ),
-              ),
+              _LoginButton(loginCubit: widget.loginCubit),
               SizedBox(height: height * 0.02),
 
               // Bottom link row
@@ -213,6 +197,53 @@ class _LoginBodyState extends State<LoginBody> {
           ),
         ],
       ),
+    );
+  }
+}
+
+class _LoginButton extends StatelessWidget {
+  const _LoginButton({required this.loginCubit});
+
+  final LoginCubit loginCubit;
+
+  @override
+  Widget build(BuildContext context) {
+    return BlocBuilder<LoginCubit, LoginStates>(
+      builder: (context, state) {
+        final isLoading = state.loginState.state == StateType.loading;
+
+        return SizedBox(
+          height: 44,
+          width: double.infinity,
+          child: ElevatedButton(
+            onPressed: isLoading
+                ? null
+                : () {
+                    if (loginCubit.formKey.currentState!.validate()) {
+                      loginCubit.doEvent(
+                        LoginEvent(
+                          email: loginCubit.emailController.text,
+                          password: loginCubit.passwordController.text,
+                        ),
+                      );
+                    }
+                  },
+            child: isLoading
+                ? const SizedBox(
+                    height: 20,
+                    width: 20,
+                    child: CircularProgressIndicator(
+                      strokeWidth: 2.5,
+                      color: Colors.white,
+                    ),
+                  )
+                : Text(
+                    'Login',
+                    style: Theme.of(context).textTheme.titleLarge?.copyWith(fontSize: 14),
+                  ),
+          ),
+        );
+      },
     );
   }
 }
