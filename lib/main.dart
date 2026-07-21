@@ -35,15 +35,14 @@ class FitnessApp extends StatelessWidget {
         return BlocBuilder<LocaleCubit, LocaleState>(
           builder: (context, state) {
             return MaterialApp(
-              title: 'Fitness-App',
+              title: 'Fitness App',
               localizationsDelegates: AppLocalizations.localizationsDelegates,
               supportedLocales: AppLocalizations.supportedLocales,
               locale: state.locale,
               onGenerateRoute: RouteGenerator.getRoute,
               debugShowCheckedModeBanner: false,
               theme: AppTheme.darkTheme,
-              initialRoute: AppRoutes.register,
-              //home: const TestScreen(),
+              initialRoute: AppRoutes.onBoarding,
             );
           },
         );
