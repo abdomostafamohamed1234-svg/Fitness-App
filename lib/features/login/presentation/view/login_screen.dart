@@ -2,8 +2,6 @@ import 'package:flowery/config/di/di_config.dart';
 import 'package:flowery/core/theme/app_assets.dart';
 import 'package:flowery/core/theme/app_colors.dart';
 import 'package:flowery/features/login/presentation/view/widgets/login_body.dart';
-import 'package:flowery/features/login/presentation/view_model/cubit/login_cubit.dart';
-import 'package:flowery/features/login/presentation/view_model/cubit/state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -120,7 +118,7 @@ class _LoginPageState extends State<LoginPage> {
                   child: Column(
                     children: [
                       Image.asset(
-                        AppAssets.fitnessSplash,
+                        AppAssets.logo,
                         height: 100,
                         width: 100,
                       ),

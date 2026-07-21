@@ -24,6 +24,8 @@ import '../../features/login/data/data_source/remote_data_source/login_remote_da
 import '../../features/login/data/repo/login_repo_impl.dart' as _i176;
 import '../../features/login/domain/repo_contract/login_repo_contract.dart'
     as _i202;
+import '../../features/login/domain/use_case/login_use_case.dart' as _i168;
+import '../../features/login/presentation/view_model/cubit.dart' as _i272;
 import '../helpers/shared_preferences/shared_preferences_helper.dart' as _i425;
 import 'di_module.dart' as _i211;
 
@@ -61,6 +63,12 @@ extension GetItInjectableX on _i174.GetIt {
     );
     gh.factory<_i202.LoginRepoContract>(
       () => _i176.LoginRepoImpl(gh<_i80.LoginRemoteDataSourceContract>()),
+    );
+    gh.factory<_i168.LoginUseCase>(
+      () => _i168.LoginUseCase(gh<_i202.LoginRepoContract>()),
+    );
+    gh.factory<_i272.LoginCubit>(
+      () => _i272.LoginCubit(gh<_i168.LoginUseCase>()),
     );
     return this;
   }
