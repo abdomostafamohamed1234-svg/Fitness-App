@@ -1,5 +1,4 @@
 
-import 'package:flowery/config/l10n/translations/app_localizations.dart';
 import 'package:flowery/core/theme/app_assets.dart';
 import 'package:flowery/features/app_sections/domain/entities/custom_nav_item_model.dart';
 import 'package:flowery/features/app_sections/presentation/view_model/cubit/app_sections_states.dart';

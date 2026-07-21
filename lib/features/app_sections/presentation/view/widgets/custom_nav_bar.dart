@@ -25,7 +25,7 @@ class CustomNavBar extends StatelessWidget {
       child: ClipRRect(
         borderRadius: BorderRadius.circular(20),
         child: Container(
-          color: AppColors.lightGreyColor,
+          color: AppColors.blackColor,
           child: Padding(
             padding: const EdgeInsets.all(16),
             child: Row(
