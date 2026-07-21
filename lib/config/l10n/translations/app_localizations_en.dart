@@ -59,74 +59,83 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get do_it => 'Do IT';
+
   @override
-String get howOldAreYou => 'How Old Are You?';
+  String get message => 'Message';
 
-@override
-String get personalizedPlanHint =>
-    'This helps us create your personalized plan';
+  @override
+  String get ok => 'OK';
 
-@override
-String get year => 'Year';
-@override
-String get tellUsAboutYourself => 'Tell Us About Yourself!';
+  @override
+  String get howOldAreYou => 'How Old Are You?';
 
-@override
-String get weNeedToKnowYourGender => 'We need to know your gender';
+  @override
+  String get personalizedPlanHint =>
+      'This helps us create your personalized plan';
 
-@override
-String get male => 'Male';
+  @override
+  String get year => 'Year';
 
-@override
-String get female => 'Female';
+  @override
+  String get tellUsAboutYourself => 'Tell Us About Yourself!';
 
-@override
-String get whatIsYourGoal => 'What is Your Goal?';
+  @override
+  String get weNeedToKnowYourGender => 'We need to know your gender';
 
-@override
-String get gainWeight => 'Gain Weight';
+  @override
+  String get male => 'Male';
 
-@override
-String get loseWeight => 'Lose Weight';
+  @override
+  String get female => 'Female';
 
-@override
-String get getFitter => 'Get Fitter';
+  @override
+  String get whatIsYourGoal => 'What is Your Goal?';
 
-@override
-String get gainMoreFlexible => 'Gain More Flexible';
+  @override
+  String get gainWeight => 'Gain Weight';
 
-@override
-String get learnTheBasics => 'Learn The Basics';
-@override
-String get whatIsYourHeight => 'What is Your Height?';
+  @override
+  String get loseWeight => 'Lose Weight';
 
-@override
-String get cm => 'CM';
+  @override
+  String get getFitter => 'Get Fitter';
 
-@override
-String get physicalActivityLevel =>
-    'Your Regular Physical Activity Level';
+  @override
+  String get gainMoreFlexible => 'Gain More Flexible';
 
-@override
-String get rookie => 'Rookie';
+  @override
+  String get learnTheBasics => 'Learn The Basics';
 
-@override
-String get beginner => 'Beginner';
+  @override
+  String get whatIsYourHeight => 'What is Your Height?';
 
-@override
-String get intermediate => 'Intermediate';
+  @override
+  String get cm => 'CM';
 
-@override
-String get advance => 'Advance';
+  @override
+  String get physicalActivityLevel => 'Your Regular Physical Activity Level';
 
-@override
-String get trueBeast => 'True Beast';
+  @override
+  String get rookie => 'Rookie';
 
-@override
-String get submit => 'Submit';
-@override
-String get whatIsYourWeight => 'What is Your Weight?';
+  @override
+  String get beginner => 'Beginner';
 
-@override
-String get kg => 'Kg';
+  @override
+  String get intermediate => 'Intermediate';
+
+  @override
+  String get advance => 'Advance';
+
+  @override
+  String get trueBeast => 'True Beast';
+
+  @override
+  String get submit => 'Submit';
+
+  @override
+  String get whatIsYourWeight => 'What is Your Weight?';
+
+  @override
+  String get kg => 'Kg';
 }

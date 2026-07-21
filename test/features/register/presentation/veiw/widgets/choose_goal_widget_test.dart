@@ -29,7 +29,7 @@ void main() {
     expect(find.text('Learn The Basics'), findsOneWidget);
   });
 
-  testWidgets('اختيار هدف يحفظه في الـ cubit', (tester) async {
+  testWidgets('Choosing a goal that keeps him in cubit', (tester) async {
     await tester.pumpApp(ChooseGoalWidget(registerCubit: cubit));
 
     await tester.tap(find.text('Lose Weight'));

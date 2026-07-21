@@ -82,7 +82,7 @@ class _ChooseWeightWidgetState extends State<ChooseWeightWidget> {
                   widget.registerCubit.doIntent(RegisterNextStep());
                 },
                 child: Text(
-                  'Next',
+                  AppLocalizations.of(context)!.next,
                   style: Theme.of(context).textTheme.titleLarge,
                 ),
               ),

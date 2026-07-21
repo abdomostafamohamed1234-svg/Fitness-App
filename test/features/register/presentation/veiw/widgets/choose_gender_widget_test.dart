@@ -24,21 +24,21 @@ void main() {
 
   tearDown(() async => cubit.close());
 
-  testWidgets('يعرض خياري Male و Female', (tester) async {
+  testWidgets('Displays both Male and Female options', (tester) async {
     await tester.pumpApp(ChooseGenderWidget(registerCubit: cubit));
 
     expect(find.text('Male'), findsOneWidget);
     expect(find.text('Female'), findsOneWidget);
   });
 
-  testWidgets('زرار Next مخفي قبل ما تختار', (tester) async {
+  testWidgets('The Next button is hidden before you make a selection', (tester) async {
     await tester.pumpApp(ChooseGenderWidget(registerCubit: cubit));
 
     final visibility = tester.widget<Visibility>(find.byType(Visibility));
     expect(visibility.visible, isFalse);
   });
 
-  testWidgets('اختيار Male يحفظ القيمة ويظهر زرار Next', (tester) async {
+  testWidgets('Selecting Male saves the value and displays the Next button', (tester) async {
     await tester.pumpApp(ChooseGenderWidget(registerCubit: cubit));
 
     await tester.tap(find.text('Male'));
@@ -49,7 +49,7 @@ void main() {
     expect(visibility.visible, isTrue);
   });
 
-  testWidgets('اختيار Female يحفظ القيمة الصح', (tester) async {
+  testWidgets('Choosing Female preserves the correct value', (tester) async {
     await tester.pumpApp(ChooseGenderWidget(registerCubit: cubit));
 
     await tester.tap(find.text('Female'));
@@ -60,7 +60,7 @@ void main() {
 
 
 
-testWidgets('الضغط على Next بعد الاختيار يزوّد الخطوة', (tester) async {
+testWidgets('Pressing Next after selection provides the next step', (tester) async {
   await tester.pumpApp(ChooseGenderWidget(registerCubit: cubit));
 
   await tester.tap(find.text('Male'));

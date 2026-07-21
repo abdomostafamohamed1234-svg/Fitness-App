@@ -25,7 +25,7 @@ void main() {
 
   tearDown(() async => cubit.close());
 
-  testWidgets('اختيار مستوى النشاط يحفظه بالـ cubit', (tester) async {
+  testWidgets('Selecting the activity level saves it in cubic bits', (tester) async {
     await tester.pumpApp(ChooseRpalWidget(registerCubit: cubit));
 
     await tester.tap(find.text('Intermediate'));
@@ -34,7 +34,7 @@ void main() {
     expect(cubit.physicalActivityLevel, 'level3');
   });
 
-  testWidgets('الضغط على Submit يستدعي RegisterUsecase.invoke', (tester) async {
+  testWidgets('Pressing Submit calls RegisterUsecase.invoke', (tester) async {
     when(() => mockUsecase.invoke(any())).thenAnswer(
       (_) async => Success<RegisterModel>(
         data: RegisterModel(massage: 'Success'),

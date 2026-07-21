@@ -92,7 +92,7 @@ void main() {
   });
 
   group('_nextStep (RegisterNextStep event)', () {
-    test('لو registerState كان null، يخليه 0', () {
+    test('If registerState is null, make it 0.', () {
       cubit.state.registerState = null;
 
       cubit.doIntent(RegisterNextStep());
@@ -100,7 +100,7 @@ void main() {
       expect(cubit.state.registerState?.data, 0);
     });
 
-    test('لو فيه قيمة، يزوّدها بـ 1', () {
+    test('If there is value, add 1 to it.', () {
       cubit.state.registerState = const BaseState(data: 2);
 
       cubit.doIntent(RegisterNextStep());
@@ -122,7 +122,7 @@ void main() {
       await sub.cancel();
     });
 
-    test('لو الخطوة > 0، ينقصها بـ 1', () {
+    test('If the step is greater than 0, it is deducted by 1.', () {
       cubit.state.registerState = const BaseState(data: 2);
 
       cubit.doIntent(RegisterPreviousStep());

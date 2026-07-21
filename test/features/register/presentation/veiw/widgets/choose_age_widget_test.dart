@@ -19,12 +19,12 @@ void main() {
 
   tearDown(() async => cubit.close());
 
-  testWidgets('يبدأ بعمر افتراضي 20 لو مفيش قيمة محفوظة', (tester) async {
+  testWidgets('It starts with a lifespan of 20 years if there is no retained value', (tester) async {
     await tester.pumpApp(ChooseAgeWidget(registerCubit: cubit));
     expect(cubit.age, '20');
   });
 
-  testWidgets('لو فيه عمر محفوظ مسبقًا، بيستخدمه بدل الافتراضي', (tester) async {
+  testWidgets('If there is a pre-saved age, it is used instead of the default one', (tester) async {
     cubit.age = '35';
     await tester.pumpApp(ChooseAgeWidget(registerCubit: cubit));
     expect(cubit.age, '35');

@@ -62,73 +62,80 @@ class AppLocalizationsAr extends AppLocalizations {
   String get do_it => 'افعلها';
 
   @override
-String get howOldAreYou => 'كم عمرك؟';
+  String get message => 'Message';
 
-@override
-String get personalizedPlanHint =>
-    'هذا يساعدنا على إنشاء خطتك المخصصة';
+  @override
+  String get ok => 'OK';
 
-@override
-String get year => 'سنة';
-@override
-String get tellUsAboutYourself => 'أخبرنا عن نفسك!';
+  @override
+  String get howOldAreYou => 'كم عمرك؟';
 
-@override
-String get weNeedToKnowYourGender => 'نحتاج إلى معرفة جنسك';
+  @override
+  String get personalizedPlanHint => 'هذا يساعدنا على إنشاء خطتك المخصصة';
 
-@override
-String get male => 'ذكر';
+  @override
+  String get year => 'سنة';
 
-@override
-String get female => 'أنثى';
+  @override
+  String get tellUsAboutYourself => 'أخبرنا عن نفسك!';
 
-@override
-String get whatIsYourGoal => 'ما هو هدفك؟';
+  @override
+  String get weNeedToKnowYourGender => 'نحتاج إلى معرفة جنسك';
 
-@override
-String get gainWeight => 'زيادة الوزن';
+  @override
+  String get male => 'ذكر';
 
-@override
-String get loseWeight => 'إنقاص الوزن';
+  @override
+  String get female => 'أنثى';
 
-@override
-String get getFitter => 'تحسين اللياقة البدنية';
+  @override
+  String get whatIsYourGoal => 'ما هو هدفك؟';
 
-@override
-String get gainMoreFlexible => 'زيادة المرونة';
+  @override
+  String get gainWeight => 'زيادة الوزن';
 
-@override
-String get learnTheBasics => 'تعلم الأساسيات';
-@override
-String get whatIsYourHeight => 'ما هو طولك؟';
+  @override
+  String get loseWeight => 'إنقاص الوزن';
 
-@override
-String get cm => 'سم';
+  @override
+  String get getFitter => 'تحسين اللياقة البدنية';
 
-@override
-String get physicalActivityLevel =>
-    'مستوى نشاطك البدني المعتاد';
+  @override
+  String get gainMoreFlexible => 'زيادة المرونة';
 
-@override
-String get rookie => 'مبتدئ جداً';
+  @override
+  String get learnTheBasics => 'تعلم الأساسيات';
 
-@override
-String get beginner => 'مبتدئ';
+  @override
+  String get whatIsYourHeight => 'ما هو طولك؟';
 
-@override
-String get intermediate => 'متوسط';
+  @override
+  String get cm => 'سم';
 
-@override
-String get advance => 'متقدم';
+  @override
+  String get physicalActivityLevel => 'مستوى نشاطك البدني المعتاد';
 
-@override
-String get trueBeast => 'محترف';
+  @override
+  String get rookie => 'مبتدئ جداً';
 
-@override
-String get submit => 'إرسال';
-@override
-String get whatIsYourWeight => 'ما هو وزنك؟';
+  @override
+  String get beginner => 'مبتدئ';
 
-@override
-String get kg => 'كجم';
+  @override
+  String get intermediate => 'متوسط';
+
+  @override
+  String get advance => 'متقدم';
+
+  @override
+  String get trueBeast => 'محترف';
+
+  @override
+  String get submit => 'إرسال';
+
+  @override
+  String get whatIsYourWeight => 'ما هو وزنك؟';
+
+  @override
+  String get kg => 'كجم';
 }
