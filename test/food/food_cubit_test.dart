@@ -1,14 +1,14 @@
 import 'package:flowery/core/base/base_response.dart';
 import 'package:flowery/core/base/base_state.dart';
-import 'package:flowery/featrures/food/domain/entities/meal_categories_entity.dart';
-import 'package:flowery/featrures/food/domain/entities/meal_details_entity.dart';
-import 'package:flowery/featrures/food/domain/entities/meal_entity.dart';
-import 'package:flowery/featrures/food/domain/repo/food_repo_contract.dart';
-import 'package:flowery/featrures/food/domain/use_cases/get_meal_details_use_case.dart';
-import 'package:flowery/featrures/food/domain/use_cases/get_meals_categories_use_case.dart';
-import 'package:flowery/featrures/food/domain/use_cases/select_meals_category_use_case.dart';
-import 'package:flowery/featrures/food/presentation/view_model/cubit/food_cubit.dart';
-import 'package:flowery/featrures/food/presentation/view_model/events/food_events.dart';
+import 'package:flowery/features/food/domain/entities/meal_categories_entity.dart';
+import 'package:flowery/features/food/domain/entities/meal_details_entity.dart';
+import 'package:flowery/features/food/domain/entities/meal_entity.dart';
+import 'package:flowery/features/food/domain/repo/food_repo_contract.dart';
+import 'package:flowery/features/food/domain/use_cases/get_meal_details_use_case.dart';
+import 'package:flowery/features/food/domain/use_cases/get_meals_categories_use_case.dart';
+import 'package:flowery/features/food/domain/use_cases/select_meals_category_use_case.dart';
+import 'package:flowery/features/food/presentation/view_model/cubit/food_cubit.dart';
+import 'package:flowery/features/food/presentation/view_model/events/food_events.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 

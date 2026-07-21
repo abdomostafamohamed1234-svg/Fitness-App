@@ -1,12 +1,12 @@
 import 'package:flowery/core/base/base_response.dart';
-import 'package:flowery/featrures/food/data/models/responses/meal_categories_response_model.dart';
-import 'package:flowery/featrures/food/data/models/responses/meal_details_response_model.dart';
-import 'package:flowery/featrures/food/data/models/responses/meals_from_category_response_model.dart';
-import 'package:flowery/featrures/food/data/repo/food_repo_impl.dart';
-import 'package:flowery/featrures/food/data/data_sources/food_remote_data_source_contract.dart';
-import 'package:flowery/featrures/food/domain/entities/meal_categories_entity.dart';
-import 'package:flowery/featrures/food/domain/entities/meal_details_entity.dart';
-import 'package:flowery/featrures/food/domain/entities/meal_entity.dart';
+import 'package:flowery/features/food/data/models/responses/meal_categories_response_model.dart';
+import 'package:flowery/features/food/data/models/responses/meal_details_response_model.dart';
+import 'package:flowery/features/food/data/models/responses/meals_from_category_response_model.dart';
+import 'package:flowery/features/food/data/repo/food_repo_impl.dart';
+import 'package:flowery/features/food/data/data_sources/food_remote_data_source_contract.dart';
+import 'package:flowery/features/food/domain/entities/meal_categories_entity.dart';
+import 'package:flowery/features/food/domain/entities/meal_details_entity.dart';
+import 'package:flowery/features/food/domain/entities/meal_entity.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 
