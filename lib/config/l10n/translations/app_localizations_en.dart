@@ -34,4 +34,41 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get unexpectedError => 'Unexpected error';
+
+  @override
+  String get motivation =>
+      'Achieve your fitness goals with personalized workouts and expert guidance. Stay motivated, track your progress, and become the best version of yourself.';
+
+  @override
+  String get motivation_title_1 => 'The Price Of Excellence \nIs Discipline';
+
+  @override
+  String get motivation_title_2 => 'Fitness Has Never Been \nSo Much Fun';
+
+  @override
+  String get motivation_title_3 => 'NO MORE EXCUSES\nDo It Now';
+
+  @override
+  String get skip => 'Skip';
+
+  @override
+  String get next => 'Next';
+
+  @override
+  String get back => 'Back';
+
+  @override
+  String get do_it => 'Do IT';
+
+  @override
+  String get navExplore => 'Explore';
+
+  @override
+  String get navChat => 'Chat';
+
+  @override
+  String get navWorkouts => 'Workouts';
+
+  @override
+  String get navProfile => 'Profile';
 }

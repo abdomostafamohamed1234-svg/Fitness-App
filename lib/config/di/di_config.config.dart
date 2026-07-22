@@ -16,6 +16,10 @@ import 'package:injectable/injectable.dart' as _i526;
 import 'package:shared_preferences/shared_preferences.dart' as _i460;
 
 import '../../core/cubits/locale/locale_cubit.dart' as _i273;
+import '../../features/app_sections/presentation/view_model/cubit/app_sections_cubit.dart'
+    as _i1038;
+import '../../features/on_boarding/presentation/view_model/cubit/on_boarding_cubit.dart'
+    as _i786;
 import '../helpers/shared_preferences/shared_preferences_helper.dart' as _i425;
 import 'di_module.dart' as _i211;
 
@@ -31,6 +35,8 @@ extension GetItInjectableX on _i174.GetIt {
       () => diModule.sharedPreferences(),
       preResolve: true,
     );
+    gh.factory<_i1038.AppSectionsCubit>(() => _i1038.AppSectionsCubit());
+    gh.factory<_i786.OnBoardingCubit>(() => _i786.OnBoardingCubit());
     gh.singleton<_i361.Dio>(() => diModule.dio());
     gh.lazySingleton<_i558.FlutterSecureStorage>(
       () => diModule.secureStorage(),
@@ -40,6 +46,10 @@ extension GetItInjectableX on _i174.GetIt {
     );
     gh.factory<_i273.LocaleCubit>(
       () => _i273.LocaleCubit(gh<_i425.SharedPreferencesHelper>()),
+    );
+    gh.singleton<_i361.Dio>(
+      () => diModule.mealsDio(),
+      instanceName: 'mealsDio',
     );
     return this;
   }

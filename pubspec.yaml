@@ -48,6 +48,8 @@ dependencies:
   googleapis_auth: ^2.3.2
   geolocator: ^14.0.2
   mocktail: ^1.0.5
+  flutter_svg: ^2.2.3
+  mockito: ^5.6.4
 
 dev_dependencies:
   fake_cloud_firestore: ^4.1.1
@@ -65,6 +67,7 @@ flutter:
   generate: true
   assets:
   - assets/
+  - assets/svg/
 
 flutter_native_splash:
   color: "#1A1A1A"

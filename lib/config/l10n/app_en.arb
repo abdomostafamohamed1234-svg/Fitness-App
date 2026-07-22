@@ -15,5 +15,9 @@
   "skip" : "Skip",
   "next" : "Next",
   "back" : "Back",
-  "do_it" : "Do IT"
+  "do_it" : "Do IT",
+  "navExplore": "Explore",
+  "navChat": "Chat",
+  "navWorkouts": "Workouts",
+  "navProfile": "Profile"
 }
