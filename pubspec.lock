@@ -1022,7 +1022,7 @@ packages:
     source: hosted
     version: "0.8.2"
   mockito:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: mockito
       sha256: eff30d002f0c8bf073b6f929df4483b543133fcafce056870163587b03f1d422
