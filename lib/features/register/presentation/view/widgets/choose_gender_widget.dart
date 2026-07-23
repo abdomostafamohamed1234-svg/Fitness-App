@@ -1,5 +1,4 @@
 import 'package:flowery/config/l10n/translations/app_localizations.dart';
-import 'package:flowery/core/theme/app_colors.dart';
 import 'package:flowery/core/widgets/glass_container.dart';
 import 'package:flowery/features/register/presentation/view_model/cubit/register_cubit.dart';
 import 'package:flowery/features/register/presentation/view_model/cubit/register_events.dart';
@@ -42,9 +41,7 @@ class _ChooseGenderWidgetState extends State<ChooseGenderWidget> {
         ),
         Text(
           locale.weNeedToKnowYourGender,
-          style: Theme.of(
-            context,
-          ).textTheme.bodyLarge?.copyWith(fontSize: 12),
+          style: Theme.of(context).textTheme.bodyLarge?.copyWith(fontSize: 12),
         ),
         SizedBox(height: height * 0.02),
         GlassContainer(
@@ -76,8 +73,9 @@ class _ChooseGenderWidgetState extends State<ChooseGenderWidget> {
                     ),
                     Text(
                       locale.male,
-                      style: Theme.of(context).textTheme.headlineLarge
-                          ?.copyWith(fontSize: 15),
+                      style: Theme.of(
+                        context,
+                      ).textTheme.headlineLarge?.copyWith(fontSize: 15),
                     ),
                   ],
                 ),
@@ -111,8 +109,9 @@ class _ChooseGenderWidgetState extends State<ChooseGenderWidget> {
                     ),
                     Text(
                       locale.female,
-                      style: Theme.of(context).textTheme.headlineLarge
-                          ?.copyWith(fontSize: 15),
+                      style: Theme.of(
+                        context,
+                      ).textTheme.headlineLarge?.copyWith(fontSize: 15),
                     ),
                   ],
                 ),

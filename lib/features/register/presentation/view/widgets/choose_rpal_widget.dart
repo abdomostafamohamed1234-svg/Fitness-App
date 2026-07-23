@@ -1,5 +1,4 @@
 import 'package:flowery/config/l10n/translations/app_localizations.dart';
-import 'package:flowery/core/theme/app_colors.dart';
 import 'package:flowery/core/widgets/glass_container.dart';
 import 'package:flowery/features/register/presentation/view_model/cubit/register_cubit.dart';
 import 'package:flowery/features/register/presentation/view_model/cubit/register_events.dart';
@@ -52,8 +51,10 @@ class _ChooseRpalWidgetState extends State<ChooseRpalWidget> {
                 }),
                 child: Container(
                   margin: const EdgeInsets.symmetric(vertical: 6),
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 16,
+                    vertical: 10,
+                  ),
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(50),
                     color: isSelected
@@ -70,7 +71,9 @@ class _ChooseRpalWidgetState extends State<ChooseRpalWidget> {
                     children: [
                       Text(
                         level.label,
-                        style: Theme.of(context).textTheme.titleLarge?.copyWith(fontSize: 12),
+                        style: Theme.of(
+                          context,
+                        ).textTheme.titleLarge?.copyWith(fontSize: 12),
                       ),
                       const Spacer(),
                       Container(
@@ -79,7 +82,9 @@ class _ChooseRpalWidgetState extends State<ChooseRpalWidget> {
                         decoration: BoxDecoration(
                           shape: BoxShape.circle,
                           border: Border.all(color: Colors.white, width: 2),
-                          color: isSelected ? Theme.of(context).primaryColor : null,
+                          color: isSelected
+                              ? Theme.of(context).primaryColor
+                              : null,
                         ),
                       ),
                     ],

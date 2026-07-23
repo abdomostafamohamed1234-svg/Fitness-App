@@ -1,5 +1,4 @@
 import 'package:flowery/config/l10n/translations/app_localizations.dart';
-import 'package:flowery/core/theme/app_colors.dart';
 import 'package:flowery/core/widgets/glass_container.dart';
 import 'package:flowery/features/register/presentation/view_model/cubit/register_cubit.dart';
 import 'package:flowery/features/register/presentation/view_model/cubit/register_events.dart';
@@ -22,7 +21,7 @@ class _ChooseAgeWidgetState extends State<ChooseAgeWidget> {
   void initState() {
     super.initState();
     registerCubit = context.read<RegisterCubit>();
-    _currentAge = registerCubit.age ?? 20 ;
+    _currentAge = registerCubit.age ?? 20;
     registerCubit.age = _currentAge;
   }
 
@@ -47,9 +46,9 @@ class _ChooseAgeWidgetState extends State<ChooseAgeWidget> {
           children: [
             Text(
               locale.year,
-              style: Theme.of(
-                context,
-              ).textTheme.bodyMedium?.copyWith(color: Theme.of(context).primaryColor),
+              style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                color: Theme.of(context).primaryColor,
+              ),
             ),
             SizedBox(height: height * 0.02),
 
