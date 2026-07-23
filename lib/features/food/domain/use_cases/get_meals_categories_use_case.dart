@@ -1,5 +1,5 @@
 import 'package:flowery/core/base/base_response.dart';
-import 'package:flowery/features/food/domain/entities/meal_categories_entity.dart';
+import 'package:flowery/features/food/domain/entities/meal_entity.dart';
 import 'package:flowery/features/food/domain/repo/food_repo_contract.dart';
 import 'package:injectable/injectable.dart';
 
@@ -8,7 +8,7 @@ class GetMealsCategoriesUseCase {
   final FoodRepoContract foodRepo;
   GetMealsCategoriesUseCase(this.foodRepo);
 
-  Future<Result<MealCategoriesEntity>> call() {
+  Future<Result<List<MealEntity>>> call() {
     return foodRepo.getMealsCategories();
   }
 }

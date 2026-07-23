@@ -43,7 +43,7 @@ void main() {
 
     cubit.emit(
       cubit.state.copyWith(
-        detailsState: BaseState.success(
+        detailsState: const BaseState.success(
           MealDetailsEntity(
             title: 'Greek Salad',
             img: 'https://example.com/salad.png',

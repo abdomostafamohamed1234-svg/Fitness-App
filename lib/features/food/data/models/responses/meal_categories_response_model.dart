@@ -1,4 +1,5 @@
 import 'package:flowery/features/food/domain/entities/meal_categories_entity.dart';
+import 'package:flowery/features/food/domain/entities/meal_entity.dart';
 import 'package:json_annotation/json_annotation.dart';
 import 'dart:convert';
 
@@ -22,11 +23,21 @@ class MealCategoriesResponseModel {
 
   Map<String, dynamic> toJson() => _$MealCategoriesResponseModelToJson(this);
 
-  MealCategoriesEntity toEntity() => MealCategoriesEntity(
-    categories:
-        categories?.map((category) => category.strCategory ?? "").toList() ??
-        [],
-  );
+  MealCategoriesEntity toEntity() {
+    return MealCategoriesEntity(
+      categories:
+          categories
+              ?.map(
+                (category) => MealEntity(
+                  id: category.idCategory ?? "",
+                  img: category.strCategoryThumb ?? "",
+                  title: category.strCategory ?? "",
+                ),
+              )
+              .toList() ??
+          [],
+    );
+  }
 }
 
 @JsonSerializable()

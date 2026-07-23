@@ -1,12 +1,11 @@
 import 'package:equatable/equatable.dart';
 import 'package:flowery/core/base/base_state.dart';
-import 'package:flowery/features/food/domain/entities/meal_categories_entity.dart';
 import 'package:flowery/features/food/domain/entities/meal_details_entity.dart';
 import 'package:flowery/features/food/domain/entities/meal_entity.dart';
 
 class FoodState extends Equatable {
   final String selectedCategory;
-  final BaseState<MealCategoriesEntity> categoriesState;
+  final BaseState<List<MealEntity>> categoriesState;
   final BaseState<List<MealEntity>> mealsState;
   final BaseState<MealDetailsEntity> detailsState;
 
@@ -18,7 +17,7 @@ class FoodState extends Equatable {
   });
 
   FoodState copyWith({
-    BaseState<MealCategoriesEntity>? categoriesState,
+    BaseState<List<MealEntity>>? categoriesState,
     final String? selectedCategory,
     final BaseState<List<MealEntity>>? mealsState,
     final BaseState<MealDetailsEntity>? detailsState,

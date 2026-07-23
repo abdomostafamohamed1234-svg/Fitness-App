@@ -1,5 +1,4 @@
 import 'package:flowery/config/l10n/translations/app_localizations.dart';
-import 'package:flowery/features/food/domain/entities/meal_categories_entity.dart';
 import 'package:flowery/features/food/domain/entities/meal_entity.dart';
 import 'package:flowery/features/food/presentation/assets/food_assets_navigation.dart';
 import 'package:flowery/features/food/presentation/view_model/cubit/food_cubit.dart';
@@ -35,6 +34,10 @@ class _FoodRecommendationScreenState extends State<FoodRecommendationScreen> {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<FoodCubit, FoodState>(
+      buildWhen: (previous, current) {
+        return current.categoriesState != previous.categoriesState ||
+        current.mealsState != previous.mealsState;
+      },
       builder: (context, state) {
         return Scaffold(
           body: Stack(
@@ -71,9 +74,9 @@ class _FoodRecommendationScreenState extends State<FoodRecommendationScreen> {
                     child: Center(child: Text(exception.toString())),
                   );
                 },
-                success: (MealCategoriesEntity data) {
+                success: (List<MealEntity> data) {
                   return DefaultTabController(
-                    length: data.categories.length,
+                    length: data.length,
                     child: SafeArea(
                       child: Center(
                         child: Padding(
@@ -86,14 +89,13 @@ class _FoodRecommendationScreenState extends State<FoodRecommendationScreen> {
                               ),
                               SizedBox(height: 20.h),
                               FoodCategoriesContainer(
-                                foodCategories: data.categories,
+                                foodCategories: data,
                                 onTap: (value) =>
                                     context.read<FoodCubit>().doEvent(
                                       SelectMealCategoryEvent(
                                         oldSelectedCategory:
                                             state.selectedCategory,
-                                        newSelectedCategory:
-                                            data.categories[value],
+                                        newSelectedCategory: data[value].title,
                                       ),
                                     ),
                               ),
@@ -114,7 +116,7 @@ class _FoodRecommendationScreenState extends State<FoodRecommendationScreen> {
                                         foodTitle: data[index].title,
                                         mealId: data[index].id,
                                       ),
-                                      itemCount: 20,
+                                      itemCount: data.length,
                                     ),
                                   );
                                 },
@@ -138,16 +140,7 @@ class _FoodRecommendationScreenState extends State<FoodRecommendationScreen> {
                                   );
                                 },
                                 initial: () {
-                                  return Expanded(
-                                    child: Center(
-                                      child: SizedBox(
-                                        height: 50.h,
-                                        width: 50.w,
-                                        child:
-                                            const CircularProgressIndicator(),
-                                      ),
-                                    ),
-                                  );
+                                  return const SizedBox.shrink();
                                 },
                               ),
                             ],

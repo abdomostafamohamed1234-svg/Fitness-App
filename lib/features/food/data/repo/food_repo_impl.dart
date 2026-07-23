@@ -3,7 +3,6 @@ import 'package:flowery/features/food/data/data_sources/food_remote_data_source_
 import 'package:flowery/features/food/data/models/responses/meal_categories_response_model.dart';
 import 'package:flowery/features/food/data/models/responses/meal_details_response_model.dart';
 import 'package:flowery/features/food/data/models/responses/meals_from_category_response_model.dart';
-import 'package:flowery/features/food/domain/entities/meal_categories_entity.dart';
 import 'package:flowery/features/food/domain/entities/meal_details_entity.dart';
 import 'package:flowery/features/food/domain/entities/meal_entity.dart';
 import 'package:flowery/features/food/domain/repo/food_repo_contract.dart';
@@ -15,13 +14,15 @@ class FoodRepoImpl implements FoodRepoContract {
   FoodRepoImpl(this.foodRemoteDataSourceContract);
 
   @override
-  Future<Result<MealCategoriesEntity>> getMealsCategories() async {
+  Future<Result<List<MealEntity>>> getMealsCategories() async {
     final response = await foodRemoteDataSourceContract.getMealsCategories();
     switch (response) {
       case Success<MealCategoriesResponseModel>():
-        return Success<MealCategoriesEntity>(data: response.data?.toEntity());
+        return Success<List<MealEntity>>(
+          data: response.data?.toEntity().categories,
+        );
       case Error<MealCategoriesResponseModel>():
-        return Error<MealCategoriesEntity>(exception: response.exception);
+        return Error<List<MealEntity>>(exception: response.exception);
     }
   }
 

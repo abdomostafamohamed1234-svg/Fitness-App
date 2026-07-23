@@ -1,5 +1,5 @@
 import 'package:flowery/features/food/domain/entities/meal_details_entity.dart';
-import 'package:flowery/features/food/presentation/helpers/helper_functions.dart';
+import 'package:flowery/features/food/data/helpers/helper_functions.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'meal_details_response_model.g.dart';

@@ -4,7 +4,6 @@ import 'package:flowery/features/food/data/models/responses/meal_details_respons
 import 'package:flowery/features/food/data/models/responses/meals_from_category_response_model.dart';
 import 'package:flowery/features/food/data/repo/food_repo_impl.dart';
 import 'package:flowery/features/food/data/data_sources/food_remote_data_source_contract.dart';
-import 'package:flowery/features/food/domain/entities/meal_categories_entity.dart';
 import 'package:flowery/features/food/domain/entities/meal_details_entity.dart';
 import 'package:flowery/features/food/domain/entities/meal_entity.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -20,7 +19,13 @@ void main() {
       when(() => dataSource.getMealsCategories()).thenAnswer(
         (_) async => Success(
           data: MealCategoriesResponseModel(
-            categories: [Category(strCategory: 'Breakfast')],
+            categories: [
+              Category(
+                strCategory: 'Breakfast',
+                strCategoryThumb: "breakfast.png",
+                idCategory: "1",
+              ),
+            ],
           ),
         ),
       );
@@ -28,9 +33,9 @@ void main() {
 
       final result = await repo.getMealsCategories();
 
-      expect(result, isA<Success<MealCategoriesEntity>>());
-      expect((result as Success<MealCategoriesEntity>).data?.categories, [
-        'Breakfast',
+      expect(result, isA<Success<List<MealEntity>>>());
+      expect((result as Success<List<MealEntity>>).data, [
+        const MealEntity(title: 'Breakfast', img: 'breakfast.png', id: '1'),
       ]);
     });
 
@@ -95,8 +100,8 @@ void main() {
 
       final result = await repo.getMealsCategories();
 
-      expect(result, isA<Error<MealCategoriesEntity>>());
-      expect((result as Error<MealCategoriesEntity>).exception, isNotNull);
+      expect(result, isA<Error<List<MealEntity>>>());
+      expect((result as Error<List<MealEntity>>).exception, isNotNull);
     });
 
     test('returns error when meal details datasource fails', () async {

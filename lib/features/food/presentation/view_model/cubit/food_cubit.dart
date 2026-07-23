@@ -1,6 +1,5 @@
 import 'package:flowery/core/base/base_response.dart';
 import 'package:flowery/core/base/base_state.dart';
-import 'package:flowery/features/food/domain/entities/meal_categories_entity.dart';
 import 'package:flowery/features/food/domain/entities/meal_details_entity.dart';
 import 'package:flowery/features/food/domain/entities/meal_entity.dart';
 import 'package:flowery/features/food/domain/use_cases/get_meal_details_use_case.dart';
@@ -65,17 +64,17 @@ class FoodCubit extends Cubit<FoodState> {
     emit(state.copyWith(categoriesState: const BaseState.loading()));
     final response = await _getMealsCategoriesUseCase.call();
     switch (response) {
-      case Success<MealCategoriesEntity>():
+      case Success<List<MealEntity>>():
         emit(state.copyWith(categoriesState: BaseState.success(response.data)));
         if (state.mealsState.data == null) {
           _selectMealCategory(
             SelectMealCategoryEvent(
               oldSelectedCategory: "",
-              newSelectedCategory: response.data?.categories[0] ?? "",
+              newSelectedCategory: response.data?[0].title ?? "",
             ),
           );
         }
-      case Error<MealCategoriesEntity>():
+      case Error<List<MealEntity>>():
         emit(
           state.copyWith(categoriesState: BaseState.error(response.exception)),
         );

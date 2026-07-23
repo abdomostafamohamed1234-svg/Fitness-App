@@ -1,13 +1,15 @@
 import 'package:flowery/core/theme/app_colors.dart';
+import 'package:flowery/features/food/domain/entities/meal_entity.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class FoodCategoriesContainer extends StatelessWidget {
-  final List<String> foodCategories;
+  final List<MealEntity> foodCategories;
   final ValueChanged<int>? onTap;
   const FoodCategoriesContainer({
     super.key,
-    required this.foodCategories, this.onTap,
+    required this.foodCategories,
+    this.onTap,
   });
   @override
   Widget build(BuildContext context) {
@@ -28,7 +30,9 @@ class FoodCategoriesContainer extends StatelessWidget {
       ),
 
       isScrollable: true,
-      tabs: foodCategories.map((category) => Tab(text: category)).toList(),
+      tabs: foodCategories
+          .map((category) => Tab(text: category.title))
+          .toList(),
     );
   }
 }

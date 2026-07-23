@@ -1,6 +1,5 @@
 import 'package:flowery/config/l10n/translations/app_localizations.dart';
 import 'package:flowery/core/base/base_state.dart';
-import 'package:flowery/features/food/domain/entities/meal_categories_entity.dart';
 import 'package:flowery/features/food/domain/entities/meal_entity.dart';
 import 'package:flowery/features/food/domain/repo/food_repo_contract.dart';
 import 'package:flowery/features/food/domain/use_cases/get_meal_details_use_case.dart';
@@ -46,9 +45,9 @@ void main() {
 
     cubit.emit(
       cubit.state.copyWith(
-        categoriesState: const BaseState.success(
-          MealCategoriesEntity(categories: ['Breakfast', 'Lunch']),
-        ),
+        categoriesState: const BaseState.success([
+          MealEntity(title: 'Breakfast', img: 'breakfast.png', id: '1'),
+        ]),
         mealsState: BaseState.success(
           List.generate(
             20,
@@ -67,7 +66,6 @@ void main() {
 
     expect(find.text('Food Recommendation'), findsOneWidget);
     expect(find.text('Breakfast'), findsOneWidget);
-    expect(find.text('Lunch'), findsOneWidget);
     expect(find.text('Pancakes 0'), findsOneWidget);
   });
 

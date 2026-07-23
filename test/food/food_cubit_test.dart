@@ -1,6 +1,5 @@
 import 'package:flowery/core/base/base_response.dart';
 import 'package:flowery/core/base/base_state.dart';
-import 'package:flowery/features/food/domain/entities/meal_categories_entity.dart';
 import 'package:flowery/features/food/domain/entities/meal_details_entity.dart';
 import 'package:flowery/features/food/domain/entities/meal_entity.dart';
 import 'package:flowery/features/food/domain/repo/food_repo_contract.dart';
@@ -23,11 +22,14 @@ void main() {
       repo = MockFoodRepo();
       when(() => repo.getMealsCategories()).thenAnswer(
         (_) async => const Success(
-          data: MealCategoriesEntity(categories: ['Breakfast', 'Lunch']),
+          data: [
+            MealEntity(title: 'Breakfast', img: 'Breakfast.png', id: '1'),
+            MealEntity(title: 'Pasta', img: 'pasta.png', id: '2'),
+          ],
         ),
       );
       when(() => repo.selectCategory(any())).thenAnswer(
-        (_) async => Success(
+        (_) async => const Success(
           data: [
             MealEntity(
               title: 'Pancakes',
@@ -38,7 +40,7 @@ void main() {
         ),
       );
       when(() => repo.getMealDetails(any())).thenAnswer(
-        (_) async => Success(
+        (_) async => const Success(
           data: MealDetailsEntity(
             title: 'Pancakes',
             img: 'https://example.com/pancakes.png',
