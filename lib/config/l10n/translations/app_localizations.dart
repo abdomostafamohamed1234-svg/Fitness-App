@@ -151,6 +151,210 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Unexpected error'**
   String get unexpectedError;
+
+  /// No description provided for @motivation.
+  ///
+  /// In en, this message translates to:
+  /// **'Achieve your fitness goals with personalized workouts and expert guidance. Stay motivated, track your progress, and become the best version of yourself.'**
+  String get motivation;
+
+  /// No description provided for @motivation_title_1.
+  ///
+  /// In en, this message translates to:
+  /// **'The Price Of Excellence \nIs Discipline'**
+  String get motivation_title_1;
+
+  /// No description provided for @motivation_title_2.
+  ///
+  /// In en, this message translates to:
+  /// **'Fitness Has Never Been \nSo Much Fun'**
+  String get motivation_title_2;
+
+  /// No description provided for @motivation_title_3.
+  ///
+  /// In en, this message translates to:
+  /// **'NO MORE EXCUSES\nDo It Now'**
+  String get motivation_title_3;
+
+  /// No description provided for @skip.
+  ///
+  /// In en, this message translates to:
+  /// **'Skip'**
+  String get skip;
+
+  /// No description provided for @next.
+  ///
+  /// In en, this message translates to:
+  /// **'Next'**
+  String get next;
+
+  /// No description provided for @back.
+  ///
+  /// In en, this message translates to:
+  /// **'Back'**
+  String get back;
+
+  /// No description provided for @do_it.
+  ///
+  /// In en, this message translates to:
+  /// **'Do IT'**
+  String get do_it;
+
+  /// No description provided for @message.
+  ///
+  /// In en, this message translates to:
+  /// **'Message'**
+  String get message;
+
+  /// No description provided for @ok.
+  ///
+  /// In en, this message translates to:
+  /// **'OK'**
+  String get ok;
+
+  /// No description provided for @howOldAreYou.
+  ///
+  /// In en, this message translates to:
+  /// **'How Old Are You?'**
+  String get howOldAreYou;
+
+  /// No description provided for @personalizedPlanHint.
+  ///
+  /// In en, this message translates to:
+  /// **'This helps us create your personalized plan'**
+  String get personalizedPlanHint;
+
+  /// No description provided for @year.
+  ///
+  /// In en, this message translates to:
+  /// **'Year'**
+  String get year;
+
+  /// No description provided for @tellUsAboutYourself.
+  ///
+  /// In en, this message translates to:
+  /// **'Tell Us About Yourself!'**
+  String get tellUsAboutYourself;
+
+  /// No description provided for @weNeedToKnowYourGender.
+  ///
+  /// In en, this message translates to:
+  /// **'We need to know your gender'**
+  String get weNeedToKnowYourGender;
+
+  /// No description provided for @male.
+  ///
+  /// In en, this message translates to:
+  /// **'Male'**
+  String get male;
+
+  /// No description provided for @female.
+  ///
+  /// In en, this message translates to:
+  /// **'Female'**
+  String get female;
+
+  /// No description provided for @whatIsYourGoal.
+  ///
+  /// In en, this message translates to:
+  /// **'What is Your Goal?'**
+  String get whatIsYourGoal;
+
+  /// No description provided for @gainWeight.
+  ///
+  /// In en, this message translates to:
+  /// **'Gain Weight'**
+  String get gainWeight;
+
+  /// No description provided for @loseWeight.
+  ///
+  /// In en, this message translates to:
+  /// **'Lose Weight'**
+  String get loseWeight;
+
+  /// No description provided for @getFitter.
+  ///
+  /// In en, this message translates to:
+  /// **'Get Fitter'**
+  String get getFitter;
+
+  /// No description provided for @gainMoreFlexible.
+  ///
+  /// In en, this message translates to:
+  /// **'Gain More Flexible'**
+  String get gainMoreFlexible;
+
+  /// No description provided for @learnTheBasics.
+  ///
+  /// In en, this message translates to:
+  /// **'Learn The Basics'**
+  String get learnTheBasics;
+
+  /// No description provided for @whatIsYourHeight.
+  ///
+  /// In en, this message translates to:
+  /// **'What is Your Height?'**
+  String get whatIsYourHeight;
+
+  /// No description provided for @cm.
+  ///
+  /// In en, this message translates to:
+  /// **'CM'**
+  String get cm;
+
+  /// No description provided for @physicalActivityLevel.
+  ///
+  /// In en, this message translates to:
+  /// **'Your Regular Physical Activity Level'**
+  String get physicalActivityLevel;
+
+  /// No description provided for @rookie.
+  ///
+  /// In en, this message translates to:
+  /// **'Rookie'**
+  String get rookie;
+
+  /// No description provided for @beginner.
+  ///
+  /// In en, this message translates to:
+  /// **'Beginner'**
+  String get beginner;
+
+  /// No description provided for @intermediate.
+  ///
+  /// In en, this message translates to:
+  /// **'Intermediate'**
+  String get intermediate;
+
+  /// No description provided for @advance.
+  ///
+  /// In en, this message translates to:
+  /// **'Advance'**
+  String get advance;
+
+  /// No description provided for @trueBeast.
+  ///
+  /// In en, this message translates to:
+  /// **'True Beast'**
+  String get trueBeast;
+
+  /// No description provided for @submit.
+  ///
+  /// In en, this message translates to:
+  /// **'Submit'**
+  String get submit;
+
+  /// No description provided for @whatIsYourWeight.
+  ///
+  /// In en, this message translates to:
+  /// **'What is Your Weight?'**
+  String get whatIsYourWeight;
+
+  /// No description provided for @kg.
+  ///
+  /// In en, this message translates to:
+  /// **'Kg'**
+  String get kg;
 }
 
 class _AppLocalizationsDelegate

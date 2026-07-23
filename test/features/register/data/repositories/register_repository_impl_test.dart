@@ -1,0 +1,108 @@
+// NOTE: adjust this import path if RegisterRepositoryImpl lives elsewhere in your project.
+import 'package:flowery/core/base/base_response.dart';
+import 'package:flowery/features/register/data/datasources/register_remote_data_source_contract.dart';
+import 'package:flowery/features/register/data/models/register_dto_request.dart';
+import 'package:flowery/features/register/data/repositories/register_repository_impl.dart';
+import 'package:flowery/features/register/domain/entities/register_entity.dart';
+import 'package:flutter_test/flutter_test.dart';
+import 'package:mockito/annotations.dart';
+import 'package:mockito/mockito.dart';
+
+import 'register_repository_impl_test.mocks.dart';
+
+@GenerateMocks([RegisterRemoteDataSourceContract])
+void main() {
+  late RegisterRepositoryImpl repository;
+  late MockRegisterRemoteDataSourceContract mockDataSource;
+ setUpAll(() {
+    provideDummy<Result<RegisterDto>>(
+      const Success<RegisterDto>(data: null),
+    );
+  });
+  setUp(() {
+    mockDataSource = MockRegisterRemoteDataSourceContract();
+    repository = RegisterRepositoryImpl(mockDataSource);
+  });
+
+  final tBody = <String, dynamic>{'email': 'ahmed@test.com'};
+
+  group('RegisterRepositoryImpl.register', () {
+    test(
+      'should return Success<RegisterEntity> built from dto.toModel() '
+      'when the data source succeeds',
+      () async {
+        // arrange
+        final tDto = RegisterDto(message: 'Registered', error: null);
+        when(mockDataSource.register(any)).thenAnswer(
+          (_) async => Success<RegisterDto>(data: tDto),
+        );
+
+        // act
+        final result = await repository.register(tBody);
+
+        // assert
+        expect(result, isA<Success<RegisterEntity>>());
+        expect(
+          (result as Success<RegisterEntity>).data?.message,
+          'Registered',
+        );
+        verify(mockDataSource.register(tBody)).called(1);
+      },
+    );
+
+    test(
+      'should return Success<RegisterEntity> with null data '
+      'when the data source succeeds with null data',
+      () async {
+        // arrange
+        when(mockDataSource.register(any)).thenAnswer(
+          (_) async => const Success<RegisterDto>(data: null),
+        );
+
+        // act
+        final result = await repository.register(tBody);
+
+        // assert
+        expect(result, isA<Success<RegisterEntity>>());
+        expect((result as Success<RegisterEntity>).data, isNull);
+      },
+    );
+
+    test(
+      'should return Error<RegisterEntity> with the same exception '
+      'when the data source fails',
+      () async {
+        // arrange
+        final exception = Exception('network error');
+        when(mockDataSource.register(any)).thenAnswer(
+          (_) async => Error<RegisterDto>(exception: exception),
+        );
+
+        // act
+        final result = await repository.register(tBody);
+
+        // assert
+        expect(result, isA<Error<RegisterEntity>>());
+        expect((result as Error<RegisterEntity>).exception, exception);
+        verify(mockDataSource.register(tBody)).called(1);
+      },
+    );
+
+    test('should forward the exact body to the data source', () async {
+      // arrange
+      final tDto = RegisterDto(message: 'ok');
+      when(mockDataSource.register(any)).thenAnswer(
+        (_) async => Success<RegisterDto>(data: tDto),
+      );
+
+      // act
+      await repository.register(tBody);
+
+      // assert
+      final captured =
+          verify(mockDataSource.register(captureAny)).captured.single
+              as Map<String, dynamic>;
+      expect(captured, equals(tBody));
+    });
+  });
+}
