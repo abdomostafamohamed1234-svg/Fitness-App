@@ -1,4 +1,5 @@
 import 'dart:ui';
+import 'package:flowery/core/theme/app_colors.dart';
 import 'package:flutter/material.dart';
 
 class GlassContainer extends StatelessWidget {
@@ -23,8 +24,8 @@ class GlassContainer extends StatelessWidget {
                 begin: Alignment.topCenter,
                 end: Alignment.bottomCenter,
                 colors: [
-                  Colors.white.withValues(alpha: 0.10),
-                  Colors.black.withValues(alpha: 0.28),
+                  AppColors.cardColor.withValues(alpha: 0.10),
+                  AppColors.cardColor.withValues(alpha: 0.28),
                 ],
               ),
               border: Border.all(

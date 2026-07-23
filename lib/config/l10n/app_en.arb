@@ -15,5 +15,12 @@
   "skip" : "Skip",
   "next" : "Next",
   "back" : "Back",
-  "do_it" : "Do IT"
+  "do_it" : "Do IT",
+  "food_recommendation": "Food Recommendation",
+  "instructions": "Instructions",
+  "ingredients": "Ingredients",
+  "energy" : "Energy",
+  "protein" : "Protein",
+  "carbs" : "Carbs",
+  "fats" : "Fats"
 }
