@@ -21,7 +21,7 @@ class RegisterDto {
         this.error
     });
     RegisterEntity toModel(){
-      return RegisterEntity(massage: message, error: error);
+      return RegisterEntity(message: message, error: error);
     }
     factory RegisterDto.fromJson(Map<String, dynamic> json) => _$RegisterDtoFromJson(json);
 

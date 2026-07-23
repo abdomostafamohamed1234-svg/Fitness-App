@@ -1,3 +1,4 @@
+
 import 'package:flowery/core/base/base_response.dart';
 import 'package:flowery/core/base/base_state.dart';
 import 'package:flowery/features/register/domain/entities/register_entity.dart';
@@ -16,7 +17,7 @@ void main() {
   late RegisterCubit cubit;
   late MockRegisterUsecase mockUsecase;
 
-  final tRegisterEntity = RegisterEntity(massage: 'Success', error: null);
+  final tRegisterEntity = RegisterEntity(message: 'Success', error: null);
 
   setUpAll(() {
     // dummy لـ Result<RegisterEntity> علشان Mockito عارف يبني الـ mock method
@@ -92,26 +93,26 @@ void main() {
   });
 
   group('_nextStep (RegisterNextStep event)', () {
-    test('If registerState is null, make it 0.', () {
-      cubit.state.registerState = null;
+    test('If currentStepState is null, make it 0.', () {
+      cubit.state.currentStepState = null;
 
       cubit.doIntent(RegisterNextStep());
 
-      expect(cubit.state.registerState?.data, 0);
+      expect(cubit.state.currentStepState?.data, 0);
     });
 
     test('If there is value, add 1 to it.', () {
-      cubit.state.registerState = const BaseState(data: 2);
+      cubit.state.currentStepState = const BaseState(data: 2);
 
       cubit.doIntent(RegisterNextStep());
 
-      expect(cubit.state.registerState?.data, 3);
+      expect(cubit.state.currentStepState?.data, 3);
     });
   });
 
   group('_previousStep (RegisterPreviousStep event)', () {
     test('لو الخطوة الحالية 0، يبعت NavigateToLoginTempEvent', () async {
-      cubit.state.registerState = const BaseState(data: 0);
+      cubit.state.currentStepState = const BaseState(data: 0);
       final events = <RegisterTempEvents>[];
       final sub = cubit.cubitStream.listen(events.add);
 
@@ -123,11 +124,11 @@ void main() {
     });
 
     test('If the step is greater than 0, it is deducted by 1.', () {
-      cubit.state.registerState = const BaseState(data: 2);
+      cubit.state.currentStepState = const BaseState(data: 2);
 
       cubit.doIntent(RegisterPreviousStep());
 
-      expect(cubit.state.registerState?.data, 1);
+      expect(cubit.state.currentStepState?.data, 1);
     });
   });
 

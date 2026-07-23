@@ -1,13 +1,17 @@
+import 'package:equatable/equatable.dart';
 import 'package:flowery/core/base/base_state.dart';
 
-class RegisterState {
-  BaseState<int>? registerState = const BaseState(data: 0);
+class RegisterState extends Equatable {
+  BaseState<int>? currentStepState = const BaseState(data: 0);
 
-  RegisterState({this.registerState});
+  RegisterState({this.currentStepState});
 
-  RegisterState copyWith({BaseState<int>? newRegisterState}) {
+  RegisterState copyWith({BaseState<int>? newCurrentStepState}) {
     return RegisterState(
-      registerState: newRegisterState ?? registerState,
+      currentStepState: newCurrentStepState ?? currentStepState,
     );
   }
+
+  @override
+  List<Object?> get props => [currentStepState];
 }

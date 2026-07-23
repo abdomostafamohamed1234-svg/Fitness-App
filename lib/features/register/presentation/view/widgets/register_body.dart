@@ -1,13 +1,14 @@
+import 'package:flowery/config/helpers/validations/validators.dart';
 import 'package:flowery/core/widgets/glass_container.dart';
 import 'package:flowery/features/register/presentation/view/widgets/social_button.dart';
 import 'package:flowery/features/register/presentation/view_model/cubit/register_cubit.dart';
 import 'package:flowery/features/register/presentation/view_model/cubit/register_events.dart';
+import 'package:flowery/config/l10n/translations/app_localizations.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
-// ignore: must_be_immutable
 class RegisterBody extends StatefulWidget {
-  RegisterBody({super.key, required this.registerCubit});
-  RegisterCubit registerCubit;
+  const RegisterBody({super.key});
 
   @override
   State<RegisterBody> createState() => _RegisterBodyState();
@@ -16,41 +17,48 @@ class RegisterBody extends StatefulWidget {
 class _RegisterBodyState extends State<RegisterBody> {
   bool _obscure = true;
 
-  String? _validateName(String? value, String fieldName) {
-    if (value == null || value.trim().isEmpty) return '$fieldName is required';
-    if (value.trim().length < 2) {
-      return '$fieldName must be at least 2 characters';
+  String? _errorMessage(BuildContext context, ValidationError? error, String fieldName) {
+    final loc = AppLocalizations.of(context)!;
+    switch (error) {
+      case null:
+        return null;
+      case ValidationError.required:
+        return fieldName == 'First Name' ? loc.firstNameRequired :
+               fieldName == 'Last Name' ? loc.lastNameRequired :
+               fieldName == 'Email' ? loc.emailRequired :
+               fieldName == 'Password' ? loc.passwordRequired : '$fieldName is required';
+      case ValidationError.invalidName:
+        return fieldName == 'First Name' ? loc.firstNameMinLength :
+               fieldName == 'Last Name' ? loc.lastNameMinLength : '$fieldName must be at least 2 letters';
+      case ValidationError.invalidEmail:
+        return loc.invalidEmail;
+      case ValidationError.invalidPassword:
+        return loc.invalidPassword;
+      case ValidationError.invalidConfirmPassword:
+        return loc.invalidConfirmPassword;
+      case ValidationError.passwordMismatch:
+        return loc.passwordMismatch;
+      case ValidationError.invalidPhoneNumber:
+        return loc.invalidPhoneNumber;
     }
-    return null;
-  }
-
-  String? validateEmail(String? value) {
-    if (value == null || value.trim().isEmpty) return 'Email is required';
-    final emailRegex = RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$');
-    if (!emailRegex.hasMatch(value.trim())) return 'Enter a valid email';
-    return null;
-  }
-
-  String? _validatePassword(String? value) {
-    if (value == null || value.isEmpty) return 'Password is required';
-    if (value.length < 8) return 'Password must be at least 8 characters';
-    return null;
   }
 
   @override
   Widget build(BuildContext context) {
+    final registerCubit = context.read<RegisterCubit>();
     final height = MediaQuery.of(context).size.height;
+    final loc = AppLocalizations.of(context)!;
     return Form(
-      key: widget.registerCubit.formKey,
+      key: registerCubit.formKey,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Text(
-            'Hey there',
-            style: TextStyle(color: Colors.white, fontSize: 12),
+          Text(
+            loc.heyThere,
+            style: TextStyle(color: Theme.of(context).colorScheme.onSurface, fontSize: 12),
           ),
           Text(
-            'Create an Account',
+            loc.createAnAccount,
             style: Theme.of(
               context,
             ).textTheme.headlineLarge?.copyWith(fontSize: 20),
@@ -59,7 +67,7 @@ class _RegisterBodyState extends State<RegisterBody> {
           GlassContainer(
             children: [
               Text(
-                'Register',
+                loc.register,
                 style: Theme.of(
                   context,
                 ).textTheme.headlineLarge?.copyWith(fontSize: 20),
@@ -67,20 +75,23 @@ class _RegisterBodyState extends State<RegisterBody> {
               SizedBox(height: height * 0.02),
 
               TextFormField(
-                controller: widget.registerCubit.firstNameController,
-                validator: (v) => _validateName(v, 'First Name'),
-                style: const TextStyle(color: Colors.white, fontSize: 16),
-                cursorColor: Colors.white,
+                controller: registerCubit.firstNameController,
+                validator: (v) => _errorMessage(context, 
+                  Validations.validateName(v),
+                  'First Name',
+                ),
+                style: TextStyle(color: Theme.of(context).colorScheme.onSurface, fontSize: 16),
+                cursorColor: Theme.of(context).colorScheme.onSurface,
                 decoration: InputDecoration(
-                  hintText: 'First Name',
+                  hintText: loc.firstName,
                   hintStyle: TextStyle(
                     // ignore: deprecated_member_use
-                    color: Colors.white.withOpacity(0.7),
+                    color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.7),
                     fontSize: 12,
                   ),
-                  prefixIcon: const Icon(
+                  prefixIcon: Icon(
                     Icons.person_outline,
-                    color: Colors.white,
+                    color: Theme.of(context).colorScheme.onSurface,
                     size: 18,
                   ),
                   filled: true,
@@ -91,42 +102,45 @@ class _RegisterBodyState extends State<RegisterBody> {
                   ),
                   enabledBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(30),
-                    borderSide: const BorderSide(
-                      color: Colors.white,
+                    borderSide: BorderSide(
+                      color: Theme.of(context).colorScheme.onSurface,
                       width: 1.5,
                     ),
                   ),
                   focusedBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(30),
-                    borderSide: const BorderSide(color: Colors.white, width: 2),
+                    borderSide: BorderSide(color: Theme.of(context).colorScheme.onSurface, width: 2),
                   ),
                   errorBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(30),
-                    borderSide: const BorderSide(color: Colors.red, width: 1.5),
+                    borderSide: BorderSide(color: Theme.of(context).colorScheme.error, width: 1.5),
                   ),
                   focusedErrorBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(30),
-                    borderSide: const BorderSide(color: Colors.red, width: 2),
+                    borderSide: BorderSide(color: Theme.of(context).colorScheme.error, width: 2),
                   ),
                 ),
               ),
 
               SizedBox(height: height * 0.02),
               TextFormField(
-                controller: widget.registerCubit.lastNameController,
-                validator: (v) => _validateName(v, 'Last Name'),
-                style: const TextStyle(color: Colors.white, fontSize: 16),
-                cursorColor: Colors.white,
+                controller: registerCubit.lastNameController,
+                validator: (v) => _errorMessage(context, 
+                  Validations.validateName(v),
+                  'Last Name',
+                ),
+                style: TextStyle(color: Theme.of(context).colorScheme.onSurface, fontSize: 16),
+                cursorColor: Theme.of(context).colorScheme.onSurface,
                 decoration: InputDecoration(
-                  hintText: 'Last Name',
+                  hintText: loc.lastName,
                   hintStyle: TextStyle(
                     // ignore: deprecated_member_use
-                    color: Colors.white.withOpacity(0.7),
+                    color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.7),
                     fontSize: 12,
                   ),
-                  prefixIcon: const Icon(
+                  prefixIcon: Icon(
                     Icons.person_outline,
-                    color: Colors.white,
+                    color: Theme.of(context).colorScheme.onSurface,
                     size: 18,
                   ),
                   filled: true,
@@ -137,42 +151,45 @@ class _RegisterBodyState extends State<RegisterBody> {
                   ),
                   enabledBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(30),
-                    borderSide: const BorderSide(
-                      color: Colors.white,
+                    borderSide: BorderSide(
+                      color: Theme.of(context).colorScheme.onSurface,
                       width: 1.5,
                     ),
                   ),
                   focusedBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(30),
-                    borderSide: const BorderSide(color: Colors.white, width: 2),
+                    borderSide: BorderSide(color: Theme.of(context).colorScheme.onSurface, width: 2),
                   ),
                   errorBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(30),
-                    borderSide: const BorderSide(color: Colors.red, width: 1.5),
+                    borderSide: BorderSide(color: Theme.of(context).colorScheme.error, width: 1.5),
                   ),
                   focusedErrorBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(30),
-                    borderSide: const BorderSide(color: Colors.red, width: 2),
+                    borderSide: BorderSide(color: Theme.of(context).colorScheme.error, width: 2),
                   ),
                 ),
               ),
 
               SizedBox(height: height * 0.02),
               TextFormField(
-                controller: widget.registerCubit.emailController,
-                validator: (v) => _validateName(v, 'Email'),
-                style: const TextStyle(color: Colors.white, fontSize: 16),
-                cursorColor: Colors.white,
+                controller: registerCubit.emailController,
+                validator: (v) => _errorMessage(context, 
+                  Validations.validateEmail(v),
+                  'Email',
+                ),
+                style: TextStyle(color: Theme.of(context).colorScheme.onSurface, fontSize: 16),
+                cursorColor: Theme.of(context).colorScheme.onSurface,
                 decoration: InputDecoration(
-                  hintText: 'Email',
+                  hintText: loc.email,
                   hintStyle: TextStyle(
                     // ignore: deprecated_member_use
-                    color: Colors.white.withOpacity(0.7),
+                    color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.7),
                     fontSize: 12,
                   ),
-                  prefixIcon: const Icon(
+                  prefixIcon: Icon(
                     Icons.email_outlined,
-                    color: Colors.white,
+                    color: Theme.of(context).colorScheme.onSurface,
                     size: 18,
                   ),
                   filled: true,
@@ -183,22 +200,22 @@ class _RegisterBodyState extends State<RegisterBody> {
                   ),
                   enabledBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(30),
-                    borderSide: const BorderSide(
-                      color: Colors.white,
+                    borderSide: BorderSide(
+                      color: Theme.of(context).colorScheme.onSurface,
                       width: 1.5,
                     ),
                   ),
                   focusedBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(30),
-                    borderSide: const BorderSide(color: Colors.white, width: 2),
+                    borderSide: BorderSide(color: Theme.of(context).colorScheme.onSurface, width: 2),
                   ),
                   errorBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(30),
-                    borderSide: const BorderSide(color: Colors.red, width: 1.5),
+                    borderSide: BorderSide(color: Theme.of(context).colorScheme.error, width: 1.5),
                   ),
                   focusedErrorBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(30),
-                    borderSide: const BorderSide(color: Colors.red, width: 2),
+                    borderSide: BorderSide(color: Theme.of(context).colorScheme.error, width: 2),
                   ),
                 ),
               ),
@@ -206,27 +223,30 @@ class _RegisterBodyState extends State<RegisterBody> {
               SizedBox(height: height * 0.02),
 
               TextFormField(
-                controller: widget.registerCubit.passwordController,
-                validator: _validatePassword,
+                controller: registerCubit.passwordController,
+                validator: (v) => _errorMessage(context, 
+                  Validations.validatePassword(v),
+                  'Password',
+                ),
                 obscureText: _obscure,
-                style: const TextStyle(color: Colors.white, fontSize: 16),
-                cursorColor: Colors.white,
+                style: TextStyle(color: Theme.of(context).colorScheme.onSurface, fontSize: 16),
+                cursorColor: Theme.of(context).colorScheme.onSurface,
                 decoration: InputDecoration(
-                  hintText: 'Password',
+                  hintText: loc.password,
                   hintStyle: TextStyle(
                     // ignore: deprecated_member_use
-                    color: Colors.white.withOpacity(0.7),
+                    color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.7),
                     fontSize: 12,
                   ),
-                  prefixIcon: const Icon(
+                  prefixIcon: Icon(
                     Icons.lock_outline_rounded,
-                    color: Colors.white,
+                    color: Theme.of(context).colorScheme.onSurface,
                     size: 18,
                   ),
                   suffixIcon: IconButton(
                     icon: Icon(
                       _obscure ? Icons.visibility_off : Icons.visibility,
-                      color: Colors.white,
+                      color: Theme.of(context).colorScheme.onSurface,
                       size: 18,
                     ),
                     onPressed: () => setState(() => _obscure = !_obscure),
@@ -236,39 +256,39 @@ class _RegisterBodyState extends State<RegisterBody> {
                   contentPadding: const EdgeInsets.symmetric(vertical: 10),
                   enabledBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(30),
-                    borderSide: const BorderSide(
-                      color: Colors.white,
+                    borderSide: BorderSide(
+                      color: Theme.of(context).colorScheme.onSurface,
                       width: 1.5,
                     ),
                   ),
                   focusedBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(30),
-                    borderSide: const BorderSide(color: Colors.white, width: 2),
+                    borderSide: BorderSide(color: Theme.of(context).colorScheme.onSurface, width: 2),
                   ),
                   errorBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(30),
-                    borderSide: const BorderSide(color: Colors.red, width: 1.5),
+                    borderSide: BorderSide(color: Theme.of(context).colorScheme.error, width: 1.5),
                   ),
                   focusedErrorBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(30),
-                    borderSide: const BorderSide(color: Colors.red, width: 2),
+                    borderSide: BorderSide(color: Theme.of(context).colorScheme.error, width: 2),
                   ),
                 ),
               ),
 
               SizedBox(height: height * 0.02),
               // ── Divider with "Or" ─────────────────────────
-              const Row(
+              Row(
                 children: [
-                  Expanded(child: Divider(color: Colors.white24, thickness: 1)),
+                  Expanded(child: Divider(color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.24), thickness: 1)),
                   Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 12),
+                    padding: const EdgeInsets.symmetric(horizontal: 12),
                     child: Text(
-                      'Or',
-                      style: TextStyle(color: Colors.white54, fontSize: 12),
+                      loc.or,
+                      style: TextStyle(color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.54), fontSize: 12),
                     ),
                   ),
-                  Expanded(child: Divider(color: Colors.white24, thickness: 1)),
+                  Expanded(child: Divider(color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.24), thickness: 1)),
                 ],
               ),
               const SizedBox(height: 10),
@@ -290,12 +310,12 @@ class _RegisterBodyState extends State<RegisterBody> {
                 width: double.infinity,
                 child: ElevatedButton(
                   onPressed: () {
-                    if (widget.registerCubit.formKey.currentState!.validate()) {
-                      widget.registerCubit.doIntent(RegisterNextStep());
+                    if (registerCubit.formKey.currentState!.validate()) {
+                      registerCubit.doIntent(RegisterNextStep());
                     }
                   },
                   child: Text(
-                    'Register',
+                    loc.register,
                     style: Theme.of(
                       context,
                     ).textTheme.titleLarge?.copyWith(fontSize: 12),
@@ -306,16 +326,16 @@ class _RegisterBodyState extends State<RegisterBody> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  const Text(
-                    "Already Have An Account Yet ? ",
-                    style: TextStyle(color: Colors.white70, fontSize: 13),
+                  Text(
+                    loc.alreadyHaveAnAccount,
+                    style: TextStyle(color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.7), fontSize: 13),
                   ),
                   GestureDetector(
                     onTap: () {},
-                    child: const Text(
-                      'Login',
+                    child: Text(
+                      loc.login,
                       style: TextStyle(
-                        color: Colors.deepOrange,
+                        color: Theme.of(context).colorScheme.secondary,
                         fontSize: 13,
                         fontWeight: FontWeight.bold,
                       ),

@@ -1,28 +1,28 @@
 import 'package:flowery/config/l10n/translations/app_localizations.dart';
-import 'package:flowery/core/theme/app_colors.dart';
 import 'package:flowery/core/widgets/glass_container.dart';
 import 'package:flowery/features/register/presentation/view_model/cubit/register_cubit.dart';
 import 'package:flowery/features/register/presentation/view_model/cubit/register_events.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:numberpicker/numberpicker.dart';
 
-// ignore: must_be_immutable
 class ChooseHeightWidget extends StatefulWidget {
-  ChooseHeightWidget({super.key, required this.registerCubit});
-  RegisterCubit registerCubit;
+  const ChooseHeightWidget({super.key});
 
   @override
   State<ChooseHeightWidget> createState() => _ChooseHeightWidgetState();
 }
 
 class _ChooseHeightWidgetState extends State<ChooseHeightWidget> {
+  late final RegisterCubit registerCubit;
   int _currentHeight = 170;
 
   @override
   void initState() {
     super.initState();
-    _currentHeight = int.tryParse(widget.registerCubit.height ?? '170') ?? 170;
-    widget.registerCubit.height = _currentHeight.toString();
+    registerCubit = context.read<RegisterCubit>();
+    _currentHeight = registerCubit.height ?? 170 ;
+    registerCubit.height = _currentHeight;
   }
 
   @override
@@ -45,28 +45,28 @@ class _ChooseHeightWidgetState extends State<ChooseHeightWidget> {
         SizedBox(height: height * 0.04),
         GlassContainer(
           children: [
-            Text(locale.cm, style: Theme.of(context).textTheme.bodyMedium?.copyWith(color: AppColors.primaryColor )),
+            Text(locale.cm, style: Theme.of(context).textTheme.bodyMedium?.copyWith(color: Theme.of(context).primaryColor )),
             SizedBox(height: height * 0.02),
 
             Center(
               child: NumberPicker(
-                value: int.parse(widget.registerCubit.height ?? "170"),
+                value: registerCubit.height ?? 170,
                 minValue: 140,
                 maxValue: 250,
                 selectedTextStyle: Theme.of(context).textTheme.headlineLarge!
-                    .copyWith(color: AppColors.primaryColor),
+                    .copyWith(color: Theme.of(context).primaryColor),
                 textStyle: Theme.of(context).textTheme.titleLarge,
                 itemHeight: height * 0.1,
                 step: 1,
                 axis: Axis.horizontal,
                 onChanged: (value) => setState(() {
-                  widget.registerCubit.height = value.toString();
+                  registerCubit.height = value;
                 }),
               ),
             ),
-            const Icon(
+            Icon(
               Icons.arrow_drop_up_sharp,
-              color: AppColors.primaryColor,
+              color: Theme.of(context).primaryColor,
               size: 50,
             ),
 
@@ -76,7 +76,7 @@ class _ChooseHeightWidgetState extends State<ChooseHeightWidget> {
               width: double.infinity,
               child: ElevatedButton(
                 onPressed: () {
-                  widget.registerCubit.doIntent(RegisterNextStep());
+                  registerCubit.doIntent(RegisterNextStep());
                 },
                 child: Text(
                   locale.next,

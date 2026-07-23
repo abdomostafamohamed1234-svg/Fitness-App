@@ -4,27 +4,32 @@ import 'package:flowery/core/widgets/glass_container.dart';
 import 'package:flowery/features/register/presentation/view_model/cubit/register_cubit.dart';
 import 'package:flowery/features/register/presentation/view_model/cubit/register_events.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
-// ignore: must_be_immutable
+enum RegisterGoal {
+  gainWeight('Gain Weight', 'Gain Weight'),
+  loseWeight('Lose Weight', 'Lose Weight'),
+  getFitter('Get Fitter', 'Get Fitter'),
+  gainMoreFlexible('Gain More Flexible', 'Gain More Flexible'),
+  learnTheBasics('Learn The Basics', 'Learn The Basic');
+
+  final String label;
+  final String value;
+
+  const RegisterGoal(this.label, this.value);
+}
+
 class ChooseGoalWidget extends StatefulWidget {
-  ChooseGoalWidget({super.key, required this.registerCubit});
-  RegisterCubit registerCubit;
+  const ChooseGoalWidget({super.key});
 
   @override
   State<ChooseGoalWidget> createState() => _ChooseGoalWidgetState();
 }
 
 class _ChooseGoalWidgetState extends State<ChooseGoalWidget> {
-  static const _goals = [
-    ('Gain Weight', 'Gain Weight'),
-    ('Lose Weight', 'Lose Weight'),
-    ('Get Fitter', 'Get Fitter'),
-    ('Gain More Flexible', 'Gain More Flexible'),
-    ('Learn The Basics', 'Learn The Basic'),
-  ];
-
   @override
   Widget build(BuildContext context) {
+    final registerCubit = context.read<RegisterCubit>();
     final height = MediaQuery.of(context).size.height;
     final locale = AppLocalizations.of(context)!;
 
@@ -44,13 +49,11 @@ class _ChooseGoalWidgetState extends State<ChooseGoalWidget> {
         SizedBox(height: height * 0.02),
         GlassContainer(
           children: [
-            ..._goals.map((entry) {
-              final label = entry.$1;
-              final value = entry.$2;
-              final isSelected = widget.registerCubit.goal == value;
+            ...RegisterGoal.values.map((goal) {
+              final isSelected = registerCubit.goal == goal.value;
               return GestureDetector(
                 onTap: () => setState(() {
-                  widget.registerCubit.goal = value;
+                  registerCubit.goal = goal.value;
                 }),
                 child: Container(
                   margin: const EdgeInsets.symmetric(vertical: 6),
@@ -59,11 +62,11 @@ class _ChooseGoalWidgetState extends State<ChooseGoalWidget> {
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(50),
                     color: isSelected
-                        ? AppColors.primaryColor.withValues(alpha: 0.15)
+                        ? Theme.of(context).primaryColor.withValues(alpha: 0.15)
                         : Colors.white.withValues(alpha: 0.05),
                     border: Border.all(
                       color: isSelected
-                          ? AppColors.primaryColor
+                          ? Theme.of(context).primaryColor
                           : Colors.white.withValues(alpha: 0.15),
                       width: isSelected ? 1.5 : 1,
                     ),
@@ -71,7 +74,7 @@ class _ChooseGoalWidgetState extends State<ChooseGoalWidget> {
                   child: Row(
                     children: [
                       Text(
-                        label,
+                        goal.label,
                         style: Theme.of(context).textTheme.titleLarge?.copyWith(fontSize: 12),
                       ),
                       const Spacer(),
@@ -81,7 +84,7 @@ class _ChooseGoalWidgetState extends State<ChooseGoalWidget> {
                         decoration: BoxDecoration(
                           shape: BoxShape.circle,
                           border: Border.all(color: Colors.white, width: 2),
-                          color: isSelected ? AppColors.primaryColor : null,
+                          color: isSelected ? Theme.of(context).primaryColor : null,
                         ),
                       ),
                     ],
@@ -91,13 +94,13 @@ class _ChooseGoalWidgetState extends State<ChooseGoalWidget> {
             }),
             SizedBox(height: height * 0.02),
             Visibility(
-              visible: widget.registerCubit.goal != null,
+              visible: registerCubit.goal != null,
               child: SizedBox(
                 height: height * 0.06,
                 width: double.infinity,
                 child: ElevatedButton(
                   onPressed: () {
-                    widget.registerCubit.doIntent(RegisterNextStep());
+                    registerCubit.doIntent(RegisterNextStep());
                   },
                   child: Text(
                     locale.next,

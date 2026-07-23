@@ -1,6 +1,6 @@
 // NOTE: adjust this import path if RegisterRepositoryImpl lives elsewhere in your project.
 import 'package:flowery/core/base/base_response.dart';
-import 'package:flowery/features/register/data/datasources/register_local_data_source_contract.dart';
+import 'package:flowery/features/register/data/datasources/register_remote_data_source_contract.dart';
 import 'package:flowery/features/register/data/models/register_dto_request.dart';
 import 'package:flowery/features/register/data/repositories/register_repository_impl.dart';
 import 'package:flowery/features/register/domain/entities/register_entity.dart';
@@ -10,17 +10,17 @@ import 'package:mockito/mockito.dart';
 
 import 'register_repository_impl_test.mocks.dart';
 
-@GenerateMocks([RegisterLocalDataSourceContract])
+@GenerateMocks([RegisterRemoteDataSourceContract])
 void main() {
   late RegisterRepositoryImpl repository;
-  late MockRegisterLocalDataSourceContract mockDataSource;
+  late MockRegisterRemoteDataSourceContract mockDataSource;
  setUpAll(() {
     provideDummy<Result<RegisterDto>>(
       const Success<RegisterDto>(data: null),
     );
   });
   setUp(() {
-    mockDataSource = MockRegisterLocalDataSourceContract();
+    mockDataSource = MockRegisterRemoteDataSourceContract();
     repository = RegisterRepositoryImpl(mockDataSource);
   });
 
@@ -43,7 +43,7 @@ void main() {
         // assert
         expect(result, isA<Success<RegisterEntity>>());
         expect(
-          (result as Success<RegisterEntity>).data?.massage,
+          (result as Success<RegisterEntity>).data?.message,
           'Registered',
         );
         verify(mockDataSource.register(tBody)).called(1);

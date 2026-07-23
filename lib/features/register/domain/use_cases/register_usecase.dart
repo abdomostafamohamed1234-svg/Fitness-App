@@ -9,7 +9,7 @@ class RegisterUsecase {
   RegisterUsecase(this._registerRepository);
 
 
-  Future<Result<RegisterEntity>> invoke(Map<String, dynamic> body) async {
-    return await _registerRepository.register(body);
+  Future<Result<RegisterEntity>> invoke(Map<String, dynamic> body)  {
+    return  _registerRepository.register(body);
   }
 }

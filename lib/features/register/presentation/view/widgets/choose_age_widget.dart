@@ -1,29 +1,29 @@
-
 import 'package:flowery/config/l10n/translations/app_localizations.dart';
 import 'package:flowery/core/theme/app_colors.dart';
 import 'package:flowery/core/widgets/glass_container.dart';
 import 'package:flowery/features/register/presentation/view_model/cubit/register_cubit.dart';
 import 'package:flowery/features/register/presentation/view_model/cubit/register_events.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:numberpicker/numberpicker.dart';
 
-// ignore: must_be_immutable
 class ChooseAgeWidget extends StatefulWidget {
-  ChooseAgeWidget({super.key, required this.registerCubit});
-  RegisterCubit registerCubit;
+  const ChooseAgeWidget({super.key});
 
   @override
   State<ChooseAgeWidget> createState() => _ChooseAgeWidgetState();
 }
 
 class _ChooseAgeWidgetState extends State<ChooseAgeWidget> {
+  late final RegisterCubit registerCubit;
   int _currentAge = 20;
 
   @override
   void initState() {
     super.initState();
-    _currentAge = int.tryParse(widget.registerCubit.age ?? '20') ?? 20;
-    widget.registerCubit.age = _currentAge.toString();
+    registerCubit = context.read<RegisterCubit>();
+    _currentAge = registerCubit.age ?? 20 ;
+    registerCubit.age = _currentAge;
   }
 
   @override
@@ -49,29 +49,29 @@ class _ChooseAgeWidgetState extends State<ChooseAgeWidget> {
               locale.year,
               style: Theme.of(
                 context,
-              ).textTheme.bodyMedium?.copyWith(color: AppColors.primaryColor),
+              ).textTheme.bodyMedium?.copyWith(color: Theme.of(context).primaryColor),
             ),
             SizedBox(height: height * 0.02),
 
             Center(
               child: NumberPicker(
-                value: int.parse(widget.registerCubit.age ?? "20"),
+                value: registerCubit.age ?? 20,
                 minValue: 10,
                 maxValue: 60,
                 selectedTextStyle: Theme.of(context).textTheme.headlineLarge!
-                    .copyWith(color: AppColors.primaryColor),
+                    .copyWith(color: Theme.of(context).primaryColor),
                 textStyle: Theme.of(context).textTheme.titleLarge,
                 itemHeight: height * 0.1,
                 step: 1,
                 axis: Axis.horizontal,
                 onChanged: (value) => setState(() {
-                  widget.registerCubit.age = value.toString();
+                  registerCubit.age = value;
                 }),
               ),
             ),
-            const Icon(
+            Icon(
               Icons.arrow_drop_up_sharp,
-              color: AppColors.primaryColor,
+              color: Theme.of(context).primaryColor,
               size: 50,
             ),
 
@@ -81,7 +81,7 @@ class _ChooseAgeWidgetState extends State<ChooseAgeWidget> {
               width: double.infinity,
               child: ElevatedButton(
                 onPressed: () {
-                  widget.registerCubit.doIntent(RegisterNextStep());
+                  registerCubit.doIntent(RegisterNextStep());
                 },
                 child: Text(
                   locale.next,

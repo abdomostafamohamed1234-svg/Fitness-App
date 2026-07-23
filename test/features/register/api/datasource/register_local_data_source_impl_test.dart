@@ -1,6 +1,6 @@
 import 'package:flowery/core/base/base_response.dart';
 import 'package:flowery/features/register/api/api_client/register_api_client.dart';
-import 'package:flowery/features/register/api/datasources/register_local_data_source_impl.dart';
+import 'package:flowery/features/register/api/datasources/register_remote_data_source_impl.dart';
 import 'package:flowery/features/register/data/models/register_dto_request.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/annotations.dart';
@@ -10,17 +10,17 @@ import 'register_local_data_source_impl_test.mocks.dart';
 
 @GenerateMocks([RegisterApiClient])
 void main() {
-  late RegisterLocalDataSourceImpl dataSource;
+  late RegisterRemoteDataSourceImpl dataSource;
   late MockRegisterApiClient mockApiClient;
 
   setUp(() {
     mockApiClient = MockRegisterApiClient();
-    dataSource = RegisterLocalDataSourceImpl(mockApiClient);
+    dataSource = RegisterRemoteDataSourceImpl(mockApiClient);
   });
 
   final tBody = <String, dynamic>{'email': 'ahmed@test.com'};
 
-  group('RegisterLocalDataSourceImpl.register', () {
+  group('RegisterRemoteDataSourceImpl.register', () {
     test(
       'should return Success<RegisterDto> when the api client succeeds',
       () async {

@@ -1,17 +1,13 @@
-
-
 import 'package:flowery/config/l10n/translations/app_localizations.dart';
 import 'package:flowery/core/theme/app_colors.dart';
 import 'package:flowery/core/widgets/glass_container.dart';
 import 'package:flowery/features/register/presentation/view_model/cubit/register_cubit.dart';
 import 'package:flowery/features/register/presentation/view_model/cubit/register_events.dart';
-
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
-// ignore: must_be_immutable
 class ChooseGenderWidget extends StatefulWidget {
-  ChooseGenderWidget({super.key, required this.registerCubit});
-  RegisterCubit registerCubit;
+  const ChooseGenderWidget({super.key});
 
   @override
   State<ChooseGenderWidget> createState() => _ChooseGenderWidgetState();
@@ -23,13 +19,14 @@ class _ChooseGenderWidgetState extends State<ChooseGenderWidget> {
 
   @override
   Widget build(BuildContext context) {
+    final registerCubit = context.read<RegisterCubit>();
     final height = MediaQuery.of(context).size.height;
     final locale = AppLocalizations.of(context)!;
 
-    if (widget.registerCubit.gender == 'male') {
+    if (registerCubit.gender == 'male') {
       male = true;
       feMale = false;
-    } else if (widget.registerCubit.gender == 'female') {
+    } else if (registerCubit.gender == 'female') {
       male = false;
       feMale = true;
     }
@@ -56,7 +53,7 @@ class _ChooseGenderWidgetState extends State<ChooseGenderWidget> {
               onTap: () {
                 feMale = false;
                 male = true;
-                widget.registerCubit.gender = 'male';
+                registerCubit.gender = 'male';
                 setState(() {});
               },
               child: Container(
@@ -65,7 +62,7 @@ class _ChooseGenderWidgetState extends State<ChooseGenderWidget> {
                   vertical: 20,
                 ),
                 decoration: BoxDecoration(
-                  color: male == true ? AppColors.primaryColor : null,
+                  color: male == true ? Theme.of(context).primaryColor : null,
                   border: Border.all(color: Colors.white, width: 2),
                   borderRadius: BorderRadius.circular(100),
                 ),
@@ -91,7 +88,7 @@ class _ChooseGenderWidgetState extends State<ChooseGenderWidget> {
               onTap: () {
                 feMale = true;
                 male = false;
-                widget.registerCubit.gender = 'female';
+                registerCubit.gender = 'female';
                 setState(() {});
               },
               child: Container(
@@ -100,7 +97,7 @@ class _ChooseGenderWidgetState extends State<ChooseGenderWidget> {
                   vertical: 20,
                 ),
                 decoration: BoxDecoration(
-                  color: feMale == true ? AppColors.primaryColor : null,
+                  color: feMale == true ? Theme.of(context).primaryColor : null,
                   border: Border.all(color: Colors.white, width: 2),
                   borderRadius: BorderRadius.circular(100),
                 ),
@@ -129,7 +126,7 @@ class _ChooseGenderWidgetState extends State<ChooseGenderWidget> {
                 width: double.infinity,
                 child: ElevatedButton(
                   onPressed: () {
-                    widget.registerCubit.doIntent(RegisterNextStep());
+                    registerCubit.doIntent(RegisterNextStep());
                   },
                   child: Text(
                     locale.next,

@@ -1,5 +1,4 @@
 import 'dart:async';
-
 import 'package:flowery/core/base/base_response.dart';
 import 'package:flowery/core/base/custom_cubit.dart';
 import 'package:flowery/features/register/domain/entities/register_entity.dart';
@@ -27,9 +26,9 @@ class RegisterCubit extends CustomCubit<RegisterTempEvents, RegisterState> {
 
   // Register step data
   String? gender;
-  String? age;
-  String? weight;
-  String? height;
+  int? age;
+  int? weight;
+  int? height;
   String? goal;
   String? physicalActivityLevel;
 
@@ -53,6 +52,12 @@ class RegisterCubit extends CustomCubit<RegisterTempEvents, RegisterState> {
   }
 
   Future<void> _register() async {
+    debugPrint('Gender: $gender');
+debugPrint('Age: $age');
+debugPrint('Weight: $weight');
+debugPrint('Height: $height');
+debugPrint('Goal: $goal');
+debugPrint('Activity: $physicalActivityLevel');
     doIntent(ShowLoadingEvent());
     final response = await _registerUsecase.invoke({
       'firstName': firstNameController.text,
@@ -70,7 +75,7 @@ class RegisterCubit extends CustomCubit<RegisterTempEvents, RegisterState> {
     switch (response) {
       case Success<RegisterEntity>():
         doIntent(HideLoadingEvent());
-        doIntent(ShowMassageEvent(response.data?.massage ?? 'Success!'));
+        doIntent(ShowMassageEvent(response.data?.message?? 'Success!'));
         Future.delayed(
           const Duration(seconds: 2),
           () => streamController.add(NavigateToLoginTempEvent()),
@@ -84,23 +89,23 @@ class RegisterCubit extends CustomCubit<RegisterTempEvents, RegisterState> {
   }
 
   void _nextStep() {
-    if (state.registerState?.data == null) {
-      state.registerState = const BaseState(data: 0);
+    if (state.currentStepState?.data == null) {
+      state.currentStepState = const BaseState(data: 0);
       emit(state);
       return;
     }
-    final int current = state.registerState!.data!;
-    emit(state.copyWith(newRegisterState: BaseState(data: current + 1)));
+    final int current = state.currentStepState!.data!;
+    emit(state.copyWith(newCurrentStepState: BaseState(data: current + 1)));
   }
 
   void _previousStep() {
-    if (state.registerState?.data == 0) {
+    if (state.currentStepState?.data == 0) {
       streamController.add(NavigateToLoginTempEvent());
       emit(state);
       return;
     }
-    final int current = state.registerState!.data!;
-    emit(state.copyWith(newRegisterState: BaseState(data: current - 1)));
+    final int current = state.currentStepState!.data!;
+    emit(state.copyWith(newCurrentStepState: BaseState(data: current - 1)));
   }
 
   void _navigateToLogin() {

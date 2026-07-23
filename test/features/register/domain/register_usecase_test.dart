@@ -29,7 +29,7 @@ void main() {
     'password': '123456',
   };
 
-  final tRegisterEntity = RegisterEntity(massage: 'Success', error: null);
+  final tRegisterEntity = const RegisterEntity(message: 'Success', error: null);
 
   group('RegisterUsecase.invoke', () {
     test(
@@ -46,7 +46,7 @@ void main() {
 
         // assert
         expect(result, isA<Success<RegisterEntity>>());
-        expect((result as Success<RegisterEntity>).data?.massage, 'Success');
+        expect((result as Success<RegisterEntity>).data?.message, 'Success');
         verify(mockRepository.register(tBody)).called(1);
         verifyNoMoreInteractions(mockRepository);
       },

@@ -1,4 +1,3 @@
-
 sealed class RegisterTempEvents {}
 class NavigateToLoginTempEvent extends RegisterTempEvents {}
 class ShowMassageTempEvent extends RegisterTempEvents {

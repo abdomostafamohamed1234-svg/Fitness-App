@@ -12,7 +12,7 @@ import 'package:flowery/features/register/presentation/view_model/cubit/register
 import 'package:flowery/features/register/presentation/view_model/cubit/register_events.dart';
 import 'package:flowery/features/register/presentation/view_model/cubit/register_states.dart';
 import 'package:flowery/features/register/presentation/view_model/cubit/register_temp_events.dart';
-import 'package:flowery/core/theme/app_colors.dart';
+import 'package:flowery/config/l10n/translations/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -62,21 +62,21 @@ class _RegisterPageState extends State<RegisterPage> {
     showDialog(
       context: context,
       builder: (ctx) => AlertDialog(
-        backgroundColor: AppColors.darkGreyColor,
-        title: const Text(
-          'Message',
-          style: TextStyle(color: AppColors.whiteColor),
+        backgroundColor: Theme.of(context).cardTheme.color,
+        title: Text(
+          AppLocalizations.of(context)!.message,
+          style: TextStyle(color: Theme.of(context).colorScheme.onSurface),
         ),
         content: Text(
           message,
-          style: const TextStyle(color: AppColors.greyColor),
+          style: TextStyle(color: Theme.of(context).textTheme.bodyMedium?.color),
         ),
         actions: [
           TextButton(
             onPressed: () => Navigator.pop(ctx),
-            child: const Text(
-              'OK',
-              style: TextStyle(color: AppColors.primaryColor),
+            child: Text(
+              AppLocalizations.of(context)!.ok,
+              style: TextStyle(color: Theme.of(context).primaryColor),
             ),
           ),
         ],
@@ -88,8 +88,8 @@ class _RegisterPageState extends State<RegisterPage> {
     showDialog(
       context: context,
       barrierDismissible: false,
-      builder: (_) => const Center(
-        child: CircularProgressIndicator(color: AppColors.primaryColor),
+      builder: (_) => Center(
+        child: CircularProgressIndicator(color: Theme.of(context).primaryColor),
       ),
     );
   }
@@ -105,12 +105,10 @@ class _RegisterPageState extends State<RegisterPage> {
 
   @override
   Widget build(BuildContext context) {
-  
-
     return BlocProvider<RegisterCubit>(
       create: (_) => registerCubit,
       child: Scaffold(
-        backgroundColor: AppColors.transparent,
+        backgroundColor: Colors.transparent,
         extendBodyBehindAppBar: true,
         body: SafeArea(
           child: Stack(
@@ -135,13 +133,13 @@ class _RegisterPageState extends State<RegisterPage> {
                     const SizedBox(height: 50),
                     BlocBuilder<RegisterCubit, RegisterState>(
                       builder: (context, state) {
-                        final int currentState = state.registerState?.data ?? 0;
+                        final int currentState = state.currentStepState?.data ?? 0;
 
                         return Stack(
                           alignment: Alignment.center,
                           children: [
                             CircularProgressIndicator(
-                              color: AppColors.primaryColor,
+                              color: Theme.of(context).primaryColor,
                               value: currentState / 6,
                             ),
                             Text("$currentState/6"),
@@ -154,35 +152,24 @@ class _RegisterPageState extends State<RegisterPage> {
                       child: SingleChildScrollView(
                         child: BlocBuilder<RegisterCubit, RegisterState>(
                           builder: (context, state) {
-                            final step = state.registerState?.data ?? 0;
-                            if (step == 0) {
-                              return RegisterBody(registerCubit: registerCubit);
-                            } else if (step == 1) {
-                              return ChooseGenderWidget(
-                                registerCubit: registerCubit,
-                              );
-                            } else if (step == 2) {
-                              return ChooseAgeWidget(
-                                registerCubit: registerCubit,
-                              );
-                            } else if (step == 3) {
-                              return ChooseWeightWidget(
-                                registerCubit: registerCubit,
-                              );
-                            } else if (step == 4) {
-                              return ChooseHeightWidget(
-                                registerCubit: registerCubit,
-                              );
-                            } else if (step == 5) {
-                              return ChooseGoalWidget(
-                                registerCubit: registerCubit,
-                              );
-                            } else if (step == 6) {
-                              return ChooseRpalWidget(
-                                registerCubit: registerCubit,
-                              );
-                            } else {
-                              return const SizedBox.shrink();
+                            final step = state.currentStepState?.data ?? 0;
+                            switch (step) {
+                              case 0:
+                                return const RegisterBody();
+                              case 1:
+                                return const ChooseGenderWidget();
+                              case 2:
+                                return const ChooseAgeWidget();
+                              case 3:
+                                return const ChooseWeightWidget();
+                              case 4:
+                                return const ChooseHeightWidget();
+                              case 5:
+                                return const ChooseGoalWidget();
+                              case 6:
+                                return const ChooseRpalWidget();
+                              default:
+                                return const SizedBox.shrink();
                             }
                           },
                         ),
