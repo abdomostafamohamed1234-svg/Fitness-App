@@ -7,5 +7,8 @@
   "requestCancelled": "تم إلغاء الطلب",
   "serverError": "خطأ في الخادم",
   "transformTimeout": "انتهت مهلة المعالجة",
-  "unexpectedError": "حدث خطأ غير متوقع"
+  "unexpectedError": "حدث خطأ غير متوقع",
+  "follow_the_plan": "اتبع الخطة أدناه واختر مستوى الصعوبة الذي يناسبك للبدء",
+  "exercise": "التمرين",
+   "no_exercises_found":"لم يتم العثور على تمارين لهذا المستوى"
 }
