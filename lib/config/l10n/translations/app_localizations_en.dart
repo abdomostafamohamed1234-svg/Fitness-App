@@ -138,4 +138,68 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get kg => 'Kg';
+
+  @override
+  String get heyThere => 'Hey there';
+
+  @override
+  String get createAnAccount => 'Create an Account';
+
+  @override
+  String get register => 'Register';
+
+  @override
+  String get firstName => 'First Name';
+
+  @override
+  String get lastName => 'Last Name';
+
+  @override
+  String get email => 'Email';
+
+  @override
+  String get password => 'Password';
+
+  @override
+  String get or => 'Or';
+
+  @override
+  String get alreadyHaveAnAccount => 'Already Have An Account Yet ? ';
+
+  @override
+  String get login => 'Login';
+
+  @override
+  String get firstNameRequired => 'First Name is required';
+
+  @override
+  String get firstNameMinLength => 'First Name must be at least 2 letters';
+
+  @override
+  String get lastNameRequired => 'Last Name is required';
+
+  @override
+  String get lastNameMinLength => 'Last Name must be at least 2 letters';
+
+  @override
+  String get emailRequired => 'Email is required';
+
+  @override
+  String get invalidEmail => 'Enter a valid email';
+
+  @override
+  String get passwordRequired => 'Password is required';
+
+  @override
+  String get invalidPassword =>
+      'Password must be at least 8 characters and include an uppercase letter, a lowercase letter, a number and a special character';
+
+  @override
+  String get invalidConfirmPassword => 'Enter a valid password';
+
+  @override
+  String get passwordMismatch => 'Passwords do not match';
+
+  @override
+  String get invalidPhoneNumber => 'Enter a valid phone number';
 }

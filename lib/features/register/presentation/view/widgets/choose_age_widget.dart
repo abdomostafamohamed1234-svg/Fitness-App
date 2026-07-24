@@ -21,8 +21,8 @@ class _ChooseAgeWidgetState extends State<ChooseAgeWidget> {
   void initState() {
     super.initState();
     registerCubit = context.read<RegisterCubit>();
-    _currentAge = registerCubit.age ?? 20;
-    registerCubit.age = _currentAge;
+    _currentAge = registerCubit.surveyData.age ?? 20;
+    registerCubit.surveyData.age = _currentAge;
   }
 
   @override
@@ -54,7 +54,7 @@ class _ChooseAgeWidgetState extends State<ChooseAgeWidget> {
 
             Center(
               child: NumberPicker(
-                value: registerCubit.age ?? 20,
+                value: registerCubit.surveyData.age ?? 20,
                 minValue: 10,
                 maxValue: 60,
                 selectedTextStyle: Theme.of(context).textTheme.headlineLarge!
@@ -64,7 +64,7 @@ class _ChooseAgeWidgetState extends State<ChooseAgeWidget> {
                 step: 1,
                 axis: Axis.horizontal,
                 onChanged: (value) => setState(() {
-                  registerCubit.age = value;
+                  registerCubit.surveyData.age = value;
                 }),
               ),
             ),

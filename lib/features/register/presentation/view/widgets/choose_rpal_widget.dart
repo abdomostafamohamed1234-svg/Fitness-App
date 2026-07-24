@@ -44,10 +44,11 @@ class _ChooseRpalWidgetState extends State<ChooseRpalWidget> {
           children: [
             ...PhysicalActivityLevel.values.map((level) {
               final isSelected =
-                  registerCubit.physicalActivityLevel == level.value;
+                  registerCubit.surveyData.physicalActivityLevel ==
+                      level.value;
               return GestureDetector(
                 onTap: () => setState(() {
-                  registerCubit.physicalActivityLevel = level.value;
+                  registerCubit.surveyData.physicalActivityLevel = level.value;
                 }),
                 child: Container(
                   margin: const EdgeInsets.symmetric(vertical: 6),
@@ -94,7 +95,7 @@ class _ChooseRpalWidgetState extends State<ChooseRpalWidget> {
             }),
             SizedBox(height: height * 0.02),
             Visibility(
-              visible: registerCubit.physicalActivityLevel != null,
+              visible: registerCubit.surveyData.physicalActivityLevel != null,
               child: SizedBox(
                 height: height * 0.06,
                 width: double.infinity,

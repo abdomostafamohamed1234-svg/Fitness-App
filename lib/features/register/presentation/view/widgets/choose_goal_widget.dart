@@ -49,10 +49,10 @@ class _ChooseGoalWidgetState extends State<ChooseGoalWidget> {
         GlassContainer(
           children: [
             ...RegisterGoal.values.map((goal) {
-              final isSelected = registerCubit.goal == goal.value;
+              final isSelected = registerCubit.surveyData.goal == goal.value;
               return GestureDetector(
                 onTap: () => setState(() {
-                  registerCubit.goal = goal.value;
+                  registerCubit.surveyData.goal = goal.value;
                 }),
                 child: Container(
                   margin: const EdgeInsets.symmetric(vertical: 6),
@@ -99,7 +99,7 @@ class _ChooseGoalWidgetState extends State<ChooseGoalWidget> {
             }),
             SizedBox(height: height * 0.02),
             Visibility(
-              visible: registerCubit.goal != null,
+              visible: registerCubit.surveyData.goal != null,
               child: SizedBox(
                 height: height * 0.06,
                 width: double.infinity,

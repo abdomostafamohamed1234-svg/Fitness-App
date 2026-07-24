@@ -22,10 +22,10 @@ class _ChooseGenderWidgetState extends State<ChooseGenderWidget> {
     final height = MediaQuery.of(context).size.height;
     final locale = AppLocalizations.of(context)!;
 
-    if (registerCubit.gender == 'male') {
+    if (registerCubit.surveyData.gender == 'male') {
       male = true;
       feMale = false;
-    } else if (registerCubit.gender == 'female') {
+    } else if (registerCubit.surveyData.gender == 'female') {
       male = false;
       feMale = true;
     }
@@ -50,7 +50,7 @@ class _ChooseGenderWidgetState extends State<ChooseGenderWidget> {
               onTap: () {
                 feMale = false;
                 male = true;
-                registerCubit.gender = 'male';
+                registerCubit.surveyData.gender = 'male';
                 setState(() {});
               },
               child: Container(
@@ -86,7 +86,7 @@ class _ChooseGenderWidgetState extends State<ChooseGenderWidget> {
               onTap: () {
                 feMale = true;
                 male = false;
-                registerCubit.gender = 'female';
+                registerCubit.surveyData.gender = 'female';
                 setState(() {});
               },
               child: Container(
@@ -140,3 +140,5 @@ class _ChooseGenderWidgetState extends State<ChooseGenderWidget> {
     );
   }
 }
+
+

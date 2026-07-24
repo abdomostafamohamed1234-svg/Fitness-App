@@ -138,4 +138,68 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get kg => 'كجم';
+
+  @override
+  String get heyThere => 'أهلاً بك';
+
+  @override
+  String get createAnAccount => 'إنشاء حساب';
+
+  @override
+  String get register => 'تسجيل';
+
+  @override
+  String get firstName => 'الاسم الأول';
+
+  @override
+  String get lastName => 'الاسم الأخير';
+
+  @override
+  String get email => 'البريد الإلكتروني';
+
+  @override
+  String get password => 'كلمة المرور';
+
+  @override
+  String get or => 'أو';
+
+  @override
+  String get alreadyHaveAnAccount => 'هل لديك حساب بالفعل؟ ';
+
+  @override
+  String get login => 'تسجيل الدخول';
+
+  @override
+  String get firstNameRequired => 'الاسم الأول مطلوب';
+
+  @override
+  String get firstNameMinLength => 'الاسم الأول يجب أن يكون حرفين على الأقل';
+
+  @override
+  String get lastNameRequired => 'الاسم الأخير مطلوب';
+
+  @override
+  String get lastNameMinLength => 'الاسم الأخير يجب أن يكون حرفين على الأقل';
+
+  @override
+  String get emailRequired => 'البريد الإلكتروني مطلوب';
+
+  @override
+  String get invalidEmail => 'أدخل بريد إلكتروني صالح';
+
+  @override
+  String get passwordRequired => 'كلمة المرور مطلوبة';
+
+  @override
+  String get invalidPassword =>
+      'يجب أن تتكون كلمة المرور من 8 أحرف على الأقل وأن تتضمن حرفًا كبيرًا وحرفًا صغيرًا ورقمًا وحرفًا خاصًا';
+
+  @override
+  String get invalidConfirmPassword => 'أدخل كلمة مرور صالحة';
+
+  @override
+  String get passwordMismatch => 'كلمتا المرور غير متطابقتين';
+
+  @override
+  String get invalidPhoneNumber => 'أدخل رقم هاتف صالح';
 }

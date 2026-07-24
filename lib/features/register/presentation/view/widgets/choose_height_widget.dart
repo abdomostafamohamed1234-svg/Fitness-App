@@ -21,8 +21,8 @@ class _ChooseHeightWidgetState extends State<ChooseHeightWidget> {
   void initState() {
     super.initState();
     registerCubit = context.read<RegisterCubit>();
-    _currentHeight = registerCubit.height ?? 170 ;
-    registerCubit.height = _currentHeight;
+    _currentHeight = registerCubit.surveyData.height ?? 170;
+    registerCubit.surveyData.height = _currentHeight;
   }
 
   @override
@@ -50,7 +50,7 @@ class _ChooseHeightWidgetState extends State<ChooseHeightWidget> {
 
             Center(
               child: NumberPicker(
-                value: registerCubit.height ?? 170,
+                value: registerCubit.surveyData.height ?? 170,
                 minValue: 140,
                 maxValue: 250,
                 selectedTextStyle: Theme.of(context).textTheme.headlineLarge!
@@ -60,7 +60,7 @@ class _ChooseHeightWidgetState extends State<ChooseHeightWidget> {
                 step: 1,
                 axis: Axis.horizontal,
                 onChanged: (value) => setState(() {
-                  registerCubit.height = value;
+                  registerCubit.surveyData.height = value;
                 }),
               ),
             ),

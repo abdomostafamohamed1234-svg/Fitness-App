@@ -6,7 +6,7 @@
 import 'dart:async' as _i3;
 
 import 'package:flowery/core/base/base_response.dart' as _i4;
-import 'package:flowery/features/register/data/datasources/register_local_data_source_contract.dart'
+import 'package:flowery/features/register/data/datasources/register_remote_data_source_contract.dart'
     as _i2;
 import 'package:flowery/features/register/data/models/register_dto_request.dart'
     as _i5;
@@ -28,12 +28,12 @@ import 'package:mockito/src/dummies.dart' as _i6;
 // ignore_for_file: subtype_of_sealed_class
 // ignore_for_file: invalid_use_of_internal_member
 
-/// A class which mocks [RegisterLocalDataSourceContract].
+/// A class which mocks [RegisterRemoteDataSourceContract].
 ///
 /// See the documentation for Mockito's code generation for more information.
-class MockRegisterLocalDataSourceContract extends _i1.Mock
-    implements _i2.RegisterLocalDataSourceContract {
-  MockRegisterLocalDataSourceContract() {
+class MockRegisterRemoteDataSourceContract extends _i1.Mock
+    implements _i2.RegisterRemoteDataSourceContract {
+  MockRegisterRemoteDataSourceContract() {
     _i1.throwOnMissingStub(this);
   }
 

@@ -21,8 +21,8 @@ class _ChooseWeightWidgetState extends State<ChooseWeightWidget> {
   void initState() {
     super.initState();
     registerCubit = context.read<RegisterCubit>();
-    _currentWeight = registerCubit.weight ?? 70 ;
-    registerCubit.weight = _currentWeight;
+    _currentWeight = registerCubit.surveyData.weight ?? 70;
+    registerCubit.surveyData.weight = _currentWeight;
   }
 
   @override
@@ -53,7 +53,7 @@ class _ChooseWeightWidgetState extends State<ChooseWeightWidget> {
 
             Center(
               child: NumberPicker(
-                value: registerCubit.weight ?? 70,
+                value: registerCubit.surveyData.weight ?? 70,
                 minValue: 50,
                 maxValue: 140,
                 selectedTextStyle: Theme.of(context).textTheme.headlineLarge!
@@ -63,7 +63,7 @@ class _ChooseWeightWidgetState extends State<ChooseWeightWidget> {
                 step: 1,
                 axis: Axis.horizontal,
                 onChanged: (value) => setState(() {
-                  registerCubit.weight = value;
+                  registerCubit.surveyData.weight = value;
                 }),
               ),
             ),

@@ -20,10 +20,10 @@ import '../../features/on_boarding/presentation/view_model/cubit/on_boarding_cub
     as _i786;
 import '../../features/register/api/api_client/register_api_client.dart'
     as _i656;
-import '../../features/register/api/datasources/register_local_data_source_impl.dart'
-    as _i240;
-import '../../features/register/data/datasources/register_local_data_source_contract.dart'
-    as _i1000;
+import '../../features/register/api/datasources/register_remote_data_source_impl.dart'
+    as _i754;
+import '../../features/register/data/datasources/register_remote_data_source_contract.dart'
+    as _i703;
 import '../../features/register/data/repositories/register_repository_impl.dart'
     as _i68;
 import '../../features/register/domain/repositories/register_repository.dart'
@@ -65,12 +65,12 @@ extension GetItInjectableX on _i174.GetIt {
       () => diModule.mealsDio(),
       instanceName: 'mealsDio',
     );
-    gh.factory<_i1000.RegisterLocalDataSourceContract>(
-      () => _i240.RegisterLocalDataSourceImpl(gh<_i656.RegisterApiClient>()),
+    gh.factory<_i703.RegisterRemoteDataSourceContract>(
+      () => _i754.RegisterRemoteDataSourceImpl(gh<_i656.RegisterApiClient>()),
     );
     gh.factory<_i994.RegisterRepository>(
       () => _i68.RegisterRepositoryImpl(
-        gh<_i1000.RegisterLocalDataSourceContract>(),
+        gh<_i703.RegisterRemoteDataSourceContract>(),
       ),
     );
     gh.factory<_i679.RegisterUsecase>(

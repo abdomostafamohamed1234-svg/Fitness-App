@@ -1,7 +1,9 @@
+
 import 'dart:async';
 import 'package:flowery/core/base/base_response.dart';
 import 'package:flowery/core/base/custom_cubit.dart';
 import 'package:flowery/features/register/domain/entities/register_entity.dart';
+import 'package:flowery/features/register/domain/entities/register_survey_data.dart';
 import 'package:flowery/features/register/domain/use_cases/register_usecase.dart';
 import 'package:flowery/features/register/presentation/view_model/cubit/register_events.dart';
 import 'package:flowery/features/register/presentation/view_model/cubit/register_states.dart';
@@ -18,19 +20,15 @@ class RegisterCubit extends CustomCubit<RegisterTempEvents, RegisterState> {
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
   final RegisterUsecase _registerUsecase;
 
-  // Text controllers
+  // Text controllers (used only for normal email/password register)
   TextEditingController firstNameController = TextEditingController();
   TextEditingController lastNameController = TextEditingController();
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
 
-  // Register step data
-  String? gender;
-  int? age;
-  int? weight;
-  int? height;
-  String? goal;
-  String? physicalActivityLevel;
+  // All step-by-step survey data (gender, age, weight, height, goal, activity)
+  // Shared between normal register and social register (Google/Facebook).
+  final RegisterSurveyData surveyData = RegisterSurveyData();
 
   void doIntent(RegisterEvent event) {
     switch (event) {
@@ -51,31 +49,41 @@ class RegisterCubit extends CustomCubit<RegisterTempEvents, RegisterState> {
     }
   }
 
+  /// Normal register with email/password + survey data.
   Future<void> _register() async {
-    debugPrint('Gender: $gender');
-debugPrint('Age: $age');
-debugPrint('Weight: $weight');
-debugPrint('Height: $height');
-debugPrint('Goal: $goal');
-debugPrint('Activity: $physicalActivityLevel');
-    doIntent(ShowLoadingEvent());
-    final response = await _registerUsecase.invoke({
+    final body = {
       'firstName': firstNameController.text,
       'lastName': lastNameController.text,
       'email': emailController.text,
       'password': passwordController.text,
       'rePassword': passwordController.text,
-      'gender': gender,
-      'height': height,
-      'weight': weight,
-      'age': age,
-      'goal': goal,
-      'activityLevel': physicalActivityLevel,
-    });
+      ...surveyData.toJson(),
+    };
+    await _submitRegister(body);
+  }
+
+  /// Social register (Google/Facebook) + survey data.
+  /// [provider] e.g. 'google' or 'facebook'.
+  /// [token] the id/access token returned by the provider SDK.
+  Future<void> registerWithSocial({
+    required String provider,
+    required String token,
+  }) async {
+    final body = {
+      'provider': provider,
+      'token': token,
+      ...surveyData.toJson(),
+    };
+    await _submitRegister(body);
+  }
+
+  Future<void> _submitRegister(Map<String, dynamic> body) async {
+    doIntent(ShowLoadingEvent());
+    final response = await _registerUsecase.invoke(body);
     switch (response) {
       case Success<RegisterEntity>():
         doIntent(HideLoadingEvent());
-        doIntent(ShowMassageEvent(response.data?.message?? 'Success!'));
+        doIntent(ShowMassageEvent(response.data?.message ?? 'Success!'));
         Future.delayed(
           const Duration(seconds: 2),
           () => streamController.add(NavigateToLoginTempEvent()),
@@ -124,5 +132,14 @@ debugPrint('Activity: $physicalActivityLevel');
 
   void _hideLoading() {
     streamController.add(HideLoadingTempEvent());
+  }
+
+  @override
+  Future<void> close() {
+    firstNameController.dispose();
+    lastNameController.dispose();
+    emailController.dispose();
+    passwordController.dispose();
+    return super.close();
   }
 }

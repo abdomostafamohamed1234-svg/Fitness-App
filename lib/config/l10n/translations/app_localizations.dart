@@ -355,6 +355,132 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Kg'**
   String get kg;
+
+  /// No description provided for @heyThere.
+  ///
+  /// In en, this message translates to:
+  /// **'Hey there'**
+  String get heyThere;
+
+  /// No description provided for @createAnAccount.
+  ///
+  /// In en, this message translates to:
+  /// **'Create an Account'**
+  String get createAnAccount;
+
+  /// No description provided for @register.
+  ///
+  /// In en, this message translates to:
+  /// **'Register'**
+  String get register;
+
+  /// No description provided for @firstName.
+  ///
+  /// In en, this message translates to:
+  /// **'First Name'**
+  String get firstName;
+
+  /// No description provided for @lastName.
+  ///
+  /// In en, this message translates to:
+  /// **'Last Name'**
+  String get lastName;
+
+  /// No description provided for @email.
+  ///
+  /// In en, this message translates to:
+  /// **'Email'**
+  String get email;
+
+  /// No description provided for @password.
+  ///
+  /// In en, this message translates to:
+  /// **'Password'**
+  String get password;
+
+  /// No description provided for @or.
+  ///
+  /// In en, this message translates to:
+  /// **'Or'**
+  String get or;
+
+  /// No description provided for @alreadyHaveAnAccount.
+  ///
+  /// In en, this message translates to:
+  /// **'Already Have An Account Yet ? '**
+  String get alreadyHaveAnAccount;
+
+  /// No description provided for @login.
+  ///
+  /// In en, this message translates to:
+  /// **'Login'**
+  String get login;
+
+  /// No description provided for @firstNameRequired.
+  ///
+  /// In en, this message translates to:
+  /// **'First Name is required'**
+  String get firstNameRequired;
+
+  /// No description provided for @firstNameMinLength.
+  ///
+  /// In en, this message translates to:
+  /// **'First Name must be at least 2 letters'**
+  String get firstNameMinLength;
+
+  /// No description provided for @lastNameRequired.
+  ///
+  /// In en, this message translates to:
+  /// **'Last Name is required'**
+  String get lastNameRequired;
+
+  /// No description provided for @lastNameMinLength.
+  ///
+  /// In en, this message translates to:
+  /// **'Last Name must be at least 2 letters'**
+  String get lastNameMinLength;
+
+  /// No description provided for @emailRequired.
+  ///
+  /// In en, this message translates to:
+  /// **'Email is required'**
+  String get emailRequired;
+
+  /// No description provided for @invalidEmail.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter a valid email'**
+  String get invalidEmail;
+
+  /// No description provided for @passwordRequired.
+  ///
+  /// In en, this message translates to:
+  /// **'Password is required'**
+  String get passwordRequired;
+
+  /// No description provided for @invalidPassword.
+  ///
+  /// In en, this message translates to:
+  /// **'Password must be at least 8 characters and include an uppercase letter, a lowercase letter, a number and a special character'**
+  String get invalidPassword;
+
+  /// No description provided for @invalidConfirmPassword.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter a valid password'**
+  String get invalidConfirmPassword;
+
+  /// No description provided for @passwordMismatch.
+  ///
+  /// In en, this message translates to:
+  /// **'Passwords do not match'**
+  String get passwordMismatch;
+
+  /// No description provided for @invalidPhoneNumber.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter a valid phone number'**
+  String get invalidPhoneNumber;
 }
 
 class _AppLocalizationsDelegate
