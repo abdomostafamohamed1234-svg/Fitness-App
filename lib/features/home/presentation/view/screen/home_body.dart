@@ -65,14 +65,17 @@ class HomeBody extends StatelessWidget {
                         const SizedBox(height: 24),
 
                         // ===== UPCOMING WORKOUTS (chips + cards) =====
-                        _buildSection(
-                          state: state.workOutState,
-                          shimmer: const WorkoutShimmer(),
-                          loadedBuilder: (data) => WorkoutSectionWidget(
-                            musclesGroup: data.musclesGroup,
-                          ),
-                        ),
+                        const WorkoutSectionWidget(),
                         const SizedBox(height: 24),
+
+                        // _buildSection(
+                        //   state: state.workOutState,
+                        //   shimmer: const WorkoutShimmer(),
+                        //   loadedBuilder: (data) => WorkoutSectionWidget(
+                        //     musclesGroup: data.musclesGroup,
+                        //   ),
+                        // ),
+                        // const SizedBox(height: 24),
 
                         // ===== FOOD / RECOMMENDATION FOR YOU =====
                         _buildSection(
@@ -98,43 +101,44 @@ class HomeBody extends StatelessWidget {
     );
   }
 
-//   Widget _buildSection<T>({
-//     required BaseState<T> state,
-//     required Widget shimmer,
-//     required Widget Function(T data) loadedBuilder,
-//   }) {
-//     if (state.isLoading == true) {
-//       return shimmer;
-//     }
-//     if (state.error != null) {
-//       return Center(
-//         child: Text(
-//           state.error.toString(),
-//           style: const TextStyle(color: Colors.red),
-//         ),
-//       );
-//     }
-//     if (state.data != null) {
-//       return loadedBuilder(state.data as T);
-//     }
-//     return const SizedBox.shrink();
-//   }
-// }
+  //   Widget _buildSection<T>({
+  //     required BaseState<T> state,
+  //     required Widget shimmer,
+  //     required Widget Function(T data) loadedBuilder,
+  //   }) {
+  //     if (state.isLoading == true) {
+  //       return shimmer;
+  //     }
+  //     if (state.error != null) {
+  //       return Center(
+  //         child: Text(
+  //           state.error.toString(),
+  //           style: const TextStyle(color: Colors.red),
+  //         ),
+  //       );
+  //     }
+  //     if (state.data != null) {
+  //       return loadedBuilder(state.data as T);
+  //     }
+  //     return const SizedBox.shrink();
+  //   }
+  // }
 
-Widget _buildSection<T>({
-  required BaseState<T> state,
-  required Widget shimmer,
-  required Widget Function(T data) loadedBuilder,
-}) {
-  return state.when(
-    initial: () => const SizedBox.shrink(),
-    loading: () => shimmer,
-    success: (data) => loadedBuilder(data),
-    error: (exception) => Center(
-      child: Text(
-        exception.toString(),
-        style: const TextStyle(color: Colors.red),
+  Widget _buildSection<T>({
+    required BaseState<T> state,
+    required Widget shimmer,
+    required Widget Function(T data) loadedBuilder,
+  }) {
+    return state.when(
+      initial: () => const SizedBox.shrink(),
+      loading: () => shimmer,
+      success: (data) => loadedBuilder(data),
+      error: (exception) => Center(
+        child: Text(
+          exception.toString(),
+          style: const TextStyle(color: Colors.red),
+        ),
       ),
-    ),
-  );
-}}
+    );
+  }
+}

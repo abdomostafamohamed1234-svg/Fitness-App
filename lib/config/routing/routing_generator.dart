@@ -1,5 +1,6 @@
 import 'package:flowery/config/routing/app_routes.dart';
 import 'package:flowery/features/home/presentation/view/screen/home_Page.dart';
+import 'package:flowery/features/workouts/presentation/view/pages/workouts_page.dart';
 import 'package:flutter/material.dart';
 
 class RouteGenerator {
@@ -10,6 +11,12 @@ class RouteGenerator {
           return MaterialPageRoute(
             builder: (_) => const HomePage(),
           );
+    case AppRoutes.workouts:
+          return MaterialPageRoute(
+            builder: (_) => const WorkoutsPage(),
+          );
+
+
         // case AppRoutes.:
         //   return MaterialPageRoute(
         //     builder: (context) {
