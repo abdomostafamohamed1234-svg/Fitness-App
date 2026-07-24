@@ -26,6 +26,18 @@ import '../../features/home/domian/repository/home_repository_contract.dart'
     as _i689;
 import '../../features/home/domian/use_case/use_case.dart' as _i497;
 import '../../features/home/presentation/view_model/home_cubit.dart' as _i940;
+import '../../features/popular_training/api/api_client/popular_training_api_client.dart'
+    as _i763;
+import '../../features/popular_training/api/datasource/popular_training_datasource_impl.dart'
+    as _i439;
+import '../../features/popular_training/data/repository/popular_training_repository_impl.dart'
+    as _i234;
+import '../../features/popular_training/domain/repository/popular_training_repository_contract.dart'
+    as _i539;
+import '../../features/popular_training/domain/usecase/get_exercises_usecase.dart'
+    as _i1048;
+import '../../features/popular_training/presentation/view_model/popular_training_cubit.dart'
+    as _i695;
 import '../helpers/shared_preferences/shared_preferences_helper.dart' as _i425;
 import 'di_module.dart' as _i211;
 
@@ -52,8 +64,29 @@ extension GetItInjectableX on _i174.GetIt {
       () => _i273.LocaleCubit(gh<_i425.SharedPreferencesHelper>()),
     );
     gh.factory<_i592.HomeApiClient>(() => _i592.HomeApiClient(gh<_i361.Dio>()));
+    gh.factory<_i763.PopularTrainingApiClient>(
+      () => _i763.PopularTrainingApiClient(gh<_i361.Dio>()),
+    );
+    gh.factory<_i439.PopularTrainingRemoteDataSource>(
+      () => _i439.PopularTrainingRemoteDataSourceImpl(
+        gh<_i763.PopularTrainingApiClient>(),
+      ),
+    );
+    gh.factory<_i539.PopularTrainingRepository>(
+      () => _i234.PopularTrainingRepositoryImpl(
+        gh<_i439.PopularTrainingRemoteDataSource>(),
+      ),
+    );
+    gh.factory<_i1048.GetPopularTrainingUseCase>(
+      () => _i1048.GetPopularTrainingUseCase(
+        gh<_i539.PopularTrainingRepository>(),
+      ),
+    );
     gh.factory<_i656.HomeRemoteDataSourceContract>(
       () => _i792.HomeRemoteDataSourceImpl(gh<_i592.HomeApiClient>()),
+    );
+    gh.factory<_i695.PopularTrainingCubit>(
+      () => _i695.PopularTrainingCubit(gh<_i1048.GetPopularTrainingUseCase>()),
     );
     gh.factory<_i689.HomeRepositoryContract>(
       () => _i9.HomeRepositoryImpl(gh<_i656.HomeRemoteDataSourceContract>()),

@@ -42,5 +42,11 @@ class AppEndPoints {
 
   static const String recommendationToDay = "/muscles/random";
   static const String upcomingWorkOut = "/muscles";
-  static const String foodForYou ="https://www.themealdb.com/api/json/v1/1/categories.php";
+  static const String foodForYou =
+      "https://www.themealdb.com/api/json/v1/1/categories.php";
+
+  // ===================== popular training =====================
+
+  static const String getExercisesByPrimeMoverMuscleAndDifficultyLevel =
+      "/exercises/by-muscle-difficulty";
 }

@@ -12,6 +12,8 @@ import 'package:flowery/features/home/presentation/view/widgets/workout_section_
 import 'package:flowery/features/home/presentation/view_model/home_cubit.dart';
 import 'package:flowery/features/home/presentation/view_model/home_event.dart';
 import 'package:flowery/features/home/presentation/view_model/home_state.dart';
+import 'package:flowery/features/popular_training/presentation/view/widget/popular_training_secton.dart';
+import 'package:flowery/features/popular_training/presentation/view_model/popular_training_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -84,7 +86,11 @@ class HomeBody extends StatelessWidget {
                         const SizedBox(height: 24),
 
                         // ===== POPULAR TRAINING (static) =====
-                        const PopularTrainingSectionWidget(),
+                           BlocProvider(
+                          create: (_) => getIt<PopularTrainingCubit>(),
+                          child: const PopularTrainingSection(),
+                        ),
+                        // const PopularTrainingSectionWidget(),
                         const SizedBox(height: 32),
                       ],
                     ),
