@@ -1,5 +1,6 @@
 import 'package:flowery/config/di/di_config.dart';
 import 'package:flowery/config/routing/app_routes.dart';
+import 'package:flowery/features/login/presentation/view/login_screen.dart';
 import 'package:flowery/features/on_boarding/presentation/screens/on_boarding_screen.dart';
 import 'package:flowery/features/on_boarding/presentation/view_model/cubit/on_boarding_cubit.dart';
 import 'package:flowery/features/food/presentation/screens/food_recommendation_screen.dart';
@@ -12,6 +13,9 @@ class RouteGenerator {
   static Route<dynamic> getRoute(RouteSettings settings) {
     try {
       switch (settings.name) {
+        case AppRoutes.login:
+          return MaterialPageRoute(builder: (_) => const LoginPage());
+
         case AppRoutes.onBoarding:
           return MaterialPageRoute(
             builder: (_) => BlocProvider(
