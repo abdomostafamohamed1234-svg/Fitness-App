@@ -16,6 +16,7 @@ import 'package:injectable/injectable.dart' as _i526;
 import 'package:shared_preferences/shared_preferences.dart' as _i460;
 
 import '../../core/cubits/locale/locale_cubit.dart' as _i273;
+<<<<<<< HEAD
 import '../../features/food/api/api_client/food_api_client.dart' as _i310;
 import '../../features/food/api/data_sources/food_remote_data_source_impl.dart'
     as _i58;
@@ -43,6 +44,24 @@ import '../../features/login/domain/use_case/login_use_case.dart' as _i168;
 import '../../features/login/presentation/view_model/cubit.dart' as _i272;
 import '../../features/on_boarding/presentation/view_model/cubit/on_boarding_cubit.dart'
     as _i786;
+=======
+import '../../features/on_boarding/presentation/view_model/cubit/on_boarding_cubit.dart'
+    as _i786;
+import '../../features/register/api/api_client/register_api_client.dart'
+    as _i656;
+import '../../features/register/api/datasources/register_remote_data_source_impl.dart'
+    as _i754;
+import '../../features/register/data/datasources/register_remote_data_source_contract.dart'
+    as _i703;
+import '../../features/register/data/repositories/register_repository_impl.dart'
+    as _i68;
+import '../../features/register/domain/repositories/register_repository.dart'
+    as _i994;
+import '../../features/register/domain/use_cases/register_usecase.dart'
+    as _i679;
+import '../../features/register/presentation/view_model/cubit/register_cubit.dart'
+    as _i278;
+>>>>>>> 738a3f79a59f2f66fc793e82d0ade7003db966d5
 import '../helpers/shared_preferences/shared_preferences_helper.dart' as _i425;
 import 'di_module.dart' as _i211;
 
@@ -69,13 +88,19 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i273.LocaleCubit>(
       () => _i273.LocaleCubit(gh<_i425.SharedPreferencesHelper>()),
     );
+<<<<<<< HEAD
     gh.factory<_i387.LoginApiClient>(
       () => _i387.LoginApiClient(gh<_i361.Dio>()),
+=======
+    gh.factory<_i656.RegisterApiClient>(
+      () => _i656.RegisterApiClient(gh<_i361.Dio>()),
+>>>>>>> 738a3f79a59f2f66fc793e82d0ade7003db966d5
     );
     gh.singleton<_i361.Dio>(
       () => diModule.mealsDio(),
       instanceName: 'mealsDio',
     );
+<<<<<<< HEAD
     gh.factory<_i80.LoginRemoteDataSourceContract>(
       () => _i365.LoginRemoteDataSourceImpl(gh<_i387.LoginApiClient>()),
     );
@@ -113,6 +138,22 @@ extension GetItInjectableX on _i174.GetIt {
         gh<_i687.GetMealDetailsUseCase>(),
       ),
     );
+=======
+    gh.factory<_i703.RegisterRemoteDataSourceContract>(
+      () => _i754.RegisterRemoteDataSourceImpl(gh<_i656.RegisterApiClient>()),
+    );
+    gh.factory<_i994.RegisterRepository>(
+      () => _i68.RegisterRepositoryImpl(
+        gh<_i703.RegisterRemoteDataSourceContract>(),
+      ),
+    );
+    gh.factory<_i679.RegisterUsecase>(
+      () => _i679.RegisterUsecase(gh<_i994.RegisterRepository>()),
+    );
+    gh.factory<_i278.RegisterCubit>(
+      () => _i278.RegisterCubit(gh<_i679.RegisterUsecase>()),
+    );
+>>>>>>> 738a3f79a59f2f66fc793e82d0ade7003db966d5
     return this;
   }
 }

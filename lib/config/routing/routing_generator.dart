@@ -3,6 +3,7 @@ import 'package:flowery/config/routing/app_routes.dart';
 import 'package:flowery/features/login/presentation/view/login_screen.dart';
 import 'package:flowery/features/on_boarding/presentation/screens/on_boarding_screen.dart';
 import 'package:flowery/features/on_boarding/presentation/view_model/cubit/on_boarding_cubit.dart';
+import 'package:flowery/features/register/presentation/view/pages/register_page.dart';
 import 'package:flowery/features/food/presentation/screens/food_recommendation_screen.dart';
 import 'package:flowery/features/food/presentation/view_model/cubit/food_cubit.dart';
 import 'package:flowery/features/food/presentation/view_model/events/food_events.dart';
@@ -23,6 +24,13 @@ class RouteGenerator {
               child: const OnBoardingScreen(),
             ),
           );
+        case AppRoutes.register:
+          return MaterialPageRoute(
+            builder: (_) => const RegisterPage(),
+          );
+
+        // case AppRoutes.login:
+        //   return MaterialPageRoute(builder: (_) => const LoginPage());
 
         case AppRoutes.food:
           return MaterialPageRoute(

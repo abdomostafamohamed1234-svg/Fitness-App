@@ -48,6 +48,8 @@ dependencies:
   googleapis_auth: ^2.3.2
   geolocator: ^14.0.2
   mocktail: ^1.0.5
+  numberpicker: ^2.1.2
+  mockito: ^5.4.4
 
 dev_dependencies:
   fake_cloud_firestore: ^4.1.1

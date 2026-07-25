@@ -200,6 +200,7 @@ abstract class AppLocalizations {
   /// **'Do IT'**
   String get do_it;
 
+<<<<<<< HEAD
   /// No description provided for @food_recommendation.
   ///
   /// In en, this message translates to:
@@ -241,6 +242,289 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Fats'**
   String get fats;
+=======
+  /// No description provided for @message.
+  ///
+  /// In en, this message translates to:
+  /// **'Message'**
+  String get message;
+
+  /// No description provided for @ok.
+  ///
+  /// In en, this message translates to:
+  /// **'OK'**
+  String get ok;
+
+  /// No description provided for @howOldAreYou.
+  ///
+  /// In en, this message translates to:
+  /// **'How Old Are You?'**
+  String get howOldAreYou;
+
+  /// No description provided for @personalizedPlanHint.
+  ///
+  /// In en, this message translates to:
+  /// **'This helps us create your personalized plan'**
+  String get personalizedPlanHint;
+
+  /// No description provided for @year.
+  ///
+  /// In en, this message translates to:
+  /// **'Year'**
+  String get year;
+
+  /// No description provided for @tellUsAboutYourself.
+  ///
+  /// In en, this message translates to:
+  /// **'Tell Us About Yourself!'**
+  String get tellUsAboutYourself;
+
+  /// No description provided for @weNeedToKnowYourGender.
+  ///
+  /// In en, this message translates to:
+  /// **'We need to know your gender'**
+  String get weNeedToKnowYourGender;
+
+  /// No description provided for @male.
+  ///
+  /// In en, this message translates to:
+  /// **'Male'**
+  String get male;
+
+  /// No description provided for @female.
+  ///
+  /// In en, this message translates to:
+  /// **'Female'**
+  String get female;
+
+  /// No description provided for @whatIsYourGoal.
+  ///
+  /// In en, this message translates to:
+  /// **'What is Your Goal?'**
+  String get whatIsYourGoal;
+
+  /// No description provided for @gainWeight.
+  ///
+  /// In en, this message translates to:
+  /// **'Gain Weight'**
+  String get gainWeight;
+
+  /// No description provided for @loseWeight.
+  ///
+  /// In en, this message translates to:
+  /// **'Lose Weight'**
+  String get loseWeight;
+
+  /// No description provided for @getFitter.
+  ///
+  /// In en, this message translates to:
+  /// **'Get Fitter'**
+  String get getFitter;
+
+  /// No description provided for @gainMoreFlexible.
+  ///
+  /// In en, this message translates to:
+  /// **'Gain More Flexible'**
+  String get gainMoreFlexible;
+
+  /// No description provided for @learnTheBasics.
+  ///
+  /// In en, this message translates to:
+  /// **'Learn The Basics'**
+  String get learnTheBasics;
+
+  /// No description provided for @whatIsYourHeight.
+  ///
+  /// In en, this message translates to:
+  /// **'What is Your Height?'**
+  String get whatIsYourHeight;
+
+  /// No description provided for @cm.
+  ///
+  /// In en, this message translates to:
+  /// **'CM'**
+  String get cm;
+
+  /// No description provided for @physicalActivityLevel.
+  ///
+  /// In en, this message translates to:
+  /// **'Your Regular Physical Activity Level'**
+  String get physicalActivityLevel;
+
+  /// No description provided for @rookie.
+  ///
+  /// In en, this message translates to:
+  /// **'Rookie'**
+  String get rookie;
+
+  /// No description provided for @beginner.
+  ///
+  /// In en, this message translates to:
+  /// **'Beginner'**
+  String get beginner;
+
+  /// No description provided for @intermediate.
+  ///
+  /// In en, this message translates to:
+  /// **'Intermediate'**
+  String get intermediate;
+
+  /// No description provided for @advance.
+  ///
+  /// In en, this message translates to:
+  /// **'Advance'**
+  String get advance;
+
+  /// No description provided for @trueBeast.
+  ///
+  /// In en, this message translates to:
+  /// **'True Beast'**
+  String get trueBeast;
+
+  /// No description provided for @submit.
+  ///
+  /// In en, this message translates to:
+  /// **'Submit'**
+  String get submit;
+
+  /// No description provided for @whatIsYourWeight.
+  ///
+  /// In en, this message translates to:
+  /// **'What is Your Weight?'**
+  String get whatIsYourWeight;
+
+  /// No description provided for @kg.
+  ///
+  /// In en, this message translates to:
+  /// **'Kg'**
+  String get kg;
+
+  /// No description provided for @heyThere.
+  ///
+  /// In en, this message translates to:
+  /// **'Hey there'**
+  String get heyThere;
+
+  /// No description provided for @createAnAccount.
+  ///
+  /// In en, this message translates to:
+  /// **'Create an Account'**
+  String get createAnAccount;
+
+  /// No description provided for @register.
+  ///
+  /// In en, this message translates to:
+  /// **'Register'**
+  String get register;
+
+  /// No description provided for @firstName.
+  ///
+  /// In en, this message translates to:
+  /// **'First Name'**
+  String get firstName;
+
+  /// No description provided for @lastName.
+  ///
+  /// In en, this message translates to:
+  /// **'Last Name'**
+  String get lastName;
+
+  /// No description provided for @email.
+  ///
+  /// In en, this message translates to:
+  /// **'Email'**
+  String get email;
+
+  /// No description provided for @password.
+  ///
+  /// In en, this message translates to:
+  /// **'Password'**
+  String get password;
+
+  /// No description provided for @or.
+  ///
+  /// In en, this message translates to:
+  /// **'Or'**
+  String get or;
+
+  /// No description provided for @alreadyHaveAnAccount.
+  ///
+  /// In en, this message translates to:
+  /// **'Already Have An Account Yet ? '**
+  String get alreadyHaveAnAccount;
+
+  /// No description provided for @login.
+  ///
+  /// In en, this message translates to:
+  /// **'Login'**
+  String get login;
+
+  /// No description provided for @firstNameRequired.
+  ///
+  /// In en, this message translates to:
+  /// **'First Name is required'**
+  String get firstNameRequired;
+
+  /// No description provided for @firstNameMinLength.
+  ///
+  /// In en, this message translates to:
+  /// **'First Name must be at least 2 letters'**
+  String get firstNameMinLength;
+
+  /// No description provided for @lastNameRequired.
+  ///
+  /// In en, this message translates to:
+  /// **'Last Name is required'**
+  String get lastNameRequired;
+
+  /// No description provided for @lastNameMinLength.
+  ///
+  /// In en, this message translates to:
+  /// **'Last Name must be at least 2 letters'**
+  String get lastNameMinLength;
+
+  /// No description provided for @emailRequired.
+  ///
+  /// In en, this message translates to:
+  /// **'Email is required'**
+  String get emailRequired;
+
+  /// No description provided for @invalidEmail.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter a valid email'**
+  String get invalidEmail;
+
+  /// No description provided for @passwordRequired.
+  ///
+  /// In en, this message translates to:
+  /// **'Password is required'**
+  String get passwordRequired;
+
+  /// No description provided for @invalidPassword.
+  ///
+  /// In en, this message translates to:
+  /// **'Password must be at least 8 characters and include an uppercase letter, a lowercase letter, a number and a special character'**
+  String get invalidPassword;
+
+  /// No description provided for @invalidConfirmPassword.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter a valid password'**
+  String get invalidConfirmPassword;
+
+  /// No description provided for @passwordMismatch.
+  ///
+  /// In en, this message translates to:
+  /// **'Passwords do not match'**
+  String get passwordMismatch;
+
+  /// No description provided for @invalidPhoneNumber.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter a valid phone number'**
+  String get invalidPhoneNumber;
+>>>>>>> 738a3f79a59f2f66fc793e82d0ade7003db966d5
 }
 
 class _AppLocalizationsDelegate
