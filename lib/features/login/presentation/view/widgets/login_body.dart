@@ -1,7 +1,10 @@
+import 'package:flowery/config/routing/app_routes.dart';
+import 'package:flowery/config/routing/routing_extensions.dart';
 import 'package:flowery/core/base/base_state.dart';
 import 'package:flowery/core/theme/app_colors.dart';
 import 'package:flowery/core/widgets/glass_container.dart';
 import 'package:flowery/core/widgets/social_button.dart';
+import 'package:flowery/features/auth_with_social_media/presentation/view/widgets/social_auth_buttons_row.dart';
 import 'package:flowery/features/login/presentation/view_model/cubit.dart';
 import 'package:flowery/features/login/presentation/view_model/event.dart';
 import 'package:flowery/features/login/presentation/view_model/state.dart';
@@ -40,7 +43,10 @@ class _LoginBodyState extends State<LoginBody> {
   }) {
     return InputDecoration(
       hintText: hint,
-      hintStyle: TextStyle(color: Colors.white.withValues(alpha: 0.7), fontSize: 12),
+      hintStyle: TextStyle(
+        color: Colors.white.withValues(alpha: 0.7),
+        fontSize: 12,
+      ),
       prefixIcon: Icon(prefixIcon, color: Colors.white, size: 18),
       suffixIcon: suffixIcon,
       filled: true,
@@ -73,10 +79,15 @@ class _LoginBodyState extends State<LoginBody> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Text('Hey There', style: TextStyle(color: Colors.white, fontSize: 12)),
+          const Text(
+            'Hey There',
+            style: TextStyle(color: Colors.white, fontSize: 12),
+          ),
           Text(
             'WELCOME BACK',
-            style: Theme.of(context).textTheme.headlineLarge?.copyWith(fontSize: 20),
+            style: Theme.of(
+              context,
+            ).textTheme.headlineLarge?.copyWith(fontSize: 20),
           ),
           SizedBox(height: height * 0.03),
           GlassContainer(
@@ -84,7 +95,9 @@ class _LoginBodyState extends State<LoginBody> {
               Text(
                 'Login',
                 textAlign: TextAlign.center,
-                style: Theme.of(context).textTheme.headlineLarge?.copyWith(fontSize: 20),
+                style: Theme.of(
+                  context,
+                ).textTheme.headlineLarge?.copyWith(fontSize: 20),
               ),
               SizedBox(height: height * 0.03),
 
@@ -147,7 +160,10 @@ class _LoginBodyState extends State<LoginBody> {
                   Expanded(child: Divider(color: Colors.white24, thickness: 1)),
                   Padding(
                     padding: EdgeInsets.symmetric(horizontal: 12),
-                    child: Text('Or', style: TextStyle(color: Colors.white54, fontSize: 12)),
+                    child: Text(
+                      'Or',
+                      style: TextStyle(color: Colors.white54, fontSize: 12),
+                    ),
                   ),
                   Expanded(child: Divider(color: Colors.white24, thickness: 1)),
                 ],
@@ -155,16 +171,17 @@ class _LoginBodyState extends State<LoginBody> {
               const SizedBox(height: 16),
 
               // Social login icons
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  SocialButton(icon: Icons.facebook, onTap: () {}),
-                  const SizedBox(width: 20),
-                  SocialButton(label: 'G', onTap: () {}),
-                  const SizedBox(width: 20),
-                  SocialButton(icon: Icons.apple, onTap: () {}),
-                ],
-              ),
+              // Row(
+              //   mainAxisAlignment: MainAxisAlignment.center,
+              //   children: [
+              //     SocialButton(icon: Icons.facebook, onTap: () {}),
+              //     const SizedBox(width: 20),
+              //     SocialButton(label: 'G', onTap: () {}),
+              //     const SizedBox(width: 20),
+              //     SocialButton(icon: Icons.apple, onTap: () {}),
+              //   ],
+              // ),
+              const SocialAuthButtonsRow(),
               SizedBox(height: height * 0.03),
 
               _LoginButton(loginCubit: widget.loginCubit),
@@ -179,7 +196,10 @@ class _LoginBodyState extends State<LoginBody> {
                     style: TextStyle(color: Colors.white70, fontSize: 13),
                   ),
                   GestureDetector(
-                    onTap: () => widget.loginCubit.doEvent(NavigateToRegisterEvent()),
+                    onTap: () {
+                      context.pushNamed(AppRoutes.register);
+                    },
+
                     child: const Text(
                       'Register',
                       style: TextStyle(
@@ -239,7 +259,9 @@ class _LoginButton extends StatelessWidget {
                   )
                 : Text(
                     'Login',
-                    style: Theme.of(context).textTheme.titleLarge?.copyWith(fontSize: 14),
+                    style: Theme.of(
+                      context,
+                    ).textTheme.titleLarge?.copyWith(fontSize: 14),
                   ),
           ),
         );

@@ -1,4 +1,5 @@
 import 'package:flowery/config/di/di_config.dart';
+import 'package:flowery/config/routing/app_routes.dart';
 import 'package:flowery/core/theme/app_assets.dart';
 import 'package:flowery/core/theme/app_colors.dart';
 import 'package:flowery/features/login/presentation/view/widgets/login_body.dart';
@@ -25,10 +26,10 @@ class LoginPage extends StatelessWidget {
                 initial: () {},
                 loading: () {},
                 success: (data) {
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    SnackBar(content: Text(data.message)),
-                  );
-                  // Navigator.pushReplacementNamed(context, AppRoutes.home);
+                  // ScaffoldMessenger.of(context).showSnackBar(
+                  //   SnackBar(content: Text(data.message)),
+                  // );
+                  Navigator.pushReplacementNamed(context, AppRoutes.home);
                 },
                 error: (exception) {
                   ScaffoldMessenger.of(context).showSnackBar(

@@ -1,4 +1,6 @@
 import 'package:flowery/config/helpers/validations/validators.dart';
+import 'package:flowery/config/routing/app_routes.dart';
+import 'package:flowery/config/routing/routing_extensions.dart';
 import 'package:flowery/core/widgets/glass_container.dart';
 import 'package:flowery/features/auth_with_social_media/presentation/view/widgets/social_auth_buttons_row.dart';
 import 'package:flowery/features/register/presentation/view/widgets/social_button.dart';
@@ -18,19 +20,31 @@ class RegisterBody extends StatefulWidget {
 class _RegisterBodyState extends State<RegisterBody> {
   bool _obscure = true;
 
-  String? _errorMessage(BuildContext context, ValidationError? error, String fieldName) {
+  String? _errorMessage(
+    BuildContext context,
+    ValidationError? error,
+    String fieldName,
+  ) {
     final loc = AppLocalizations.of(context)!;
     switch (error) {
       case null:
         return null;
       case ValidationError.required:
-        return fieldName == 'First Name' ? loc.firstNameRequired :
-               fieldName == 'Last Name' ? loc.lastNameRequired :
-               fieldName == 'Email' ? loc.emailRequired :
-               fieldName == 'Password' ? loc.passwordRequired : '$fieldName is required';
+        return fieldName == 'First Name'
+            ? loc.firstNameRequired
+            : fieldName == 'Last Name'
+            ? loc.lastNameRequired
+            : fieldName == 'Email'
+            ? loc.emailRequired
+            : fieldName == 'Password'
+            ? loc.passwordRequired
+            : '$fieldName is required';
       case ValidationError.invalidName:
-        return fieldName == 'First Name' ? loc.firstNameMinLength :
-               fieldName == 'Last Name' ? loc.lastNameMinLength : '$fieldName must be at least 2 letters';
+        return fieldName == 'First Name'
+            ? loc.firstNameMinLength
+            : fieldName == 'Last Name'
+            ? loc.lastNameMinLength
+            : '$fieldName must be at least 2 letters';
       case ValidationError.invalidEmail:
         return loc.invalidEmail;
       case ValidationError.invalidPassword:
@@ -56,7 +70,10 @@ class _RegisterBodyState extends State<RegisterBody> {
         children: [
           Text(
             loc.heyThere,
-            style: TextStyle(color: Theme.of(context).colorScheme.onSurface, fontSize: 12),
+            style: TextStyle(
+              color: Theme.of(context).colorScheme.onSurface,
+              fontSize: 12,
+            ),
           ),
           Text(
             loc.createAnAccount,
@@ -77,17 +94,23 @@ class _RegisterBodyState extends State<RegisterBody> {
 
               TextFormField(
                 controller: registerCubit.firstNameController,
-                validator: (v) => _errorMessage(context, 
+                validator: (v) => _errorMessage(
+                  context,
                   Validations.validateName(v),
                   'First Name',
                 ),
-                style: TextStyle(color: Theme.of(context).colorScheme.onSurface, fontSize: 16),
+                style: TextStyle(
+                  color: Theme.of(context).colorScheme.onSurface,
+                  fontSize: 16,
+                ),
                 cursorColor: Theme.of(context).colorScheme.onSurface,
                 decoration: InputDecoration(
                   hintText: loc.firstName,
                   hintStyle: TextStyle(
                     // ignore: deprecated_member_use
-                    color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.7),
+                    color: Theme.of(
+                      context,
+                    ).colorScheme.onSurface.withValues(alpha: 0.7),
                     fontSize: 12,
                   ),
                   prefixIcon: Icon(
@@ -110,15 +133,24 @@ class _RegisterBodyState extends State<RegisterBody> {
                   ),
                   focusedBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(30),
-                    borderSide: BorderSide(color: Theme.of(context).colorScheme.onSurface, width: 2),
+                    borderSide: BorderSide(
+                      color: Theme.of(context).colorScheme.onSurface,
+                      width: 2,
+                    ),
                   ),
                   errorBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(30),
-                    borderSide: BorderSide(color: Theme.of(context).colorScheme.error, width: 1.5),
+                    borderSide: BorderSide(
+                      color: Theme.of(context).colorScheme.error,
+                      width: 1.5,
+                    ),
                   ),
                   focusedErrorBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(30),
-                    borderSide: BorderSide(color: Theme.of(context).colorScheme.error, width: 2),
+                    borderSide: BorderSide(
+                      color: Theme.of(context).colorScheme.error,
+                      width: 2,
+                    ),
                   ),
                 ),
               ),
@@ -126,17 +158,23 @@ class _RegisterBodyState extends State<RegisterBody> {
               SizedBox(height: height * 0.02),
               TextFormField(
                 controller: registerCubit.lastNameController,
-                validator: (v) => _errorMessage(context, 
+                validator: (v) => _errorMessage(
+                  context,
                   Validations.validateName(v),
                   'Last Name',
                 ),
-                style: TextStyle(color: Theme.of(context).colorScheme.onSurface, fontSize: 16),
+                style: TextStyle(
+                  color: Theme.of(context).colorScheme.onSurface,
+                  fontSize: 16,
+                ),
                 cursorColor: Theme.of(context).colorScheme.onSurface,
                 decoration: InputDecoration(
                   hintText: loc.lastName,
                   hintStyle: TextStyle(
                     // ignore: deprecated_member_use
-                    color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.7),
+                    color: Theme.of(
+                      context,
+                    ).colorScheme.onSurface.withValues(alpha: 0.7),
                     fontSize: 12,
                   ),
                   prefixIcon: Icon(
@@ -159,15 +197,24 @@ class _RegisterBodyState extends State<RegisterBody> {
                   ),
                   focusedBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(30),
-                    borderSide: BorderSide(color: Theme.of(context).colorScheme.onSurface, width: 2),
+                    borderSide: BorderSide(
+                      color: Theme.of(context).colorScheme.onSurface,
+                      width: 2,
+                    ),
                   ),
                   errorBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(30),
-                    borderSide: BorderSide(color: Theme.of(context).colorScheme.error, width: 1.5),
+                    borderSide: BorderSide(
+                      color: Theme.of(context).colorScheme.error,
+                      width: 1.5,
+                    ),
                   ),
                   focusedErrorBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(30),
-                    borderSide: BorderSide(color: Theme.of(context).colorScheme.error, width: 2),
+                    borderSide: BorderSide(
+                      color: Theme.of(context).colorScheme.error,
+                      width: 2,
+                    ),
                   ),
                 ),
               ),
@@ -175,17 +222,23 @@ class _RegisterBodyState extends State<RegisterBody> {
               SizedBox(height: height * 0.02),
               TextFormField(
                 controller: registerCubit.emailController,
-                validator: (v) => _errorMessage(context, 
+                validator: (v) => _errorMessage(
+                  context,
                   Validations.validateEmail(v),
                   'Email',
                 ),
-                style: TextStyle(color: Theme.of(context).colorScheme.onSurface, fontSize: 16),
+                style: TextStyle(
+                  color: Theme.of(context).colorScheme.onSurface,
+                  fontSize: 16,
+                ),
                 cursorColor: Theme.of(context).colorScheme.onSurface,
                 decoration: InputDecoration(
                   hintText: loc.email,
                   hintStyle: TextStyle(
                     // ignore: deprecated_member_use
-                    color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.7),
+                    color: Theme.of(
+                      context,
+                    ).colorScheme.onSurface.withValues(alpha: 0.7),
                     fontSize: 12,
                   ),
                   prefixIcon: Icon(
@@ -208,15 +261,24 @@ class _RegisterBodyState extends State<RegisterBody> {
                   ),
                   focusedBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(30),
-                    borderSide: BorderSide(color: Theme.of(context).colorScheme.onSurface, width: 2),
+                    borderSide: BorderSide(
+                      color: Theme.of(context).colorScheme.onSurface,
+                      width: 2,
+                    ),
                   ),
                   errorBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(30),
-                    borderSide: BorderSide(color: Theme.of(context).colorScheme.error, width: 1.5),
+                    borderSide: BorderSide(
+                      color: Theme.of(context).colorScheme.error,
+                      width: 1.5,
+                    ),
                   ),
                   focusedErrorBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(30),
-                    borderSide: BorderSide(color: Theme.of(context).colorScheme.error, width: 2),
+                    borderSide: BorderSide(
+                      color: Theme.of(context).colorScheme.error,
+                      width: 2,
+                    ),
                   ),
                 ),
               ),
@@ -225,18 +287,24 @@ class _RegisterBodyState extends State<RegisterBody> {
 
               TextFormField(
                 controller: registerCubit.passwordController,
-                validator: (v) => _errorMessage(context, 
+                validator: (v) => _errorMessage(
+                  context,
                   Validations.validatePassword(v),
                   'Password',
                 ),
                 obscureText: _obscure,
-                style: TextStyle(color: Theme.of(context).colorScheme.onSurface, fontSize: 16),
+                style: TextStyle(
+                  color: Theme.of(context).colorScheme.onSurface,
+                  fontSize: 16,
+                ),
                 cursorColor: Theme.of(context).colorScheme.onSurface,
                 decoration: InputDecoration(
                   hintText: loc.password,
                   hintStyle: TextStyle(
                     // ignore: deprecated_member_use
-                    color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.7),
+                    color: Theme.of(
+                      context,
+                    ).colorScheme.onSurface.withValues(alpha: 0.7),
                     fontSize: 12,
                   ),
                   prefixIcon: Icon(
@@ -264,15 +332,24 @@ class _RegisterBodyState extends State<RegisterBody> {
                   ),
                   focusedBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(30),
-                    borderSide: BorderSide(color: Theme.of(context).colorScheme.onSurface, width: 2),
+                    borderSide: BorderSide(
+                      color: Theme.of(context).colorScheme.onSurface,
+                      width: 2,
+                    ),
                   ),
                   errorBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(30),
-                    borderSide: BorderSide(color: Theme.of(context).colorScheme.error, width: 1.5),
+                    borderSide: BorderSide(
+                      color: Theme.of(context).colorScheme.error,
+                      width: 1.5,
+                    ),
                   ),
                   focusedErrorBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(30),
-                    borderSide: BorderSide(color: Theme.of(context).colorScheme.error, width: 2),
+                    borderSide: BorderSide(
+                      color: Theme.of(context).colorScheme.error,
+                      width: 2,
+                    ),
                   ),
                 ),
               ),
@@ -281,15 +358,34 @@ class _RegisterBodyState extends State<RegisterBody> {
               // ── Divider with "Or" ─────────────────────────
               Row(
                 children: [
-                  Expanded(child: Divider(color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.24), thickness: 1)),
+                  Expanded(
+                    child: Divider(
+                      color: Theme.of(
+                        context,
+                      ).colorScheme.onSurface.withValues(alpha: 0.24),
+                      thickness: 1,
+                    ),
+                  ),
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 12),
                     child: Text(
                       loc.or,
-                      style: TextStyle(color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.54), fontSize: 12),
+                      style: TextStyle(
+                        color: Theme.of(
+                          context,
+                        ).colorScheme.onSurface.withValues(alpha: 0.54),
+                        fontSize: 12,
+                      ),
                     ),
                   ),
-                  Expanded(child: Divider(color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.24), thickness: 1)),
+                  Expanded(
+                    child: Divider(
+                      color: Theme.of(
+                        context,
+                      ).colorScheme.onSurface.withValues(alpha: 0.24),
+                      thickness: 1,
+                    ),
+                  ),
                 ],
               ),
               const SizedBox(height: 10),
@@ -330,10 +426,17 @@ class _RegisterBodyState extends State<RegisterBody> {
                 children: [
                   Text(
                     loc.alreadyHaveAnAccount,
-                    style: TextStyle(color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.7), fontSize: 13),
+                    style: TextStyle(
+                      color: Theme.of(
+                        context,
+                      ).colorScheme.onSurface.withValues(alpha: 0.7),
+                      fontSize: 13,
+                    ),
                   ),
                   GestureDetector(
-                    onTap: () {},
+                    onTap: () {
+                      context.pushNamed(AppRoutes.login);
+                    },
                     child: Text(
                       loc.login,
                       style: TextStyle(
