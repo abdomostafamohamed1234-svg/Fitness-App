@@ -1,5 +1,10 @@
 import 'package:flowery/config/di/di_config.dart';
 import 'package:flowery/config/routing/app_routes.dart';
+import 'package:flowery/features/exercises/presentation/screens/exercises_screen.dart';
+import 'package:flowery/features/exercises/presentation/view_model/cubit/exercise_cubit.dart';
+import 'package:flowery/features/exercises/presentation/view_model/events/exercise_events.dart';
+import 'package:flowery/config/di/di_config.dart';
+import 'package:flowery/config/routing/app_routes.dart';
 import 'package:flowery/features/forget_password/presentation/screens/forget_password_screen.dart';
 import 'package:flowery/features/forget_password/presentation/view_models/cubit/forget_password_view_model.dart';
 import 'package:flowery/features/auth_with_social_media/presentation/view/widgets/social_register_args.dart';

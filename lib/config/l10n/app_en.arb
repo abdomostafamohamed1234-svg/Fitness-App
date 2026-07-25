@@ -90,4 +90,9 @@
   "did_not_receive_verification_code":"Didn't Receive Verification Code?",
   "resend_code":"Resend Code?"
 
+  "unexpectedError": "Unexpected error",
+  "follow_the_plan": "Follow the plan below and pick your difficulty level to get started.",
+   "exercise":"Exercise",
+   "no_exercises_found": "No exercises found for this level"
+
 }

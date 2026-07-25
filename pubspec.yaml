@@ -51,6 +51,9 @@ dependencies:
   googleapis_auth: ^2.3.2
 
   geolocator: ^14.0.2
+  youtube_player_flutter: ^9.1.1
+  mocktail: ^1.0.5
+  
   crypto: ^3.0.6
   mocktail: ^1.0.5
   numberpicker: ^2.1.2
