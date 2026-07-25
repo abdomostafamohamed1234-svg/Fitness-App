@@ -1,0 +1,15 @@
+<resources>
+    <string name="facebook_app_id">1833711234299859</string>
+    <string name="fb_login_protocol_scheme">fb1833711234299859</string>
+    <!-- ⚠️ ناقص كان: لازم تحط الـ Client Token الحقيقي بتاعك هنا.
+         تلاقيه في: Facebook Developers Console → App بتاعك →
+         Settings → Advanced → Client Token -->
+    <string name="facebook_client_token">4e9d806b440583bce45c31499d028ffa</string>
+
+    <!-- ⚠️ ده كان الناقص اللي عمل الـ build يفشل — FacebookActivity في
+         الـ Manifest بتستخدم @string/app_name كـ label، والـ resource ده
+         مكانش موجود خالص. القيمة نفسها مش لازم تبقى نفس android:label
+         بتاع الـ <application> — دي بس اسم بيظهر لو حصل تبديل شاشات
+         (activity switch)، غيّرها لاسم تطبيقك الحقيقي لو حابب. -->
+    <string name="app_name">fitness_app</string>
+</resources>
