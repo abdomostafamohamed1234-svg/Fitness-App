@@ -10,6 +10,8 @@ import 'package:flowery/features/register/presentation/view/pages/register_page.
 import 'package:flowery/features/food/presentation/screens/food_recommendation_screen.dart';
 import 'package:flowery/features/food/presentation/view_model/cubit/food_cubit.dart';
 import 'package:flowery/features/food/presentation/view_model/events/food_events.dart';
+import 'package:flowery/config/routing/app_routes.dart';
+import 'package:flowery/features/home/presentation/view/screen/home_Page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -36,7 +38,10 @@ class RouteGenerator {
               );
             },
           );
-
+             case AppRoutes.home:
+          return MaterialPageRoute(
+            builder: (_) => const HomePage(),
+          );
         // case AppRoutes.login:
         //   return MaterialPageRoute(builder: (_) => const LoginPage());
 
