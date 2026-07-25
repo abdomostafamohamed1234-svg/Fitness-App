@@ -22,5 +22,25 @@
   "energy" : "Energy",
   "protein" : "Protein",
   "carbs" : "Carbs",
-  "fats" : "Fats"
+  "fats" : "Fats",
+  "forget_password":"Forget Password",
+  "enter_your_email":"Enter Your Email",
+  "email":"Email",
+  "please_enter_a_valid_email":"Please enter a valid email",
+  "sent_otp":"Sent Otp",
+  "create_pass":"create pass",
+  "create_new_password":"Create New Password",
+  "make_sure_its_8_character_or_more":"Make Sure Its 8 Characters Or More",
+  "password":"Password",
+  "password_must_be_8_character_or_more":"Password must be 8 characters or more",
+  "password_do_not_match":"Password do not match",
+  "done":"Done",
+  "otp":"otp",
+  "otp_code":"OTP CODE",
+  "enter_your_otp_check_your_email":"Enter Your OTP Check Your Email",
+  "invalid_code_please_try_again":"Invalid code, please try again",
+  "confirm":"Confirm",
+  "did_not_receive_verification_code":"Didn't Receive Verification Code?",
+  "resend_code":"Resend Code?"
+
 }

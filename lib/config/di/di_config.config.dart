@@ -16,6 +16,41 @@ import 'package:injectable/injectable.dart' as _i526;
 import 'package:shared_preferences/shared_preferences.dart' as _i460;
 
 import '../../core/cubits/locale/locale_cubit.dart' as _i273;
+import '../../features/food/api/api_client/food_api_client.dart' as _i310;
+import '../../features/food/api/data_sources/food_remote_data_source_impl.dart'
+    as _i58;
+import '../../features/food/data/data_sources/food_remote_data_source_contract.dart'
+    as _i656;
+import '../../features/food/data/repo/food_repo_impl.dart' as _i20;
+import '../../features/food/domain/repo/food_repo_contract.dart' as _i901;
+import '../../features/food/domain/use_cases/get_meal_details_use_case.dart'
+    as _i687;
+import '../../features/food/domain/use_cases/get_meals_categories_use_case.dart'
+    as _i282;
+import '../../features/food/domain/use_cases/select_meals_category_use_case.dart'
+    as _i904;
+import '../../features/food/presentation/view_model/cubit/food_cubit.dart'
+    as _i660;
+import '../../features/forget_password/api/api_client/forget_password_api_client.dart'
+    as _i892;
+import '../../features/forget_password/api/data_source/forget_password_data_source_imp.dart'
+    as _i495;
+import '../../features/forget_password/data/data_source/forget_password_data_source_contract.dart'
+    as _i492;
+import '../../features/forget_password/data/repo/forget_password_repo_imp.dart'
+    as _i32;
+import '../../features/forget_password/domain/repo/forget_password_repo_contract.dart'
+    as _i665;
+import '../../features/forget_password/domain/use_cases/forget_password_use_case.dart'
+    as _i437;
+import '../../features/forget_password/domain/use_cases/reset_password_use_case.dart'
+    as _i56;
+import '../../features/forget_password/domain/use_cases/verify_email_use_case.dart'
+    as _i524;
+import '../../features/forget_password/presentation/view_models/cubit/forget_password_view_model.dart'
+    as _i916;
+import '../../features/on_boarding/presentation/view_model/cubit/on_boarding_cubit.dart'
+    as _i786;
 import '../helpers/shared_preferences/shared_preferences_helper.dart' as _i425;
 import 'di_module.dart' as _i211;
 
@@ -31,6 +66,7 @@ extension GetItInjectableX on _i174.GetIt {
       () => diModule.sharedPreferences(),
       preResolve: true,
     );
+    gh.factory<_i786.OnBoardingCubit>(() => _i786.OnBoardingCubit());
     gh.singleton<_i361.Dio>(() => diModule.dio());
     gh.lazySingleton<_i558.FlutterSecureStorage>(
       () => diModule.secureStorage(),
@@ -40,6 +76,64 @@ extension GetItInjectableX on _i174.GetIt {
     );
     gh.factory<_i273.LocaleCubit>(
       () => _i273.LocaleCubit(gh<_i425.SharedPreferencesHelper>()),
+    );
+    gh.lazySingleton<_i892.ForgetPasswordApiClient>(
+      () => _i892.ForgetPasswordApiClient(gh<_i361.Dio>()),
+    );
+    gh.singleton<_i361.Dio>(
+      () => diModule.mealsDio(),
+      instanceName: 'mealsDio',
+    );
+    gh.factory<_i492.ForgetPasswordDataSourceContract>(
+      () => _i495.ForgetPasswordDataSourceImp(
+        gh<_i892.ForgetPasswordApiClient>(),
+      ),
+    );
+    gh.factory<_i310.FoodApiClient>(
+      () => _i310.FoodApiClient(gh<_i361.Dio>(instanceName: 'mealsDio')),
+    );
+    gh.factory<_i665.ForgetPasswordRepoContract>(
+      () => _i32.ForgetPasswordRepoImp(
+        gh<_i492.ForgetPasswordDataSourceContract>(),
+      ),
+    );
+    gh.factory<_i437.ForgetPasswordUseCase>(
+      () => _i437.ForgetPasswordUseCase(gh<_i665.ForgetPasswordRepoContract>()),
+    );
+    gh.factory<_i56.ResetPasswordUseCase>(
+      () => _i56.ResetPasswordUseCase(gh<_i665.ForgetPasswordRepoContract>()),
+    );
+    gh.factory<_i524.VerifyEmailUseCase>(
+      () => _i524.VerifyEmailUseCase(gh<_i665.ForgetPasswordRepoContract>()),
+    );
+    gh.factory<_i656.FoodRemoteDataSourceContract>(
+      () => _i58.FoodRemoteDataSourceImpl(gh<_i310.FoodApiClient>()),
+    );
+    gh.factory<_i901.FoodRepoContract>(
+      () => _i20.FoodRepoImpl(gh<_i656.FoodRemoteDataSourceContract>()),
+    );
+    gh.factory<_i916.ForgetPasswordViewModel>(
+      () => _i916.ForgetPasswordViewModel(
+        gh<_i437.ForgetPasswordUseCase>(),
+        gh<_i524.VerifyEmailUseCase>(),
+        gh<_i56.ResetPasswordUseCase>(),
+      ),
+    );
+    gh.factory<_i687.GetMealDetailsUseCase>(
+      () => _i687.GetMealDetailsUseCase(gh<_i901.FoodRepoContract>()),
+    );
+    gh.factory<_i282.GetMealsCategoriesUseCase>(
+      () => _i282.GetMealsCategoriesUseCase(gh<_i901.FoodRepoContract>()),
+    );
+    gh.factory<_i904.SelectMealsCategoryUseCase>(
+      () => _i904.SelectMealsCategoryUseCase(gh<_i901.FoodRepoContract>()),
+    );
+    gh.factory<_i660.FoodCubit>(
+      () => _i660.FoodCubit(
+        gh<_i282.GetMealsCategoriesUseCase>(),
+        gh<_i904.SelectMealsCategoryUseCase>(),
+        gh<_i687.GetMealDetailsUseCase>(),
+      ),
     );
     return this;
   }
