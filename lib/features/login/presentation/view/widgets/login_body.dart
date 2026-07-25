@@ -249,6 +249,7 @@ class _LoginButton extends StatelessWidget {
                         ),
                       );
                     }
+                    context.pushNamed(AppRoutes.home);
                   },
             child: isLoading
                 ? const SizedBox(

@@ -26,7 +26,6 @@ class AppEndPoints {
   static const String musclesByGroup = "/musclesGroup";
   static const String randomMuscles = "/muscles/random";
   static const String primeMoverByMuscleGroup = "/musclesGroup/by-muscle-group";
-  static const String primeMoverByMuscleGroup = "/musclesGroup/by-muscle-group";
 
   // ===================== Exercises =====================
   static const String exercises = "/exercises";

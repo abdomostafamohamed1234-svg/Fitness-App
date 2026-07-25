@@ -1,4 +1,6 @@
 import 'package:flowery/config/l10n/translations/app_localizations.dart';
+import 'package:flowery/config/routing/app_routes.dart';
+import 'package:flowery/config/routing/routing_extensions.dart';
 import 'package:flowery/core/widgets/glass_container.dart';
 import 'package:flowery/features/register/presentation/view_model/cubit/register_cubit.dart';
 import 'package:flowery/features/register/presentation/view_model/cubit/register_events.dart';
@@ -44,8 +46,7 @@ class _ChooseRpalWidgetState extends State<ChooseRpalWidget> {
           children: [
             ...PhysicalActivityLevel.values.map((level) {
               final isSelected =
-                  registerCubit.surveyData.physicalActivityLevel ==
-                      level.value;
+                  registerCubit.surveyData.physicalActivityLevel == level.value;
               return GestureDetector(
                 onTap: () => setState(() {
                   registerCubit.surveyData.physicalActivityLevel = level.value;
@@ -102,6 +103,7 @@ class _ChooseRpalWidgetState extends State<ChooseRpalWidget> {
                 child: ElevatedButton(
                   onPressed: () {
                     registerCubit.doIntent(Register());
+                    context.pushNamed(AppRoutes.home);
                   },
                   child: Text(
                     AppLocalizations.of(context)!.submit,

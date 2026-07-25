@@ -19,7 +19,6 @@ import 'package:injectable/injectable.dart' as _i526;
 import 'package:shared_preferences/shared_preferences.dart' as _i460;
 
 import '../../core/cubits/locale/locale_cubit.dart' as _i273;
-<<<<<<< HEAD
 import '../../core/utils/sha256_social_password_generator.dart' as _i746;
 import '../../core/utils/social_password_generator.dart' as _i490;
 import '../../features/auth_with_social_media/data/data_source/social_auth_data_source.dart'
@@ -73,6 +72,16 @@ import '../../features/forget_password/domain/use_cases/verify_email_use_case.da
     as _i524;
 import '../../features/forget_password/presentation/view_models/cubit/forget_password_view_model.dart'
     as _i916;
+import '../../features/home/api/api_client/home_api_client.dart' as _i592;
+import '../../features/home/api/datasourse/home_remote_datasourse_impl.dart'
+    as _i792;
+import '../../features/home/data/datasourse/home_remote_datasourse_impl.dart'
+    as _i656;
+import '../../features/home/data/repository/home_repository_impl.dart' as _i9;
+import '../../features/home/domian/repository/home_repository_contract.dart'
+    as _i689;
+import '../../features/home/domian/use_case/use_case.dart' as _i497;
+import '../../features/home/presentation/view_model/home_cubit.dart' as _i940;
 import '../../features/login/api/login_api_client.dart' as _i387;
 import '../../features/login/data/data_source/remote_data_source/login_remote_data_source_contract.dart'
     as _i80;
@@ -99,18 +108,6 @@ import '../../features/register/domain/use_cases/register_usecase.dart'
     as _i679;
 import '../../features/register/presentation/view_model/cubit/register_cubit.dart'
     as _i278;
-=======
-import '../../features/home/api/api_client/home_api_client.dart' as _i592;
-import '../../features/home/api/datasourse/home_remote_datasourse_impl.dart'
-    as _i792;
-import '../../features/home/data/datasourse/home_remote_datasourse_impl.dart'
-    as _i656;
-import '../../features/home/data/repository/home_repository_impl.dart' as _i9;
-import '../../features/home/domian/repository/home_repository_contract.dart'
-    as _i689;
-import '../../features/home/domian/use_case/use_case.dart' as _i497;
-import '../../features/home/presentation/view_model/home_cubit.dart' as _i940;
->>>>>>> 6f27e3cdab9a5c0f181fbd847710bd428fd48cc9
 import '../helpers/shared_preferences/shared_preferences_helper.dart' as _i425;
 import 'di_module.dart' as _i211;
 import 'firebase_module.dart' as _i616;
@@ -142,10 +139,10 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i273.LocaleCubit>(
       () => _i273.LocaleCubit(gh<_i425.SharedPreferencesHelper>()),
     );
-<<<<<<< HEAD
     gh.lazySingleton<_i892.ForgetPasswordApiClient>(
       () => _i892.ForgetPasswordApiClient(gh<_i361.Dio>()),
     );
+    gh.factory<_i592.HomeApiClient>(() => _i592.HomeApiClient(gh<_i361.Dio>()));
     gh.factory<_i387.LoginApiClient>(
       () => _i387.LoginApiClient(gh<_i361.Dio>()),
     );
@@ -181,6 +178,9 @@ extension GetItInjectableX on _i174.GetIt {
         gh<_i892.ForgetPasswordApiClient>(),
       ),
     );
+    gh.factory<_i656.HomeRemoteDataSourceContract>(
+      () => _i792.HomeRemoteDataSourceImpl(gh<_i592.HomeApiClient>()),
+    );
     gh.factory<_i310.FoodApiClient>(
       () => _i310.FoodApiClient(gh<_i361.Dio>(instanceName: 'mealsDio')),
     );
@@ -200,6 +200,9 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i679.RegisterUsecase>(
       () => _i679.RegisterUsecase(gh<_i994.RegisterRepository>()),
     );
+    gh.factory<_i689.HomeRepositoryContract>(
+      () => _i9.HomeRepositoryImpl(gh<_i656.HomeRemoteDataSourceContract>()),
+    );
     gh.factory<_i278.RegisterCubit>(
       () => _i278.RegisterCubit(gh<_i679.RegisterUsecase>()),
     );
@@ -211,6 +214,9 @@ extension GetItInjectableX on _i174.GetIt {
     );
     gh.factory<_i524.VerifyEmailUseCase>(
       () => _i524.VerifyEmailUseCase(gh<_i665.ForgetPasswordRepoContract>()),
+    );
+    gh.factory<_i497.HomeUseCase>(
+      () => _i497.HomeUseCase(gh<_i689.HomeRepositoryContract>()),
     );
     gh.factory<_i202.LoginRepoContract>(
       () => _i176.LoginRepoImpl(gh<_i80.LoginRemoteDataSourceContract>()),
@@ -249,6 +255,7 @@ extension GetItInjectableX on _i174.GetIt {
         gh<_i168.LoginUseCase>(),
       ),
     );
+    gh.factory<_i940.HomeCubit>(() => _i940.HomeCubit(gh<_i497.HomeUseCase>()));
     gh.factory<_i272.LoginCubit>(
       () => _i272.LoginCubit(gh<_i168.LoginUseCase>()),
     );
@@ -268,19 +275,6 @@ extension GetItInjectableX on _i174.GetIt {
         gh<_i687.GetMealDetailsUseCase>(),
       ),
     );
-=======
-    gh.factory<_i592.HomeApiClient>(() => _i592.HomeApiClient(gh<_i361.Dio>()));
-    gh.factory<_i656.HomeRemoteDataSourceContract>(
-      () => _i792.HomeRemoteDataSourceImpl(gh<_i592.HomeApiClient>()),
-    );
-    gh.factory<_i689.HomeRepositoryContract>(
-      () => _i9.HomeRepositoryImpl(gh<_i656.HomeRemoteDataSourceContract>()),
-    );
-    gh.factory<_i497.HomeUseCase>(
-      () => _i497.HomeUseCase(gh<_i689.HomeRepositoryContract>()),
-    );
-    gh.factory<_i940.HomeCubit>(() => _i940.HomeCubit(gh<_i497.HomeUseCase>()));
->>>>>>> 6f27e3cdab9a5c0f181fbd847710bd428fd48cc9
     return this;
   }
 }
