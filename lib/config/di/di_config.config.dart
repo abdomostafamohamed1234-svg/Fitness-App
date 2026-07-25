@@ -82,6 +82,7 @@ import '../../features/home/domian/repository/home_repository_contract.dart'
     as _i689;
 import '../../features/home/domian/use_case/use_case.dart' as _i497;
 import '../../features/home/presentation/view_model/home_cubit.dart' as _i940;
+<<<<<<< HEAD
 import '../../features/login/api/login_api_client.dart' as _i387;
 import '../../features/login/data/data_source/remote_data_source/login_remote_data_source_contract.dart'
     as _i80;
@@ -108,6 +109,20 @@ import '../../features/register/domain/use_cases/register_usecase.dart'
     as _i679;
 import '../../features/register/presentation/view_model/cubit/register_cubit.dart'
     as _i278;
+=======
+import '../../features/popular_training/api/api_client/popular_training_api_client.dart'
+    as _i763;
+import '../../features/popular_training/api/datasource/popular_training_datasource_impl.dart'
+    as _i439;
+import '../../features/popular_training/data/repository/popular_training_repository_impl.dart'
+    as _i234;
+import '../../features/popular_training/domain/repository/popular_training_repository_contract.dart'
+    as _i539;
+import '../../features/popular_training/domain/usecase/get_exercises_usecase.dart'
+    as _i1048;
+import '../../features/popular_training/presentation/view_model/popular_training_cubit.dart'
+    as _i695;
+>>>>>>> f7a4985b7e265c33c8dd10992f6dccfe051e6978
 import '../helpers/shared_preferences/shared_preferences_helper.dart' as _i425;
 import 'di_module.dart' as _i211;
 import 'firebase_module.dart' as _i616;
@@ -143,6 +158,7 @@ extension GetItInjectableX on _i174.GetIt {
       () => _i892.ForgetPasswordApiClient(gh<_i361.Dio>()),
     );
     gh.factory<_i592.HomeApiClient>(() => _i592.HomeApiClient(gh<_i361.Dio>()));
+<<<<<<< HEAD
     gh.factory<_i387.LoginApiClient>(
       () => _i387.LoginApiClient(gh<_i361.Dio>()),
     );
@@ -176,11 +192,30 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i492.ForgetPasswordDataSourceContract>(
       () => _i495.ForgetPasswordDataSourceImp(
         gh<_i892.ForgetPasswordApiClient>(),
+=======
+    gh.factory<_i763.PopularTrainingApiClient>(
+      () => _i763.PopularTrainingApiClient(gh<_i361.Dio>()),
+    );
+    gh.factory<_i439.PopularTrainingRemoteDataSource>(
+      () => _i439.PopularTrainingRemoteDataSourceImpl(
+        gh<_i763.PopularTrainingApiClient>(),
+      ),
+    );
+    gh.factory<_i539.PopularTrainingRepository>(
+      () => _i234.PopularTrainingRepositoryImpl(
+        gh<_i439.PopularTrainingRemoteDataSource>(),
+      ),
+    );
+    gh.factory<_i1048.GetPopularTrainingUseCase>(
+      () => _i1048.GetPopularTrainingUseCase(
+        gh<_i539.PopularTrainingRepository>(),
+>>>>>>> f7a4985b7e265c33c8dd10992f6dccfe051e6978
       ),
     );
     gh.factory<_i656.HomeRemoteDataSourceContract>(
       () => _i792.HomeRemoteDataSourceImpl(gh<_i592.HomeApiClient>()),
     );
+<<<<<<< HEAD
     gh.factory<_i310.FoodApiClient>(
       () => _i310.FoodApiClient(gh<_i361.Dio>(instanceName: 'mealsDio')),
     );
@@ -199,6 +234,10 @@ extension GetItInjectableX on _i174.GetIt {
     );
     gh.factory<_i679.RegisterUsecase>(
       () => _i679.RegisterUsecase(gh<_i994.RegisterRepository>()),
+=======
+    gh.factory<_i695.PopularTrainingCubit>(
+      () => _i695.PopularTrainingCubit(gh<_i1048.GetPopularTrainingUseCase>()),
+>>>>>>> f7a4985b7e265c33c8dd10992f6dccfe051e6978
     );
     gh.factory<_i689.HomeRepositoryContract>(
       () => _i9.HomeRepositoryImpl(gh<_i656.HomeRemoteDataSourceContract>()),
