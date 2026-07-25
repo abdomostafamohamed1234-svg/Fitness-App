@@ -61,6 +61,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get do_it => 'Do IT';
 
   @override
+<<<<<<< HEAD
   String get message => 'Message';
 
   @override
@@ -204,6 +205,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get invalidPhoneNumber => 'Enter a valid phone number';
 
   @override
+=======
+>>>>>>> 93e5fb82622fe7b0aae16a44077694d4ee94e3ed
   String get food_recommendation => 'Food Recommendation';
 
   @override
@@ -223,4 +226,68 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get fats => 'Fats';
+<<<<<<< HEAD
+=======
+
+  @override
+  String get forget_password => 'Forget Password';
+
+  @override
+  String get enter_your_email => 'Enter Your Email';
+
+  @override
+  String get email => 'Email';
+
+  @override
+  String get please_enter_a_valid_email => 'Please enter a valid email';
+
+  @override
+  String get sent_otp => 'Sent Otp';
+
+  @override
+  String get create_pass => 'create pass';
+
+  @override
+  String get create_new_password => 'Create New Password';
+
+  @override
+  String get make_sure_its_8_character_or_more =>
+      'Make Sure Its 8 Characters Or More';
+
+  @override
+  String get password => 'Password';
+
+  @override
+  String get password_must_be_8_character_or_more =>
+      'Password must be 8 characters or more';
+
+  @override
+  String get password_do_not_match => 'Password do not match';
+
+  @override
+  String get done => 'Done';
+
+  @override
+  String get otp => 'otp';
+
+  @override
+  String get otp_code => 'OTP CODE';
+
+  @override
+  String get enter_your_otp_check_your_email =>
+      'Enter Your OTP Check Your Email';
+
+  @override
+  String get invalid_code_please_try_again => 'Invalid code, please try again';
+
+  @override
+  String get confirm => 'Confirm';
+
+  @override
+  String get did_not_receive_verification_code =>
+      'Didn\'t Receive Verification Code?';
+
+  @override
+  String get resend_code => 'Resend Code?';
+>>>>>>> 93e5fb82622fe7b0aae16a44077694d4ee94e3ed
 }

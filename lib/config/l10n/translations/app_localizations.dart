@@ -200,6 +200,7 @@ abstract class AppLocalizations {
   /// **'Do IT'**
   String get do_it;
 
+<<<<<<< HEAD
   /// No description provided for @message.
   ///
   /// In en, this message translates to:
@@ -482,6 +483,8 @@ abstract class AppLocalizations {
   /// **'Enter a valid phone number'**
   String get invalidPhoneNumber;
 
+=======
+>>>>>>> 93e5fb82622fe7b0aae16a44077694d4ee94e3ed
   /// No description provided for @food_recommendation.
   ///
   /// In en, this message translates to:
@@ -523,6 +526,123 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Fats'**
   String get fats;
+<<<<<<< HEAD
+=======
+
+  /// No description provided for @forget_password.
+  ///
+  /// In en, this message translates to:
+  /// **'Forget Password'**
+  String get forget_password;
+
+  /// No description provided for @enter_your_email.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter Your Email'**
+  String get enter_your_email;
+
+  /// No description provided for @email.
+  ///
+  /// In en, this message translates to:
+  /// **'Email'**
+  String get email;
+
+  /// No description provided for @please_enter_a_valid_email.
+  ///
+  /// In en, this message translates to:
+  /// **'Please enter a valid email'**
+  String get please_enter_a_valid_email;
+
+  /// No description provided for @sent_otp.
+  ///
+  /// In en, this message translates to:
+  /// **'Sent Otp'**
+  String get sent_otp;
+
+  /// No description provided for @create_pass.
+  ///
+  /// In en, this message translates to:
+  /// **'create pass'**
+  String get create_pass;
+
+  /// No description provided for @create_new_password.
+  ///
+  /// In en, this message translates to:
+  /// **'Create New Password'**
+  String get create_new_password;
+
+  /// No description provided for @make_sure_its_8_character_or_more.
+  ///
+  /// In en, this message translates to:
+  /// **'Make Sure Its 8 Characters Or More'**
+  String get make_sure_its_8_character_or_more;
+
+  /// No description provided for @password.
+  ///
+  /// In en, this message translates to:
+  /// **'Password'**
+  String get password;
+
+  /// No description provided for @password_must_be_8_character_or_more.
+  ///
+  /// In en, this message translates to:
+  /// **'Password must be 8 characters or more'**
+  String get password_must_be_8_character_or_more;
+
+  /// No description provided for @password_do_not_match.
+  ///
+  /// In en, this message translates to:
+  /// **'Password do not match'**
+  String get password_do_not_match;
+
+  /// No description provided for @done.
+  ///
+  /// In en, this message translates to:
+  /// **'Done'**
+  String get done;
+
+  /// No description provided for @otp.
+  ///
+  /// In en, this message translates to:
+  /// **'otp'**
+  String get otp;
+
+  /// No description provided for @otp_code.
+  ///
+  /// In en, this message translates to:
+  /// **'OTP CODE'**
+  String get otp_code;
+
+  /// No description provided for @enter_your_otp_check_your_email.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter Your OTP Check Your Email'**
+  String get enter_your_otp_check_your_email;
+
+  /// No description provided for @invalid_code_please_try_again.
+  ///
+  /// In en, this message translates to:
+  /// **'Invalid code, please try again'**
+  String get invalid_code_please_try_again;
+
+  /// No description provided for @confirm.
+  ///
+  /// In en, this message translates to:
+  /// **'Confirm'**
+  String get confirm;
+
+  /// No description provided for @did_not_receive_verification_code.
+  ///
+  /// In en, this message translates to:
+  /// **'Didn\'t Receive Verification Code?'**
+  String get did_not_receive_verification_code;
+
+  /// No description provided for @resend_code.
+  ///
+  /// In en, this message translates to:
+  /// **'Resend Code?'**
+  String get resend_code;
+>>>>>>> 93e5fb82622fe7b0aae16a44077694d4ee94e3ed
 }
 
 class _AppLocalizationsDelegate
