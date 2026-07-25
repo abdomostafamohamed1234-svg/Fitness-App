@@ -28,7 +28,10 @@ class AuthBackgroundScaffold extends StatelessWidget {
         elevation: 0,
         leading: Navigator.canPop(context)
             ? IconButton(
-                icon: const Icon(Icons.arrow_back_ios_new, color: AppColors.whiteColor),
+                icon: const Icon(
+                  Icons.arrow_back_ios_new,
+                  color: AppColors.whiteColor,
+                ),
                 onPressed: () => Navigator.pop(context),
               )
             : null,
@@ -54,24 +57,25 @@ class AuthBackgroundScaffold extends StatelessWidget {
           // Slight darken overlay so text/inputs stay readable
           const Positioned.fill(
             child: DecoratedBox(
-              decoration: BoxDecoration(color:AppColors.transparent),
+              decoration: BoxDecoration(color: AppColors.transparent),
             ),
           ),
 
           SafeArea(
-            child: SingleChildScrollView(
-              padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 24.h),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  SizedBox(height: 60.h),
-                  GlassContainer(children: children),
-                  if (bottomWidget != null) ...[
-                    SizedBox(height: 20.h),
-                    bottomWidget!,
-                  ],
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                // SizedBox(height: 60.h),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: GlassContainer(children: children),
+                
+                ),
+                if (bottomWidget != null) ...[
+                  SizedBox(height: 20.h),
+                  bottomWidget!,
                 ],
-              ),
+              ],
             ),
           ),
         ],

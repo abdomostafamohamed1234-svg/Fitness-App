@@ -200,7 +200,6 @@ abstract class AppLocalizations {
   /// **'Do IT'**
   String get do_it;
 
-<<<<<<< HEAD
   /// No description provided for @message.
   ///
   /// In en, this message translates to:
@@ -483,8 +482,6 @@ abstract class AppLocalizations {
   /// **'Enter a valid phone number'**
   String get invalidPhoneNumber;
 
-=======
->>>>>>> 93e5fb82622fe7b0aae16a44077694d4ee94e3ed
   /// No description provided for @food_recommendation.
   ///
   /// In en, this message translates to:
@@ -526,8 +523,6 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Fats'**
   String get fats;
-<<<<<<< HEAD
-=======
 
   /// No description provided for @forget_password.
   ///
@@ -540,12 +535,6 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Enter Your Email'**
   String get enter_your_email;
-
-  /// No description provided for @email.
-  ///
-  /// In en, this message translates to:
-  /// **'Email'**
-  String get email;
 
   /// No description provided for @please_enter_a_valid_email.
   ///
@@ -576,12 +565,6 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Make Sure Its 8 Characters Or More'**
   String get make_sure_its_8_character_or_more;
-
-  /// No description provided for @password.
-  ///
-  /// In en, this message translates to:
-  /// **'Password'**
-  String get password;
 
   /// No description provided for @password_must_be_8_character_or_more.
   ///
@@ -642,7 +625,6 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Resend Code?'**
   String get resend_code;
->>>>>>> 93e5fb82622fe7b0aae16a44077694d4ee94e3ed
 }
 
 class _AppLocalizationsDelegate

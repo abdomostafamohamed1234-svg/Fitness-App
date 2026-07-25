@@ -141,7 +141,9 @@ class _LoginBodyState extends State<LoginBody> {
               Align(
                 alignment: Alignment.centerRight,
                 child: GestureDetector(
-                  onTap: () {},
+                  onTap: () {
+                    context.pushNamed(AppRoutes.forgetPassword);
+                  },
                   child: const Text(
                     'Forget Password?',
                     style: TextStyle(

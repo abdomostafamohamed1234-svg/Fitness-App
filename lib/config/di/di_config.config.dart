@@ -19,7 +19,6 @@ import 'package:injectable/injectable.dart' as _i526;
 import 'package:shared_preferences/shared_preferences.dart' as _i460;
 
 import '../../core/cubits/locale/locale_cubit.dart' as _i273;
-<<<<<<< HEAD
 import '../../core/utils/sha256_social_password_generator.dart' as _i746;
 import '../../core/utils/social_password_generator.dart' as _i490;
 import '../../features/auth_with_social_media/data/data_source/social_auth_data_source.dart'
@@ -40,8 +39,6 @@ import '../../features/auth_with_social_media/domain/use_case/sign_out_use_case.
     as _i254;
 import '../../features/auth_with_social_media/presentation/view_model/cubit/social_auth_cubit.dart'
     as _i260;
-=======
->>>>>>> 93e5fb82622fe7b0aae16a44077694d4ee94e3ed
 import '../../features/food/api/api_client/food_api_client.dart' as _i310;
 import '../../features/food/api/data_sources/food_remote_data_source_impl.dart'
     as _i58;
@@ -57,7 +54,24 @@ import '../../features/food/domain/use_cases/select_meals_category_use_case.dart
     as _i904;
 import '../../features/food/presentation/view_model/cubit/food_cubit.dart'
     as _i660;
-<<<<<<< HEAD
+import '../../features/forget_password/api/api_client/forget_password_api_client.dart'
+    as _i892;
+import '../../features/forget_password/api/data_source/forget_password_data_source_imp.dart'
+    as _i495;
+import '../../features/forget_password/data/data_source/forget_password_data_source_contract.dart'
+    as _i492;
+import '../../features/forget_password/data/repo/forget_password_repo_imp.dart'
+    as _i32;
+import '../../features/forget_password/domain/repo/forget_password_repo_contract.dart'
+    as _i665;
+import '../../features/forget_password/domain/use_cases/forget_password_use_case.dart'
+    as _i437;
+import '../../features/forget_password/domain/use_cases/reset_password_use_case.dart'
+    as _i56;
+import '../../features/forget_password/domain/use_cases/verify_email_use_case.dart'
+    as _i524;
+import '../../features/forget_password/presentation/view_models/cubit/forget_password_view_model.dart'
+    as _i916;
 import '../../features/login/api/login_api_client.dart' as _i387;
 import '../../features/login/data/data_source/remote_data_source/login_remote_data_source_contract.dart'
     as _i80;
@@ -84,28 +98,6 @@ import '../../features/register/domain/use_cases/register_usecase.dart'
     as _i679;
 import '../../features/register/presentation/view_model/cubit/register_cubit.dart'
     as _i278;
-=======
-import '../../features/forget_password/api/api_client/forget_password_api_client.dart'
-    as _i892;
-import '../../features/forget_password/api/data_source/forget_password_data_source_imp.dart'
-    as _i495;
-import '../../features/forget_password/data/data_source/forget_password_data_source_contract.dart'
-    as _i492;
-import '../../features/forget_password/data/repo/forget_password_repo_imp.dart'
-    as _i32;
-import '../../features/forget_password/domain/repo/forget_password_repo_contract.dart'
-    as _i665;
-import '../../features/forget_password/domain/use_cases/forget_password_use_case.dart'
-    as _i437;
-import '../../features/forget_password/domain/use_cases/reset_password_use_case.dart'
-    as _i56;
-import '../../features/forget_password/domain/use_cases/verify_email_use_case.dart'
-    as _i524;
-import '../../features/forget_password/presentation/view_models/cubit/forget_password_view_model.dart'
-    as _i916;
-import '../../features/on_boarding/presentation/view_model/cubit/on_boarding_cubit.dart'
-    as _i786;
->>>>>>> 93e5fb82622fe7b0aae16a44077694d4ee94e3ed
 import '../helpers/shared_preferences/shared_preferences_helper.dart' as _i425;
 import 'di_module.dart' as _i211;
 import 'firebase_module.dart' as _i616;
@@ -137,22 +129,19 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i273.LocaleCubit>(
       () => _i273.LocaleCubit(gh<_i425.SharedPreferencesHelper>()),
     );
-<<<<<<< HEAD
+    gh.lazySingleton<_i892.ForgetPasswordApiClient>(
+      () => _i892.ForgetPasswordApiClient(gh<_i361.Dio>()),
+    );
     gh.factory<_i387.LoginApiClient>(
       () => _i387.LoginApiClient(gh<_i361.Dio>()),
     );
     gh.factory<_i656.RegisterApiClient>(
       () => _i656.RegisterApiClient(gh<_i361.Dio>()),
-=======
-    gh.lazySingleton<_i892.ForgetPasswordApiClient>(
-      () => _i892.ForgetPasswordApiClient(gh<_i361.Dio>()),
->>>>>>> 93e5fb82622fe7b0aae16a44077694d4ee94e3ed
     );
     gh.singleton<_i361.Dio>(
       () => diModule.mealsDio(),
       instanceName: 'mealsDio',
     );
-<<<<<<< HEAD
     gh.singleton<_i490.SocialPasswordGenerator>(
       () => _i746.Sha256SocialPasswordGenerator(),
     );
@@ -173,8 +162,18 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i703.RegisterRemoteDataSourceContract>(
       () => _i754.RegisterRemoteDataSourceImpl(gh<_i656.RegisterApiClient>()),
     );
+    gh.factory<_i492.ForgetPasswordDataSourceContract>(
+      () => _i495.ForgetPasswordDataSourceImp(
+        gh<_i892.ForgetPasswordApiClient>(),
+      ),
+    );
     gh.factory<_i310.FoodApiClient>(
       () => _i310.FoodApiClient(gh<_i361.Dio>(instanceName: 'mealsDio')),
+    );
+    gh.factory<_i665.ForgetPasswordRepoContract>(
+      () => _i32.ForgetPasswordRepoImp(
+        gh<_i492.ForgetPasswordDataSourceContract>(),
+      ),
     );
     gh.factory<_i709.SocialAuthRepoContract>(
       () => _i762.SocialAuthRepoImpl(gh<_i606.SocialAuthDataSourceContract>()),
@@ -190,6 +189,15 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i278.RegisterCubit>(
       () => _i278.RegisterCubit(gh<_i679.RegisterUsecase>()),
     );
+    gh.factory<_i437.ForgetPasswordUseCase>(
+      () => _i437.ForgetPasswordUseCase(gh<_i665.ForgetPasswordRepoContract>()),
+    );
+    gh.factory<_i56.ResetPasswordUseCase>(
+      () => _i56.ResetPasswordUseCase(gh<_i665.ForgetPasswordRepoContract>()),
+    );
+    gh.factory<_i524.VerifyEmailUseCase>(
+      () => _i524.VerifyEmailUseCase(gh<_i665.ForgetPasswordRepoContract>()),
+    );
     gh.factory<_i202.LoginRepoContract>(
       () => _i176.LoginRepoImpl(gh<_i80.LoginRemoteDataSourceContract>()),
     );
@@ -204,29 +212,6 @@ extension GetItInjectableX on _i174.GetIt {
     );
     gh.factory<_i168.LoginUseCase>(
       () => _i168.LoginUseCase(gh<_i202.LoginRepoContract>()),
-=======
-    gh.factory<_i492.ForgetPasswordDataSourceContract>(
-      () => _i495.ForgetPasswordDataSourceImp(
-        gh<_i892.ForgetPasswordApiClient>(),
-      ),
-    );
-    gh.factory<_i310.FoodApiClient>(
-      () => _i310.FoodApiClient(gh<_i361.Dio>(instanceName: 'mealsDio')),
-    );
-    gh.factory<_i665.ForgetPasswordRepoContract>(
-      () => _i32.ForgetPasswordRepoImp(
-        gh<_i492.ForgetPasswordDataSourceContract>(),
-      ),
-    );
-    gh.factory<_i437.ForgetPasswordUseCase>(
-      () => _i437.ForgetPasswordUseCase(gh<_i665.ForgetPasswordRepoContract>()),
-    );
-    gh.factory<_i56.ResetPasswordUseCase>(
-      () => _i56.ResetPasswordUseCase(gh<_i665.ForgetPasswordRepoContract>()),
-    );
-    gh.factory<_i524.VerifyEmailUseCase>(
-      () => _i524.VerifyEmailUseCase(gh<_i665.ForgetPasswordRepoContract>()),
->>>>>>> 93e5fb82622fe7b0aae16a44077694d4ee94e3ed
     );
     gh.factory<_i656.FoodRemoteDataSourceContract>(
       () => _i58.FoodRemoteDataSourceImpl(gh<_i310.FoodApiClient>()),
@@ -234,7 +219,13 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i901.FoodRepoContract>(
       () => _i20.FoodRepoImpl(gh<_i656.FoodRemoteDataSourceContract>()),
     );
-<<<<<<< HEAD
+    gh.factory<_i916.ForgetPasswordViewModel>(
+      () => _i916.ForgetPasswordViewModel(
+        gh<_i437.ForgetPasswordUseCase>(),
+        gh<_i524.VerifyEmailUseCase>(),
+        gh<_i56.ResetPasswordUseCase>(),
+      ),
+    );
     gh.factory<_i260.SocialAuthBloc>(
       () => _i260.SocialAuthBloc(
         gh<_i346.GoogleSignInUseCase>(),
@@ -247,15 +238,6 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i272.LoginCubit>(
       () => _i272.LoginCubit(gh<_i168.LoginUseCase>()),
     );
-=======
-    gh.factory<_i916.ForgetPasswordViewModel>(
-      () => _i916.ForgetPasswordViewModel(
-        gh<_i437.ForgetPasswordUseCase>(),
-        gh<_i524.VerifyEmailUseCase>(),
-        gh<_i56.ResetPasswordUseCase>(),
-      ),
-    );
->>>>>>> 93e5fb82622fe7b0aae16a44077694d4ee94e3ed
     gh.factory<_i687.GetMealDetailsUseCase>(
       () => _i687.GetMealDetailsUseCase(gh<_i901.FoodRepoContract>()),
     );
