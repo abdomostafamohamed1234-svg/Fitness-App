@@ -200,49 +200,6 @@ abstract class AppLocalizations {
   /// **'Do IT'**
   String get do_it;
 
-<<<<<<< HEAD
-  /// No description provided for @food_recommendation.
-  ///
-  /// In en, this message translates to:
-  /// **'Food Recommendation'**
-  String get food_recommendation;
-
-  /// No description provided for @instructions.
-  ///
-  /// In en, this message translates to:
-  /// **'Instructions'**
-  String get instructions;
-
-  /// No description provided for @ingredients.
-  ///
-  /// In en, this message translates to:
-  /// **'Ingredients'**
-  String get ingredients;
-
-  /// No description provided for @energy.
-  ///
-  /// In en, this message translates to:
-  /// **'Energy'**
-  String get energy;
-
-  /// No description provided for @protein.
-  ///
-  /// In en, this message translates to:
-  /// **'Protein'**
-  String get protein;
-
-  /// No description provided for @carbs.
-  ///
-  /// In en, this message translates to:
-  /// **'Carbs'**
-  String get carbs;
-
-  /// No description provided for @fats.
-  ///
-  /// In en, this message translates to:
-  /// **'Fats'**
-  String get fats;
-=======
   /// No description provided for @message.
   ///
   /// In en, this message translates to:
@@ -524,7 +481,48 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Enter a valid phone number'**
   String get invalidPhoneNumber;
->>>>>>> 738a3f79a59f2f66fc793e82d0ade7003db966d5
+
+  /// No description provided for @food_recommendation.
+  ///
+  /// In en, this message translates to:
+  /// **'Food Recommendation'**
+  String get food_recommendation;
+
+  /// No description provided for @instructions.
+  ///
+  /// In en, this message translates to:
+  /// **'Instructions'**
+  String get instructions;
+
+  /// No description provided for @ingredients.
+  ///
+  /// In en, this message translates to:
+  /// **'Ingredients'**
+  String get ingredients;
+
+  /// No description provided for @energy.
+  ///
+  /// In en, this message translates to:
+  /// **'Energy'**
+  String get energy;
+
+  /// No description provided for @protein.
+  ///
+  /// In en, this message translates to:
+  /// **'Protein'**
+  String get protein;
+
+  /// No description provided for @carbs.
+  ///
+  /// In en, this message translates to:
+  /// **'Carbs'**
+  String get carbs;
+
+  /// No description provided for @fats.
+  ///
+  /// In en, this message translates to:
+  /// **'Fats'**
+  String get fats;
 }
 
 class _AppLocalizationsDelegate

@@ -1,6 +1,7 @@
 import 'package:flowery/config/di/di_config.dart';
 import 'package:flowery/config/routing/app_routes.dart';
 import 'package:flowery/core/theme/app_assets.dart';
+import 'package:flowery/features/auth_with_social_media/presentation/view/widgets/social_register_args.dart';
 import 'package:flowery/features/register/presentation/view/widgets/choose_age_widget.dart';
 import 'package:flowery/features/register/presentation/view/widgets/choose_gender_widget.dart';
 import 'package:flowery/features/register/presentation/view/widgets/choose_goal_widget.dart';
@@ -17,7 +18,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class RegisterPage extends StatefulWidget {
-  const RegisterPage({super.key});
+  final SocialRegisterArgs? socialArgs;
+  const RegisterPage({super.key, required this.socialArgs});
 
   @override
   State<RegisterPage> createState() => _RegisterPageState();
@@ -30,9 +32,15 @@ class _RegisterPageState extends State<RegisterPage> {
   void initState() {
     super.initState();
     registerCubit = getIt<RegisterCubit>();
-
     if (registerCubit.firstTime) {
-      registerCubit.doIntent(RegisterNextStep());
+      if (widget.socialArgs != null) {
+        registerCubit.startSocialRegister(
+          provider: widget.socialArgs!.provider,
+          token: widget.socialArgs!.token,
+        );
+      } else {
+        registerCubit.doIntent(RegisterNextStep());
+      }
       registerCubit.firstTime = false;
     }
 
@@ -69,7 +77,9 @@ class _RegisterPageState extends State<RegisterPage> {
         ),
         content: Text(
           message,
-          style: TextStyle(color: Theme.of(context).textTheme.bodyMedium?.color),
+          style: TextStyle(
+            color: Theme.of(context).textTheme.bodyMedium?.color,
+          ),
         ),
         actions: [
           TextButton(
@@ -133,7 +143,8 @@ class _RegisterPageState extends State<RegisterPage> {
                     const SizedBox(height: 50),
                     BlocBuilder<RegisterCubit, RegisterState>(
                       builder: (context, state) {
-                        final int currentState = state.currentStepState?.data ?? 0;
+                        final int currentState =
+                            state.currentStepState?.data ?? 0;
 
                         return Stack(
                           alignment: Alignment.center,

@@ -62,8 +62,7 @@
   "invalidPassword": "Password must be at least 8 characters and include an uppercase letter, a lowercase letter, a number and a special character",
   "invalidConfirmPassword": "Enter a valid password",
   "passwordMismatch": "Passwords do not match",
-  "invalidPhoneNumber": "Enter a valid phone number"
-  "do_it" : "Do IT",
+  "invalidPhoneNumber": "Enter a valid phone number",
   "food_recommendation": "Food Recommendation",
   "instructions": "Instructions",
   "ingredients": "Ingredients",

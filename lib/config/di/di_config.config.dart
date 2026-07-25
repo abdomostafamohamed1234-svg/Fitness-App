@@ -10,13 +10,35 @@
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'package:dio/dio.dart' as _i361;
+import 'package:firebase_auth/firebase_auth.dart' as _i59;
+import 'package:flutter_facebook_auth/flutter_facebook_auth.dart' as _i806;
 import 'package:flutter_secure_storage/flutter_secure_storage.dart' as _i558;
 import 'package:get_it/get_it.dart' as _i174;
+import 'package:google_sign_in/google_sign_in.dart' as _i116;
 import 'package:injectable/injectable.dart' as _i526;
 import 'package:shared_preferences/shared_preferences.dart' as _i460;
 
 import '../../core/cubits/locale/locale_cubit.dart' as _i273;
-<<<<<<< HEAD
+import '../../core/utils/sha256_social_password_generator.dart' as _i746;
+import '../../core/utils/social_password_generator.dart' as _i490;
+import '../../features/auth_with_social_media/data/data_source/social_auth_data_source.dart'
+    as _i606;
+import '../../features/auth_with_social_media/data/data_source/social_auth_data_source_impl.dart'
+    as _i594;
+import '../../features/auth_with_social_media/data/repo/social_repo_impl.dart'
+    as _i762;
+import '../../features/auth_with_social_media/domain/repo/social_repo_contract.dart'
+    as _i709;
+import '../../features/auth_with_social_media/domain/use_case/create_social_session_use_case.dart'
+    as _i763;
+import '../../features/auth_with_social_media/domain/use_case/facebook_login_use_case.dart'
+    as _i307;
+import '../../features/auth_with_social_media/domain/use_case/google_login_use_case.dart'
+    as _i346;
+import '../../features/auth_with_social_media/domain/use_case/sign_out_use_case.dart'
+    as _i254;
+import '../../features/auth_with_social_media/presentation/view_model/cubit/social_auth_cubit.dart'
+    as _i260;
 import '../../features/food/api/api_client/food_api_client.dart' as _i310;
 import '../../features/food/api/data_sources/food_remote_data_source_impl.dart'
     as _i58;
@@ -44,9 +66,6 @@ import '../../features/login/domain/use_case/login_use_case.dart' as _i168;
 import '../../features/login/presentation/view_model/cubit.dart' as _i272;
 import '../../features/on_boarding/presentation/view_model/cubit/on_boarding_cubit.dart'
     as _i786;
-=======
-import '../../features/on_boarding/presentation/view_model/cubit/on_boarding_cubit.dart'
-    as _i786;
 import '../../features/register/api/api_client/register_api_client.dart'
     as _i656;
 import '../../features/register/api/datasources/register_remote_data_source_impl.dart'
@@ -61,9 +80,9 @@ import '../../features/register/domain/use_cases/register_usecase.dart'
     as _i679;
 import '../../features/register/presentation/view_model/cubit/register_cubit.dart'
     as _i278;
->>>>>>> 738a3f79a59f2f66fc793e82d0ade7003db966d5
 import '../helpers/shared_preferences/shared_preferences_helper.dart' as _i425;
 import 'di_module.dart' as _i211;
+import 'firebase_module.dart' as _i616;
 
 extension GetItInjectableX on _i174.GetIt {
   // initializes the registration of main-scope dependencies inside of GetIt
@@ -73,12 +92,16 @@ extension GetItInjectableX on _i174.GetIt {
   }) async {
     final gh = _i526.GetItHelper(this, environment, environmentFilter);
     final diModule = _$DiModule();
+    final firebaseModule = _$FirebaseModule();
     await gh.factoryAsync<_i460.SharedPreferences>(
       () => diModule.sharedPreferences(),
       preResolve: true,
     );
     gh.factory<_i786.OnBoardingCubit>(() => _i786.OnBoardingCubit());
     gh.singleton<_i361.Dio>(() => diModule.dio());
+    gh.singleton<_i59.FirebaseAuth>(() => firebaseModule.firebaseAuth);
+    gh.singleton<_i116.GoogleSignIn>(() => firebaseModule.googleSignIn);
+    gh.singleton<_i806.FacebookAuth>(() => firebaseModule.facebookAuth);
     gh.lazySingleton<_i558.FlutterSecureStorage>(
       () => diModule.secureStorage(),
     );
@@ -88,27 +111,64 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i273.LocaleCubit>(
       () => _i273.LocaleCubit(gh<_i425.SharedPreferencesHelper>()),
     );
-<<<<<<< HEAD
     gh.factory<_i387.LoginApiClient>(
       () => _i387.LoginApiClient(gh<_i361.Dio>()),
-=======
+    );
     gh.factory<_i656.RegisterApiClient>(
       () => _i656.RegisterApiClient(gh<_i361.Dio>()),
->>>>>>> 738a3f79a59f2f66fc793e82d0ade7003db966d5
     );
     gh.singleton<_i361.Dio>(
       () => diModule.mealsDio(),
       instanceName: 'mealsDio',
     );
-<<<<<<< HEAD
+    gh.singleton<_i490.SocialPasswordGenerator>(
+      () => _i746.Sha256SocialPasswordGenerator(),
+    );
+    gh.factory<_i606.SocialAuthDataSourceContract>(
+      () => _i594.SocialAuthDataSourceImpl(
+        gh<_i59.FirebaseAuth>(),
+        gh<_i116.GoogleSignIn>(),
+        gh<_i806.FacebookAuth>(),
+      ),
+    );
+    gh.factory<_i763.CreateSocialSessionUseCase>(
+      () =>
+          _i763.CreateSocialSessionUseCase(gh<_i490.SocialPasswordGenerator>()),
+    );
     gh.factory<_i80.LoginRemoteDataSourceContract>(
       () => _i365.LoginRemoteDataSourceImpl(gh<_i387.LoginApiClient>()),
+    );
+    gh.factory<_i703.RegisterRemoteDataSourceContract>(
+      () => _i754.RegisterRemoteDataSourceImpl(gh<_i656.RegisterApiClient>()),
     );
     gh.factory<_i310.FoodApiClient>(
       () => _i310.FoodApiClient(gh<_i361.Dio>(instanceName: 'mealsDio')),
     );
+    gh.factory<_i709.SocialAuthRepoContract>(
+      () => _i762.SocialAuthRepoImpl(gh<_i606.SocialAuthDataSourceContract>()),
+    );
+    gh.factory<_i994.RegisterRepository>(
+      () => _i68.RegisterRepositoryImpl(
+        gh<_i703.RegisterRemoteDataSourceContract>(),
+      ),
+    );
+    gh.factory<_i679.RegisterUsecase>(
+      () => _i679.RegisterUsecase(gh<_i994.RegisterRepository>()),
+    );
+    gh.factory<_i278.RegisterCubit>(
+      () => _i278.RegisterCubit(gh<_i679.RegisterUsecase>()),
+    );
     gh.factory<_i202.LoginRepoContract>(
       () => _i176.LoginRepoImpl(gh<_i80.LoginRemoteDataSourceContract>()),
+    );
+    gh.factory<_i307.FacebookSignInUseCase>(
+      () => _i307.FacebookSignInUseCase(gh<_i709.SocialAuthRepoContract>()),
+    );
+    gh.factory<_i346.GoogleSignInUseCase>(
+      () => _i346.GoogleSignInUseCase(gh<_i709.SocialAuthRepoContract>()),
+    );
+    gh.factory<_i254.SignOutUseCase>(
+      () => _i254.SignOutUseCase(gh<_i709.SocialAuthRepoContract>()),
     );
     gh.factory<_i168.LoginUseCase>(
       () => _i168.LoginUseCase(gh<_i202.LoginRepoContract>()),
@@ -118,6 +178,15 @@ extension GetItInjectableX on _i174.GetIt {
     );
     gh.factory<_i901.FoodRepoContract>(
       () => _i20.FoodRepoImpl(gh<_i656.FoodRemoteDataSourceContract>()),
+    );
+    gh.factory<_i260.SocialAuthBloc>(
+      () => _i260.SocialAuthBloc(
+        gh<_i346.GoogleSignInUseCase>(),
+        gh<_i307.FacebookSignInUseCase>(),
+        gh<_i254.SignOutUseCase>(),
+        gh<_i763.CreateSocialSessionUseCase>(),
+        gh<_i168.LoginUseCase>(),
+      ),
     );
     gh.factory<_i272.LoginCubit>(
       () => _i272.LoginCubit(gh<_i168.LoginUseCase>()),
@@ -138,24 +207,10 @@ extension GetItInjectableX on _i174.GetIt {
         gh<_i687.GetMealDetailsUseCase>(),
       ),
     );
-=======
-    gh.factory<_i703.RegisterRemoteDataSourceContract>(
-      () => _i754.RegisterRemoteDataSourceImpl(gh<_i656.RegisterApiClient>()),
-    );
-    gh.factory<_i994.RegisterRepository>(
-      () => _i68.RegisterRepositoryImpl(
-        gh<_i703.RegisterRemoteDataSourceContract>(),
-      ),
-    );
-    gh.factory<_i679.RegisterUsecase>(
-      () => _i679.RegisterUsecase(gh<_i994.RegisterRepository>()),
-    );
-    gh.factory<_i278.RegisterCubit>(
-      () => _i278.RegisterCubit(gh<_i679.RegisterUsecase>()),
-    );
->>>>>>> 738a3f79a59f2f66fc793e82d0ade7003db966d5
     return this;
   }
 }
 
 class _$DiModule extends _i211.DiModule {}
+
+class _$FirebaseModule extends _i616.FirebaseModule {}

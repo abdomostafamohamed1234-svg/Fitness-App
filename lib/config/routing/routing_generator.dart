@@ -1,5 +1,6 @@
 import 'package:flowery/config/di/di_config.dart';
 import 'package:flowery/config/routing/app_routes.dart';
+import 'package:flowery/features/auth_with_social_media/presentation/view/widgets/social_register_args.dart';
 import 'package:flowery/features/login/presentation/view/login_screen.dart';
 import 'package:flowery/features/on_boarding/presentation/screens/on_boarding_screen.dart';
 import 'package:flowery/features/on_boarding/presentation/view_model/cubit/on_boarding_cubit.dart';
@@ -26,7 +27,12 @@ class RouteGenerator {
           );
         case AppRoutes.register:
           return MaterialPageRoute(
-            builder: (_) => const RegisterPage(),
+            builder: (context) {
+              final args = settings.arguments;
+              return RegisterPage(
+                socialArgs: args is SocialRegisterArgs ? args : null,
+              );
+            },
           );
 
         // case AppRoutes.login:

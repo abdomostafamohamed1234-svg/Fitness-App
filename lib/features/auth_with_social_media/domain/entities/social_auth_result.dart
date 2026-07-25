@@ -1,5 +1,6 @@
 import 'package:equatable/equatable.dart';
 import 'package:flowery/features/auth_with_social_media/domain/entities/social_session_entity.dart';
+import 'package:flowery/features/login/domain/entity/login_entity.dart';
 
 sealed class SocialAuthResult extends Equatable {
   const SocialAuthResult();

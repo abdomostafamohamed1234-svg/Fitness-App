@@ -1,4 +1,3 @@
-
 import 'dart:async';
 import 'package:flowery/core/base/base_response.dart';
 import 'package:flowery/core/base/custom_cubit.dart';
@@ -33,7 +32,11 @@ class RegisterCubit extends CustomCubit<RegisterTempEvents, RegisterState> {
   void doIntent(RegisterEvent event) {
     switch (event) {
       case Register():
-        _register();
+        if (socialProvider != null && socialToken != null) {
+          registerWithSocial(provider: socialProvider!, token: socialToken!);
+        } else {
+          _register();
+        }
       case RegisterNextStep():
         _nextStep();
       case RegisterPreviousStep():
@@ -47,6 +50,15 @@ class RegisterCubit extends CustomCubit<RegisterTempEvents, RegisterState> {
       case HideLoadingEvent():
         _hideLoading();
     }
+  }
+
+  String? socialProvider;
+  String? socialToken;
+  void startSocialRegister({required String provider, required String token}) {
+    socialProvider = provider;
+    socialToken = token;
+    state.currentStepState = const BaseState(data: 1);
+    emit(state);
   }
 
   /// Normal register with email/password + survey data.
@@ -69,11 +81,7 @@ class RegisterCubit extends CustomCubit<RegisterTempEvents, RegisterState> {
     required String provider,
     required String token,
   }) async {
-    final body = {
-      'provider': provider,
-      'token': token,
-      ...surveyData.toJson(),
-    };
+    final body = {'provider': provider, 'token': token, ...surveyData.toJson()};
     await _submitRegister(body);
   }
 

@@ -1,8 +1,10 @@
 import 'package:flowery/config/di/di_config.dart';
 import 'package:flowery/config/routing/app_routes.dart';
+
 import 'package:flowery/core/base/base_state.dart';
 import 'package:flowery/features/auth_with_social_media/presentation/view/widgets/social_button_temp.dart';
 import 'package:flowery/features/auth_with_social_media/domain/entities/social_auth_result.dart';
+import 'package:flowery/features/auth_with_social_media/presentation/view/widgets/social_register_args.dart';
 import 'package:flowery/features/auth_with_social_media/presentation/view_model/cubit/social_auth_cubit.dart';
 import 'package:flowery/features/auth_with_social_media/presentation/view_model/events/social_auth_event.dart';
 import 'package:flowery/features/auth_with_social_media/presentation/view_model/base_state/social_auth_state.dart';
@@ -23,18 +25,18 @@ class SocialAuthButtonsRow extends StatelessWidget {
             loading: () {},
             success: (result) {
               switch (result) {
-                case ExistingUserAuthResult():
-                // Navigator.pushReplacementNamed(context, AppRoutes.home);
+                 case ExistingUserAuthResult():
+                 Navigator.pushReplacementNamed(context, AppRoutes.home);
 
                 case NewUserAuthResult(:final session):
-                // Navigator.pushReplacementNamed(
-                //   context,
-                //   AppRoutes.register,
-                //   arguments: SocialRegisterArgs(
-                //     provider: session.user.provider,
-                //     token: session.user.providerToken,
-                //   ),
-                // );
+                Navigator.pushReplacementNamed(
+                  context,
+                  AppRoutes.register,
+                  arguments: SocialRegisterArgs(
+                    provider: session.user.provider,
+                    token: session.user.providerToken,
+                  ),
+                );
               }
             },
             error: (exception) {

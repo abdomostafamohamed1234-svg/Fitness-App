@@ -16,10 +16,10 @@
   "next" : "التالي",
   "back" : "السابق",
   "do_it" : "افعلها",
-    "howOldAreYou": "كم عمرك؟",
+  "howOldAreYou": "كم عمرك؟",
   "personalizedPlanHint": "هذا يساعدنا على إنشاء خطتك المخصصة",
   "year": "سنة",
-    "tellUsAboutYourself": "أخبرنا عن نفسك!",
+  "tellUsAboutYourself": "أخبرنا عن نفسك!",
   "weNeedToKnowYourGender": "نحتاج إلى معرفة جنسك",
   "male": "ذكر",
   "female": "أنثى",
@@ -29,7 +29,6 @@
   "getFitter": "تحسين اللياقة البدنية",
   "gainMoreFlexible": "زيادة المرونة",
   "learnTheBasics": "تعلم الأساسيات",
-  
   "whatIsYourHeight": "ما هو طولك؟",
   "cm": "سم",
   "physicalActivityLevel": "مستوى نشاطك البدني المعتاد",
@@ -40,7 +39,7 @@
   "trueBeast": "محترف",
   "submit": "إرسال",
   "whatIsYourWeight": "ما هو وزنك؟",
-"kg": "كجم",
+  "kg": "كجم",
   "heyThere": "أهلاً بك",
   "createAnAccount": "إنشاء حساب",
   "register": "تسجيل",
@@ -61,13 +60,14 @@
   "invalidPassword": "يجب أن تتكون كلمة المرور من 8 أحرف على الأقل وأن تتضمن حرفًا كبيرًا وحرفًا صغيرًا ورقمًا وحرفًا خاصًا",
   "invalidConfirmPassword": "أدخل كلمة مرور صالحة",
   "passwordMismatch": "كلمتا المرور غير متطابقتين",
-  "invalidPhoneNumber": "أدخل رقم هاتف صالح"
-  "do_it" : "افعلها",
+  "invalidPhoneNumber": "أدخل رقم هاتف صالح",
   "food_recommendation": "اقتراحات الطعام",
   "instructions": "الوصفة",
   "ingredients": "المقادير",
   "energy" : "الطاقة",
   "protein" : "البروتين",
   "carbs" : "الكربوهيدرات",
-  "fats" : "الدهون"
+  "fats" : "الدهون",
+  "message": "رسالة",
+"ok": "موافق"
 }

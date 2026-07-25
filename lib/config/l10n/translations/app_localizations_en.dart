@@ -61,27 +61,6 @@ class AppLocalizationsEn extends AppLocalizations {
   String get do_it => 'Do IT';
 
   @override
-<<<<<<< HEAD
-  String get food_recommendation => 'Food Recommendation';
-
-  @override
-  String get instructions => 'Instructions';
-
-  @override
-  String get ingredients => 'Ingredients';
-
-  @override
-  String get energy => 'Energy';
-
-  @override
-  String get protein => 'Protein';
-
-  @override
-  String get carbs => 'Carbs';
-
-  @override
-  String get fats => 'Fats';
-=======
   String get message => 'Message';
 
   @override
@@ -223,5 +202,25 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get invalidPhoneNumber => 'Enter a valid phone number';
->>>>>>> 738a3f79a59f2f66fc793e82d0ade7003db966d5
+
+  @override
+  String get food_recommendation => 'Food Recommendation';
+
+  @override
+  String get instructions => 'Instructions';
+
+  @override
+  String get ingredients => 'Ingredients';
+
+  @override
+  String get energy => 'Energy';
+
+  @override
+  String get protein => 'Protein';
+
+  @override
+  String get carbs => 'Carbs';
+
+  @override
+  String get fats => 'Fats';
 }

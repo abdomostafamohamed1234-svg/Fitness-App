@@ -62,31 +62,10 @@ class AppLocalizationsAr extends AppLocalizations {
   String get do_it => 'افعلها';
 
   @override
-<<<<<<< HEAD
-  String get food_recommendation => 'اقتراحات الطعام';
+  String get message => 'رسالة';
 
   @override
-  String get instructions => 'الوصفة';
-
-  @override
-  String get ingredients => 'المقادير';
-
-  @override
-  String get energy => 'الطاقة';
-
-  @override
-  String get protein => 'البروتين';
-
-  @override
-  String get carbs => 'الكربوهيدرات';
-
-  @override
-  String get fats => 'الدهون';
-=======
-  String get message => 'Message';
-
-  @override
-  String get ok => 'OK';
+  String get ok => 'موافق';
 
   @override
   String get howOldAreYou => 'كم عمرك؟';
@@ -223,5 +202,25 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get invalidPhoneNumber => 'أدخل رقم هاتف صالح';
->>>>>>> 738a3f79a59f2f66fc793e82d0ade7003db966d5
+
+  @override
+  String get food_recommendation => 'اقتراحات الطعام';
+
+  @override
+  String get instructions => 'الوصفة';
+
+  @override
+  String get ingredients => 'المقادير';
+
+  @override
+  String get energy => 'الطاقة';
+
+  @override
+  String get protein => 'البروتين';
+
+  @override
+  String get carbs => 'الكربوهيدرات';
+
+  @override
+  String get fats => 'الدهون';
 }
