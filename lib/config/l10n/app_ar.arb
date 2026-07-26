@@ -20,4 +20,11 @@
   "navChat": "المحادثة",
   "navWorkouts": "التمارين",
   "navProfile": "الملف الشخصي"
+  "food_recommendation": "اقتراحات الطعام",
+  "instructions": "الوصفة",
+  "ingredients": "المقادير",
+  "energy" : "الطاقة",
+  "protein" : "البروتين",
+  "carbs" : "الكربوهيدرات",
+  "fats" : "الدهون"
 }

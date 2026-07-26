@@ -20,4 +20,11 @@
   "navChat": "Chat",
   "navWorkouts": "Workouts",
   "navProfile": "Profile"
+  "food_recommendation": "Food Recommendation",
+  "instructions": "Instructions",
+  "ingredients": "Ingredients",
+  "energy" : "Energy",
+  "protein" : "Protein",
+  "carbs" : "Carbs",
+  "fats" : "Fats"
 }
