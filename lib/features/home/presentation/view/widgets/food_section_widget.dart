@@ -1,3 +1,5 @@
+import 'package:flowery/config/routing/app_routes.dart';
+import 'package:flowery/config/routing/routing_extensions.dart';
 import 'package:flowery/core/theme/app_colors.dart';
 import 'package:flowery/features/home/domian/entities/food_for_you_model.dart';
 import 'package:flutter/material.dart';
@@ -27,14 +29,20 @@ class FoodSectionWidget extends StatelessWidget {
               ),
             ),
             const SizedBox(width: 8),
-            const Text(
-              'See All',
-              style: TextStyle(
-                color: AppColors.primaryColor,
-                fontSize: 14,
-                decoration: TextDecoration.underline,
-                decorationColor: AppColors.primaryColor,
-                decorationThickness: 2,
+            TextButton(
+            
+              onPressed: () { 
+                context.pushNamed(AppRoutes.food);
+               },
+              child: const Text(
+                'See All',
+                style: TextStyle(
+                  color: AppColors.primaryColor,
+                  fontSize: 14,
+                  decoration: TextDecoration.underline,
+                  decorationColor: AppColors.primaryColor,
+                  decorationThickness: 2,
+                ),
               ),
             ),
           ],

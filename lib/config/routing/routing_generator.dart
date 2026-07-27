@@ -1,5 +1,9 @@
 import 'package:flowery/config/di/di_config.dart';
 import 'package:flowery/config/routing/app_routes.dart';
+import 'package:flowery/features/exercises/presentation/arg/exercise_screen_args.dart';
+import 'package:flowery/features/exercises/presentation/screens/exercises_screen.dart';
+import 'package:flowery/features/exercises/presentation/view_model/cubit/exercise_cubit.dart';
+import 'package:flowery/features/exercises/presentation/view_model/events/exercise_events.dart';
 import 'package:flowery/features/forget_password/presentation/screens/forget_password_screen.dart';
 import 'package:flowery/features/forget_password/presentation/view_models/cubit/forget_password_view_model.dart';
 import 'package:flowery/features/auth_with_social_media/presentation/view/widgets/social_register_args.dart';
@@ -39,17 +43,17 @@ class RouteGenerator {
           );
         case AppRoutes.home:
           return MaterialPageRoute(builder: (_) => const HomePage());
-        case AppRoutes.exercise:
+        // case AppRoutes.exercise:
 
-        // return MultiBlocProvider(
-        //   providers: [
-        //     BlocProvider(
-        //       create: (_) => getIt<ExerciseCubit>()
-        //         ..doEvent(
-        //           LoadExerciseLevelsEvent(muscleId: args.muscleId),
-        //         ),
-        //     ),
-        //   ],
+        // // return MultiBlocProvider(
+        // //   providers: [
+        // //     BlocProvider(
+        // //       create: (_) => getIt<ExerciseCubit>()
+        // //         ..doEvent(
+        // //           LoadExerciseLevelsEvent(muscleId: args.muscleId),
+        // //         ),
+        // //     ),
+        // //   ],
         case AppRoutes.food:
           return MaterialPageRoute(
             builder: (context) {
@@ -72,6 +76,24 @@ class RouteGenerator {
               child: const ForgetPasswordScreen(),
             ),
           );
+
+
+
+
+          case AppRoutes.exercise:
+  final args = settings.arguments as ExerciseScreenArgs;
+  return MaterialPageRoute(
+    builder: (context) => BlocProvider(
+      create: (_) => getIt<ExerciseCubit>()
+        ..doEvent(LoadExerciseLevelsEvent(muscleId: args.muscleId)),
+      child: ExerciseScreen(
+        muscleId: args.muscleId,
+        muscleName: args.muscleName,
+        backgroundImageUrl: args.backgroundImageUrl,
+        trainerImageUrl: args.trainerImageUrl,
+      ),
+    ),
+  );
         default:
           return unDefinedRoute();
       }

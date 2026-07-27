@@ -45,7 +45,7 @@ class FitnessApp extends StatelessWidget {
               onGenerateRoute: RouteGenerator.getRoute,
               debugShowCheckedModeBanner: false,
               theme: AppTheme.darkTheme,
-              initialRoute: AppRoutes.food,
+              initialRoute: AppRoutes.home,
             );
           },
         );
