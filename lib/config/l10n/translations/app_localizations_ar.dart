@@ -33,9 +33,6 @@ class AppLocalizationsAr extends AppLocalizations {
   String get transformTimeout => 'انتهت مهلة المعالجة';
 
   @override
-  String get unexpectedError => 'حدث خطأ غير متوقع';
-
-  @override
   String get motivation =>
       'حقق أهدافك الرياضية من خلال تمارين مخصصة وإرشادات احترافية. حافظ على حماسك، وتتبع تقدمك، وكن أفضل نسخة من نفسك.';
 
@@ -276,4 +273,17 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get resend_code => 'ارسل الكود مره اخري?';
+
+  @override
+  String get unexpectedError => 'حدث خطأ غير متوقع';
+
+  @override
+  String get follow_the_plan =>
+      'اتبع الخطة أدناه واختر مستوى الصعوبة الذي يناسبك للبدء';
+
+  @override
+  String get exercise => 'التمرين';
+
+  @override
+  String get no_exercises_found => 'لم يتم العثور على تمارين لهذا المستوى';
 }

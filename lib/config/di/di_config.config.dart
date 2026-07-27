@@ -39,6 +39,20 @@ import '../../features/auth_with_social_media/domain/use_case/sign_out_use_case.
     as _i254;
 import '../../features/auth_with_social_media/presentation/view_model/cubit/social_auth_cubit.dart'
     as _i260;
+import '../../features/exercises/api/api_client/exercise_api_client.dart'
+    as _i79;
+import '../../features/exercises/api/data_source/exercise_data_source_impl.dart'
+    as _i1043;
+import '../../features/exercises/data/data_source/exercise_data_sourse_contract.dart'
+    as _i675;
+import '../../features/exercises/data/repo/exercise_repo_impl.dart' as _i42;
+import '../../features/exercises/domain/repo/exercise_repo_contract.dart'
+    as _i523;
+import '../../features/exercises/domain/use_case/exercise_use_case_.dart'
+    as _i517;
+import '../../features/exercises/domain/use_case/levels_use_case.dart' as _i720;
+import '../../features/exercises/presentation/view_model/cubit/exercise_cubit.dart'
+    as _i82;
 import '../../features/food/api/api_client/food_api_client.dart' as _i310;
 import '../../features/food/api/data_sources/food_remote_data_source_impl.dart'
     as _i58;
@@ -154,6 +168,9 @@ extension GetItInjectableX on _i174.GetIt {
     gh.lazySingleton<_i892.ForgetPasswordApiClient>(
       () => _i892.ForgetPasswordApiClient(gh<_i361.Dio>()),
     );
+    gh.factory<_i79.ExerciseApiClient>(
+      () => _i79.ExerciseApiClient(gh<_i361.Dio>()),
+    );
     gh.factory<_i592.HomeApiClient>(() => _i592.HomeApiClient(gh<_i361.Dio>()));
     gh.factory<_i387.LoginApiClient>(
       () => _i387.LoginApiClient(gh<_i361.Dio>()),
@@ -194,6 +211,9 @@ extension GetItInjectableX on _i174.GetIt {
       () => _i234.PopularTrainingRepositoryImpl(
         gh<_i439.PopularTrainingRemoteDataSource>(),
       ),
+    );
+    gh.factory<_i675.ExerciseDataSourceContract>(
+      () => _i1043.ExerciseDataSourceImpl(gh<_i79.ExerciseApiClient>()),
     );
     gh.factory<_i703.RegisterRemoteDataSourceContract>(
       () => _i754.RegisterRemoteDataSourceImpl(gh<_i656.RegisterApiClient>()),
@@ -239,6 +259,9 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i278.RegisterCubit>(
       () => _i278.RegisterCubit(gh<_i679.RegisterUsecase>()),
     );
+    gh.factory<_i523.ExerciseRepoContract>(
+      () => _i42.ExerciseRepoImpl(gh<_i675.ExerciseDataSourceContract>()),
+    );
     gh.factory<_i437.ForgetPasswordUseCase>(
       () => _i437.ForgetPasswordUseCase(gh<_i665.ForgetPasswordRepoContract>()),
     );
@@ -269,6 +292,12 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i656.FoodRemoteDataSourceContract>(
       () => _i58.FoodRemoteDataSourceImpl(gh<_i310.FoodApiClient>()),
     );
+    gh.factory<_i517.ExerciseUseCase>(
+      () => _i517.ExerciseUseCase(gh<_i523.ExerciseRepoContract>()),
+    );
+    gh.factory<_i720.LevelsUseCase>(
+      () => _i720.LevelsUseCase(gh<_i523.ExerciseRepoContract>()),
+    );
     gh.factory<_i901.FoodRepoContract>(
       () => _i20.FoodRepoImpl(gh<_i656.FoodRemoteDataSourceContract>()),
     );
@@ -291,6 +320,12 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i940.HomeCubit>(() => _i940.HomeCubit(gh<_i497.HomeUseCase>()));
     gh.factory<_i272.LoginCubit>(
       () => _i272.LoginCubit(gh<_i168.LoginUseCase>()),
+    );
+    gh.factory<_i82.ExerciseCubit>(
+      () => _i82.ExerciseCubit(
+        gh<_i720.LevelsUseCase>(),
+        gh<_i517.ExerciseUseCase>(),
+      ),
     );
     gh.factory<_i687.GetMealDetailsUseCase>(
       () => _i687.GetMealDetailsUseCase(gh<_i901.FoodRepoContract>()),

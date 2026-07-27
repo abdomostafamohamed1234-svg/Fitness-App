@@ -33,9 +33,6 @@ class AppLocalizationsEn extends AppLocalizations {
   String get transformTimeout => 'Transform timeout';
 
   @override
-  String get unexpectedError => 'Unexpected error';
-
-  @override
   String get motivation =>
       'Achieve your fitness goals with personalized workouts and expert guidance. Stay motivated, track your progress, and become the best version of yourself.';
 
@@ -278,4 +275,17 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get resend_code => 'Resend Code?';
+
+  @override
+  String get unexpectedError => 'Unexpected error';
+
+  @override
+  String get follow_the_plan =>
+      'Follow the plan below and pick your difficulty level to get started.';
+
+  @override
+  String get exercise => 'Exercise';
+
+  @override
+  String get no_exercises_found => 'No exercises found for this level';
 }
