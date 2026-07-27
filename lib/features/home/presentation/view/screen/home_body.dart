@@ -6,7 +6,6 @@ import 'package:flowery/features/home/presentation/view/widgets/category_section
 import 'package:flowery/features/home/presentation/view/widgets/food_section_widget.dart';
 import 'package:flowery/features/home/presentation/view/widgets/home_header_widget.dart';
 import 'package:flowery/features/home/presentation/view/widgets/home_shimmer_widget.dart';
-import 'package:flowery/features/home/presentation/view/widgets/popular_training_widget.dart';
 import 'package:flowery/features/home/presentation/view/widgets/recommendation_section_widget.dart';
 import 'package:flowery/features/home/presentation/view/widgets/workout_section_widget.dart';
 import 'package:flowery/features/home/presentation/view_model/home_cubit.dart';

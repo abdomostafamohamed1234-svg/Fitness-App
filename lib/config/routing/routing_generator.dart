@@ -37,13 +37,19 @@ class RouteGenerator {
               );
             },
           );
-             case AppRoutes.home:
-          return MaterialPageRoute(
-            builder: (_) => const HomePage(),
-          );
-        // case AppRoutes.login:
-        //   return MaterialPageRoute(builder: (_) => const LoginPage());
+        case AppRoutes.home:
+          return MaterialPageRoute(builder: (_) => const HomePage());
+        case AppRoutes.exercise:
 
+        // return MultiBlocProvider(
+        //   providers: [
+        //     BlocProvider(
+        //       create: (_) => getIt<ExerciseCubit>()
+        //         ..doEvent(
+        //           LoadExerciseLevelsEvent(muscleId: args.muscleId),
+        //         ),
+        //     ),
+        //   ],
         case AppRoutes.food:
           return MaterialPageRoute(
             builder: (context) {

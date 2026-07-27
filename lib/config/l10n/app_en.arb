@@ -7,7 +7,6 @@
   "requestCancelled": "Request cancelled",
   "serverError": "Server error",
   "transformTimeout": "Transform timeout",
-  "unexpectedError": "Unexpected error",
   "motivation" : "Achieve your fitness goals with personalized workouts and expert guidance. Stay motivated, track your progress, and become the best version of yourself.",
   "motivation_title_1" : "The Price Of Excellence \nIs Discipline",
   "motivation_title_2" : "Fitness Has Never Been \nSo Much Fun",
@@ -89,6 +88,7 @@
   "confirm":"Confirm",
   "did_not_receive_verification_code":"Didn't Receive Verification Code?",
   "resend_code":"Resend Code?",
+  "unexpectedError": "Unexpected error",
   "follow_the_plan": "Follow the plan below and pick your difficulty level to get started.",
    "exercise":"Exercise",
    "no_exercises_found": "No exercises found for this level"
