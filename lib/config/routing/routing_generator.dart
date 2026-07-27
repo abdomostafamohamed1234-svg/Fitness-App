@@ -15,6 +15,7 @@ import 'package:flowery/features/food/presentation/screens/food_recommendation_s
 import 'package:flowery/features/food/presentation/view_model/cubit/food_cubit.dart';
 import 'package:flowery/features/food/presentation/view_model/events/food_events.dart';
 import 'package:flowery/features/home/presentation/view/screen/home_Page.dart';
+import 'package:flowery/features/workouts/presentation/view/pages/workouts_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -77,23 +78,24 @@ class RouteGenerator {
             ),
           );
 
+        case AppRoutes.workouts:
+          return MaterialPageRoute(builder: (_) => const WorkoutsPage());
 
-
-
-          case AppRoutes.exercise:
-  final args = settings.arguments as ExerciseScreenArgs;
-  return MaterialPageRoute(
-    builder: (context) => BlocProvider(
-      create: (_) => getIt<ExerciseCubit>()
-        ..doEvent(LoadExerciseLevelsEvent(muscleId: args.muscleId)),
-      child: ExerciseScreen(
-        muscleId: args.muscleId,
-        muscleName: args.muscleName,
-        backgroundImageUrl: args.backgroundImageUrl,
-        trainerImageUrl: args.trainerImageUrl,
-      ),
-    ),
-  );
+        case AppRoutes.exercise:
+          final args = settings.arguments as ExerciseScreenArgs;
+          return MaterialPageRoute(
+            builder: (context) => BlocProvider(
+              create: (_) =>
+                  getIt<ExerciseCubit>()
+                    ..doEvent(LoadExerciseLevelsEvent(muscleId: args.muscleId)),
+              child: ExerciseScreen(
+                muscleId: args.muscleId,
+                muscleName: args.muscleName,
+                backgroundImageUrl: args.backgroundImageUrl,
+                trainerImageUrl: args.trainerImageUrl,
+              ),
+            ),
+          );
         default:
           return unDefinedRoute();
       }

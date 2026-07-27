@@ -220,16 +220,28 @@ class HomeBody extends StatelessWidget {
                         const SizedBox(height: 24),
 
                         // ===== UPCOMING WORKOUTS (chips + cards) =====
-                        _buildSection(
-                          key: const ValueKey('workout_section'),
-                          state: state.workOutState,
-                          shimmer: const WorkoutShimmer(),
-                          loadedBuilder: (data) => WorkoutSectionWidget(
-                            musclesGroup: data.musclesGroup,
-                          ),
+                        // _buildSection(
+                        //   key: const ValueKey('workout_section'),
+                        //   state: state.workOutState,
+                        //   shimmer: const WorkoutShimmer(),
+                        //   loadedBuilder: (data) => WorkoutSectionWidget(
+                        //     musclesGroup: data.musclesGroup,
+                        //   ),
                           
-                        ),
+                        // ),
+
+                        const WorkoutSectionWidget(),
+
                         const SizedBox(height: 24),
+
+                        // _buildSection(
+                        //   state: state.workOutState,
+                        //   shimmer: const WorkoutShimmer(),
+                        //   loadedBuilder: (data) => WorkoutSectionWidget(
+                        //     musclesGroup: data.musclesGroup,
+                        //   ),
+                        // ),
+                        // const SizedBox(height: 24),
 
                         // ===== FOOD / RECOMMENDATION FOR YOU =====
                         _buildSection(
@@ -257,7 +269,6 @@ class HomeBody extends StatelessWidget {
       ),
     );
   }
-
 Widget _buildSection<T>({
   Key? key,
   required BaseState<T> state,
