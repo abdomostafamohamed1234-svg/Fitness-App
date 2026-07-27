@@ -16,6 +16,41 @@ import 'package:injectable/injectable.dart' as _i526;
 import 'package:shared_preferences/shared_preferences.dart' as _i460;
 
 import '../../core/cubits/locale/locale_cubit.dart' as _i273;
+import '../../features/change_password/api/api_client/change_password_api_client.dart'
+    as _i244;
+import '../../features/change_password/api/data_source/change_password_local_data_source_implementation.dart'
+    as _i793;
+import '../../features/change_password/api/data_source/change_password_remote_data_source_imp.dart'
+    as _i577;
+import '../../features/change_password/data/data_source/change_password_local_data_source_contract.dart'
+    as _i110;
+import '../../features/change_password/data/data_source/change_password_remote_data_source_contract.dart'
+    as _i167;
+import '../../features/change_password/data/repo/change_password_repo_imp.dart'
+    as _i49;
+import '../../features/change_password/domain/repo/change_password_repo_contract.dart'
+    as _i333;
+import '../../features/change_password/domain/ues_case/change_password_use_case.dart'
+    as _i534;
+import '../../features/change_password/presentation/view_model/change_password_view_model.dart'
+    as _i969;
+import '../../features/food/api/api_client/food_api_client.dart' as _i310;
+import '../../features/food/api/data_sources/food_remote_data_source_impl.dart'
+    as _i58;
+import '../../features/food/data/data_sources/food_remote_data_source_contract.dart'
+    as _i656;
+import '../../features/food/data/repo/food_repo_impl.dart' as _i20;
+import '../../features/food/domain/repo/food_repo_contract.dart' as _i901;
+import '../../features/food/domain/use_cases/get_meal_details_use_case.dart'
+    as _i687;
+import '../../features/food/domain/use_cases/get_meals_categories_use_case.dart'
+    as _i282;
+import '../../features/food/domain/use_cases/select_meals_category_use_case.dart'
+    as _i904;
+import '../../features/food/presentation/view_model/cubit/food_cubit.dart'
+    as _i660;
+import '../../features/on_boarding/presentation/view_model/cubit/on_boarding_cubit.dart'
+    as _i786;
 import '../helpers/shared_preferences/shared_preferences_helper.dart' as _i425;
 import 'di_module.dart' as _i211;
 
@@ -31,6 +66,7 @@ extension GetItInjectableX on _i174.GetIt {
       () => diModule.sharedPreferences(),
       preResolve: true,
     );
+    gh.factory<_i786.OnBoardingCubit>(() => _i786.OnBoardingCubit());
     gh.singleton<_i361.Dio>(() => diModule.dio());
     gh.lazySingleton<_i558.FlutterSecureStorage>(
       () => diModule.secureStorage(),
@@ -40,6 +76,60 @@ extension GetItInjectableX on _i174.GetIt {
     );
     gh.factory<_i273.LocaleCubit>(
       () => _i273.LocaleCubit(gh<_i425.SharedPreferencesHelper>()),
+    );
+    gh.lazySingleton<_i244.ChangePasswordApiClient>(
+      () => _i244.ChangePasswordApiClient(gh<_i361.Dio>()),
+    );
+    gh.singleton<_i361.Dio>(
+      () => diModule.mealsDio(),
+      instanceName: 'mealsDio',
+    );
+    gh.factory<_i793.ChangePasswordLocalDataSourceImplementation>(
+      () => _i793.ChangePasswordLocalDataSourceImplementation(
+        gh<_i558.FlutterSecureStorage>(),
+      ),
+    );
+    gh.factory<_i310.FoodApiClient>(
+      () => _i310.FoodApiClient(gh<_i361.Dio>(instanceName: 'mealsDio')),
+    );
+    gh.factory<_i167.ChangePasswordRemoteDataSourceContract>(
+      () => _i577.ChangePasswordRemoteDataSourceImp(
+        gh<_i244.ChangePasswordApiClient>(),
+      ),
+    );
+    gh.factory<_i656.FoodRemoteDataSourceContract>(
+      () => _i58.FoodRemoteDataSourceImpl(gh<_i310.FoodApiClient>()),
+    );
+    gh.factory<_i333.ChangePasswordRepoContract>(
+      () => _i49.ChangePasswordRepoImp(
+        gh<_i167.ChangePasswordRemoteDataSourceContract>(),
+        gh<_i110.ChangePasswordLocalDataSourceContract>(),
+      ),
+    );
+    gh.factory<_i901.FoodRepoContract>(
+      () => _i20.FoodRepoImpl(gh<_i656.FoodRemoteDataSourceContract>()),
+    );
+    gh.factory<_i534.ChangePasswordUseCase>(
+      () => _i534.ChangePasswordUseCase(gh<_i333.ChangePasswordRepoContract>()),
+    );
+    gh.factory<_i969.ChangePasswordViewModel>(
+      () => _i969.ChangePasswordViewModel(gh<_i534.ChangePasswordUseCase>()),
+    );
+    gh.factory<_i687.GetMealDetailsUseCase>(
+      () => _i687.GetMealDetailsUseCase(gh<_i901.FoodRepoContract>()),
+    );
+    gh.factory<_i282.GetMealsCategoriesUseCase>(
+      () => _i282.GetMealsCategoriesUseCase(gh<_i901.FoodRepoContract>()),
+    );
+    gh.factory<_i904.SelectMealsCategoryUseCase>(
+      () => _i904.SelectMealsCategoryUseCase(gh<_i901.FoodRepoContract>()),
+    );
+    gh.factory<_i660.FoodCubit>(
+      () => _i660.FoodCubit(
+        gh<_i282.GetMealsCategoriesUseCase>(),
+        gh<_i904.SelectMealsCategoryUseCase>(),
+        gh<_i687.GetMealDetailsUseCase>(),
+      ),
     );
     return this;
   }
