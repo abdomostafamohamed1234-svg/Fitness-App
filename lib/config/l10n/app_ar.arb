@@ -88,8 +88,7 @@
   "invalid_code_please_try_again":"الكود خطأ",
   "confirm":"تأكيد",
   "did_not_receive_verification_code":"لم يتم استلام الكود?",
-  "resend_code":"ارسل الكود مره اخري?"
-  "unexpectedError": "حدث خطأ غير متوقع",
+  "resend_code":"ارسل الكود مره اخري?",
   "follow_the_plan": "اتبع الخطة أدناه واختر مستوى الصعوبة الذي يناسبك للبدء",
   "exercise": "التمرين",
    "no_exercises_found":"لم يتم العثور على تمارين لهذا المستوى"

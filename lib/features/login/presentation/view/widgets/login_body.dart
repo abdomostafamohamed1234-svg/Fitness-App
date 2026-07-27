@@ -3,7 +3,6 @@ import 'package:flowery/config/routing/routing_extensions.dart';
 import 'package:flowery/core/base/base_state.dart';
 import 'package:flowery/core/theme/app_colors.dart';
 import 'package:flowery/core/widgets/glass_container.dart';
-import 'package:flowery/core/widgets/social_button.dart';
 import 'package:flowery/features/auth_with_social_media/presentation/view/widgets/social_auth_buttons_row.dart';
 import 'package:flowery/features/login/presentation/view_model/cubit.dart';
 import 'package:flowery/features/login/presentation/view_model/event.dart';

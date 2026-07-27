@@ -103,7 +103,7 @@ class _ChooseRpalWidgetState extends State<ChooseRpalWidget> {
                 child: ElevatedButton(
                   onPressed: () {
                     registerCubit.doIntent(Register());
-                    context.pushNamed(AppRoutes.home);
+                   // context.pushNamed(AppRoutes.home);
                   },
                   child: Text(
                     AppLocalizations.of(context)!.submit,
