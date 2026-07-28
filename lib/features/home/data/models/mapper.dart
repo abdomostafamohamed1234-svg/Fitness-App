@@ -1,9 +1,11 @@
 // food_for_you_mapper.dart
 
 import 'package:flowery/features/home/data/models/food_for_you_response_dto.dart';
+import 'package:flowery/features/home/data/models/profile_response_dto.dart';
 import 'package:flowery/features/home/data/models/recommendation_to_day_response_dto.dart';
 import 'package:flowery/features/home/data/models/work_out_response_dto.dart';
 import 'package:flowery/features/home/domian/entities/food_for_you_model.dart';
+import 'package:flowery/features/home/domian/entities/profile_model.dart';
 import 'package:flowery/features/home/domian/entities/recommendation_model.dart';
 import 'package:flowery/features/home/domian/entities/work_out_model.dart';
 
@@ -29,7 +31,16 @@ extension WorkOutMapper on WorkOutResponseDto {
         musclesGroup: musclesGroup.map((e) => e.toEntity()).toList(),
       );
 }
+// ...نفس المحتوى اللي فوق زي ما هو من غير أي تغيير...
 
+// profile_mapper.dart
+extension ProfileMapper on ProfileResponseDto {
+  ProfileModel toEntity() => ProfileModel(
+        firstName: user.firstName,
+        lastName: user.lastName,
+        photo: user.photo,
+      );
+}
 extension MuscleGroupMapper on MuscleGroup {
   MuscleGroupModel toEntity() => MuscleGroupModel(
         id: id,
