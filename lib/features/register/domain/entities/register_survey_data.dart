@@ -1,9 +1,4 @@
-/// Holds all the data collected during the multi-step register survey
-/// (gender, age, weight, height, goal, activity level).
-///
-/// This is shared between normal email/password register and any
-/// social register flow (Google, Facebook, ...), since the survey
-/// steps are identical regardless of how the user authenticates.
+
 class RegisterSurveyData {
   String? gender;
   int? age;

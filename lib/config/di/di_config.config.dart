@@ -134,6 +134,22 @@ import '../../features/register/domain/use_cases/register_usecase.dart'
     as _i679;
 import '../../features/register/presentation/view_model/cubit/register_cubit.dart'
     as _i278;
+import '../../features/workouts/api/api_client/workouts_api_client.dart'
+    as _i123;
+import '../../features/workouts/api/datasources/workouts_remote_data_source_impl.dart'
+    as _i355;
+import '../../features/workouts/data/datasources/workouts_remote_data_source_contract.dart'
+    as _i668;
+import '../../features/workouts/data/repositories/workouts_repository_impl.dart'
+    as _i774;
+import '../../features/workouts/domain/repositories/workouts_repository.dart'
+    as _i243;
+import '../../features/workouts/domain/use_cases/get_muscles_group_by_id_use_case.dart'
+    as _i350;
+import '../../features/workouts/domain/use_cases/get_muscles_group_use_case.dart'
+    as _i249;
+import '../../features/workouts/presentation/view_model/cubit/workouts_cubit.dart'
+    as _i152;
 import '../helpers/shared_preferences/shared_preferences_helper.dart' as _i425;
 import 'di_module.dart' as _i211;
 import 'firebase_module.dart' as _i616;
@@ -167,6 +183,9 @@ extension GetItInjectableX on _i174.GetIt {
     );
     gh.lazySingleton<_i892.ForgetPasswordApiClient>(
       () => _i892.ForgetPasswordApiClient(gh<_i361.Dio>()),
+    );
+    gh.lazySingleton<_i123.WorkoutsApiClient>(
+      () => _i123.WorkoutsApiClient(gh<_i361.Dio>()),
     );
     gh.factory<_i79.ExerciseApiClient>(
       () => _i79.ExerciseApiClient(gh<_i361.Dio>()),
@@ -250,6 +269,9 @@ extension GetItInjectableX on _i174.GetIt {
         gh<_i703.RegisterRemoteDataSourceContract>(),
       ),
     );
+    gh.factory<_i668.WorkoutRemoteDataSourceContract>(
+      () => _i355.WorkoutsRemoteDataSourceImpl(gh<_i123.WorkoutsApiClient>()),
+    );
     gh.factory<_i679.RegisterUsecase>(
       () => _i679.RegisterUsecase(gh<_i994.RegisterRepository>()),
     );
@@ -292,6 +314,17 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i656.FoodRemoteDataSourceContract>(
       () => _i58.FoodRemoteDataSourceImpl(gh<_i310.FoodApiClient>()),
     );
+    gh.factory<_i243.WorkoutRepository>(
+      () => _i774.WorkoutsRepositoryImpl(
+        gh<_i668.WorkoutRemoteDataSourceContract>(),
+      ),
+    );
+    gh.factory<_i350.GetMusclesGroupByIdUseCase>(
+      () => _i350.GetMusclesGroupByIdUseCase(gh<_i243.WorkoutRepository>()),
+    );
+    gh.factory<_i249.GetMusclesGroupUseCase>(
+      () => _i249.GetMusclesGroupUseCase(gh<_i243.WorkoutRepository>()),
+    );
     gh.factory<_i517.ExerciseUseCase>(
       () => _i517.ExerciseUseCase(gh<_i523.ExerciseRepoContract>()),
     );
@@ -325,6 +358,12 @@ extension GetItInjectableX on _i174.GetIt {
       () => _i82.ExerciseCubit(
         gh<_i720.LevelsUseCase>(),
         gh<_i517.ExerciseUseCase>(),
+      ),
+    );
+    gh.factory<_i152.WorkoutsCubit>(
+      () => _i152.WorkoutsCubit(
+        gh<_i249.GetMusclesGroupUseCase>(),
+        gh<_i350.GetMusclesGroupByIdUseCase>(),
       ),
     );
     gh.factory<_i687.GetMealDetailsUseCase>(

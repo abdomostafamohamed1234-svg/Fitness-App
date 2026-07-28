@@ -389,17 +389,6 @@ class _RegisterBodyState extends State<RegisterBody> {
               ),
               const SizedBox(height: 10),
 
-              // ── Social Login Icons ────────────────────────
-              // Row(
-              //   mainAxisAlignment: MainAxisAlignment.center,
-              //   children: [
-              //     SocialButton(icon: Icons.facebook, onTap: () {}),
-              //     const SizedBox(width: 20),
-              //     SocialButton(label: 'G', onTap: () {}),
-              //     const SizedBox(width: 20),
-              //     SocialButton(icon: Icons.apple, onTap: () {}),
-              //   ],
-              // ),
               const SocialAuthButtonsRow(),
               const SizedBox(height: 15),
               SizedBox(
