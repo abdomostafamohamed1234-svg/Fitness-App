@@ -165,6 +165,8 @@ import 'package:flowery/features/home/presentation/view_model/home_event.dart';
 import 'package:flowery/features/home/presentation/view_model/home_state.dart';
 import 'package:flowery/features/popular_training/presentation/view/widget/popular_training_secton.dart';
 import 'package:flowery/features/popular_training/presentation/view_model/popular_training_cubit.dart';
+import 'package:flowery/features/popular_training/presentation/view/widget/popular_training_secton.dart';
+import 'package:flowery/features/popular_training/presentation/view_model/popular_training_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -200,6 +202,7 @@ class HomeBody extends StatelessWidget {
                         // ===== CATEGORY (filter chips) =====
                         _buildSection(
                           key: const ValueKey('category_section'),
+                          key: const ValueKey('category_section'),
                           state: state.workOutState,
                           shimmer: const CategoryShimmer(),
                           loadedBuilder: (data) => CategorySectionWidget(
@@ -210,6 +213,7 @@ class HomeBody extends StatelessWidget {
 
                         // ===== RECOMMENDATION TO DAY =====
                         _buildSection(
+                          key: const ValueKey('recommendation_section'),
                           key: const ValueKey('recommendation_section'),
                           state: state.recommendationState,
                           shimmer: const RecommendationShimmer(),
@@ -246,12 +250,18 @@ class HomeBody extends StatelessWidget {
                         // ===== FOOD / RECOMMENDATION FOR YOU =====
                         _buildSection(
                           key: const ValueKey('food_section'),
+                          key: const ValueKey('food_section'),
                           state: state.foodState,
                           shimmer: const FoodShimmer(),
                           loadedBuilder: (data) =>
                               FoodSectionWidget(categories: data.categories),
                         ),
                         const SizedBox(height: 24),
+                        BlocProvider(
+                          key: const ValueKey('popular_training_provider'),
+                          create: (_) => getIt<PopularTrainingCubit>(),
+                          child: const PopularTrainingSection(),
+                        ),
                         BlocProvider(
                           key: const ValueKey('popular_training_provider'),
                           create: (_) => getIt<PopularTrainingCubit>(),
@@ -271,10 +281,22 @@ class HomeBody extends StatelessWidget {
   }
 Widget _buildSection<T>({
   Key? key,
+  Key? key,
   required BaseState<T> state,
   required Widget shimmer,
   required Widget Function(T data) loadedBuilder,
 }) {
+  return KeyedSubtree(
+    key: key,
+    child: state.when(
+      initial: () => const SizedBox.shrink(),
+      loading: () => shimmer,
+      success: (data) => loadedBuilder(data),
+      error: (exception) => Center(
+        child: Text(
+          exception.toString(),
+          style: const TextStyle(color: Colors.red),
+        ),
   return KeyedSubtree(
     key: key,
     child: state.when(
