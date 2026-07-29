@@ -1,6 +1,7 @@
 import 'package:flowery/config/routing/app_routes.dart';
 import 'package:flowery/config/routing/routing_extensions.dart';
 import 'package:flowery/core/theme/app_colors.dart';
+import 'package:flowery/features/food/presentation/arg/food_screen_args.dart';
 import 'package:flowery/features/home/domian/entities/food_for_you_model.dart';
 import 'package:flutter/material.dart';
 
@@ -30,10 +31,11 @@ class FoodSectionWidget extends StatelessWidget {
             ),
             const SizedBox(width: 8),
             TextButton(
-            
-              onPressed: () { 
+              onPressed: () {
+                // "See All" -> no specific category, food screen defaults
+                // to the first category as before.
                 context.pushNamed(AppRoutes.food);
-               },
+              },
               child: const Text(
                 'See All',
                 style: TextStyle(
@@ -56,45 +58,53 @@ class FoodSectionWidget extends StatelessWidget {
             separatorBuilder: (_, _) => const SizedBox(width: 12),
             itemBuilder: (context, index) {
               final category = categories[index];
-              return ClipRRect(
-                borderRadius: BorderRadius.circular(16),
-                child: Stack(
-                  children: [
-                    SizedBox(
-                      width: 130,
-                      height: 140,
-                      child: Image.network(
-                        category.imageUrl,
-                        fit: BoxFit.cover,
-                        errorBuilder: (_, _, _) => Container(
-                          color: Colors.grey[850],
-                          child: const Icon(
-                            Icons.restaurant,
-                            color: Colors.orange,
-                            size: 32,
+              return GestureDetector(
+                onTap: () {
+                  context.pushNamed(
+                    AppRoutes.food,
+                    arguments: FoodScreenArgs(categoryName: category.name),
+                  );
+                },
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(16),
+                  child: Stack(
+                    children: [
+                      SizedBox(
+                        width: 130,
+                        height: 140,
+                        child: Image.network(
+                          category.imageUrl,
+                          fit: BoxFit.cover,
+                          errorBuilder: (_, _, _) => Container(
+                            color: Colors.grey[850],
+                            child: const Icon(
+                              Icons.restaurant,
+                              color: Colors.orange,
+                              size: 32,
+                            ),
                           ),
                         ),
                       ),
-                    ),
-                    Container(
-                      width: 130,
-                      height: 140,
-                      color: Colors.black.withValues(alpha: 0.35),
-                    ),
-                    Positioned(
-                      bottom: 10,
-                      left: 10,
-                      right: 10,
-                      child: Text(
-                        category.name,
-                        style: const TextStyle(
-                          color: Colors.white,
-                          fontWeight: FontWeight.w600,
-                          fontSize: 14,
+                      Container(
+                        width: 130,
+                        height: 140,
+                        color: Colors.black.withValues(alpha: 0.35),
+                      ),
+                      Positioned(
+                        bottom: 10,
+                        left: 10,
+                        right: 10,
+                        child: Text(
+                          category.name,
+                          style: const TextStyle(
+                            color: Colors.white,
+                            fontWeight: FontWeight.w600,
+                            fontSize: 14,
+                          ),
                         ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               );
             },

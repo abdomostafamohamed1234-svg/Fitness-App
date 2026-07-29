@@ -1,6 +1,10 @@
 sealed class FoodEvents {}
 
-class GetMealsCategoriesEvent extends FoodEvents {}
+class GetMealsCategoriesEvent extends FoodEvents {
+  final String? initialCategory;
+
+  GetMealsCategoriesEvent({this.initialCategory});
+}
 
 class SelectMealCategoryEvent extends FoodEvents {
   final String newSelectedCategory;
