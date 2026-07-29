@@ -163,7 +163,7 @@ class _ChatBotScreenState extends State<ChatBotScreen> {
                         ),
                         SizedBox(height: height * 0.02),
 
-                        state.isWelcome
+                        state.isWelcome && state.selectedChatIndex == -1
                             // Case: Welcome Screen
                             ? ChatWelcome(
                                 height: height,

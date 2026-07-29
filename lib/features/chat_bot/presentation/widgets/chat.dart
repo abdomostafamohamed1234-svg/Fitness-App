@@ -59,14 +59,14 @@ class Chat extends StatelessWidget {
                                       ? AppColors.borderColor
                                       : AppColors.orangeColor,
                                   borderRadius: BorderRadius.only(
-                                    bottomLeft: const Radius.circular(20),
-                                    bottomRight: const Radius.circular(20),
+                                    bottomLeft: const Radius.circular(10),
+                                    bottomRight: const Radius.circular(10),
                                     topRight: message.isBot
-                                        ? const Radius.circular(20)
+                                        ? const Radius.circular(10)
                                         : const Radius.circular(0),
                                     topLeft: message.isBot
                                         ? const Radius.circular(0)
-                                        : const Radius.circular(20),
+                                        : const Radius.circular(10),
                                   ),
                                 ),
                                 child: Padding(
