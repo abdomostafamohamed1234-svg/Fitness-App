@@ -22,5 +22,13 @@
   "energy" : "Energy",
   "protein" : "Protein",
   "carbs" : "Carbs",
-  "fats" : "Fats"
+  "fats" : "Fats",
+  "hi" : "Hi",
+  "i_am_your" : "I Am Your",
+  "smart_coach": "Smart Coach",
+  "how_can_i_assist_you" : "How Can I Assist You",
+  "today" : "Today ?",
+  "get_started" : "Get Started",
+  "previous_conversations" : "Previous Conversations",
+  "fitness_hint_text" : "Ask me anything about fitness..."
 }

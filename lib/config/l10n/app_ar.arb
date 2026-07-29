@@ -22,5 +22,13 @@
   "energy" : "الطاقة",
   "protein" : "البروتين",
   "carbs" : "الكربوهيدرات",
-  "fats" : "الدهون"
+  "fats" : "الدهون",
+  "hi": "مرحبًا",
+  "i_am_your": "أنا",
+  "smart_coach": "مدربك الذكي",
+  "how_can_i_assist_you": "كيف يمكنني مساعدتك",
+  "today": "اليوم ؟",
+  "get_started": "ابدأ",
+  "previous_conversations": "المحادثات السابقة",
+  "fitness_hint_text" : "...اسألني أي شيء عن اللياقة البدنية"
 }
