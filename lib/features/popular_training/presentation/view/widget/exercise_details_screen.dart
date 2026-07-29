@@ -20,9 +20,6 @@ class _ExerciseDetailsScreenState extends State<ExerciseDetailsScreen> {
   @override
   void initState() {
     super.initState();
-
-    // Prefer the short demonstration video as the main embedded player;
-    // fall back to the in-depth one if the short link isn't available.
     final videoUrl =
         widget.exercise.shortYoutubeDemonstrationLink ??
         widget.exercise.inDepthYoutubeExplanationLink;
@@ -44,9 +41,6 @@ class _ExerciseDetailsScreenState extends State<ExerciseDetailsScreen> {
     _controller?.dispose();
     super.dispose();
   }
-
-  // Only show a separate "in-depth explanation" button when it's a
-  // different video than the one already embedded above.
   bool get _hasSeparateInDepthLink {
     final inDepth = widget.exercise.inDepthYoutubeExplanationLink;
     final short = widget.exercise.shortYoutubeDemonstrationLink;
