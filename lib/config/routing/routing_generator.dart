@@ -7,7 +7,7 @@ class RouteGenerator {
   static Route<dynamic> getRoute(RouteSettings settings) {
     try {
       switch (settings.name) {
-             case AppRoutes.Home:
+             case AppRoutes.home:
           return MaterialPageRoute(
             builder: (_) => const HomePage(),
           );

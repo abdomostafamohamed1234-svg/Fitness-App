@@ -25,7 +25,7 @@ class WorkoutsBody extends StatelessWidget {
                 children: [
                   IconButton(
                        onPressed: () {
-                    Navigator.pushNamed(context, AppRoutes.Home);
+                    Navigator.pushNamed(context, AppRoutes.home);
                   },
             
                     icon: const Icon(Icons.arrow_back, color: Colors.white),
