@@ -5,7 +5,7 @@ abstract final class AppTheme {
   static ThemeData get darkTheme {
     return ThemeData(
       useMaterial3: true,
-      
+
       brightness: Brightness.dark,
 
       scaffoldBackgroundColor: Colors.black,
@@ -94,7 +94,8 @@ abstract final class AppTheme {
         style: OutlinedButton.styleFrom(
           minimumSize: const Size.fromHeight(52),
           foregroundColor: AppColors.whiteColor,
-          side: BorderSide(color: AppColors.greyColor.withValues(alpha: .2)),
+          side: BorderSide(color: AppColors.whiteColor.withValues(alpha: .7)),
+          padding: const EdgeInsets.symmetric(vertical: 8),
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(30),
           ),
