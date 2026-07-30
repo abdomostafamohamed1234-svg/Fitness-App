@@ -6,7 +6,6 @@ import 'package:flowery/features/exercises/presentation/view_model/events/exerci
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
-
 class ExerciseItemCard extends StatefulWidget {
   final ExerciseEntity exercise;
 
