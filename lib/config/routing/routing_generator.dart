@@ -41,8 +41,7 @@ class RouteGenerator {
         //       );
         //     },
         //   );
-        default:
-          return unDefinedRoute();
+       
       }
     } catch (e) {
       return errorRoute(e.toString());

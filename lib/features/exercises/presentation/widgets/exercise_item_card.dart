@@ -102,7 +102,7 @@ class _ExerciseItemCardState extends State<ExerciseItemCard> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         AspectRatio(
-          aspectRatio: 4 / 3,
+          aspectRatio: 16 / 9,
           child: YoutubePlayer(
             controller: _controller!,
             showVideoProgressIndicator: true,
@@ -227,7 +227,7 @@ class _YoutubeThumbnailState extends State<_YoutubeThumbnail> {
 
   @override
   Widget build(BuildContext context) {
-    return Image.network(
+    return  Image.network(
       _currentUrl,
       key: ValueKey(_qualityIndex),
       fit: BoxFit.cover,

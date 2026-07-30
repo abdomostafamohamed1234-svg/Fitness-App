@@ -34,4 +34,14 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get unexpectedError => 'Unexpected error';
+
+  @override
+  String get follow_the_plan =>
+      'Follow the plan below and pick your difficulty level to get started.';
+
+  @override
+  String get exercise => 'Exercise';
+
+  @override
+  String get no_exercises_found => 'No exercises found for this level';
 }

@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flowery/config/l10n/translations/app_localizations.dart';
 import 'package:flowery/core/theme/app_colors.dart';
 import 'package:flowery/features/exercises/domain/entities/exercises_entity.dart';
@@ -33,7 +34,7 @@ class ExerciseScreen extends StatelessWidget {
           Positioned.fill(
             child: Image(
               image: backgroundImageUrl != null
-                  ? NetworkImage(backgroundImageUrl!) as ImageProvider
+                  ? CachedNetworkImageProvider(backgroundImageUrl!) 
                   : const AssetImage(AssetsUrl.backgroundImage),
               fit: BoxFit.cover,
             ),
@@ -106,7 +107,7 @@ class ExerciseScreen extends StatelessWidget {
                             padding: const EdgeInsets.symmetric(vertical: 40),
                             child: Center(
                               child: Text(
-                                exception.toString(),
+                               localization.serverError ,
                                 style: const TextStyle(
                                   color: AppColors.errorColor,
                                 ),

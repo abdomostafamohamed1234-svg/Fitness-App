@@ -151,6 +151,24 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Unexpected error'**
   String get unexpectedError;
+
+  /// No description provided for @follow_the_plan.
+  ///
+  /// In en, this message translates to:
+  /// **'Follow the plan below and pick your difficulty level to get started.'**
+  String get follow_the_plan;
+
+  /// No description provided for @exercise.
+  ///
+  /// In en, this message translates to:
+  /// **'Exercise'**
+  String get exercise;
+
+  /// No description provided for @no_exercises_found.
+  ///
+  /// In en, this message translates to:
+  /// **'No exercises found for this level'**
+  String get no_exercises_found;
 }
 
 class _AppLocalizationsDelegate

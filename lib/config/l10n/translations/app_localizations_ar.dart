@@ -34,4 +34,14 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get unexpectedError => 'حدث خطأ غير متوقع';
+
+  @override
+  String get follow_the_plan =>
+      'اتبع الخطة أدناه واختر مستوى الصعوبة الذي يناسبك للبدء';
+
+  @override
+  String get exercise => 'التمرين';
+
+  @override
+  String get no_exercises_found => 'لم يتم العثور على تمارين لهذا المستوى';
 }
