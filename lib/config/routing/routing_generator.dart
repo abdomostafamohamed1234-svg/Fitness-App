@@ -13,6 +13,38 @@ class RouteGenerator {
   static Route<dynamic> getRoute(RouteSettings settings) {
     try {
       switch (settings.name) {
+        //  case AppRoutes.exercise:
+        //   return MaterialPageRoute(
+        //     builder: (context) {
+        //       final args = settings.arguments;
+        //       if (args is! ExerciseScreenArgs) {
+        //         return Scaffold(
+        //           appBar: AppBar(title: const Text('Route Error')),
+        //           body: const Center(
+        //             child: Text("ExerciseScreenArgs is missing or invalid"),
+        //           ),
+        //         );
+        //       }
+ 
+        //       return MultiBlocProvider(
+        //         providers: [
+        //           BlocProvider(
+        //             create: (_) => getIt<ExerciseCubit>()
+        //               ..doEvent(
+        //                 LoadExerciseLevelsEvent(muscleId: args.muscleId),
+        //               ),
+        //           ),
+        //         ],
+        //         child: ExerciseScreen(
+        //           muscleId: args.muscleId,
+        //           muscleName: args.muscleName,
+        //           backgroundImageUrl: args.backgroundImageUrl,
+        //           trainerImageUrl: args.trainerImageUrl,
+        //         ),
+        //       );
+        //     },
+        //   );
+       
         case AppRoutes.onBoarding:
           return MaterialPageRoute(
             builder: (_) => BlocProvider(

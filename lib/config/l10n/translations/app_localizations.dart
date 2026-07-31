@@ -152,6 +152,26 @@ abstract class AppLocalizations {
   /// **'Unexpected error'**
   String get unexpectedError;
 
+
+  /// No description provided for @follow_the_plan.
+  ///
+  /// In en, this message translates to:
+  /// **'Follow the plan below and pick your difficulty level to get started.'**
+  String get follow_the_plan;
+
+  /// No description provided for @exercise.
+  ///
+  /// In en, this message translates to:
+  /// **'Exercise'**
+  String get exercise;
+
+  /// No description provided for @no_exercises_found.
+  ///
+  /// In en, this message translates to:
+  /// **'No exercises found for this level'**
+  String get no_exercises_found;
+
+
   /// No description provided for @motivation.
   ///
   /// In en, this message translates to:
@@ -223,6 +243,47 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Profile'**
   String get navProfile;
+  /// No description provided for @food_recommendation.
+  ///
+  /// In en, this message translates to:
+  /// **'Food Recommendation'**
+  String get food_recommendation;
+
+  /// No description provided for @instructions.
+  ///
+  /// In en, this message translates to:
+  /// **'Instructions'**
+  String get instructions;
+
+  /// No description provided for @ingredients.
+  ///
+  /// In en, this message translates to:
+  /// **'Ingredients'**
+  String get ingredients;
+
+  /// No description provided for @energy.
+  ///
+  /// In en, this message translates to:
+  /// **'Energy'**
+  String get energy;
+
+  /// No description provided for @protein.
+  ///
+  /// In en, this message translates to:
+  /// **'Protein'**
+  String get protein;
+
+  /// No description provided for @carbs.
+  ///
+  /// In en, this message translates to:
+  /// **'Carbs'**
+  String get carbs;
+
+  /// No description provided for @fats.
+  ///
+  /// In en, this message translates to:
+  /// **'Fats'**
+  String get fats;
 }
 
 class _AppLocalizationsDelegate
