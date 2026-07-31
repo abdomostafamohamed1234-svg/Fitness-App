@@ -23,8 +23,8 @@ class FoodCubit extends Cubit<FoodState> {
 
   void doEvent(FoodEvents event) {
     switch (event) {
-      case GetMealsCategoriesEvent():
-        _getMealsCategories();
+      case GetMealsCategoriesEvent(initialCategory: final initialCategory):
+        _getMealsCategories(initialCategory);
       case SelectMealCategoryEvent():
         _selectMealCategory(event);
       case GetMealDetailsEvent():
@@ -60,17 +60,40 @@ class FoodCubit extends Cubit<FoodState> {
     }
   }
 
-  void _getMealsCategories() async {
+
+  String _resolveInitialCategoryTitle(
+    List<MealEntity> categories,
+    String? target,
+  ) {
+    if (categories.isEmpty) return "";
+    if (target == null || target.trim().isEmpty) return categories[0].title;
+
+    final normalizedTarget = target.trim().toLowerCase();
+    for (final category in categories) {
+      if (category.title.trim().toLowerCase() == normalizedTarget) {
+        return category.title;
+      }
+    }
+ 
+    return categories[0].title;
+  }
+
+  void _getMealsCategories(String? initialCategory) async {
     emit(state.copyWith(categoriesState: const BaseState.loading()));
     final response = await _getMealsCategoriesUseCase.call();
     switch (response) {
       case Success<List<MealEntity>>():
         emit(state.copyWith(categoriesState: BaseState.success(response.data)));
         if (state.mealsState.data == null) {
+          final categories = response.data ?? [];
+          final resolvedTitle = _resolveInitialCategoryTitle(
+            categories,
+            initialCategory,
+          );
           _selectMealCategory(
             SelectMealCategoryEvent(
               oldSelectedCategory: "",
-              newSelectedCategory: response.data?[0].title ?? "",
+              newSelectedCategory: resolvedTitle,
             ),
           );
         }

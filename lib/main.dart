@@ -1,3 +1,4 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flowery/config/di/di_config.dart';
 import 'package:flowery/config/helpers/bloc/bloc_observer.dart';
 import 'package:flowery/config/l10n/translations/app_localizations.dart';
@@ -6,12 +7,14 @@ import 'package:flowery/config/routing/routing_generator.dart';
 import 'package:flowery/core/cubits/locale/locale_cubit.dart';
 import 'package:flowery/core/cubits/locale/locale_state.dart';
 import 'package:flowery/core/theme/app_theme.dart';
+import 'firebase_options.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   await configureDependencies();
   Bloc.observer = MyBlocObserver();
   runApp(
@@ -42,10 +45,12 @@ class FitnessApp extends StatelessWidget {
               onGenerateRoute: RouteGenerator.getRoute,
               debugShowCheckedModeBanner: false,
               theme: AppTheme.darkTheme,
+
               initialRoute: AppRoutes.onBoarding,
               
            
               // home: const TestScreen(),
+
             );
           },
         );

@@ -132,7 +132,9 @@ class BlurredContainer extends StatelessWidget {
                       height: 40.h,
                       child: ElevatedButton(
                         onPressed: () {
-                          context.pushNamed(AppRoutes.appSections);
+
+                          context.pushNamed(AppRoutes.register);
+
                         },
                         child: Text(localizations.do_it),
                       ),

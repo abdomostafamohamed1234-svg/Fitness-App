@@ -34,7 +34,9 @@ class ExerciseScreen extends StatelessWidget {
           Positioned.fill(
             child: Image(
               image: backgroundImageUrl != null
-                  ? CachedNetworkImageProvider(backgroundImageUrl!) 
+
+                  ? NetworkImage(backgroundImageUrl!) as ImageProvider
+
                   : const AssetImage(AssetsUrl.backgroundImage),
               fit: BoxFit.cover,
             ),
@@ -107,7 +109,9 @@ class ExerciseScreen extends StatelessWidget {
                             padding: const EdgeInsets.symmetric(vertical: 40),
                             child: Center(
                               child: Text(
-                               localization.serverError ,
+
+                                exception.toString(),
+
                                 style: const TextStyle(
                                   color: AppColors.errorColor,
                                 ),

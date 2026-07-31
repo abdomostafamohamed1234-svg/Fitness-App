@@ -13,7 +13,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class FoodRecommendationScreen extends StatefulWidget {
-  const FoodRecommendationScreen({super.key});
+  final String? initialCategoryName;
+
+  const FoodRecommendationScreen({super.key, this.initialCategoryName});
 
   @override
   State<FoodRecommendationScreen> createState() =>
@@ -29,6 +31,19 @@ class _FoodRecommendationScreenState extends State<FoodRecommendationScreen> {
     textTheme = Theme.of(context).textTheme;
     localizations = AppLocalizations.of(context)!;
     super.didChangeDependencies();
+  }
+
+  // Same case-insensitive/trim matching logic used in FoodCubit, so the
+  // visually-selected tab always agrees with the actually-selected category.
+  int _resolveInitialIndex(List<MealEntity> data) {
+    final target = widget.initialCategoryName;
+    if (target == null || target.trim().isEmpty) return 0;
+
+    final normalizedTarget = target.trim().toLowerCase();
+    final index = data.indexWhere(
+      (category) => category.title.trim().toLowerCase() == normalizedTarget,
+    );
+    return index == -1 ? 0 : index;
   }
 
   @override
@@ -77,6 +92,7 @@ class _FoodRecommendationScreenState extends State<FoodRecommendationScreen> {
                 success: (List<MealEntity> data) {
                   return DefaultTabController(
                     length: data.length,
+                    initialIndex: _resolveInitialIndex(data),
                     child: SafeArea(
                       child: Center(
                         child: Padding(

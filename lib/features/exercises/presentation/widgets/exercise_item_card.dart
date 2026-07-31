@@ -6,6 +6,7 @@ import 'package:flowery/features/exercises/presentation/view_model/events/exerci
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
+
 class ExerciseItemCard extends StatefulWidget {
   final ExerciseEntity exercise;
 
@@ -101,7 +102,9 @@ class _ExerciseItemCardState extends State<ExerciseItemCard> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         AspectRatio(
-          aspectRatio: 16 / 9,
+
+          aspectRatio: 4 / 3,
+
           child: YoutubePlayer(
             controller: _controller!,
             showVideoProgressIndicator: true,
@@ -226,7 +229,9 @@ class _YoutubeThumbnailState extends State<_YoutubeThumbnail> {
 
   @override
   Widget build(BuildContext context) {
-    return  Image.network(
+
+    return Image.network(
+
       _currentUrl,
       key: ValueKey(_qualityIndex),
       fit: BoxFit.cover,
