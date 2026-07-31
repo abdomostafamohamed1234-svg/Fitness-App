@@ -175,6 +175,7 @@ import 'package:flowery/features/auth_with_social_media/presentation/view/widget
 import 'package:flowery/features/login/presentation/view/login_screen.dart';
 import 'package:flowery/features/on_boarding/presentation/screens/on_boarding_screen.dart';
 import 'package:flowery/features/on_boarding/presentation/view_model/cubit/on_boarding_cubit.dart';
+import 'package:flowery/features/app_sections/presentation/view/pages/app_sections_page.dart';
 import 'package:flowery/features/register/presentation/view/pages/register_page.dart';
 import 'package:flowery/features/food/presentation/screens/food_recommendation_screen.dart';
 import 'package:flowery/features/food/presentation/view_model/cubit/food_cubit.dart';
@@ -189,6 +190,38 @@ class RouteGenerator {
   static Route<dynamic> getRoute(RouteSettings settings) {
     try {
       switch (settings.name) {
+        //  case AppRoutes.exercise:
+        //   return MaterialPageRoute(
+        //     builder: (context) {
+        //       final args = settings.arguments;
+        //       if (args is! ExerciseScreenArgs) {
+        //         return Scaffold(
+        //           appBar: AppBar(title: const Text('Route Error')),
+        //           body: const Center(
+        //             child: Text("ExerciseScreenArgs is missing or invalid"),
+        //           ),
+        //         );
+        //       }
+ 
+        //       return MultiBlocProvider(
+        //         providers: [
+        //           BlocProvider(
+        //             create: (_) => getIt<ExerciseCubit>()
+        //               ..doEvent(
+        //                 LoadExerciseLevelsEvent(muscleId: args.muscleId),
+        //               ),
+        //           ),
+        //         ],
+        //         child: ExerciseScreen(
+        //           muscleId: args.muscleId,
+        //           muscleName: args.muscleName,
+        //           backgroundImageUrl: args.backgroundImageUrl,
+        //           trainerImageUrl: args.trainerImageUrl,
+        //         ),
+        //       );
+        //     },
+        //   );
+       
         case AppRoutes.login:
           return MaterialPageRoute(builder: (_) => const LoginPage());
 
@@ -200,6 +233,24 @@ class RouteGenerator {
             ),
           );
 
+        case AppRoutes.appSections:
+          return MaterialPageRoute(
+            builder: (_) => const AppSectionsPage(),
+          );
+
+        // case AppRoutes.:
+        //   return MaterialPageRoute(
+        //     builder: (context) {
+        //       return MultiBlocProvider(
+        //         providers: [
+        //           BlocProvider(
+        //             create: (_) => 
+        //           ),
+        //         ],
+        //         child: ,
+        //       );
+        //     },
+        //   );
         case AppRoutes.register:
           return MaterialPageRoute(
             builder: (context) {
