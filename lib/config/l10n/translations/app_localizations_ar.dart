@@ -72,6 +72,16 @@ class AppLocalizationsAr extends AppLocalizations {
   String get do_it => 'افعلها';
 
   @override
+  String get navExplore => 'استكشاف';
+
+  @override
+  String get navChat => 'المحادثة';
+
+  @override
+  String get navWorkouts => 'التمارين';
+
+  @override
+  String get navProfile => 'الملف الشخصي';
   String get food_recommendation => 'اقتراحات الطعام';
 
   @override

@@ -19,6 +19,10 @@
   "next" : "Next",
   "back" : "Back",
   "do_it" : "Do IT",
+  "navExplore": "Explore",
+  "navChat": "Chat",
+  "navWorkouts": "Workouts",
+  "navProfile": "Profile"
   "food_recommendation": "Food Recommendation",
   "instructions": "Instructions",
   "ingredients": "Ingredients",

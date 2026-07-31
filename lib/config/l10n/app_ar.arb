@@ -19,6 +19,10 @@
   "next" : "التالي",
   "back" : "السابق",
   "do_it" : "افعلها",
+  "navExplore": "استكشاف",
+  "navChat": "المحادثة",
+  "navWorkouts": "التمارين",
+  "navProfile": "الملف الشخصي"
   "food_recommendation": "اقتراحات الطعام",
   "instructions": "الوصفة",
   "ingredients": "المقادير",

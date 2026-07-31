@@ -2,6 +2,7 @@ import 'package:flowery/config/di/di_config.dart';
 import 'package:flowery/config/routing/app_routes.dart';
 import 'package:flowery/features/on_boarding/presentation/screens/on_boarding_screen.dart';
 import 'package:flowery/features/on_boarding/presentation/view_model/cubit/on_boarding_cubit.dart';
+import 'package:flowery/features/app_sections/presentation/view/pages/app_sections_page.dart';
 import 'package:flowery/features/food/presentation/screens/food_recommendation_screen.dart';
 import 'package:flowery/features/food/presentation/view_model/cubit/food_cubit.dart';
 import 'package:flowery/features/food/presentation/view_model/events/food_events.dart';
@@ -51,6 +52,25 @@ class RouteGenerator {
               child: const OnBoardingScreen(),
             ),
           );
+
+        case AppRoutes.appSections:
+          return MaterialPageRoute(
+            builder: (_) => const AppSectionsPage(),
+          );
+
+        // case AppRoutes.:
+        //   return MaterialPageRoute(
+        //     builder: (context) {
+        //       return MultiBlocProvider(
+        //         providers: [
+        //           BlocProvider(
+        //             create: (_) => 
+        //           ),
+        //         ],
+        //         child: ,
+        //       );
+        //     },
+        //   );
 
         case AppRoutes.food:
           return MaterialPageRoute(
