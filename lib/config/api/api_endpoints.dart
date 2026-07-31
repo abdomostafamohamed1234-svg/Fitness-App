@@ -34,9 +34,11 @@ class AppEndPoints {
   static const String randomExercises = "/exercises/random";
 
   // ===================== Meals (TheMealDB) =====================
+  static const String mealsDio = 'mealsDio';
   static const String mealCategories = "/categories.php";
   static const String mealsByCategory = "/filter.php";
   static const String mealDetails = "/lookup.php";
+
 
   // ===================== Home =====================
 
