@@ -106,6 +106,14 @@ import '../../features/login/domain/repo_contract/login_repo_contract.dart'
     as _i202;
 import '../../features/login/domain/use_case/login_use_case.dart' as _i168;
 import '../../features/login/presentation/view_model/cubit.dart' as _i272;
+import '../../features/logout/api/api_client/logout_api_client.dart' as _i1048;
+import '../../features/logout/data/repository/logout_repository_impl.dart'
+    as _i1002;
+import '../../features/logout/domian/repository/logout_repository_contract.dart'
+    as _i543;
+import '../../features/logout/domian/usecase/logout_usecase.dart' as _i219;
+import '../../features/logout/presentation/veiw_model.dart/logout_cubit.dart'
+    as _i242;
 import '../../features/on_boarding/presentation/view_model/cubit/on_boarding_cubit.dart'
     as _i786;
 import '../../features/popular_training/api/api_client/popular_training_api_client.dart'
@@ -120,6 +128,16 @@ import '../../features/popular_training/domain/usecase/get_exercises_usecase.dar
     as _i1048;
 import '../../features/popular_training/presentation/view_model/popular_training_cubit.dart'
     as _i695;
+import '../../features/profile/api/api/profile_api_client.dart' as _i586;
+import '../../features/profile/api/datasourse/local_datasourse_impl.dart'
+    as _i54;
+import '../../features/profile/data/repository/profile_repository_impl.dart'
+    as _i309;
+import '../../features/profile/domain/repository/profile_%20repository_contract.dart'
+    as _i728;
+import '../../features/profile/domain/usecase/profile_usecase.dart' as _i721;
+import '../../features/profile/presentation/view_model/profile_cubit.dart'
+    as _i542;
 import '../../features/register/api/api_client/register_api_client.dart'
     as _i656;
 import '../../features/register/api/datasources/register_remote_data_source_impl.dart'
@@ -194,8 +212,14 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i387.LoginApiClient>(
       () => _i387.LoginApiClient(gh<_i361.Dio>()),
     );
+    gh.factory<_i1048.LogoutApiClient>(
+      () => _i1048.LogoutApiClient(gh<_i361.Dio>()),
+    );
     gh.factory<_i763.PopularTrainingApiClient>(
       () => _i763.PopularTrainingApiClient(gh<_i361.Dio>()),
+    );
+    gh.factory<_i586.ProfileApiClient>(
+      () => _i586.ProfileApiClient(gh<_i361.Dio>()),
     );
     gh.factory<_i656.RegisterApiClient>(
       () => _i656.RegisterApiClient(gh<_i361.Dio>()),
@@ -205,12 +229,18 @@ extension GetItInjectableX on _i174.GetIt {
         gh<_i763.PopularTrainingApiClient>(),
       ),
     );
+    gh.factory<_i728.ProfileRepository>(
+      () => _i309.ProfileRepositoryImpl(gh<_i586.ProfileApiClient>()),
+    );
     gh.singleton<_i361.Dio>(
       () => diModule.mealsDio(),
       instanceName: 'mealsDio',
     );
     gh.singleton<_i490.SocialPasswordGenerator>(
       () => _i746.Sha256SocialPasswordGenerator(),
+    );
+    gh.lazySingleton<_i54.TokenLocalDataSource>(
+      () => _i54.TokenLocalDataSource(gh<_i558.FlutterSecureStorage>()),
     );
     gh.factory<_i606.SocialAuthDataSourceContract>(
       () => _i594.SocialAuthDataSourceImpl(
@@ -222,6 +252,9 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i763.CreateSocialSessionUseCase>(
       () =>
           _i763.CreateSocialSessionUseCase(gh<_i490.SocialPasswordGenerator>()),
+    );
+    gh.factory<_i721.ProfileUseCase>(
+      () => _i721.ProfileUseCase(gh<_i728.ProfileRepository>()),
     );
     gh.factory<_i80.LoginRemoteDataSourceContract>(
       () => _i365.LoginRemoteDataSourceImpl(gh<_i387.LoginApiClient>()),
@@ -241,6 +274,9 @@ extension GetItInjectableX on _i174.GetIt {
       () => _i1048.GetPopularTrainingUseCase(
         gh<_i539.PopularTrainingRepository>(),
       ),
+    );
+    gh.factory<_i542.ProfileCubit>(
+      () => _i542.ProfileCubit(gh<_i721.ProfileUseCase>()),
     );
     gh.factory<_i492.ForgetPasswordDataSourceContract>(
       () => _i495.ForgetPasswordDataSourceImp(
@@ -269,8 +305,20 @@ extension GetItInjectableX on _i174.GetIt {
         gh<_i703.RegisterRemoteDataSourceContract>(),
       ),
     );
+    gh.factory<_i543.LogoutRepository>(
+      () => _i1002.LogoutRepositoryImpl(
+        gh<_i1048.LogoutApiClient>(),
+        gh<_i558.FlutterSecureStorage>(),
+      ),
+    );
     gh.factory<_i668.WorkoutRemoteDataSourceContract>(
       () => _i355.WorkoutsRemoteDataSourceImpl(gh<_i123.WorkoutsApiClient>()),
+    );
+    gh.factory<_i202.LoginRepoContract>(
+      () => _i176.LoginRepoImpl(
+        gh<_i80.LoginRemoteDataSourceContract>(),
+        gh<_i558.FlutterSecureStorage>(),
+      ),
     );
     gh.factory<_i679.RegisterUsecase>(
       () => _i679.RegisterUsecase(gh<_i994.RegisterRepository>()),
@@ -296,9 +344,6 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i497.HomeUseCase>(
       () => _i497.HomeUseCase(gh<_i689.HomeRepositoryContract>()),
     );
-    gh.factory<_i202.LoginRepoContract>(
-      () => _i176.LoginRepoImpl(gh<_i80.LoginRemoteDataSourceContract>()),
-    );
     gh.factory<_i307.FacebookSignInUseCase>(
       () => _i307.FacebookSignInUseCase(gh<_i709.SocialAuthRepoContract>()),
     );
@@ -319,6 +364,9 @@ extension GetItInjectableX on _i174.GetIt {
         gh<_i668.WorkoutRemoteDataSourceContract>(),
       ),
     );
+    gh.factory<_i219.LogoutUseCase>(
+      () => _i219.LogoutUseCase(gh<_i543.LogoutRepository>()),
+    );
     gh.factory<_i350.GetMusclesGroupByIdUseCase>(
       () => _i350.GetMusclesGroupByIdUseCase(gh<_i243.WorkoutRepository>()),
     );
@@ -333,6 +381,9 @@ extension GetItInjectableX on _i174.GetIt {
     );
     gh.factory<_i901.FoodRepoContract>(
       () => _i20.FoodRepoImpl(gh<_i656.FoodRemoteDataSourceContract>()),
+    );
+    gh.factory<_i242.LogoutCubit>(
+      () => _i242.LogoutCubit(gh<_i219.LogoutUseCase>()),
     );
     gh.factory<_i916.ForgetPasswordViewModel>(
       () => _i916.ForgetPasswordViewModel(

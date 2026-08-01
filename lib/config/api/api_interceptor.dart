@@ -15,6 +15,7 @@ class ApiInterceptor extends Interceptor {
     final String? token = await fss.read(key: ApiKeys.token);
     if (token != null && token.isNotEmpty) {
       options.headers[ApiKeys.authorization] = '${ApiKeys.bearer} $token';
+      options.headers['token'] = token;
     }
     super.onRequest(options, handler);
   }

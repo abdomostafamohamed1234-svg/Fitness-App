@@ -175,6 +175,8 @@ import 'package:flowery/features/auth_with_social_media/presentation/view/widget
 import 'package:flowery/features/login/presentation/view/login_screen.dart';
 import 'package:flowery/features/on_boarding/presentation/screens/on_boarding_screen.dart';
 import 'package:flowery/features/on_boarding/presentation/view_model/cubit/on_boarding_cubit.dart';
+import 'package:flowery/features/profile/presentation/view/screen/profile_screen.dart';
+import 'package:flowery/features/profile/presentation/view_model/profile_cubit.dart';
 import 'package:flowery/features/register/presentation/view/pages/register_page.dart';
 import 'package:flowery/features/food/presentation/screens/food_recommendation_screen.dart';
 import 'package:flowery/features/food/presentation/view_model/cubit/food_cubit.dart';
@@ -197,6 +199,13 @@ class RouteGenerator {
             builder: (_) => BlocProvider(
               create: (_) => getIt<OnBoardingCubit>(),
               child: const OnBoardingScreen(),
+            ),
+          );
+        case AppRoutes.profile:
+          return MaterialPageRoute(
+            builder: (_) => BlocProvider(
+              create: (_) => getIt<ProfileCubit>(),
+              child:  const ProfileScreen(),
             ),
           );
 

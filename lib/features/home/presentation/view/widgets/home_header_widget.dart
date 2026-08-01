@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flowery/features/home/presentation/view_model/home_cubit.dart';
 import 'package:flowery/features/home/presentation/view_model/home_state.dart';
+import 'package:flowery/config/routing/app_routes.dart';
 
 class HomeHeaderWidget extends StatelessWidget {
   const HomeHeaderWidget({super.key});
@@ -40,15 +41,18 @@ class HomeHeaderWidget extends StatelessWidget {
                   ),
                 ],
               ),
-              CircleAvatar(
-                radius: 24,
-                backgroundColor: Colors.grey[800],
-                backgroundImage:
-                    (profile?.photo != null && profile!.photo.isNotEmpty)
-                    ? NetworkImage(profile.photo)
-                    : const NetworkImage(
-                        "https://fitness.elevateegy.com/uploads/default-profile.png",
-                      ),
+              GestureDetector(
+                onTap: () => Navigator.pushNamed(context, AppRoutes.profile),
+                child: CircleAvatar(
+                  radius: 24,
+                  backgroundColor: Colors.grey[800],
+                  backgroundImage:
+                      (profile?.photo != null && profile!.photo.isNotEmpty)
+                      ? NetworkImage(profile.photo)
+                      : const NetworkImage(
+                          "https://fitness.elevateegy.com/uploads/default-profile.png",
+                        ),
+                ),
               ),
             ],
           ),

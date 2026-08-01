@@ -50,5 +50,11 @@ class AppEndPoints {
 
   static const String getExercisesByPrimeMoverMuscleAndDifficultyLevel =
       "/exercises/by-muscle-difficulty";
+
+
+  // ===================== Profile =====================
+
+        static const String profile = "/auth/profile-data";
+
 }
 

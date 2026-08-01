@@ -47,16 +47,15 @@ dependencies:
   shared_preferences: ^2.5.4
   shimmer: ^3.0.0
   syncfusion_flutter_pdfviewer: 33.1.44
-  url_launcher: ^6.3.2
   googleapis_auth: ^2.3.2
 
   geolocator: ^14.0.2
   youtube_player_flutter: ^9.1.1
-  
   crypto: ^3.0.6
   mocktail: ^1.0.5
   numberpicker: ^2.1.2
   mockito: ^5.4.4
+  url_launcher: ^6.3.2
 
 
 
