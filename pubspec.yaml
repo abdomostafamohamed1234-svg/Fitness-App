@@ -51,9 +51,15 @@ dependencies:
 
   geolocator: ^14.0.2
   youtube_player_flutter: ^9.1.1
-  crypto: ^3.0.6
   mocktail: ^1.0.5
+  flutter_svg: ^2.2.3
+  mockito: ^5.6.4
+  
+  
+  crypto: ^3.0.6
+  
   numberpicker: ^2.1.2
+
   mockito: ^5.4.4
   url_launcher: ^6.3.2
 
@@ -75,6 +81,7 @@ flutter:
   generate: true
   assets:
   - assets/
+  - assets/svg/
 
 flutter_native_splash:
   color: "#1A1A1A"

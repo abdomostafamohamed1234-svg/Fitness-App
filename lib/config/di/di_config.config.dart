@@ -19,6 +19,10 @@ import 'package:injectable/injectable.dart' as _i526;
 import 'package:shared_preferences/shared_preferences.dart' as _i460;
 
 import '../../core/cubits/locale/locale_cubit.dart' as _i273;
+import '../../features/app_sections/presentation/view_model/cubit/app_sections_cubit.dart'
+    as _i1038;
+import '../../features/on_boarding/presentation/view_model/cubit/on_boarding_cubit.dart'
+    as _i786;
 import '../../core/utils/sha256_social_password_generator.dart' as _i746;
 import '../../core/utils/social_password_generator.dart' as _i490;
 import '../../features/auth_with_social_media/data/data_source/social_auth_data_source.dart'
@@ -185,6 +189,7 @@ extension GetItInjectableX on _i174.GetIt {
       () => diModule.sharedPreferences(),
       preResolve: true,
     );
+    gh.factory<_i1038.AppSectionsCubit>(() => _i1038.AppSectionsCubit());
     gh.factory<_i786.OnBoardingCubit>(() => _i786.OnBoardingCubit());
     gh.singleton<_i361.Dio>(() => diModule.dio());
     gh.singleton<_i59.FirebaseAuth>(() => firebaseModule.firebaseAuth);
