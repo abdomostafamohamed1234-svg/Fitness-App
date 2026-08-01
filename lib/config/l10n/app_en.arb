@@ -30,5 +30,6 @@
   "today" : "Today ?",
   "get_started" : "Get Started",
   "previous_conversations" : "Previous Conversations",
-  "fitness_hint_text" : "Ask me anything about fitness..."
+  "fitness_hint_text" : "Ask me anything about fitness...",
+  "you_cant_send_empty_message" : "You can't send an empty message"
 }

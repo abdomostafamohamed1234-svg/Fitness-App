@@ -30,5 +30,6 @@
   "today": "اليوم ؟",
   "get_started": "ابدأ",
   "previous_conversations": "المحادثات السابقة",
-  "fitness_hint_text" : "...اسألني أي شيء عن اللياقة البدنية"
+  "fitness_hint_text" : "...اسألني أي شيء عن اللياقة البدنية",
+  "you_cant_send_empty_message" : "لا يمكنك ارسال رسالة فارغة"
 }

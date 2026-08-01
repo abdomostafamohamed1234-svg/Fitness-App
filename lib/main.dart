@@ -1,3 +1,4 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flowery/config/di/di_config.dart';
 import 'package:flowery/config/helpers/bloc/bloc_observer.dart';
 import 'package:flowery/config/l10n/translations/app_localizations.dart';
@@ -12,6 +13,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   await configureDependencies();
   Bloc.observer = MyBlocObserver();
   runApp(

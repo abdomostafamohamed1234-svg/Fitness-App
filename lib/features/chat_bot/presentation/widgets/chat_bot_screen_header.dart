@@ -10,6 +10,7 @@ class ChatBotScreenHeader extends StatelessWidget {
   final AppLocalizations localizations;
   final TextTheme textTheme;
   final ChatBotState state;
+  final String firstName;
 
   const ChatBotScreenHeader({
     super.key,
@@ -18,6 +19,7 @@ class ChatBotScreenHeader extends StatelessWidget {
     required this.localizations,
     required this.textTheme,
     required this.state,
+    required this.firstName,
   });
 
   @override
@@ -44,7 +46,7 @@ class ChatBotScreenHeader extends StatelessWidget {
                   SizedBox(
                     height: height * 0.03,
                     child: Text(
-                      "${localizations.hi} ${state.firstName},\n",
+                      "${localizations.hi} $firstName,\n",
                       style: textTheme.titleMedium,
                     ),
                   ),

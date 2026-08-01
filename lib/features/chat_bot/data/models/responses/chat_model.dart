@@ -1,4 +1,4 @@
-import 'package:flowery/features/chat_bot/data/models/chat_message.dart';
+import 'package:flowery/features/chat_bot/data/models/responses/chat_message.dart';
 
 class ChatModel {
   final String chatTitle;

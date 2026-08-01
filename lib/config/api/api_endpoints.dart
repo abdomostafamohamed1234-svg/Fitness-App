@@ -38,4 +38,7 @@ class AppEndPoints {
   static const String mealCategories = "/categories.php";
   static const String mealsByCategory = "/filter.php";
   static const String mealDetails = "/lookup.php";
+
+  // ===================== ChatBot  =====================
+  static const String chatBotBaseURL = "https://ollama.com/api/chat";
 }
