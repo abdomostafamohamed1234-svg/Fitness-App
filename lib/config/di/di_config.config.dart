@@ -255,8 +255,9 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i273.LocaleCubit>(
       () => _i273.LocaleCubit(gh<_i425.SharedPreferencesHelper>()),
     );
-    gh.factory<_i137.ChatBotApiClient>(
-      () => _i137.ChatBotApiClient(gh<_i361.Dio>(instanceName: 'chatBotDio')),
+    gh.singleton<_i361.Dio>(
+      () => diModule.chatBotDio(),
+      instanceName: 'chatBotDio',
     );
     gh.lazySingleton<_i244.ChangePasswordApiClient>(
       () => _i244.ChangePasswordApiClient(gh<_i361.Dio>()),
@@ -309,9 +310,6 @@ extension GetItInjectableX on _i174.GetIt {
     gh.singleton<_i490.SocialPasswordGenerator>(
       () => _i746.Sha256SocialPasswordGenerator(),
     );
-    gh.factory<_i312.ChatBotRemoteDataSourcesContract>(
-      () => _i49.ChatBotRemoteDataSourcesImpl(gh<_i137.ChatBotApiClient>()),
-    );
     gh.lazySingleton<_i54.TokenLocalDataSource>(
       () => _i54.TokenLocalDataSource(gh<_i558.FlutterSecureStorage>()),
     );
@@ -350,12 +348,6 @@ extension GetItInjectableX on _i174.GetIt {
     );
     gh.factory<_i703.RegisterRemoteDataSourceContract>(
       () => _i754.RegisterRemoteDataSourceImpl(gh<_i656.RegisterApiClient>()),
-    );
-    gh.factory<_i311.ChatBotRepoContract>(
-      () => _i438.ChatBotRepoImpl(
-        gh<_i312.ChatBotRemoteDataSourcesContract>(),
-        gh<_i1049.ChatBotFirestoreDataSource>(),
-      ),
     );
     gh.factory<_i1048.GetPopularTrainingUseCase>(
       () => _i1048.GetPopularTrainingUseCase(
@@ -406,6 +398,9 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i776.UploadPhotoUseCase>(
       () => _i776.UploadPhotoUseCase(gh<_i977.EditProfileRepoContract>()),
     );
+    gh.factory<_i137.ChatBotApiClient>(
+      () => _i137.ChatBotApiClient(gh<_i361.Dio>(instanceName: 'chatBotDio')),
+    );
     gh.factory<_i167.ChangePasswordRemoteDataSourceContract>(
       () => _i577.ChangePasswordRemoteDataSourceImp(
         gh<_i244.ChangePasswordApiClient>(),
@@ -425,6 +420,9 @@ extension GetItInjectableX on _i174.GetIt {
         gh<_i80.LoginRemoteDataSourceContract>(),
         gh<_i558.FlutterSecureStorage>(),
       ),
+    );
+    gh.factory<_i312.ChatBotRemoteDataSourcesContract>(
+      () => _i49.ChatBotRemoteDataSourcesImpl(gh<_i137.ChatBotApiClient>()),
     );
     gh.factory<_i679.RegisterUsecase>(
       () => _i679.RegisterUsecase(gh<_i994.RegisterRepository>()),
@@ -465,15 +463,15 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i656.FoodRemoteDataSourceContract>(
       () => _i58.FoodRemoteDataSourceImpl(gh<_i310.FoodApiClient>()),
     );
-    gh.factory<_i776.GetAllChatsUseCase>(
-      () => _i776.GetAllChatsUseCase(gh<_i311.ChatBotRepoContract>()),
-    );
-    gh.factory<_i392.SendToChatBotUseCase>(
-      () => _i392.SendToChatBotUseCase(gh<_i311.ChatBotRepoContract>()),
-    );
     gh.factory<_i243.WorkoutRepository>(
       () => _i774.WorkoutsRepositoryImpl(
         gh<_i668.WorkoutRemoteDataSourceContract>(),
+      ),
+    );
+    gh.factory<_i311.ChatBotRepoContract>(
+      () => _i438.ChatBotRepoImpl(
+        gh<_i312.ChatBotRemoteDataSourcesContract>(),
+        gh<_i1049.ChatBotFirestoreDataSource>(),
       ),
     );
     gh.factory<_i219.LogoutUseCase>(
@@ -496,12 +494,6 @@ extension GetItInjectableX on _i174.GetIt {
         gh<_i501.GetProfileUseCase>(),
         gh<_i226.EditProfileUseCase>(),
         gh<_i776.UploadPhotoUseCase>(),
-      ),
-    );
-    gh.factory<_i1030.ChatBotCubit>(
-      () => _i1030.ChatBotCubit(
-        gh<_i392.SendToChatBotUseCase>(),
-        gh<_i776.GetAllChatsUseCase>(),
       ),
     );
     gh.factory<_i517.ExerciseUseCase>(
@@ -554,6 +546,12 @@ extension GetItInjectableX on _i174.GetIt {
         gh<_i350.GetMusclesGroupByIdUseCase>(),
       ),
     );
+    gh.factory<_i776.GetAllChatsUseCase>(
+      () => _i776.GetAllChatsUseCase(gh<_i311.ChatBotRepoContract>()),
+    );
+    gh.factory<_i392.SendToChatBotUseCase>(
+      () => _i392.SendToChatBotUseCase(gh<_i311.ChatBotRepoContract>()),
+    );
     gh.factory<_i687.GetMealDetailsUseCase>(
       () => _i687.GetMealDetailsUseCase(gh<_i901.FoodRepoContract>()),
     );
@@ -562,6 +560,12 @@ extension GetItInjectableX on _i174.GetIt {
     );
     gh.factory<_i904.SelectMealsCategoryUseCase>(
       () => _i904.SelectMealsCategoryUseCase(gh<_i901.FoodRepoContract>()),
+    );
+    gh.factory<_i1030.ChatBotCubit>(
+      () => _i1030.ChatBotCubit(
+        gh<_i392.SendToChatBotUseCase>(),
+        gh<_i776.GetAllChatsUseCase>(),
+      ),
     );
     gh.factory<_i660.FoodCubit>(
       () => _i660.FoodCubit(

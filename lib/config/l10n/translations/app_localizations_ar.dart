@@ -159,7 +159,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get whatIsYourWeight => 'ما هو وزنك؟';
 
   @override
-  String get kg => 'Kg';
+  String get kg => 'كجم';
 
   @override
   String get heyThere => 'أهلاً بك';
@@ -177,7 +177,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get lastName => 'الاسم الأخير';
 
   @override
-  String get email => 'Email';
+  String get email => 'البريد الإلكتروني';
 
   @override
   String get password => 'الرقم السري';
@@ -262,7 +262,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get create_pass => 'اعمل رقم سري';
 
   @override
-  String get create_new_password => 'Create New Password';
+  String get create_new_password => 'عمل رقم سري جديد';
 
   @override
   String get make_sure_its_8_character_or_more =>
@@ -276,7 +276,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get password_do_not_match => 'الرقم السري لا يتطابق';
 
   @override
-  String get done => 'Done';
+  String get done => 'انهاء';
 
   @override
   String get otp => 'الرقم المرسل';
@@ -351,62 +351,62 @@ class AppLocalizationsAr extends AppLocalizations {
   String get activity_true_beast => 'وحش حقيقي';
 
   @override
-  String get edit_profile_title => 'Edit Profile';
+  String get edit_profile_title => 'تعديل الملف الشخصي';
 
   @override
-  String get first_name => 'First Name';
+  String get first_name => 'الاسم الأول';
 
   @override
-  String get last_name => 'Last Name';
+  String get last_name => 'اسم العائلة';
 
   @override
-  String get your_weight => 'Your Weight';
+  String get your_weight => 'وزنك';
 
   @override
-  String get your_goal => 'Your Goal';
+  String get your_goal => 'هدفك';
 
   @override
-  String get your_activity_level => 'Your activity level';
+  String get your_activity_level => 'مستوى نشاطك';
 
   @override
-  String get tap_to_edit => '(Tap To Edit)';
+  String get tap_to_edit => '(اضغط للتعديل)';
 
   @override
-  String get old_password => 'Old Password';
+  String get old_password => 'الرقم السري القديم';
 
   @override
-  String get new_password => 'New Password';
+  String get new_password => 'الرقم السري الجديد';
 
   @override
-  String get confirm_password => 'Confirm Password';
+  String get confirm_password => 'تأكيد الرقم السري';
 
   @override
-  String get make_sure_8_chara => 'Make Sure Its 8 Characters Or More';
+  String get make_sure_8_chara => 'تأكد انه ثمانة احرف او اكثر';
 
   @override
-  String get hi => 'Hi';
+  String get hi => 'مرحبًا';
 
   @override
-  String get i_am_your => 'I Am Your';
+  String get i_am_your => 'أنا';
 
   @override
-  String get smart_coach => 'Smart Coach';
+  String get smart_coach => 'مدربك الذكي';
 
   @override
-  String get how_can_i_assist_you => 'How Can I Assist You';
+  String get how_can_i_assist_you => 'كيف يمكنني مساعدتك';
 
   @override
-  String get today => 'Today ?';
+  String get today => 'اليوم ؟';
 
   @override
-  String get get_started => 'Get Started';
+  String get get_started => 'ابدأ';
 
   @override
-  String get previous_conversations => 'Previous Conversations';
+  String get previous_conversations => 'المحادثات السابقة';
 
   @override
-  String get fitness_hint_text => 'Ask me anything about fitness...';
+  String get fitness_hint_text => '...اسألني أي شيء عن اللياقة البدنية';
 
   @override
-  String get you_cant_send_empty_message => 'You can\'t send an empty message';
+  String get you_cant_send_empty_message => 'لا يمكنك ارسال رسالة فارغة';
 }

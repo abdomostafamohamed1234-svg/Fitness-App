@@ -1,6 +1,7 @@
 import 'dart:ui';
 import 'package:flowery/config/di/di_config.dart';
 import 'package:flowery/config/routing/app_routes.dart';
+import 'package:flowery/config/routing/routing_extensions.dart';
 import 'package:flowery/core/theme/app_colors.dart';
 import 'package:flowery/features/logout/presentation/veiw_model.dart/logout_cubit.dart';
 import 'package:flowery/features/logout/presentation/veiw_model.dart/logout_event.dart';
@@ -21,12 +22,9 @@ class ProfileScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(
-  providers: [
-    BlocProvider(create: (_) => getIt<ProfileCubit>()..doAction(const GetProfileDataEvent())),
-    BlocProvider(create: (_) => getIt<LogoutCubit>()),
-  ],
-  child: const _ProfileView(),
-);
+      providers: [BlocProvider(create: (_) => getIt<LogoutCubit>())],
+      child: const _ProfileView(),
+    );
   }
 }
 
@@ -48,10 +46,9 @@ class _ProfileViewState extends State<_ProfileView> {
           initial: () {},
           loading: () {},
           success: (_) {
-            Navigator.of(context).pushNamedAndRemoveUntil(
-              AppRoutes.login,
-              (route) => false,
-            );
+            Navigator.of(
+              context,
+            ).pushNamedAndRemoveUntil(AppRoutes.login, (route) => false);
           },
           error: (exception) {
             ScaffoldMessenger.of(context).showSnackBar(
@@ -67,13 +64,13 @@ class _ProfileViewState extends State<_ProfileView> {
           children: [
             // خلفية الصورة + بلور + أوفرلاي غامق زي الديزاين
             Image.asset(
-              'assets/images/profile_background.jpg', // حطي مسار صورة الخلفية عندك
+              'assets/BackGroundProfile.png', // حطي مسار صورة الخلفية عندك
               fit: BoxFit.cover,
             ),
-            BackdropFilter(
-              filter: ImageFilter.blur(sigmaX: 6, sigmaY: 6),
-              child: Container(color: Colors.black.withValues(alpha: 0.55)),
-            ),
+            // BackdropFilter(
+            //   filter: ImageFilter.blur(sigmaX: 6, sigmaY: 6),
+            //   child: Container(color: Colors.black.withValues(alpha: 0.55)),
+            // ),
             SafeArea(
               child: BlocBuilder<ProfileCubit, ProfileStates>(
                 builder: (context, state) {
@@ -157,7 +154,7 @@ class _ProfileContent extends StatelessWidget {
               child: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 16),
                 child: InkWell(
-                  onTap: () => Navigator.of(context).maybePop(),
+                  onTap: () => context.pushNamed(AppRoutes.appSections),
                   borderRadius: BorderRadius.circular(20),
                   child: Container(
                     width: 36,
@@ -223,14 +220,19 @@ class _ProfileContent extends StatelessWidget {
                     icon: Icons.person_outline,
                     title: 'Edit Profile',
                     onTap: () {
-                      // TODO: روحي لشاشة Edit Profile
+                      final profileCubit = context.read<ProfileCubit>();
+
+                      context.pushNamed(
+                        AppRoutes.editProfile,
+                        arguments: profileCubit,
+                      );
                     },
                   ),
                   ProfileMenuItem(
                     icon: Icons.lock_reset,
                     title: 'Change Password',
                     onTap: () {
-                      // TODO: روحي لشاشة Change Password
+                      context.pushNamed(AppRoutes.changePassword);
                     },
                   ),
                   ProfileMenuItem(
@@ -255,7 +257,7 @@ class _ProfileContent extends StatelessWidget {
                     icon: Icons.shield_outlined,
                     title: 'Privacy Policy',
                     onTap: () {
-                         _openLink(
+                      _openLink(
                         context,
                         'https://elevate-flutter-team.github.io/fitness-app-webviews/privacy-policy.html',
                       );
@@ -265,7 +267,7 @@ class _ProfileContent extends StatelessWidget {
                     icon: Icons.support_agent_outlined,
                     title: 'Help',
                     onTap: () {
-                          _openLink(
+                      _openLink(
                         context,
                         'https://elevate-flutter-team.github.io/fitness-app-webviews/help.html',
                       );
@@ -319,14 +321,15 @@ class _ProfileContent extends StatelessWidget {
                                             vertical: 14,
                                           ),
                                           shape: RoundedRectangleBorder(
-                                            borderRadius:
-                                                BorderRadius.circular(30),
+                                            borderRadius: BorderRadius.circular(
+                                              30,
+                                            ),
                                           ),
                                         ),
                                         child: const Text(
                                           'NO',
                                           style: TextStyle(
-                                            color:AppColors.primaryColor,
+                                            color: AppColors.primaryColor,
                                             fontWeight: FontWeight.bold,
                                           ),
                                         ),
@@ -338,15 +341,17 @@ class _ProfileContent extends StatelessWidget {
                                         onPressed: () =>
                                             Navigator.pop(dialogCtx, true),
                                         style: ElevatedButton.styleFrom(
-                                          backgroundColor: AppColors.primaryColor,
+                                          backgroundColor:
+                                              AppColors.primaryColor,
                                           foregroundColor: Colors.white,
                                           padding: const EdgeInsets.symmetric(
                                             vertical: 14,
                                           ),
                                           elevation: 0,
                                           shape: RoundedRectangleBorder(
-                                            borderRadius:
-                                                BorderRadius.circular(30),
+                                            borderRadius: BorderRadius.circular(
+                                              30,
+                                            ),
                                           ),
                                         ),
                                         child: const Text(
@@ -381,5 +386,3 @@ class _ProfileContent extends StatelessWidget {
     );
   }
 }
-
-

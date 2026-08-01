@@ -20,7 +20,7 @@ class PasswordTextField extends StatelessWidget {
     return TextField(
       controller: controller,
       obscureText: obscureText,
-      style: const TextStyle(color: AppColors.whiteColor),
+      style: const TextStyle(color: AppColors.blackColor),
       decoration: InputDecoration(
         hintText: hintText,
         hintStyle: const TextStyle(color: AppColors.lightGreyColor),

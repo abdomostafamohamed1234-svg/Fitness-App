@@ -29,7 +29,7 @@ class LoginPage extends StatelessWidget {
                   // ScaffoldMessenger.of(context).showSnackBar(
                   //   SnackBar(content: Text(data.message)),
                   // );
-                  Navigator.pushReplacementNamed(context, AppRoutes.home);
+                  Navigator.pushReplacementNamed(context, AppRoutes.appSections);
                 },
                 error: (exception) {
                   ScaffoldMessenger.of(context).showSnackBar(

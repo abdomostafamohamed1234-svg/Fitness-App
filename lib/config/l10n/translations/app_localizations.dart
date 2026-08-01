@@ -395,7 +395,7 @@ abstract class AppLocalizations {
   /// No description provided for @kg.
   ///
   /// In en, this message translates to:
-  /// **'كجم'**
+  /// **'Kg'**
   String get kg;
 
   /// No description provided for @heyThere.
@@ -431,7 +431,7 @@ abstract class AppLocalizations {
   /// No description provided for @email.
   ///
   /// In en, this message translates to:
-  /// **'البريد الإلكتروني'**
+  /// **'Email'**
   String get email;
 
   /// No description provided for @password.
@@ -599,7 +599,7 @@ abstract class AppLocalizations {
   /// No description provided for @create_new_password.
   ///
   /// In en, this message translates to:
-  /// **'عمل رقم سري جديد'**
+  /// **'Create New Password'**
   String get create_new_password;
 
   /// No description provided for @make_sure_its_8_character_or_more.
@@ -623,7 +623,7 @@ abstract class AppLocalizations {
   /// No description provided for @done.
   ///
   /// In en, this message translates to:
-  /// **'انهاء'**
+  /// **'Done'**
   String get done;
 
   /// No description provided for @otp.
@@ -773,121 +773,121 @@ abstract class AppLocalizations {
   /// No description provided for @edit_profile_title.
   ///
   /// In en, this message translates to:
-  /// **'تعديل الملف الشخصي'**
+  /// **'Edit Profile'**
   String get edit_profile_title;
 
   /// No description provided for @first_name.
   ///
   /// In en, this message translates to:
-  /// **'الاسم الأول'**
+  /// **'First Name'**
   String get first_name;
 
   /// No description provided for @last_name.
   ///
   /// In en, this message translates to:
-  /// **'اسم العائلة'**
+  /// **'Last Name'**
   String get last_name;
 
   /// No description provided for @your_weight.
   ///
   /// In en, this message translates to:
-  /// **'وزنك'**
+  /// **'Your Weight'**
   String get your_weight;
 
   /// No description provided for @your_goal.
   ///
   /// In en, this message translates to:
-  /// **'هدفك'**
+  /// **'Your Goal'**
   String get your_goal;
 
   /// No description provided for @your_activity_level.
   ///
   /// In en, this message translates to:
-  /// **'مستوى نشاطك'**
+  /// **'Your activity level'**
   String get your_activity_level;
 
   /// No description provided for @tap_to_edit.
   ///
   /// In en, this message translates to:
-  /// **'(اضغط للتعديل)'**
+  /// **'(Tap To Edit)'**
   String get tap_to_edit;
 
   /// No description provided for @old_password.
   ///
   /// In en, this message translates to:
-  /// **'الرقم السري القديم'**
+  /// **'Old Password'**
   String get old_password;
 
   /// No description provided for @new_password.
   ///
   /// In en, this message translates to:
-  /// **'الرقم السري الجديد'**
+  /// **'New Password'**
   String get new_password;
 
   /// No description provided for @confirm_password.
   ///
   /// In en, this message translates to:
-  /// **'تأكيد الرقم السري'**
+  /// **'Confirm Password'**
   String get confirm_password;
 
   /// No description provided for @make_sure_8_chara.
   ///
   /// In en, this message translates to:
-  /// **'تأكد انه ثمانة احرف او اكثر'**
+  /// **'Make Sure Its 8 Characters Or More'**
   String get make_sure_8_chara;
 
   /// No description provided for @hi.
   ///
   /// In en, this message translates to:
-  /// **'مرحبًا'**
+  /// **'Hi'**
   String get hi;
 
   /// No description provided for @i_am_your.
   ///
   /// In en, this message translates to:
-  /// **'أنا'**
+  /// **'I Am Your'**
   String get i_am_your;
 
   /// No description provided for @smart_coach.
   ///
   /// In en, this message translates to:
-  /// **'مدربك الذكي'**
+  /// **'Smart Coach'**
   String get smart_coach;
 
   /// No description provided for @how_can_i_assist_you.
   ///
   /// In en, this message translates to:
-  /// **'كيف يمكنني مساعدتك'**
+  /// **'How Can I Assist You'**
   String get how_can_i_assist_you;
 
   /// No description provided for @today.
   ///
   /// In en, this message translates to:
-  /// **'اليوم ؟'**
+  /// **'Today ?'**
   String get today;
 
   /// No description provided for @get_started.
   ///
   /// In en, this message translates to:
-  /// **'ابدأ'**
+  /// **'Get Started'**
   String get get_started;
 
   /// No description provided for @previous_conversations.
   ///
   /// In en, this message translates to:
-  /// **'المحادثات السابقة'**
+  /// **'Previous Conversations'**
   String get previous_conversations;
 
   /// No description provided for @fitness_hint_text.
   ///
   /// In en, this message translates to:
-  /// **'...اسألني أي شيء عن اللياقة البدنية'**
+  /// **'Ask me anything about fitness...'**
   String get fitness_hint_text;
 
   /// No description provided for @you_cant_send_empty_message.
   ///
   /// In en, this message translates to:
-  /// **'لا يمكنك ارسال رسالة فارغة'**
+  /// **'You can\'t send an empty message'**
   String get you_cant_send_empty_message;
 }
 

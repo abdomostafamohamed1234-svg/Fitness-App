@@ -24,7 +24,12 @@ class ChatWelcome extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Image.asset(ChatBotAssetsNavigation.botImage, fit: BoxFit.cover),
+        Image.asset(
+          ChatBotAssetsNavigation.botImage,
+          fit: BoxFit.cover,
+          scale: 2,
+        ),
+
         GlassContainer(
           children: [
             Column(

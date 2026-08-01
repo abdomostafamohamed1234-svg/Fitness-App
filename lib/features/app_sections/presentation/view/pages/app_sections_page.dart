@@ -1,10 +1,18 @@
 import 'package:flowery/config/di/di_config.dart';
 import 'package:flowery/core/theme/app_assets.dart';
-import 'package:flowery/core/theme/app_colors.dart';
 import 'package:flowery/features/app_sections/domain/entities/custom_nav_item_model.dart';
 import 'package:flowery/features/app_sections/presentation/view/widgets/custom_nav_bar.dart';
 import 'package:flowery/features/app_sections/presentation/view_model/cubit/app_sections_cubit.dart';
 import 'package:flowery/features/app_sections/presentation/view_model/cubit/app_sections_states.dart';
+import 'package:flowery/features/chat_bot/presentation/screens/chat_bot_screen.dart';
+import 'package:flowery/features/home/presentation/view/screen/home_Page.dart';
+import 'package:flowery/features/home/presentation/view_model/home_event.dart'
+    hide GetProfileDataEvent;
+import 'package:flowery/features/profile/presentation/view/screen/profile_screen.dart';
+import 'package:flowery/features/profile/presentation/view_model/profile_cubit.dart';
+import 'package:flowery/features/profile/presentation/view_model/profile_event.dart';
+import 'package:flowery/features/profile/presentation/view_model/profile_state.dart';
+import 'package:flowery/features/workouts/presentation/view/pages/workouts_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -32,8 +40,15 @@ class AppSectionsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => getIt<AppSectionsCubit>(),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider<ProfileCubit>(
+          create: (_) => getIt<ProfileCubit>()..doAction(GetProfileDataEvent()),
+        ),
+        BlocProvider<AppSectionsCubit>(
+          create: (_) => getIt<AppSectionsCubit>(),
+        ),
+      ],
       child: Scaffold(
         extendBody: true, // Allows background images to extend under the navbar
         body: BlocBuilder<AppSectionsCubit, AppSectionsStates>(
@@ -42,43 +57,19 @@ class AppSectionsPage extends StatelessWidget {
             return PageView(
               controller: cubit.pageController,
               physics: const NeverScrollableScrollPhysics(),
-              children: const [
-                Center(
-                  child: Text(
-                    'Home Screen',
-                    style: TextStyle(
-                      color: AppColors.primaryColor,
-                      fontSize: 25,
-                    ),
-                  ),
-                ), // 1: Chat
-                Center(
-                  child: Text(
-                    'Chat Screen',
-                    style: TextStyle(
-                      color: AppColors.primaryColor,
-                      fontSize: 25,
-                    ),
-                  ),
-                ), // 1: Chat
-                Center(
-                  child: Text(
-                    'Workouts Screen',
-                    style: TextStyle(
-                      color: AppColors.primaryColor,
-                      fontSize: 25,
-                    ),
-                  ),
-                ), // 2: Workouts
-                Center(
-                  child: Text(
-                    'Profile Screen',
-                    style: TextStyle(
-                      color: AppColors.primaryColor,
-                      fontSize: 25,
-                    ),
-                  ),
-                ), // 3: Profile
+              children: [
+                const HomePage(),
+                BlocBuilder<ProfileCubit, ProfileStates>(
+                  builder: (context, state) {
+                    return ChatBotScreen(
+                      userId: state.profileState.data?.id ?? "",
+                      userFirstName: state.profileState.data?.firstName ?? "",
+                      userImage: state.profileState.data?.profileImage ?? "",
+                    );
+                  },
+                ),
+                const WorkoutsPage(),
+                const ProfileScreen(),
               ],
             );
           },

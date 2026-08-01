@@ -1,8 +1,10 @@
 import 'dart:ui';
+import 'package:flowery/config/di/di_config.dart';
 import 'package:flowery/config/l10n/translations/app_localizations.dart';
 import 'package:flowery/core/base/base_state.dart';
 import 'package:flowery/features/chat_bot/presentation/assets/chat_bot_assets_navigation.dart';
 import 'package:flowery/features/chat_bot/presentation/view_model/cubit/chat_bot_cubit.dart';
+import 'package:flowery/features/chat_bot/presentation/view_model/events/chat_bot_events.dart';
 import 'package:flowery/features/chat_bot/presentation/view_model/state/chat_bot_state.dart';
 import 'package:flowery/features/chat_bot/presentation/widgets/chat.dart';
 import 'package:flowery/features/chat_bot/presentation/widgets/chat_bot_screen_header.dart';
@@ -42,17 +44,97 @@ class _ChatBotScreenState extends State<ChatBotScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocConsumer<ChatBotCubit, ChatBotState>(
-      builder: (context, state) {
-        return state.chatsState.when(
-          success: (data) {
-            return Scaffold(
-              endDrawer: ChatDrawer(
-                localizations: localizations,
-                textTheme: textTheme,
-                state: state,
-              ),
-              body: Stack(
+    return BlocProvider(
+      create: (context) =>
+          getIt.get<ChatBotCubit>()
+            ..doEvent(GetPreviousChatsEvent(userId: widget.userId)),
+      child: BlocConsumer<ChatBotCubit, ChatBotState>(
+        builder: (context, state) {
+          return state.chatsState.when(
+            success: (data) {
+              return Scaffold(
+                endDrawer: ChatDrawer(
+                  localizations: localizations,
+                  textTheme: textTheme,
+                  state: state,
+                ),
+                body: Stack(
+                  fit: StackFit.expand,
+                  children: [
+                    Positioned.fill(
+                      child: ImageFiltered(
+                        imageFilter: ImageFilter.blur(
+                          sigmaX: 3,
+                          sigmaY: 5,
+                          tileMode: TileMode.clamp,
+                        ),
+                        child: Image.asset(
+                          ChatBotAssetsNavigation.chatBotBackground,
+                          fit: BoxFit.cover,
+                        ),
+                      ),
+                    ),
+
+                    SafeArea(
+                      child: LayoutBuilder(
+                        builder: (context, constraints) {
+                          final height = constraints.maxHeight;
+                          final width = constraints.maxWidth;
+                          return Column(
+                            children: [
+                              ChatBotScreenHeader(
+                                height: height,
+                                width: width,
+                                localizations: localizations,
+                                textTheme: textTheme,
+                                state: state,
+                                firstName: widget.userFirstName,
+                              ),
+                              SizedBox(height: height * 0.02),
+                              Expanded(
+                                child:
+                                    state.isWelcome &&
+                                        state.selectedChatIndex == -1
+                                    ? ChatWelcome(
+                                        height: height,
+                                        width: width,
+                                        localizations: localizations,
+                                        textTheme: textTheme,
+                                      )
+                                    : Column(
+                                        children: [
+                                          Expanded(
+                                            child: Chat(
+                                              height: height,
+                                              width: width,
+                                              state: state,
+                                              scrollController:
+                                                  scrollController,
+                                              userImg: widget.userImage,
+                                            ),
+                                          ),
+
+                                          ChatInputField(
+                                            chatController: chatController,
+                                            scrollController: scrollController,
+                                            localizations: localizations,
+                                            state: state,
+                                            userId: widget.userId,
+                                          ),
+                                        ],
+                                      ),
+                              ),
+                            ],
+                          );
+                        },
+                      ),
+                    ),
+                  ],
+                ),
+              );
+            },
+            loading: () => Center(
+              child: Stack(
                 fit: StackFit.expand,
                 children: [
                   Positioned.fill(
@@ -68,108 +150,34 @@ class _ChatBotScreenState extends State<ChatBotScreen> {
                       ),
                     ),
                   ),
-
-                  SafeArea(
-                    child: LayoutBuilder(
-                      builder: (context, constraints) {
-                        final height = constraints.maxHeight;
-                        final width = constraints.maxWidth;
-                        return Column(
-                          children: [
-                            ChatBotScreenHeader(
-                              height: height,
-                              width: width,
-                              localizations: localizations,
-                              textTheme: textTheme,
-                              state: state,
-                              firstName: widget.userFirstName,
-                            ),
-                            SizedBox(height: height * 0.02),
-                            Expanded(
-                              child:
-                                  state.isWelcome &&
-                                      state.selectedChatIndex == -1
-                                  ? ChatWelcome(
-                                      height: height,
-                                      width: width,
-                                      localizations: localizations,
-                                      textTheme: textTheme,
-                                    )
-                                  : Column(
-                                      children: [
-                                        Expanded(
-                                          child: Chat(
-                                            height: height,
-                                            width: width,
-                                            state: state,
-                                            scrollController: scrollController,
-                                            userImg: widget.userImage,
-                                          ),
-                                        ),
-
-                                        ChatInputField(
-                                          chatController: chatController,
-                                          scrollController: scrollController,
-                                          localizations: localizations,
-                                          state: state,
-                                          userId: widget.userId,
-                                        ),
-                                      ],
-                                    ),
-                            ),
-                          ],
-                        );
-                      },
+                  const Center(
+                    child: SizedBox(
+                      height: 24,
+                      width: 24,
+                      child: CircularProgressIndicator(),
                     ),
                   ),
                 ],
               ),
-            );
-          },
-          loading: () => Center(
-            child: Stack(
-              fit: StackFit.expand,
-              children: [
-                Positioned.fill(
-                  child: ImageFiltered(
-                    imageFilter: ImageFilter.blur(
-                      sigmaX: 3,
-                      sigmaY: 5,
-                      tileMode: TileMode.clamp,
-                    ),
-                    child: Image.asset(
-                      ChatBotAssetsNavigation.chatBotBackground,
-                      fit: BoxFit.cover,
-                    ),
-                  ),
-                ),
-                const Center(
-                  child: SizedBox(
-                    height: 24,
-                    width: 24,
-                    child: CircularProgressIndicator(),
-                  ),
-                ),
-              ],
             ),
-          ),
-          error: (error) => Center(child: Text(error.toString())),
-          initial: () => const SizedBox.shrink(),
-        );
-      },
-      listener: (context, state) {
-        if (state.chatBotState.state == StateType.success) {
-          WidgetsBinding.instance.addPostFrameCallback((_) {
-            if (scrollController.hasClients) {
-              scrollController.animateTo(
-                (state.messageOffset + 650),
-                duration: const Duration(milliseconds: 300),
-                curve: Curves.easeOut,
-              );
-            }
-          });
-        }
-      },
+            error: (error) => Center(child: Text(error.toString())),
+            initial: () => const SizedBox.shrink(),
+          );
+        },
+        listener: (context, state) {
+          if (state.chatBotState.state == StateType.success) {
+            WidgetsBinding.instance.addPostFrameCallback((_) {
+              if (scrollController.hasClients) {
+                scrollController.animateTo(
+                  (state.messageOffset + 650),
+                  duration: const Duration(milliseconds: 300),
+                  curve: Curves.easeOut,
+                );
+              }
+            });
+          }
+        },
+      ),
     );
   }
 }

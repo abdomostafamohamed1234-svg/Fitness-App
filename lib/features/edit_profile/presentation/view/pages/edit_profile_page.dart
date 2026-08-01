@@ -4,6 +4,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:flowery/config/di/di_config.dart';
 import 'package:flowery/config/l10n/translations/app_localizations.dart';
+import 'package:flowery/config/routing/routing_extensions.dart';
 import 'package:flowery/core/theme/app_assets.dart';
 import 'package:flowery/core/theme/app_colors.dart';
 import 'package:flowery/features/edit_profile/presentation/view/pages/edit_activity_level_page.dart';
@@ -14,9 +15,13 @@ import 'package:flowery/features/edit_profile/presentation/view/widgets/option_l
 import 'package:flowery/features/edit_profile/presentation/view_model/cubit.dart';
 import 'package:flowery/features/edit_profile/presentation/view_model/event.dart';
 import 'package:flowery/features/edit_profile/presentation/view_model/state.dart';
+import 'package:flowery/features/home/presentation/view_model/home_event.dart'
+    hide GetProfileDataEvent;
+import 'package:flowery/features/profile/presentation/view_model/profile_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flowery/features/profile/presentation/view_model/profile_event.dart';
 
 class EditProfilePage extends StatelessWidget {
   const EditProfilePage({super.key});
@@ -57,12 +62,16 @@ class _EditProfileViewState extends State<_EditProfileView> {
     // done/next action) commits whatever was typed.
     _firstNameFocus.addListener(() {
       if (!_firstNameFocus.hasFocus) {
-        _cubit.doEvent(EditProfileEvent(firstName: _cubit.firstNameController.text));
+        _cubit.doEvent(
+          EditProfileEvent(firstName: _cubit.firstNameController.text),
+        );
       }
     });
     _lastNameFocus.addListener(() {
       if (!_lastNameFocus.hasFocus) {
-        _cubit.doEvent(EditProfileEvent(lastName: _cubit.lastNameController.text));
+        _cubit.doEvent(
+          EditProfileEvent(lastName: _cubit.lastNameController.text),
+        );
       }
     });
     _emailFocus.addListener(() {
@@ -108,7 +117,9 @@ class _EditProfileViewState extends State<_EditProfileView> {
   Future<void> _editWeight() async {
     final result = await Navigator.push<int>(
       context,
-      MaterialPageRoute(builder: (_) => EditWeightPage(initialWeight: _weight ?? 70)),
+      MaterialPageRoute(
+        builder: (_) => EditWeightPage(initialWeight: _weight ?? 70),
+      ),
     );
     if (result == null) return;
     setState(() => _weight = result);
@@ -137,10 +148,16 @@ class _EditProfileViewState extends State<_EditProfileView> {
     _cubit.doEvent(EditProfileEvent(activityLevel: result));
   }
 
-  InputDecoration _fieldDecoration({required String hint, required IconData icon}) {
+  InputDecoration _fieldDecoration({
+    required String hint,
+    required IconData icon,
+  }) {
     return InputDecoration(
       hintText: hint,
-      hintStyle: TextStyle(color: Colors.white.withValues(alpha: 0.7), fontSize: 12.sp),
+      hintStyle: TextStyle(
+        color: Colors.white.withValues(alpha: 0.7),
+        fontSize: 12.sp,
+      ),
       prefixIcon: Icon(icon, color: Colors.white, size: 18.sp),
       filled: true,
       fillColor: Colors.transparent,
@@ -207,7 +224,9 @@ class _EditProfileViewState extends State<_EditProfileView> {
                   return state.profileState.when(
                     initial: () => const SizedBox.shrink(),
                     loading: () => const Center(
-                      child: CircularProgressIndicator(color: AppColors.primaryColor),
+                      child: CircularProgressIndicator(
+                        color: AppColors.primaryColor,
+                      ),
                     ),
                     error: (exception) => Center(
                       child: Text(
@@ -234,7 +253,12 @@ class _EditProfileViewState extends State<_EditProfileView> {
                               Row(
                                 children: [
                                   GestureDetector(
-                                    onTap: () => Navigator.maybePop(context),
+                                    onTap: () {
+                                      context.read<ProfileCubit>().doAction(
+                                        GetProfileDataEvent(),
+                                      );
+                                      context.pop();
+                                    },
                                     child: Container(
                                       width: 36.w,
                                       height: 36.w,
@@ -275,9 +299,13 @@ class _EditProfileViewState extends State<_EditProfileView> {
                                           ? FileImage(_pickedPhoto!)
                                           : (user.photo.isEmpty
                                                 ? null
-                                                : CachedNetworkImageProvider(user.photo)
+                                                : CachedNetworkImageProvider(
+                                                        user.photo,
+                                                      )
                                                       as ImageProvider),
-                                      child: _pickedPhoto == null && user.photo.isEmpty
+                                      child:
+                                          _pickedPhoto == null &&
+                                              user.photo.isEmpty
                                           ? Icon(
                                               Icons.person,
                                               size: 60.sp,
@@ -320,40 +348,52 @@ class _EditProfileViewState extends State<_EditProfileView> {
                               TextFormField(
                                 controller: _cubit.firstNameController,
                                 focusNode: _firstNameFocus,
-                                style: TextStyle(color: Colors.white, fontSize: 16.sp),
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 16.sp,
+                                ),
                                 cursorColor: Colors.white,
                                 decoration: _fieldDecoration(
                                   hint: l10n.first_name,
                                   icon: Icons.person_outline,
                                 ),
-                                onFieldSubmitted: (value) =>
-                                    _cubit.doEvent(EditProfileEvent(firstName: value)),
+                                onFieldSubmitted: (value) => _cubit.doEvent(
+                                  EditProfileEvent(firstName: value),
+                                ),
                               ),
                               SizedBox(height: 16.h),
                               TextFormField(
                                 controller: _cubit.lastNameController,
                                 focusNode: _lastNameFocus,
-                                style: TextStyle(color: Colors.white, fontSize: 16.sp),
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 16.sp,
+                                ),
                                 cursorColor: Colors.white,
                                 decoration: _fieldDecoration(
                                   hint: l10n.last_name,
                                   icon: Icons.person_outline,
                                 ),
-                                onFieldSubmitted: (value) =>
-                                    _cubit.doEvent(EditProfileEvent(lastName: value)),
+                                onFieldSubmitted: (value) => _cubit.doEvent(
+                                  EditProfileEvent(lastName: value),
+                                ),
                               ),
                               SizedBox(height: 16.h),
                               TextFormField(
                                 controller: _cubit.emailController,
                                 focusNode: _emailFocus,
-                                style: TextStyle(color: Colors.white, fontSize: 16.sp),
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 16.sp,
+                                ),
                                 cursorColor: Colors.white,
                                 decoration: _fieldDecoration(
                                   hint: l10n.email,
                                   icon: Icons.email_outlined,
                                 ),
-                                onFieldSubmitted: (value) =>
-                                    _cubit.doEvent(EditProfileEvent(email: value)),
+                                onFieldSubmitted: (value) => _cubit.doEvent(
+                                  EditProfileEvent(email: value),
+                                ),
                               ),
                               SizedBox(height: 20.h),
                               EditableInfoTile(

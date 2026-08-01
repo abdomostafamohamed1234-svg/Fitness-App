@@ -1,11 +1,3 @@
+sealed class ProfileEvents {}
 
-
-
-
-sealed class ProfileEvents {
-  const ProfileEvents();
-}
-
-class GetProfileDataEvent extends ProfileEvents {
-  const GetProfileDataEvent();
-}
+class GetProfileDataEvent extends ProfileEvents {}
