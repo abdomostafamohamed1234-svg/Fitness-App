@@ -159,7 +159,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get whatIsYourWeight => 'ما هو وزنك؟';
 
   @override
-  String get kg => 'كجم';
+  String get kg => 'Kg';
 
   @override
   String get heyThere => 'أهلاً بك';
@@ -177,7 +177,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get lastName => 'الاسم الأخير';
 
   @override
-  String get email => 'الإيميل';
+  String get email => 'Email';
 
   @override
   String get password => 'الرقم السري';
@@ -276,7 +276,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get password_do_not_match => 'الرقم السري لا يتطابق';
 
   @override
-  String get done => 'تمام';
+  String get done => 'تم';
 
   @override
   String get otp => 'الرقم المرسل';
@@ -298,4 +298,76 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get resend_code => 'ارسل الكود مره اخري?';
+
+  @override
+  String get profile_updated => 'تم تحديث الملف الشخصي';
+
+  @override
+  String get photo_updated => 'تم تحديث الصورة';
+
+  @override
+  String get no_profile_data => 'لا توجد بيانات للملف الشخصي';
+
+  @override
+  String get what_is_your_weight => 'ما هو وزنك؟';
+
+  @override
+  String get what_is_your_goal => 'ما هو هدفك؟';
+
+  @override
+  String get activity_level_question => 'مستوى نشاطك البدني\nالمعتاد؟';
+
+  @override
+  String get personalized_plan_subtitle => 'ده هيساعدنا نجهزلك خطة مخصصة';
+
+  @override
+  String get goal_gain_weight => 'زيادة الوزن';
+
+  @override
+  String get goal_lose_weight => 'إنقاص الوزن';
+
+  @override
+  String get goal_get_fitter => 'تحسين اللياقة';
+
+  @override
+  String get goal_gain_more_flexible => 'زيادة المرونة';
+
+  @override
+  String get goal_learn_basic => 'تعلم الأساسيات';
+
+  @override
+  String get activity_rookie => 'مبتدئ جدًا';
+
+  @override
+  String get activity_beginner => 'مبتدئ';
+
+  @override
+  String get activity_intermediate => 'متوسط';
+
+  @override
+  String get activity_advance => 'متقدم';
+
+  @override
+  String get activity_true_beast => 'وحش حقيقي';
+
+  @override
+  String get edit_profile_title => 'Edit Profile';
+
+  @override
+  String get first_name => 'First Name';
+
+  @override
+  String get last_name => 'Last Name';
+
+  @override
+  String get your_weight => 'Your Weight';
+
+  @override
+  String get your_goal => 'Your Goal';
+
+  @override
+  String get your_activity_level => 'Your activity level';
+
+  @override
+  String get tap_to_edit => '(Tap To Edit)';
 }

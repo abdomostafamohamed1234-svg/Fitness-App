@@ -159,7 +159,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get whatIsYourWeight => 'What is Your Weight?';
 
   @override
-  String get kg => 'Kg';
+  String get kg => 'كجم';
 
   @override
   String get heyThere => 'Hey there';
@@ -177,7 +177,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get lastName => 'Last Name';
 
   @override
-  String get email => 'Email';
+  String get email => 'البريد الإلكتروني';
 
   @override
   String get password => 'Password';
@@ -300,4 +300,78 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get resend_code => 'Resend Code?';
+
+  @override
+  String get profile_updated => 'Profile updated';
+
+  @override
+  String get photo_updated => 'Photo updated';
+
+  @override
+  String get no_profile_data => 'No profile data';
+
+  @override
+  String get what_is_your_weight => 'What is Your Weight?';
+
+  @override
+  String get what_is_your_goal => 'What is Your Goal?';
+
+  @override
+  String get activity_level_question =>
+      'Your Regular Physical\nActivity Level?';
+
+  @override
+  String get personalized_plan_subtitle =>
+      'This helps us create your personalized plan';
+
+  @override
+  String get goal_gain_weight => 'Gain Weight';
+
+  @override
+  String get goal_lose_weight => 'Lose Weight';
+
+  @override
+  String get goal_get_fitter => 'Get Fitter';
+
+  @override
+  String get goal_gain_more_flexible => 'Gain More Flexible';
+
+  @override
+  String get goal_learn_basic => 'Learn The Basic';
+
+  @override
+  String get activity_rookie => 'Rookie';
+
+  @override
+  String get activity_beginner => 'Beginner';
+
+  @override
+  String get activity_intermediate => 'Intermediate';
+
+  @override
+  String get activity_advance => 'Advance';
+
+  @override
+  String get activity_true_beast => 'True Beast';
+
+  @override
+  String get edit_profile_title => 'تعديل الملف الشخصي';
+
+  @override
+  String get first_name => 'الاسم الأول';
+
+  @override
+  String get last_name => 'اسم العائلة';
+
+  @override
+  String get your_weight => 'وزنك';
+
+  @override
+  String get your_goal => 'هدفك';
+
+  @override
+  String get your_activity_level => 'مستوى نشاطك';
+
+  @override
+  String get tap_to_edit => '(اضغط للتعديل)';
 }
