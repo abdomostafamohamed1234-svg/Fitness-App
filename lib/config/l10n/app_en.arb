@@ -126,5 +126,11 @@
   "your_goal": "هدفك",
   "your_activity_level": "مستوى نشاطك",
   "tap_to_edit": "(اضغط للتعديل)",
-  "kg": "كجم"
+  "kg": "كجم",
+  "old_password":"الرقم السري القديم",
+  "new_password":"الرقم السري الجديد",
+  "confirm_password":"تأكيد الرقم السري",
+  "make_sure_8_chara":"تأكد انه ثمانة احرف او اكثر",
+  "create_new_password":"عمل رقم سري جديد",
+  "done":"انهاء"
 }

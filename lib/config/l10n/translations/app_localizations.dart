@@ -599,7 +599,7 @@ abstract class AppLocalizations {
   /// No description provided for @create_new_password.
   ///
   /// In en, this message translates to:
-  /// **'Create New Password'**
+  /// **'عمل رقم سري جديد'**
   String get create_new_password;
 
   /// No description provided for @make_sure_its_8_character_or_more.
@@ -623,7 +623,7 @@ abstract class AppLocalizations {
   /// No description provided for @done.
   ///
   /// In en, this message translates to:
-  /// **'Done'**
+  /// **'انهاء'**
   String get done;
 
   /// No description provided for @otp.
@@ -811,6 +811,30 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'(اضغط للتعديل)'**
   String get tap_to_edit;
+
+  /// No description provided for @old_password.
+  ///
+  /// In en, this message translates to:
+  /// **'الرقم السري القديم'**
+  String get old_password;
+
+  /// No description provided for @new_password.
+  ///
+  /// In en, this message translates to:
+  /// **'الرقم السري الجديد'**
+  String get new_password;
+
+  /// No description provided for @confirm_password.
+  ///
+  /// In en, this message translates to:
+  /// **'تأكيد الرقم السري'**
+  String get confirm_password;
+
+  /// No description provided for @make_sure_8_chara.
+  ///
+  /// In en, this message translates to:
+  /// **'تأكد انه ثمانة احرف او اكثر'**
+  String get make_sure_8_chara;
 }
 
 class _AppLocalizationsDelegate

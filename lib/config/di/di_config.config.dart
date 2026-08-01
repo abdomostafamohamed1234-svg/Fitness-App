@@ -41,6 +41,24 @@ import '../../features/auth_with_social_media/domain/use_case/sign_out_use_case.
     as _i254;
 import '../../features/auth_with_social_media/presentation/view_model/cubit/social_auth_cubit.dart'
     as _i260;
+import '../../features/change_password/api/api_client/change_password_api_client.dart'
+    as _i244;
+import '../../features/change_password/api/data_source/change_password_local_data_source_implementation.dart'
+    as _i793;
+import '../../features/change_password/api/data_source/change_password_remote_data_source_imp.dart'
+    as _i577;
+import '../../features/change_password/data/data_source/change_password_local_data_source_contract.dart'
+    as _i110;
+import '../../features/change_password/data/data_source/change_password_remote_data_source_contract.dart'
+    as _i167;
+import '../../features/change_password/data/repo/change_password_repo_imp.dart'
+    as _i49;
+import '../../features/change_password/domain/repo/change_password_repo_contract.dart'
+    as _i333;
+import '../../features/change_password/domain/ues_case/change_password_use_case.dart'
+    as _i534;
+import '../../features/change_password/presentation/view_model/change_password_view_model.dart'
+    as _i969;
 import '../../features/edit_profile/api/edit_profile_api_client.dart' as _i935;
 import '../../features/edit_profile/data/data_source/remote_data_source/edit_profile_remote_data_source_contract.dart'
     as _i786;
@@ -218,6 +236,9 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i273.LocaleCubit>(
       () => _i273.LocaleCubit(gh<_i425.SharedPreferencesHelper>()),
     );
+    gh.lazySingleton<_i244.ChangePasswordApiClient>(
+      () => _i244.ChangePasswordApiClient(gh<_i361.Dio>()),
+    );
     gh.lazySingleton<_i892.ForgetPasswordApiClient>(
       () => _i892.ForgetPasswordApiClient(gh<_i361.Dio>()),
     );
@@ -294,6 +315,11 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i675.ExerciseDataSourceContract>(
       () => _i1043.ExerciseDataSourceImpl(gh<_i79.ExerciseApiClient>()),
     );
+    gh.factory<_i110.ChangePasswordLocalDataSourceContract>(
+      () => _i793.ChangePasswordLocalDataSourceImplementation(
+        gh<_i558.FlutterSecureStorage>(),
+      ),
+    );
     gh.factory<_i703.RegisterRemoteDataSourceContract>(
       () => _i754.RegisterRemoteDataSourceImpl(gh<_i656.RegisterApiClient>()),
     );
@@ -345,6 +371,11 @@ extension GetItInjectableX on _i174.GetIt {
     );
     gh.factory<_i776.UploadPhotoUseCase>(
       () => _i776.UploadPhotoUseCase(gh<_i977.EditProfileRepoContract>()),
+    );
+    gh.factory<_i167.ChangePasswordRemoteDataSourceContract>(
+      () => _i577.ChangePasswordRemoteDataSourceImp(
+        gh<_i244.ChangePasswordApiClient>(),
+      ),
     );
     gh.factory<_i543.LogoutRepository>(
       () => _i1002.LogoutRepositoryImpl(
@@ -414,6 +445,12 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i249.GetMusclesGroupUseCase>(
       () => _i249.GetMusclesGroupUseCase(gh<_i243.WorkoutRepository>()),
     );
+    gh.factory<_i333.ChangePasswordRepoContract>(
+      () => _i49.ChangePasswordRepoImp(
+        gh<_i167.ChangePasswordRemoteDataSourceContract>(),
+        gh<_i110.ChangePasswordLocalDataSourceContract>(),
+      ),
+    );
     gh.factory<_i36.EditProfileCubit>(
       () => _i36.EditProfileCubit(
         gh<_i501.GetProfileUseCase>(),
@@ -449,6 +486,9 @@ extension GetItInjectableX on _i174.GetIt {
         gh<_i168.LoginUseCase>(),
       ),
     );
+    gh.factory<_i534.ChangePasswordUseCase>(
+      () => _i534.ChangePasswordUseCase(gh<_i333.ChangePasswordRepoContract>()),
+    );
     gh.factory<_i940.HomeCubit>(() => _i940.HomeCubit(gh<_i497.HomeUseCase>()));
     gh.factory<_i272.LoginCubit>(
       () => _i272.LoginCubit(gh<_i168.LoginUseCase>()),
@@ -458,6 +498,9 @@ extension GetItInjectableX on _i174.GetIt {
         gh<_i720.LevelsUseCase>(),
         gh<_i517.ExerciseUseCase>(),
       ),
+    );
+    gh.factory<_i969.ChangePasswordViewModel>(
+      () => _i969.ChangePasswordViewModel(gh<_i534.ChangePasswordUseCase>()),
     );
     gh.factory<_i152.WorkoutsCubit>(
       () => _i152.WorkoutsCubit(

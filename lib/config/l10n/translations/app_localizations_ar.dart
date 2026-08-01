@@ -262,7 +262,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get create_pass => 'اعمل رقم سري';
 
   @override
-  String get create_new_password => 'اعمل رقم سري جديد';
+  String get create_new_password => 'Create New Password';
 
   @override
   String get make_sure_its_8_character_or_more =>
@@ -276,7 +276,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get password_do_not_match => 'الرقم السري لا يتطابق';
 
   @override
-  String get done => 'تم';
+  String get done => 'Done';
 
   @override
   String get otp => 'الرقم المرسل';
@@ -370,4 +370,16 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get tap_to_edit => '(Tap To Edit)';
+
+  @override
+  String get old_password => 'Old Password';
+
+  @override
+  String get new_password => 'New Password';
+
+  @override
+  String get confirm_password => 'Confirm Password';
+
+  @override
+  String get make_sure_8_chara => 'Make Sure Its 8 Characters Or More';
 }

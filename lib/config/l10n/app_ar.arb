@@ -125,5 +125,11 @@
   "your_goal": "Your Goal",
   "your_activity_level": "Your activity level",
   "tap_to_edit": "(Tap To Edit)",
-  "kg": "Kg"
+  "kg": "Kg",
+  "old_password":"Old Password",
+  "new_password":"New Password",
+  "confirm_password":"Confirm Password",
+  "make_sure_8_chara":"Make Sure Its 8 Characters Or More",
+  "create_new_password":"Create New Password",
+  "done":"Done"
 }

@@ -262,7 +262,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get create_pass => 'create pass';
 
   @override
-  String get create_new_password => 'Create New Password';
+  String get create_new_password => 'عمل رقم سري جديد';
 
   @override
   String get make_sure_its_8_character_or_more =>
@@ -276,7 +276,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get password_do_not_match => 'Password do not match';
 
   @override
-  String get done => 'Done';
+  String get done => 'انهاء';
 
   @override
   String get otp => 'otp';
@@ -374,4 +374,16 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get tap_to_edit => '(اضغط للتعديل)';
+
+  @override
+  String get old_password => 'الرقم السري القديم';
+
+  @override
+  String get new_password => 'الرقم السري الجديد';
+
+  @override
+  String get confirm_password => 'تأكيد الرقم السري';
+
+  @override
+  String get make_sure_8_chara => 'تأكد انه ثمانة احرف او اكثر';
 }
