@@ -151,6 +151,216 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Unexpected error'**
   String get unexpectedError;
+
+  /// No description provided for @motivation.
+  ///
+  /// In en, this message translates to:
+  /// **'Achieve your fitness goals with personalized workouts and expert guidance. Stay motivated, track your progress, and become the best version of yourself.'**
+  String get motivation;
+
+  /// No description provided for @motivation_title_1.
+  ///
+  /// In en, this message translates to:
+  /// **'The Price Of Excellence \nIs Discipline'**
+  String get motivation_title_1;
+
+  /// No description provided for @motivation_title_2.
+  ///
+  /// In en, this message translates to:
+  /// **'Fitness Has Never Been \nSo Much Fun'**
+  String get motivation_title_2;
+
+  /// No description provided for @motivation_title_3.
+  ///
+  /// In en, this message translates to:
+  /// **'NO MORE EXCUSES\nDo It Now'**
+  String get motivation_title_3;
+
+  /// No description provided for @skip.
+  ///
+  /// In en, this message translates to:
+  /// **'Skip'**
+  String get skip;
+
+  /// No description provided for @next.
+  ///
+  /// In en, this message translates to:
+  /// **'Next'**
+  String get next;
+
+  /// No description provided for @back.
+  ///
+  /// In en, this message translates to:
+  /// **'Back'**
+  String get back;
+
+  /// No description provided for @do_it.
+  ///
+  /// In en, this message translates to:
+  /// **'Do IT'**
+  String get do_it;
+
+  /// No description provided for @edit_profile_title.
+  ///
+  /// In en, this message translates to:
+  /// **'Edit Profile'**
+  String get edit_profile_title;
+
+  /// No description provided for @first_name.
+  ///
+  /// In en, this message translates to:
+  /// **'First Name'**
+  String get first_name;
+
+  /// No description provided for @last_name.
+  ///
+  /// In en, this message translates to:
+  /// **'Last Name'**
+  String get last_name;
+
+  /// No description provided for @email.
+  ///
+  /// In en, this message translates to:
+  /// **'Email'**
+  String get email;
+
+  /// No description provided for @your_weight.
+  ///
+  /// In en, this message translates to:
+  /// **'Your Weight'**
+  String get your_weight;
+
+  /// No description provided for @your_goal.
+  ///
+  /// In en, this message translates to:
+  /// **'Your Goal'**
+  String get your_goal;
+
+  /// No description provided for @your_activity_level.
+  ///
+  /// In en, this message translates to:
+  /// **'Your activity level'**
+  String get your_activity_level;
+
+  /// No description provided for @tap_to_edit.
+  ///
+  /// In en, this message translates to:
+  /// **'(Tap To Edit)'**
+  String get tap_to_edit;
+
+  /// No description provided for @kg.
+  ///
+  /// In en, this message translates to:
+  /// **'Kg'**
+  String get kg;
+
+  /// No description provided for @profile_updated.
+  ///
+  /// In en, this message translates to:
+  /// **'Profile updated'**
+  String get profile_updated;
+
+  /// No description provided for @photo_updated.
+  ///
+  /// In en, this message translates to:
+  /// **'Photo updated'**
+  String get photo_updated;
+
+  /// No description provided for @no_profile_data.
+  ///
+  /// In en, this message translates to:
+  /// **'No profile data'**
+  String get no_profile_data;
+
+  /// No description provided for @what_is_your_weight.
+  ///
+  /// In en, this message translates to:
+  /// **'What is Your Weight?'**
+  String get what_is_your_weight;
+
+  /// No description provided for @what_is_your_goal.
+  ///
+  /// In en, this message translates to:
+  /// **'What is Your Goal?'**
+  String get what_is_your_goal;
+
+  /// No description provided for @activity_level_question.
+  ///
+  /// In en, this message translates to:
+  /// **'Your Regular Physical\nActivity Level?'**
+  String get activity_level_question;
+
+  /// No description provided for @personalized_plan_subtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'This helps us create your personalized plan'**
+  String get personalized_plan_subtitle;
+
+  /// No description provided for @done.
+  ///
+  /// In en, this message translates to:
+  /// **'Done'**
+  String get done;
+
+  /// No description provided for @goal_gain_weight.
+  ///
+  /// In en, this message translates to:
+  /// **'Gain Weight'**
+  String get goal_gain_weight;
+
+  /// No description provided for @goal_lose_weight.
+  ///
+  /// In en, this message translates to:
+  /// **'Lose Weight'**
+  String get goal_lose_weight;
+
+  /// No description provided for @goal_get_fitter.
+  ///
+  /// In en, this message translates to:
+  /// **'Get Fitter'**
+  String get goal_get_fitter;
+
+  /// No description provided for @goal_gain_more_flexible.
+  ///
+  /// In en, this message translates to:
+  /// **'Gain More Flexible'**
+  String get goal_gain_more_flexible;
+
+  /// No description provided for @goal_learn_basic.
+  ///
+  /// In en, this message translates to:
+  /// **'Learn The Basic'**
+  String get goal_learn_basic;
+
+  /// No description provided for @activity_rookie.
+  ///
+  /// In en, this message translates to:
+  /// **'Rookie'**
+  String get activity_rookie;
+
+  /// No description provided for @activity_beginner.
+  ///
+  /// In en, this message translates to:
+  /// **'Beginner'**
+  String get activity_beginner;
+
+  /// No description provided for @activity_intermediate.
+  ///
+  /// In en, this message translates to:
+  /// **'Intermediate'**
+  String get activity_intermediate;
+
+  /// No description provided for @activity_advance.
+  ///
+  /// In en, this message translates to:
+  /// **'Advance'**
+  String get activity_advance;
+
+  /// No description provided for @activity_true_beast.
+  ///
+  /// In en, this message translates to:
+  /// **'True Beast'**
+  String get activity_true_beast;
 }
 
 class _AppLocalizationsDelegate
