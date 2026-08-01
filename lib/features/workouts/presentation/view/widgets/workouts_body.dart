@@ -1,8 +1,7 @@
-import 'package:flowery/core/theme/app-assets.dart';
+import 'package:flowery/core/theme/app_assets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flowery/config/routing/app_routes.dart';
-
 import 'categories_list_section.dart';
 import 'workouts_grid_section.dart';
 
@@ -14,7 +13,7 @@ class WorkoutsBody extends StatelessWidget {
     return Stack(
       children: [
         Positioned.fill(
-          child: Image.asset(AssetsImage.workoutsBackGround, fit: BoxFit.cover),
+          child: Image.asset(AppAssets.workoutsBackGround, fit: BoxFit.cover),
         ),
         SafeArea(
           child: Column(

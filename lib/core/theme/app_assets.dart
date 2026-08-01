@@ -8,4 +8,6 @@ abstract class AppAssets {
   static const String registerBackGround = '$imagePath/RegisterBackGround.png';
   static const String fitnessSplash = '$imagePath/FitnessSplash.png';
   static const String logo = '$imagePath/logo.png';
+  static const String backGroundHome = '$imagePath/BackgroudHome.png';
+  static const String workoutsBackGround = '$imagePath/workoutsBackGround.png';
 }
