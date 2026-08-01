@@ -33,6 +33,19 @@ class AppLocalizationsAr extends AppLocalizations {
   String get transformTimeout => 'انتهت مهلة المعالجة';
 
   @override
+  String get unexpectedError => 'حدث خطأ غير متوقع';
+
+  @override
+  String get follow_the_plan =>
+      'اتبع الخطة أدناه واختر مستوى الصعوبة الذي يناسبك للبدء';
+
+  @override
+  String get exercise => 'التمرين';
+
+  @override
+  String get no_exercises_found => 'لم يتم العثور على تمارين لهذا المستوى';
+
+  @override
   String get motivation =>
       'حقق أهدافك الرياضية من خلال تمارين مخصصة وإرشادات احترافية. حافظ على حماسك، وتتبع تقدمك، وكن أفضل نسخة من نفسك.';
 
@@ -57,6 +70,18 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get do_it => 'افعلها';
+
+  @override
+  String get navExplore => 'استكشاف';
+
+  @override
+  String get navChat => 'المحادثة';
+
+  @override
+  String get navWorkouts => 'التمارين';
+
+  @override
+  String get navProfile => 'الملف الشخصي';
 
   @override
   String get message => 'رسالة';
@@ -273,74 +298,4 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get resend_code => 'ارسل الكود مره اخري?';
-
-  @override
-  String get unexpectedError => 'حدث خطأ غير متوقع';
-
-  @override
-  String get follow_the_plan =>
-      'اتبع الخطة أدناه واختر مستوى الصعوبة الذي يناسبك للبدء';
-
-  @override
-  String get exercise => 'التمرين';
-
-  @override
-  String get no_exercises_found => 'لم يتم العثور على تمارين لهذا المستوى';
-
-  @override
-  String get motivation =>
-      'حقق أهدافك الرياضية من خلال تمارين مخصصة وإرشادات احترافية. حافظ على حماسك، وتتبع تقدمك، وكن أفضل نسخة من نفسك.';
-
-  @override
-  String get motivation_title_1 => 'ثمن التميز هو \nالانضباط';
-
-  @override
-  String get motivation_title_2 =>
-      'اللياقة البدنية لم تكن ممتعة \nبهذا الشكل من قبل';
-
-  @override
-  String get motivation_title_3 => 'لا مزيد من الأعذار، \nابدأ الآن';
-
-  @override
-  String get skip => 'تخطي';
-
-  @override
-  String get next => 'التالي';
-
-  @override
-  String get back => 'السابق';
-
-  @override
-  String get do_it => 'افعلها';
-
-  @override
-  String get navExplore => 'استكشاف';
-
-  @override
-  String get navChat => 'المحادثة';
-
-  @override
-  String get navWorkouts => 'التمارين';
-
-  @override
-  String get navProfile => 'الملف الشخصي';
-  String get food_recommendation => 'اقتراحات الطعام';
-
-  @override
-  String get instructions => 'الوصفة';
-
-  @override
-  String get ingredients => 'المقادير';
-
-  @override
-  String get energy => 'الطاقة';
-
-  @override
-  String get protein => 'البروتين';
-
-  @override
-  String get carbs => 'الكربوهيدرات';
-
-  @override
-  String get fats => 'الدهون';
 }

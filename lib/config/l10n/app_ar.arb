@@ -22,7 +22,7 @@
   "navExplore": "استكشاف",
   "navChat": "المحادثة",
   "navWorkouts": "التمارين",
-  "navProfile": "الملف الشخصي"
+  "navProfile": "الملف الشخصي",
   "howOldAreYou": "كم عمرك؟",
   "personalizedPlanHint": "هذا يساعدنا على إنشاء خطتك المخصصة",
   "year": "سنة",
@@ -76,7 +76,7 @@
   "carbs" : "الكربوهيدرات",
   "fats" : "الدهون",
   "message": "رسالة",
-"ok": "موافق",
+  "ok": "موافق",
   "forget_password":"نسيت كلمة المرور",
   "enter_your_email":"أدخل ايميلك",
   "email":"الإيميل",

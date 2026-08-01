@@ -33,6 +33,19 @@ class AppLocalizationsEn extends AppLocalizations {
   String get transformTimeout => 'Transform timeout';
 
   @override
+  String get unexpectedError => 'Unexpected error';
+
+  @override
+  String get follow_the_plan =>
+      'Follow the plan below and pick your difficulty level to get started.';
+
+  @override
+  String get exercise => 'Exercise';
+
+  @override
+  String get no_exercises_found => 'No exercises found for this level';
+
+  @override
   String get motivation =>
       'Achieve your fitness goals with personalized workouts and expert guidance. Stay motivated, track your progress, and become the best version of yourself.';
 
@@ -56,6 +69,18 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get do_it => 'Do IT';
+
+  @override
+  String get navExplore => 'Explore';
+
+  @override
+  String get navChat => 'Chat';
+
+  @override
+  String get navWorkouts => 'Workouts';
+
+  @override
+  String get navProfile => 'Profile';
 
   @override
   String get message => 'Message';
@@ -275,73 +300,4 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get resend_code => 'Resend Code?';
-
-  @override
-  String get unexpectedError => 'Unexpected error';
-
-  @override
-  String get follow_the_plan =>
-      'Follow the plan below and pick your difficulty level to get started.';
-
-  @override
-  String get exercise => 'Exercise';
-
-  @override
-  String get no_exercises_found => 'No exercises found for this level';
-
-  @override
-  String get motivation =>
-      'Achieve your fitness goals with personalized workouts and expert guidance. Stay motivated, track your progress, and become the best version of yourself.';
-
-  @override
-  String get motivation_title_1 => 'The Price Of Excellence \nIs Discipline';
-
-  @override
-  String get motivation_title_2 => 'Fitness Has Never Been \nSo Much Fun';
-
-  @override
-  String get motivation_title_3 => 'NO MORE EXCUSES\nDo It Now';
-
-  @override
-  String get skip => 'Skip';
-
-  @override
-  String get next => 'Next';
-
-  @override
-  String get back => 'Back';
-
-  @override
-  String get do_it => 'Do IT';
-
-  @override
-  String get navExplore => 'Explore';
-
-  @override
-  String get navChat => 'Chat';
-
-  @override
-  String get navWorkouts => 'Workouts';
-
-  @override
-  String get navProfile => 'Profile';
-  String get food_recommendation => 'Food Recommendation';
-
-  @override
-  String get instructions => 'Instructions';
-
-  @override
-  String get ingredients => 'Ingredients';
-
-  @override
-  String get energy => 'Energy';
-
-  @override
-  String get protein => 'Protein';
-
-  @override
-  String get carbs => 'Carbs';
-
-  @override
-  String get fats => 'Fats';
 }
