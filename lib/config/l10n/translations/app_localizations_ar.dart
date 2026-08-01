@@ -382,4 +382,31 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get make_sure_8_chara => 'Make Sure Its 8 Characters Or More';
+
+  @override
+  String get hi => 'Hi';
+
+  @override
+  String get i_am_your => 'I Am Your';
+
+  @override
+  String get smart_coach => 'Smart Coach';
+
+  @override
+  String get how_can_i_assist_you => 'How Can I Assist You';
+
+  @override
+  String get today => 'Today ?';
+
+  @override
+  String get get_started => 'Get Started';
+
+  @override
+  String get previous_conversations => 'Previous Conversations';
+
+  @override
+  String get fitness_hint_text => 'Ask me anything about fitness...';
+
+  @override
+  String get you_cant_send_empty_message => 'You can\'t send an empty message';
 }

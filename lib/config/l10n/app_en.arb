@@ -132,5 +132,14 @@
   "confirm_password":"تأكيد الرقم السري",
   "make_sure_8_chara":"تأكد انه ثمانة احرف او اكثر",
   "create_new_password":"عمل رقم سري جديد",
-  "done":"انهاء"
+  "done":"انهاء",
+  "hi": "مرحبًا",
+  "i_am_your": "أنا",
+  "smart_coach": "مدربك الذكي",
+  "how_can_i_assist_you": "كيف يمكنني مساعدتك",
+  "today": "اليوم ؟",
+  "get_started": "ابدأ",
+  "previous_conversations": "المحادثات السابقة",
+  "fitness_hint_text" : "...اسألني أي شيء عن اللياقة البدنية",
+  "you_cant_send_empty_message" : "لا يمكنك ارسال رسالة فارغة"
 }

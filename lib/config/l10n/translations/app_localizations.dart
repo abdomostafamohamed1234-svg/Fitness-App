@@ -835,6 +835,60 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'تأكد انه ثمانة احرف او اكثر'**
   String get make_sure_8_chara;
+
+  /// No description provided for @hi.
+  ///
+  /// In en, this message translates to:
+  /// **'مرحبًا'**
+  String get hi;
+
+  /// No description provided for @i_am_your.
+  ///
+  /// In en, this message translates to:
+  /// **'أنا'**
+  String get i_am_your;
+
+  /// No description provided for @smart_coach.
+  ///
+  /// In en, this message translates to:
+  /// **'مدربك الذكي'**
+  String get smart_coach;
+
+  /// No description provided for @how_can_i_assist_you.
+  ///
+  /// In en, this message translates to:
+  /// **'كيف يمكنني مساعدتك'**
+  String get how_can_i_assist_you;
+
+  /// No description provided for @today.
+  ///
+  /// In en, this message translates to:
+  /// **'اليوم ؟'**
+  String get today;
+
+  /// No description provided for @get_started.
+  ///
+  /// In en, this message translates to:
+  /// **'ابدأ'**
+  String get get_started;
+
+  /// No description provided for @previous_conversations.
+  ///
+  /// In en, this message translates to:
+  /// **'المحادثات السابقة'**
+  String get previous_conversations;
+
+  /// No description provided for @fitness_hint_text.
+  ///
+  /// In en, this message translates to:
+  /// **'...اسألني أي شيء عن اللياقة البدنية'**
+  String get fitness_hint_text;
+
+  /// No description provided for @you_cant_send_empty_message.
+  ///
+  /// In en, this message translates to:
+  /// **'لا يمكنك ارسال رسالة فارغة'**
+  String get you_cant_send_empty_message;
 }
 
 class _AppLocalizationsDelegate

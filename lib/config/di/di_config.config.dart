@@ -9,6 +9,7 @@
 // coverage:ignore-file
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
+import 'package:cloud_firestore/cloud_firestore.dart' as _i974;
 import 'package:dio/dio.dart' as _i361;
 import 'package:firebase_auth/firebase_auth.dart' as _i59;
 import 'package:flutter_facebook_auth/flutter_facebook_auth.dart' as _i806;
@@ -59,6 +60,23 @@ import '../../features/change_password/domain/ues_case/change_password_use_case.
     as _i534;
 import '../../features/change_password/presentation/view_model/change_password_view_model.dart'
     as _i969;
+import '../../features/chat_bot/api/api_client/chat_bot_api_client.dart'
+    as _i137;
+import '../../features/chat_bot/api/data_sources/chat_bot_firestore_data_source.dart'
+    as _i1049;
+import '../../features/chat_bot/api/data_sources/chat_bot_remote_data_sources_impl.dart'
+    as _i49;
+import '../../features/chat_bot/data/data_sources/chat_bot_remote_data_sources_contract.dart'
+    as _i312;
+import '../../features/chat_bot/data/repo/chat_bot_repo_impl.dart' as _i438;
+import '../../features/chat_bot/domain/repo/chat_bot_repo_contract.dart'
+    as _i311;
+import '../../features/chat_bot/domain/use_cases/get_all_chats_use_case.dart'
+    as _i776;
+import '../../features/chat_bot/domain/use_cases/send_to_chat_bot_use_case.dart'
+    as _i392;
+import '../../features/chat_bot/presentation/view_model/cubit/chat_bot_cubit.dart'
+    as _i1030;
 import '../../features/edit_profile/api/edit_profile_api_client.dart' as _i935;
 import '../../features/edit_profile/data/data_source/remote_data_source/edit_profile_remote_data_source_contract.dart'
     as _i786;
@@ -204,9 +222,9 @@ import '../../features/workouts/domain/use_cases/get_muscles_group_use_case.dart
     as _i249;
 import '../../features/workouts/presentation/view_model/cubit/workouts_cubit.dart'
     as _i152;
+import '../firebase/firebase_module.dart' as _i1055;
 import '../helpers/shared_preferences/shared_preferences_helper.dart' as _i425;
 import 'di_module.dart' as _i211;
-import 'firebase_module.dart' as _i616;
 
 extension GetItInjectableX on _i174.GetIt {
   // initializes the registration of main-scope dependencies inside of GetIt
@@ -230,11 +248,15 @@ extension GetItInjectableX on _i174.GetIt {
     gh.lazySingleton<_i558.FlutterSecureStorage>(
       () => diModule.secureStorage(),
     );
+    gh.lazySingleton<_i974.FirebaseFirestore>(() => firebaseModule.firestore);
     gh.factory<_i425.SharedPreferencesHelper>(
       () => _i425.SharedPreferencesHelper(gh<_i460.SharedPreferences>()),
     );
     gh.factory<_i273.LocaleCubit>(
       () => _i273.LocaleCubit(gh<_i425.SharedPreferencesHelper>()),
+    );
+    gh.factory<_i137.ChatBotApiClient>(
+      () => _i137.ChatBotApiClient(gh<_i361.Dio>(instanceName: 'chatBotDio')),
     );
     gh.lazySingleton<_i244.ChangePasswordApiClient>(
       () => _i244.ChangePasswordApiClient(gh<_i361.Dio>()),
@@ -287,6 +309,9 @@ extension GetItInjectableX on _i174.GetIt {
     gh.singleton<_i490.SocialPasswordGenerator>(
       () => _i746.Sha256SocialPasswordGenerator(),
     );
+    gh.factory<_i312.ChatBotRemoteDataSourcesContract>(
+      () => _i49.ChatBotRemoteDataSourcesImpl(gh<_i137.ChatBotApiClient>()),
+    );
     gh.lazySingleton<_i54.TokenLocalDataSource>(
       () => _i54.TokenLocalDataSource(gh<_i558.FlutterSecureStorage>()),
     );
@@ -315,6 +340,9 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i675.ExerciseDataSourceContract>(
       () => _i1043.ExerciseDataSourceImpl(gh<_i79.ExerciseApiClient>()),
     );
+    gh.lazySingleton<_i1049.ChatBotFirestoreDataSource>(
+      () => _i1049.ChatBotFirestoreDataSource(gh<_i974.FirebaseFirestore>()),
+    );
     gh.factory<_i110.ChangePasswordLocalDataSourceContract>(
       () => _i793.ChangePasswordLocalDataSourceImplementation(
         gh<_i558.FlutterSecureStorage>(),
@@ -322,6 +350,12 @@ extension GetItInjectableX on _i174.GetIt {
     );
     gh.factory<_i703.RegisterRemoteDataSourceContract>(
       () => _i754.RegisterRemoteDataSourceImpl(gh<_i656.RegisterApiClient>()),
+    );
+    gh.factory<_i311.ChatBotRepoContract>(
+      () => _i438.ChatBotRepoImpl(
+        gh<_i312.ChatBotRemoteDataSourcesContract>(),
+        gh<_i1049.ChatBotFirestoreDataSource>(),
+      ),
     );
     gh.factory<_i1048.GetPopularTrainingUseCase>(
       () => _i1048.GetPopularTrainingUseCase(
@@ -431,6 +465,12 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i656.FoodRemoteDataSourceContract>(
       () => _i58.FoodRemoteDataSourceImpl(gh<_i310.FoodApiClient>()),
     );
+    gh.factory<_i776.GetAllChatsUseCase>(
+      () => _i776.GetAllChatsUseCase(gh<_i311.ChatBotRepoContract>()),
+    );
+    gh.factory<_i392.SendToChatBotUseCase>(
+      () => _i392.SendToChatBotUseCase(gh<_i311.ChatBotRepoContract>()),
+    );
     gh.factory<_i243.WorkoutRepository>(
       () => _i774.WorkoutsRepositoryImpl(
         gh<_i668.WorkoutRemoteDataSourceContract>(),
@@ -456,6 +496,12 @@ extension GetItInjectableX on _i174.GetIt {
         gh<_i501.GetProfileUseCase>(),
         gh<_i226.EditProfileUseCase>(),
         gh<_i776.UploadPhotoUseCase>(),
+      ),
+    );
+    gh.factory<_i1030.ChatBotCubit>(
+      () => _i1030.ChatBotCubit(
+        gh<_i392.SendToChatBotUseCase>(),
+        gh<_i776.GetAllChatsUseCase>(),
       ),
     );
     gh.factory<_i517.ExerciseUseCase>(
@@ -530,4 +576,4 @@ extension GetItInjectableX on _i174.GetIt {
 
 class _$DiModule extends _i211.DiModule {}
 
-class _$FirebaseModule extends _i616.FirebaseModule {}
+class _$FirebaseModule extends _i1055.FirebaseModule {}

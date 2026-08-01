@@ -386,4 +386,31 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get make_sure_8_chara => 'تأكد انه ثمانة احرف او اكثر';
+
+  @override
+  String get hi => 'مرحبًا';
+
+  @override
+  String get i_am_your => 'أنا';
+
+  @override
+  String get smart_coach => 'مدربك الذكي';
+
+  @override
+  String get how_can_i_assist_you => 'كيف يمكنني مساعدتك';
+
+  @override
+  String get today => 'اليوم ؟';
+
+  @override
+  String get get_started => 'ابدأ';
+
+  @override
+  String get previous_conversations => 'المحادثات السابقة';
+
+  @override
+  String get fitness_hint_text => '...اسألني أي شيء عن اللياقة البدنية';
+
+  @override
+  String get you_cant_send_empty_message => 'لا يمكنك ارسال رسالة فارغة';
 }

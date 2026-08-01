@@ -131,5 +131,14 @@
   "confirm_password":"Confirm Password",
   "make_sure_8_chara":"Make Sure Its 8 Characters Or More",
   "create_new_password":"Create New Password",
-  "done":"Done"
+  "done":"Done",
+  "hi" : "Hi",
+  "i_am_your" : "I Am Your",
+  "smart_coach": "Smart Coach",
+  "how_can_i_assist_you" : "How Can I Assist You",
+  "today" : "Today ?",
+  "get_started" : "Get Started",
+  "previous_conversations" : "Previous Conversations",
+  "fitness_hint_text" : "Ask me anything about fitness...",
+  "you_cant_send_empty_message" : "You can't send an empty message"
 }
