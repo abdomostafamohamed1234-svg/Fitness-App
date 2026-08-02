@@ -29,5 +29,11 @@
   "energy" : "الطاقة",
   "protein" : "البروتين",
   "carbs" : "الكربوهيدرات",
-  "fats" : "الدهون"
+  "fats" : "الدهون",
+    "old_password":"الرقم السري القديم",
+  "new_password":"الرقم السري الجديد",
+  "confirm_password":"تأكيد الرقم السري",
+  "make_sure_8_chara":"تأكد انه ثمانة احرف او اكثر",
+  "create_new_password":"عمل رقم سري جديد",
+  "done":"انهاء"
 }

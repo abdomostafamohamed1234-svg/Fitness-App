@@ -100,4 +100,22 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get fats => 'Fats';
+
+  @override
+  String get old_password => 'Old Password';
+
+  @override
+  String get new_password => 'New Password';
+
+  @override
+  String get confirm_password => 'Confirm Password';
+
+  @override
+  String get make_sure_8_chara => 'Make Sure Its 8 Characters Or More';
+
+  @override
+  String get create_new_password => 'Create New Password';
+
+  @override
+  String get done => 'Done';
 }

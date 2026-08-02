@@ -101,4 +101,22 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get fats => 'الدهون';
+
+  @override
+  String get old_password => 'الرقم السري القديم';
+
+  @override
+  String get new_password => 'الرقم السري الجديد';
+
+  @override
+  String get confirm_password => 'تأكيد الرقم السري';
+
+  @override
+  String get make_sure_8_chara => 'تأكد انه ثمانة احرف او اكثر';
+
+  @override
+  String get create_new_password => 'عمل رقم سري جديد';
+
+  @override
+  String get done => 'انهاء';
 }

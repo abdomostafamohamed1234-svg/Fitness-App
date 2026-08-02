@@ -284,6 +284,42 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Fats'**
   String get fats;
+
+  /// No description provided for @old_password.
+  ///
+  /// In en, this message translates to:
+  /// **'Old Password'**
+  String get old_password;
+
+  /// No description provided for @new_password.
+  ///
+  /// In en, this message translates to:
+  /// **'New Password'**
+  String get new_password;
+
+  /// No description provided for @confirm_password.
+  ///
+  /// In en, this message translates to:
+  /// **'Confirm Password'**
+  String get confirm_password;
+
+  /// No description provided for @make_sure_8_chara.
+  ///
+  /// In en, this message translates to:
+  /// **'Make Sure Its 8 Characters Or More'**
+  String get make_sure_8_chara;
+
+  /// No description provided for @create_new_password.
+  ///
+  /// In en, this message translates to:
+  /// **'Create New Password'**
+  String get create_new_password;
+
+  /// No description provided for @done.
+  ///
+  /// In en, this message translates to:
+  /// **'Done'**
+  String get done;
 }
 
 class _AppLocalizationsDelegate
