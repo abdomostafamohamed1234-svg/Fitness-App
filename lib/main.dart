@@ -53,3 +53,4 @@ class FitnessApp extends StatelessWidget {
     );
   }
 }
+
