@@ -36,6 +36,16 @@ class AppLocalizationsAr extends AppLocalizations {
   String get unexpectedError => 'حدث خطأ غير متوقع';
 
   @override
+  String get follow_the_plan =>
+      'اتبع الخطة أدناه واختر مستوى الصعوبة الذي يناسبك للبدء';
+
+  @override
+  String get exercise => 'التمرين';
+
+  @override
+  String get no_exercises_found => 'لم يتم العثور على تمارين لهذا المستوى';
+
+  @override
   String get motivation =>
       'حقق أهدافك الرياضية من خلال تمارين مخصصة وإرشادات احترافية. حافظ على حماسك، وتتبع تقدمك، وكن أفضل نسخة من نفسك.';
 
@@ -62,6 +72,16 @@ class AppLocalizationsAr extends AppLocalizations {
   String get do_it => 'افعلها';
 
   @override
+  String get navExplore => 'استكشاف';
+
+  @override
+  String get navChat => 'المحادثة';
+
+  @override
+  String get navWorkouts => 'التمارين';
+
+  @override
+  String get navProfile => 'الملف الشخصي';
   String get food_recommendation => 'اقتراحات الطعام';
 
   @override
@@ -140,4 +160,20 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get resend_code => 'ارسل الكود مره اخري?';
+  String get old_password => 'الرقم السري القديم';
+
+  @override
+  String get new_password => 'الرقم السري الجديد';
+
+  @override
+  String get confirm_password => 'تأكيد الرقم السري';
+
+  @override
+  String get make_sure_8_chara => 'تأكد انه ثمانة احرف او اكثر';
+
+  @override
+  String get create_new_password => 'عمل رقم سري جديد';
+
+  @override
+  String get done => 'انهاء';
 }

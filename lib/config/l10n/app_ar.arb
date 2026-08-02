@@ -8,6 +8,9 @@
   "serverError": "خطأ في الخادم",
   "transformTimeout": "انتهت مهلة المعالجة",
   "unexpectedError": "حدث خطأ غير متوقع",
+  "follow_the_plan": "اتبع الخطة أدناه واختر مستوى الصعوبة الذي يناسبك للبدء",
+  "exercise": "التمرين",
+  "no_exercises_found":"لم يتم العثور على تمارين لهذا المستوى",
   "motivation": "حقق أهدافك الرياضية من خلال تمارين مخصصة وإرشادات احترافية. حافظ على حماسك، وتتبع تقدمك، وكن أفضل نسخة من نفسك.",
   "motivation_title_1": "ثمن التميز هو \nالانضباط",
   "motivation_title_2": "اللياقة البدنية لم تكن ممتعة \nبهذا الشكل من قبل",
@@ -16,6 +19,10 @@
   "next" : "التالي",
   "back" : "السابق",
   "do_it" : "افعلها",
+  "navExplore": "استكشاف",
+  "navChat": "المحادثة",
+  "navWorkouts": "التمارين",
+  "navProfile": "الملف الشخصي"
   "food_recommendation": "اقتراحات الطعام",
   "instructions": "الوصفة",
   "ingredients": "المقادير",
@@ -42,4 +49,10 @@
   "confirm":"تأكيد",
   "did_not_receive_verification_code":"لم يتم استلام الكود?",
   "resend_code":"ارسل الكود مره اخري?"
+    "old_password":"الرقم السري القديم",
+  "new_password":"الرقم السري الجديد",
+  "confirm_password":"تأكيد الرقم السري",
+  "make_sure_8_chara":"تأكد انه ثمانة احرف او اكثر",
+  "create_new_password":"عمل رقم سري جديد",
+  "done":"انهاء"
 }

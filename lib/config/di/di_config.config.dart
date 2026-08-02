@@ -16,6 +16,24 @@ import 'package:injectable/injectable.dart' as _i526;
 import 'package:shared_preferences/shared_preferences.dart' as _i460;
 
 import '../../core/cubits/locale/locale_cubit.dart' as _i273;
+import '../../features/change_password/api/api_client/change_password_api_client.dart'
+    as _i244;
+import '../../features/change_password/api/data_source/change_password_local_data_source_implementation.dart'
+    as _i793;
+import '../../features/change_password/api/data_source/change_password_remote_data_source_imp.dart'
+    as _i577;
+import '../../features/change_password/data/data_source/change_password_local_data_source_contract.dart'
+    as _i110;
+import '../../features/change_password/data/data_source/change_password_remote_data_source_contract.dart'
+    as _i167;
+import '../../features/change_password/data/repo/change_password_repo_imp.dart'
+    as _i49;
+import '../../features/change_password/domain/repo/change_password_repo_contract.dart'
+    as _i333;
+import '../../features/change_password/domain/ues_case/change_password_use_case.dart'
+    as _i534;
+import '../../features/change_password/presentation/view_model/change_password_view_model.dart'
+    as _i969;
 import '../../features/food/api/api_client/food_api_client.dart' as _i310;
 import '../../features/food/api/data_sources/food_remote_data_source_impl.dart'
     as _i58;
@@ -49,6 +67,8 @@ import '../../features/forget_password/domain/use_cases/verify_email_use_case.da
     as _i524;
 import '../../features/forget_password/presentation/view_models/cubit/forget_password_view_model.dart'
     as _i916;
+import '../../features/app_sections/presentation/view_model/cubit/app_sections_cubit.dart'
+    as _i1038;
 import '../../features/on_boarding/presentation/view_model/cubit/on_boarding_cubit.dart'
     as _i786;
 import '../helpers/shared_preferences/shared_preferences_helper.dart' as _i425;
@@ -66,6 +86,7 @@ extension GetItInjectableX on _i174.GetIt {
       () => diModule.sharedPreferences(),
       preResolve: true,
     );
+    gh.factory<_i1038.AppSectionsCubit>(() => _i1038.AppSectionsCubit());
     gh.factory<_i786.OnBoardingCubit>(() => _i786.OnBoardingCubit());
     gh.singleton<_i361.Dio>(() => diModule.dio());
     gh.lazySingleton<_i558.FlutterSecureStorage>(
@@ -79,6 +100,8 @@ extension GetItInjectableX on _i174.GetIt {
     );
     gh.lazySingleton<_i892.ForgetPasswordApiClient>(
       () => _i892.ForgetPasswordApiClient(gh<_i361.Dio>()),
+    gh.lazySingleton<_i244.ChangePasswordApiClient>(
+      () => _i244.ChangePasswordApiClient(gh<_i361.Dio>()),
     );
     gh.singleton<_i361.Dio>(
       () => diModule.mealsDio(),
@@ -87,6 +110,9 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i492.ForgetPasswordDataSourceContract>(
       () => _i495.ForgetPasswordDataSourceImp(
         gh<_i892.ForgetPasswordApiClient>(),
+    gh.factory<_i793.ChangePasswordLocalDataSourceImplementation>(
+      () => _i793.ChangePasswordLocalDataSourceImplementation(
+        gh<_i558.FlutterSecureStorage>(),
       ),
     );
     gh.factory<_i310.FoodApiClient>(
@@ -118,6 +144,28 @@ extension GetItInjectableX on _i174.GetIt {
         gh<_i524.VerifyEmailUseCase>(),
         gh<_i56.ResetPasswordUseCase>(),
       ),
+    gh.factory<_i167.ChangePasswordRemoteDataSourceContract>(
+      () => _i577.ChangePasswordRemoteDataSourceImp(
+        gh<_i244.ChangePasswordApiClient>(),
+      ),
+    );
+    gh.factory<_i656.FoodRemoteDataSourceContract>(
+      () => _i58.FoodRemoteDataSourceImpl(gh<_i310.FoodApiClient>()),
+    );
+    gh.factory<_i333.ChangePasswordRepoContract>(
+      () => _i49.ChangePasswordRepoImp(
+        gh<_i167.ChangePasswordRemoteDataSourceContract>(),
+        gh<_i110.ChangePasswordLocalDataSourceContract>(),
+      ),
+    );
+    gh.factory<_i901.FoodRepoContract>(
+      () => _i20.FoodRepoImpl(gh<_i656.FoodRemoteDataSourceContract>()),
+    );
+    gh.factory<_i534.ChangePasswordUseCase>(
+      () => _i534.ChangePasswordUseCase(gh<_i333.ChangePasswordRepoContract>()),
+    );
+    gh.factory<_i969.ChangePasswordViewModel>(
+      () => _i969.ChangePasswordViewModel(gh<_i534.ChangePasswordUseCase>()),
     );
     gh.factory<_i687.GetMealDetailsUseCase>(
       () => _i687.GetMealDetailsUseCase(gh<_i901.FoodRepoContract>()),

@@ -36,6 +36,16 @@ class AppLocalizationsEn extends AppLocalizations {
   String get unexpectedError => 'Unexpected error';
 
   @override
+  String get follow_the_plan =>
+      'Follow the plan below and pick your difficulty level to get started.';
+
+  @override
+  String get exercise => 'Exercise';
+
+  @override
+  String get no_exercises_found => 'No exercises found for this level';
+
+  @override
   String get motivation =>
       'Achieve your fitness goals with personalized workouts and expert guidance. Stay motivated, track your progress, and become the best version of yourself.';
 
@@ -61,6 +71,16 @@ class AppLocalizationsEn extends AppLocalizations {
   String get do_it => 'Do IT';
 
   @override
+  String get navExplore => 'Explore';
+
+  @override
+  String get navChat => 'Chat';
+
+  @override
+  String get navWorkouts => 'Workouts';
+
+  @override
+  String get navProfile => 'Profile';
   String get food_recommendation => 'Food Recommendation';
 
   @override
@@ -98,6 +118,16 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get create_pass => 'create pass';
+  String get old_password => 'Old Password';
+
+  @override
+  String get new_password => 'New Password';
+
+  @override
+  String get confirm_password => 'Confirm Password';
+
+  @override
+  String get make_sure_8_chara => 'Make Sure Its 8 Characters Or More';
 
   @override
   String get create_new_password => 'Create New Password';
@@ -141,4 +171,5 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get resend_code => 'Resend Code?';
+  String get done => 'Done';
 }
