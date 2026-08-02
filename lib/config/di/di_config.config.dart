@@ -49,6 +49,8 @@ import '../../features/food/domain/use_cases/select_meals_category_use_case.dart
     as _i904;
 import '../../features/food/presentation/view_model/cubit/food_cubit.dart'
     as _i660;
+import '../../features/app_sections/presentation/view_model/cubit/app_sections_cubit.dart'
+    as _i1038;
 import '../../features/on_boarding/presentation/view_model/cubit/on_boarding_cubit.dart'
     as _i786;
 import '../helpers/shared_preferences/shared_preferences_helper.dart' as _i425;
@@ -66,6 +68,7 @@ extension GetItInjectableX on _i174.GetIt {
       () => diModule.sharedPreferences(),
       preResolve: true,
     );
+    gh.factory<_i1038.AppSectionsCubit>(() => _i1038.AppSectionsCubit());
     gh.factory<_i786.OnBoardingCubit>(() => _i786.OnBoardingCubit());
     gh.singleton<_i361.Dio>(() => diModule.dio());
     gh.lazySingleton<_i558.FlutterSecureStorage>(

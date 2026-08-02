@@ -36,6 +36,16 @@ class AppLocalizationsEn extends AppLocalizations {
   String get unexpectedError => 'Unexpected error';
 
   @override
+  String get follow_the_plan =>
+      'Follow the plan below and pick your difficulty level to get started.';
+
+  @override
+  String get exercise => 'Exercise';
+
+  @override
+  String get no_exercises_found => 'No exercises found for this level';
+
+  @override
   String get motivation =>
       'Achieve your fitness goals with personalized workouts and expert guidance. Stay motivated, track your progress, and become the best version of yourself.';
 
@@ -61,6 +71,16 @@ class AppLocalizationsEn extends AppLocalizations {
   String get do_it => 'Do IT';
 
   @override
+  String get navExplore => 'Explore';
+
+  @override
+  String get navChat => 'Chat';
+
+  @override
+  String get navWorkouts => 'Workouts';
+
+  @override
+  String get navProfile => 'Profile';
   String get food_recommendation => 'Food Recommendation';
 
   @override

@@ -43,6 +43,9 @@ class FitnessApp extends StatelessWidget {
               debugShowCheckedModeBanner: false,
               theme: AppTheme.darkTheme,
               initialRoute: AppRoutes.changePassword,
+
+              
+           
               // home: const TestScreen(),
             );
           },
