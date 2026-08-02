@@ -114,6 +114,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get done => 'Done';
 
   @override
+  String get update => 'Update';
+
+  @override
   String get goal_gain_weight => 'Gain Weight';
 
   @override

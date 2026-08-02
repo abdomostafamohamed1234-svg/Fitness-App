@@ -113,6 +113,9 @@ class AppLocalizationsAr extends AppLocalizations {
   String get done => 'تم';
 
   @override
+  String get update => 'تحديث';
+
+  @override
   String get goal_gain_weight => 'زيادة الوزن';
 
   @override

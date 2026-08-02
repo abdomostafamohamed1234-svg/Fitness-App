@@ -4,6 +4,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:flowery/config/di/di_config.dart';
 import 'package:flowery/config/l10n/translations/app_localizations.dart';
+import 'package:flowery/core/base/base_state.dart';
 import 'package:flowery/core/theme/app_assets.dart';
 import 'package:flowery/core/theme/app_colors.dart';
 import 'package:flowery/features/edit_profile/presentation/view/pages/edit_activity_level_page.dart';
@@ -46,44 +47,10 @@ class _EditProfileViewState extends State<_EditProfileView> {
   String? _activityLevel;
   File? _pickedPhoto;
 
-  final _firstNameFocus = FocusNode();
-  final _lastNameFocus = FocusNode();
-  final _emailFocus = FocusNode();
-
-  @override
-  void initState() {
-    super.initState();
-    // Save on focus loss too, so tapping away (not just the keyboard's
-    // done/next action) commits whatever was typed.
-    _firstNameFocus.addListener(() {
-      if (!_firstNameFocus.hasFocus) {
-        _cubit.doEvent(EditProfileEvent(firstName: _cubit.firstNameController.text));
-      }
-    });
-    _lastNameFocus.addListener(() {
-      if (!_lastNameFocus.hasFocus) {
-        _cubit.doEvent(EditProfileEvent(lastName: _cubit.lastNameController.text));
-      }
-    });
-    _emailFocus.addListener(() {
-      if (!_emailFocus.hasFocus) {
-        _cubit.doEvent(EditProfileEvent(email: _cubit.emailController.text));
-      }
-    });
-  }
-
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
     _cubit = context.read<EditProfileCubit>();
-  }
-
-  @override
-  void dispose() {
-    _firstNameFocus.dispose();
-    _lastNameFocus.dispose();
-    _emailFocus.dispose();
-    super.dispose();
   }
 
   void _syncFromProfile(EditProfileStates state) {
@@ -112,7 +79,6 @@ class _EditProfileViewState extends State<_EditProfileView> {
     );
     if (result == null) return;
     setState(() => _weight = result);
-    _cubit.doEvent(EditProfileEvent(weight: result));
   }
 
   Future<void> _editGoal() async {
@@ -122,7 +88,6 @@ class _EditProfileViewState extends State<_EditProfileView> {
     );
     if (result == null) return;
     setState(() => _goal = result);
-    _cubit.doEvent(EditProfileEvent(goal: result));
   }
 
   Future<void> _editActivityLevel() async {
@@ -134,7 +99,19 @@ class _EditProfileViewState extends State<_EditProfileView> {
     );
     if (result == null) return;
     setState(() => _activityLevel = result);
-    _cubit.doEvent(EditProfileEvent(activityLevel: result));
+  }
+
+  void _submitUpdate() {
+    _cubit.doEvent(
+      EditProfileEvent(
+        firstName: _cubit.firstNameController.text,
+        lastName: _cubit.lastNameController.text,
+        email: _cubit.emailController.text,
+        weight: _weight,
+        goal: _goal,
+        activityLevel: _activityLevel,
+      ),
+    );
   }
 
   InputDecoration _fieldDecoration({required String hint, required IconData icon}) {
@@ -319,41 +296,32 @@ class _EditProfileViewState extends State<_EditProfileView> {
                               SizedBox(height: 24.h),
                               TextFormField(
                                 controller: _cubit.firstNameController,
-                                focusNode: _firstNameFocus,
                                 style: TextStyle(color: Colors.white, fontSize: 16.sp),
                                 cursorColor: Colors.white,
                                 decoration: _fieldDecoration(
                                   hint: l10n.first_name,
                                   icon: Icons.person_outline,
                                 ),
-                                onFieldSubmitted: (value) =>
-                                    _cubit.doEvent(EditProfileEvent(firstName: value)),
                               ),
                               SizedBox(height: 16.h),
                               TextFormField(
                                 controller: _cubit.lastNameController,
-                                focusNode: _lastNameFocus,
                                 style: TextStyle(color: Colors.white, fontSize: 16.sp),
                                 cursorColor: Colors.white,
                                 decoration: _fieldDecoration(
                                   hint: l10n.last_name,
                                   icon: Icons.person_outline,
                                 ),
-                                onFieldSubmitted: (value) =>
-                                    _cubit.doEvent(EditProfileEvent(lastName: value)),
                               ),
                               SizedBox(height: 16.h),
                               TextFormField(
                                 controller: _cubit.emailController,
-                                focusNode: _emailFocus,
                                 style: TextStyle(color: Colors.white, fontSize: 16.sp),
                                 cursorColor: Colors.white,
                                 decoration: _fieldDecoration(
                                   hint: l10n.email,
                                   icon: Icons.email_outlined,
                                 ),
-                                onFieldSubmitted: (value) =>
-                                    _cubit.doEvent(EditProfileEvent(email: value)),
                               ),
                               SizedBox(height: 20.h),
                               EditableInfoTile(
@@ -376,6 +344,8 @@ class _EditProfileViewState extends State<_EditProfileView> {
                                 ),
                                 onTap: _editActivityLevel,
                               ),
+                              SizedBox(height: 28.h),
+                              _UpdateButton(onPressed: _submitUpdate),
                               SizedBox(height: 24.h),
                             ],
                           ),
@@ -389,6 +359,43 @@ class _EditProfileViewState extends State<_EditProfileView> {
           ),
         ),
       ),
+    );
+  }
+}
+
+class _UpdateButton extends StatelessWidget {
+  const _UpdateButton({required this.onPressed});
+
+  final VoidCallback onPressed;
+
+  @override
+  Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
+
+    return BlocBuilder<EditProfileCubit, EditProfileStates>(
+      buildWhen: (previous, current) =>
+          previous.editProfileState != current.editProfileState,
+      builder: (context, state) {
+        final isLoading = state.editProfileState.state == StateType.loading;
+
+        return SizedBox(
+          height: 48.h,
+          width: double.infinity,
+          child: ElevatedButton(
+            onPressed: isLoading ? null : onPressed,
+            child: isLoading
+                ? SizedBox(
+                    height: 20.h,
+                    width: 20.h,
+                    child: const CircularProgressIndicator(
+                      strokeWidth: 2.5,
+                      color: Colors.white,
+                    ),
+                  )
+                : Text(l10n.update, style: Theme.of(context).textTheme.titleLarge),
+          ),
+        );
+      },
     );
   }
 }
