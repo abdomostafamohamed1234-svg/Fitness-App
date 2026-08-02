@@ -1,5 +1,7 @@
 import 'package:flowery/config/di/di_config.dart';
 import 'package:flowery/config/routing/app_routes.dart';
+import 'package:flowery/features/forget_password/presentation/screens/forget_password_screen.dart';
+import 'package:flowery/features/forget_password/presentation/view_models/cubit/forget_password_view_model.dart';
 import 'package:flowery/features/change_password/presentation/screens/change_password_screen.dart';
 import 'package:flowery/features/change_password/presentation/view_model/change_password_view_model.dart';
 import 'package:flowery/features/on_boarding/presentation/screens/on_boarding_screen.dart';
@@ -88,6 +90,12 @@ class RouteGenerator {
               );
             },
           );
+
+        case AppRoutes.forgetPassword:
+          return MaterialPageRoute(
+            builder: (_) => BlocProvider(
+              create: (_) => getIt<ForgetPasswordViewModel>(),
+              child: const ForgetPasswordScreen(),
         case AppRoutes.changePassword:
           return MaterialPageRoute(
             builder: (_) => BlocProvider(

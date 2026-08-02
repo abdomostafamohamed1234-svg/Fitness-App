@@ -103,6 +103,63 @@ class AppLocalizationsAr extends AppLocalizations {
   String get fats => 'الدهون';
 
   @override
+  String get forget_password => 'نسيت كلمة المرور';
+
+  @override
+  String get enter_your_email => 'أدخل ايميلك';
+
+  @override
+  String get email => 'الإيميل';
+
+  @override
+  String get please_enter_a_valid_email => 'من فضلك ادخل ايميلك';
+
+  @override
+  String get sent_otp => 'ادخل رقم الرقم المرسل';
+
+  @override
+  String get create_pass => 'اعمل رقم سري';
+
+  @override
+  String get create_new_password => 'اعمل رقم سري جديد';
+
+  @override
+  String get make_sure_its_8_character_or_more =>
+      'نأكد انهم ثمانة احرف او اكثر';
+
+  @override
+  String get password => 'الرقم السري';
+
+  @override
+  String get password_must_be_8_character_or_more =>
+      'الرقم السري يجب ان يكون ثمانه احرف او اكثر';
+
+  @override
+  String get password_do_not_match => 'الرقم السري لا يتطابق';
+
+  @override
+  String get done => 'تمام';
+
+  @override
+  String get otp => 'الرقم المرسل';
+
+  @override
+  String get otp_code => 'الكود المرسل';
+
+  @override
+  String get enter_your_otp_check_your_email => 'ادخل الرقم المرسل';
+
+  @override
+  String get invalid_code_please_try_again => 'الكود خطأ';
+
+  @override
+  String get confirm => 'تأكيد';
+
+  @override
+  String get did_not_receive_verification_code => 'لم يتم استلام الكود?';
+
+  @override
+  String get resend_code => 'ارسل الكود مره اخري?';
   String get old_password => 'الرقم السري القديم';
 
   @override
