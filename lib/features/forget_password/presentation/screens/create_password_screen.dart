@@ -117,7 +117,7 @@ class _CreatePasswordScreenState extends State<CreatePasswordScreen> {
                 TextFormField(
                   controller: _confirmPasswordController,
                   obscureText: _obscureConfirmPassword,
-                  style:  TextStyle(color: AppColors.whiteColor),
+                  style:  const TextStyle(color: AppColors.whiteColor),
                   decoration: InputDecoration(
                     hintText: l10n.password,
                     prefixIcon: const Icon(Icons.lock_outline),

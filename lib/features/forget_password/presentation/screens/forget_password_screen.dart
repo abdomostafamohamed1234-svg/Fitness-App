@@ -91,10 +91,10 @@ class _ForgetPasswordScreenState extends State<ForgetPasswordScreen> {
             child: TextFormField(
               controller: _emailController,
               keyboardType: TextInputType.emailAddress,
-              style:  TextStyle(color: AppColors.whiteColor),
+              style:  const TextStyle(color: AppColors.whiteColor),
               decoration:  InputDecoration(
                 hintText: l10n.email,
-                prefixIcon: Icon(Icons.email_outlined),
+                prefixIcon: const Icon(Icons.email_outlined),
               ),
               validator: (value) {
                 if (value == null || value.trim().isEmpty) {
