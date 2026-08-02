@@ -10,7 +10,7 @@ class BaseState<T> extends Equatable {
   const BaseState({this.state = StateType.initial, this.data, this.exception});
 
   @override
-  List<Object?> get props => [state, data, exception];
+  List<Object?> get props => [state, data, exception?.toString(),];
 
   const BaseState.initial()
     : state = StateType.initial,

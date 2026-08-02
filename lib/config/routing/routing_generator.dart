@@ -1,5 +1,6 @@
 import 'package:flowery/config/di/di_config.dart';
 import 'package:flowery/config/routing/app_routes.dart';
+import 'package:flowery/features/chat_bot/presentation/args/chat_bot_args.dart';
 import 'package:flowery/features/chat_bot/presentation/screens/chat_bot_screen.dart';
 import 'package:flowery/features/chat_bot/presentation/view_model/cubit/chat_bot_cubit.dart';
 import 'package:flowery/features/chat_bot/presentation/view_model/events/chat_bot_events.dart';

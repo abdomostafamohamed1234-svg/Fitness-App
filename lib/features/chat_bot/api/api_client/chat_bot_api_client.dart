@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:flowery/config/api/api_keys.dart';
 import 'package:flowery/features/chat_bot/data/models/requests/chat_bot_request_body.dart';
 import 'package:flowery/features/chat_bot/data/models/responses/chat_bot/chat_bot_response.dart';
 import 'package:injectable/injectable.dart';
@@ -10,8 +11,11 @@ part 'chat_bot_api_client.g.dart';
 @RestApi()
 abstract class ChatBotApiClient {
   @factoryMethod
-  factory ChatBotApiClient(@Named("chatBotDio") Dio dio) = _ChatBotApiClient;
+  factory ChatBotApiClient(@Named(ApiKeys.chatBotDio) Dio dio) =
+      _ChatBotApiClient;
 
   @POST("")
-  Future<ChatBotResponse> sendMessageToBot({@Body() required ChatBotRequestBody body});
+  Future<ChatBotResponse> sendMessageToBot({
+    @Body() required ChatBotRequestBody body,
+  });
 }

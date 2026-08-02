@@ -31,5 +31,21 @@
   "get_started" : "Get Started",
   "previous_conversations" : "Previous Conversations",
   "fitness_hint_text" : "Ask me anything about fitness...",
-  "you_cant_send_empty_message" : "You can't send an empty message"
+  "you_cant_send_empty_message" : "You can't send an empty message",
+  "permissionDenied": "You do not have permission to perform this action.",
+  "notFound": "The requested data was not found.",
+  "alreadyExists": "The requested data already exists.",
+  "resourceExhausted": "The service limit has been exceeded. Please try again later.",
+  "failedPrecondition": "The operation cannot be completed in the current state.",
+  "operationAborted": "The operation was cancelled. Please try again.",
+  "serviceUnavailable": "The service is currently unavailable. Please try again later.",
+  "requestTimeout": "The request took too long. Please try again.",
+  "invalidEmail": "Please enter a valid email address.",
+  "userDisabled": "This user account has been disabled.",
+  "userNotFound": "No user was found with these credentials.",
+  "invalidCredentials": "The email or password is incorrect.",
+  "emailAlreadyInUse": "This email address is already in use.",
+  "weakPassword": "The password is too weak.",
+  "tooManyRequests": "Too many requests. Please try again later.",
+  "unexpectedError": "Something went wrong. Please try again."
 }

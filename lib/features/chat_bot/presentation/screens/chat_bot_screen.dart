@@ -173,16 +173,3 @@ class _ChatBotScreenState extends State<ChatBotScreen> {
     );
   }
 }
-
-class ChatBotArgs {
-  final String userId;
-  final String userImage;
-  final String userFirstName;
-
-  const ChatBotArgs({
-    this.userId = "123456",
-    this.userImage =
-        "https://img.magnific.com/free-photo/young-bearded-man-with-striped-shirt_273609-5677.jpg?semt=ais_test_b&w=740&q=80",
-    this.userFirstName = "Ahmed",
-  });
-}

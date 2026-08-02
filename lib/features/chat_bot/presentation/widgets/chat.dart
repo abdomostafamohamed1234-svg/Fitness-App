@@ -132,7 +132,7 @@ class Chat extends StatelessWidget {
                         ),
                       ),
 
-                      // Lottie
+                      // Bot thinking animation
                       Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 8),
                         child: Container(

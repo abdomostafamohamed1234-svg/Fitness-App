@@ -1,7 +1,7 @@
 import 'package:flowery/core/base/base_response.dart';
 import 'package:flowery/core/base/base_state.dart';
-import 'package:flowery/features/chat_bot/data/models/responses/chat_message.dart';
-import 'package:flowery/features/chat_bot/data/models/responses/chat_model.dart';
+import 'package:flowery/features/chat_bot/data/models/responses/chat/chat_message.dart';
+import 'package:flowery/features/chat_bot/data/models/responses/chat/chat_model.dart';
 import 'package:flowery/features/chat_bot/domain/entities/chat_bot_entity.dart';
 import 'package:flowery/features/chat_bot/domain/use_cases/get_all_chats_use_case.dart';
 import 'package:flowery/features/chat_bot/domain/use_cases/send_to_chat_bot_use_case.dart';
@@ -65,34 +65,28 @@ void _sendToBot(SendMessageToBotEvent event) async {
 
   switch (response) {
     case Success<ChatBotEntity>():
+      // get all previous chats
       final chats = List<ChatModel>.from(state.chats ?? []);
 
-      if (selectedChatIndex < 0 ||
-          selectedChatIndex >= chats.length) {
-        return;
-      }
-
+      // Current chat before the bot response
       final currentChat = chats[selectedChatIndex];
 
-      final parts = response.data?.message.split('\n');
-
-      final title = parts?.first.trim() ?? '';
-
-      final message = parts?.skip(1).join('\n').trim() ?? '';
-
+      // New bot message
       final botMessage = ChatMessage(
         isBot: true,
-        content: message,
+        content: response.data?.botMessage ?? "",
       );
 
+      // Create new chat including the new bot message
       final updatedChat = ChatModel(
-        chatTitle: title,
+        chatTitle: response.data?.title ?? "",
         messages: [
           ...currentChat.messages,
           botMessage,
         ],
       );
 
+      // Update that chat in the exisiting chats
       chats[selectedChatIndex] = updatedChat;
 
       emit(

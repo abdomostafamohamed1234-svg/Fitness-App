@@ -37,7 +37,13 @@ class ChatBotResponse {
 
   Map<String, dynamic> toJson() => _$ChatBotResponseToJson(this);
 
-  ChatBotEntity toEntity() => ChatBotEntity(message: message?.content ?? "");
+  ChatBotEntity toEntity() {
+    // Spliting the title from the message
+    final parts = message?.content?.split('\n');
+    final title = parts?.first.trim();
+    final botMessage = parts?.skip(1).join('\n').trim();
+    return ChatBotEntity(botMessage: botMessage ?? "", title: title ?? "");
+  }
 }
 
 @JsonSerializable()

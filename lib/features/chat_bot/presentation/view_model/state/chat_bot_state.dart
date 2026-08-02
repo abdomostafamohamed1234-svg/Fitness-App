@@ -1,7 +1,7 @@
 import 'package:equatable/equatable.dart';
 import 'package:flowery/core/base/base_state.dart';
-import 'package:flowery/features/chat_bot/data/models/responses/chat_message.dart';
-import 'package:flowery/features/chat_bot/data/models/responses/chat_model.dart';
+import 'package:flowery/features/chat_bot/data/models/responses/chat/chat_message.dart';
+import 'package:flowery/features/chat_bot/data/models/responses/chat/chat_model.dart';
 
 class ChatBotState extends Equatable {
   final bool isWelcome;
