@@ -12,7 +12,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get connectionTimeout => 'Connection timeout';
 
   @override
-  String get requestTimeout => 'Request timeout';
+  String get requestTimeout => 'The request took too long. Please try again.';
 
   @override
   String get responseTimeout => 'Response timeout';
@@ -33,7 +33,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get transformTimeout => 'Transform timeout';
 
   @override
-  String get unexpectedError => 'Unexpected error';
+  String get unexpectedError => 'Something went wrong. Please try again.';
 
   @override
   String get follow_the_plan =>
@@ -207,7 +207,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get emailRequired => 'Email is required';
 
   @override
-  String get invalidEmail => 'Enter a valid email';
+  String get invalidEmail => 'Please enter a valid email address.';
 
   @override
   String get passwordRequired => 'Password is required';
@@ -413,4 +413,48 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get you_cant_send_empty_message => 'You can\'t send an empty message';
+
+  @override
+  String get permissionDenied =>
+      'You do not have permission to perform this action.';
+
+  @override
+  String get notFound => 'The requested data was not found.';
+
+  @override
+  String get alreadyExists => 'The requested data already exists.';
+
+  @override
+  String get resourceExhausted =>
+      'The service limit has been exceeded. Please try again later.';
+
+  @override
+  String get failedPrecondition =>
+      'The operation cannot be completed in the current state.';
+
+  @override
+  String get operationAborted =>
+      'The operation was cancelled. Please try again.';
+
+  @override
+  String get serviceUnavailable =>
+      'The service is currently unavailable. Please try again later.';
+
+  @override
+  String get userDisabled => 'This user account has been disabled.';
+
+  @override
+  String get userNotFound => 'No user was found with these credentials.';
+
+  @override
+  String get invalidCredentials => 'The email or password is incorrect.';
+
+  @override
+  String get emailAlreadyInUse => 'This email address is already in use.';
+
+  @override
+  String get weakPassword => 'The password is too weak.';
+
+  @override
+  String get tooManyRequests => 'Too many requests. Please try again later.';
 }

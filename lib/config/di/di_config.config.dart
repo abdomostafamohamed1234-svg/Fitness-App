@@ -62,8 +62,6 @@ import '../../features/change_password/presentation/view_model/change_password_v
     as _i969;
 import '../../features/chat_bot/api/api_client/chat_bot_api_client.dart'
     as _i137;
-import '../../features/chat_bot/api/data_sources/chat_bot_firestore_data_source.dart'
-    as _i1049;
 import '../../features/chat_bot/api/data_sources/chat_bot_remote_data_sources_impl.dart'
     as _i49;
 import '../../features/chat_bot/data/data_sources/chat_bot_remote_data_sources_contract.dart'
@@ -338,9 +336,6 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i675.ExerciseDataSourceContract>(
       () => _i1043.ExerciseDataSourceImpl(gh<_i79.ExerciseApiClient>()),
     );
-    gh.lazySingleton<_i1049.ChatBotFirestoreDataSource>(
-      () => _i1049.ChatBotFirestoreDataSource(gh<_i974.FirebaseFirestore>()),
-    );
     gh.factory<_i110.ChangePasswordLocalDataSourceContract>(
       () => _i793.ChangePasswordLocalDataSourceImplementation(
         gh<_i558.FlutterSecureStorage>(),
@@ -421,9 +416,6 @@ extension GetItInjectableX on _i174.GetIt {
         gh<_i558.FlutterSecureStorage>(),
       ),
     );
-    gh.factory<_i312.ChatBotRemoteDataSourcesContract>(
-      () => _i49.ChatBotRemoteDataSourcesImpl(gh<_i137.ChatBotApiClient>()),
-    );
     gh.factory<_i679.RegisterUsecase>(
       () => _i679.RegisterUsecase(gh<_i994.RegisterRepository>()),
     );
@@ -468,12 +460,6 @@ extension GetItInjectableX on _i174.GetIt {
         gh<_i668.WorkoutRemoteDataSourceContract>(),
       ),
     );
-    gh.factory<_i311.ChatBotRepoContract>(
-      () => _i438.ChatBotRepoImpl(
-        gh<_i312.ChatBotRemoteDataSourcesContract>(),
-        gh<_i1049.ChatBotFirestoreDataSource>(),
-      ),
-    );
     gh.factory<_i219.LogoutUseCase>(
       () => _i219.LogoutUseCase(gh<_i543.LogoutRepository>()),
     );
@@ -504,6 +490,12 @@ extension GetItInjectableX on _i174.GetIt {
     );
     gh.factory<_i901.FoodRepoContract>(
       () => _i20.FoodRepoImpl(gh<_i656.FoodRemoteDataSourceContract>()),
+    );
+    gh.factory<_i312.ChatBotRemoteDataSourcesContract>(
+      () => _i49.ChatBotRemoteDataSourcesImpl(
+        gh<_i137.ChatBotApiClient>(),
+        gh<_i974.FirebaseFirestore>(),
+      ),
     );
     gh.factory<_i242.LogoutCubit>(
       () => _i242.LogoutCubit(gh<_i219.LogoutUseCase>()),
@@ -545,6 +537,9 @@ extension GetItInjectableX on _i174.GetIt {
         gh<_i249.GetMusclesGroupUseCase>(),
         gh<_i350.GetMusclesGroupByIdUseCase>(),
       ),
+    );
+    gh.factory<_i311.ChatBotRepoContract>(
+      () => _i438.ChatBotRepoImpl(gh<_i312.ChatBotRemoteDataSourcesContract>()),
     );
     gh.factory<_i776.GetAllChatsUseCase>(
       () => _i776.GetAllChatsUseCase(gh<_i311.ChatBotRepoContract>()),

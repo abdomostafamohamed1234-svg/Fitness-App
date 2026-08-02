@@ -107,7 +107,7 @@ abstract class AppLocalizations {
   /// No description provided for @requestTimeout.
   ///
   /// In en, this message translates to:
-  /// **'Request timeout'**
+  /// **'The request took too long. Please try again.'**
   String get requestTimeout;
 
   /// No description provided for @responseTimeout.
@@ -149,7 +149,7 @@ abstract class AppLocalizations {
   /// No description provided for @unexpectedError.
   ///
   /// In en, this message translates to:
-  /// **'Unexpected error'**
+  /// **'Something went wrong. Please try again.'**
   String get unexpectedError;
 
   /// No description provided for @follow_the_plan.
@@ -491,7 +491,7 @@ abstract class AppLocalizations {
   /// No description provided for @invalidEmail.
   ///
   /// In en, this message translates to:
-  /// **'Enter a valid email'**
+  /// **'Please enter a valid email address.'**
   String get invalidEmail;
 
   /// No description provided for @passwordRequired.
@@ -889,6 +889,84 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'You can\'t send an empty message'**
   String get you_cant_send_empty_message;
+
+  /// No description provided for @permissionDenied.
+  ///
+  /// In en, this message translates to:
+  /// **'You do not have permission to perform this action.'**
+  String get permissionDenied;
+
+  /// No description provided for @notFound.
+  ///
+  /// In en, this message translates to:
+  /// **'The requested data was not found.'**
+  String get notFound;
+
+  /// No description provided for @alreadyExists.
+  ///
+  /// In en, this message translates to:
+  /// **'The requested data already exists.'**
+  String get alreadyExists;
+
+  /// No description provided for @resourceExhausted.
+  ///
+  /// In en, this message translates to:
+  /// **'The service limit has been exceeded. Please try again later.'**
+  String get resourceExhausted;
+
+  /// No description provided for @failedPrecondition.
+  ///
+  /// In en, this message translates to:
+  /// **'The operation cannot be completed in the current state.'**
+  String get failedPrecondition;
+
+  /// No description provided for @operationAborted.
+  ///
+  /// In en, this message translates to:
+  /// **'The operation was cancelled. Please try again.'**
+  String get operationAborted;
+
+  /// No description provided for @serviceUnavailable.
+  ///
+  /// In en, this message translates to:
+  /// **'The service is currently unavailable. Please try again later.'**
+  String get serviceUnavailable;
+
+  /// No description provided for @userDisabled.
+  ///
+  /// In en, this message translates to:
+  /// **'This user account has been disabled.'**
+  String get userDisabled;
+
+  /// No description provided for @userNotFound.
+  ///
+  /// In en, this message translates to:
+  /// **'No user was found with these credentials.'**
+  String get userNotFound;
+
+  /// No description provided for @invalidCredentials.
+  ///
+  /// In en, this message translates to:
+  /// **'The email or password is incorrect.'**
+  String get invalidCredentials;
+
+  /// No description provided for @emailAlreadyInUse.
+  ///
+  /// In en, this message translates to:
+  /// **'This email address is already in use.'**
+  String get emailAlreadyInUse;
+
+  /// No description provided for @weakPassword.
+  ///
+  /// In en, this message translates to:
+  /// **'The password is too weak.'**
+  String get weakPassword;
+
+  /// No description provided for @tooManyRequests.
+  ///
+  /// In en, this message translates to:
+  /// **'Too many requests. Please try again later.'**
+  String get tooManyRequests;
 }
 
 class _AppLocalizationsDelegate

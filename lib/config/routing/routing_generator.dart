@@ -2,6 +2,10 @@ import 'package:flowery/config/di/di_config.dart';
 import 'package:flowery/config/routing/app_routes.dart';
 import 'package:flowery/features/change_password/presentation/screens/change_password_screen.dart';
 import 'package:flowery/features/change_password/presentation/view_model/change_password_view_model.dart';
+import 'package:flowery/features/chat_bot/presentation/args/chat_bot_args.dart';
+import 'package:flowery/features/chat_bot/presentation/screens/chat_bot_screen.dart';
+import 'package:flowery/features/chat_bot/presentation/view_model/cubit/chat_bot_cubit.dart';
+import 'package:flowery/features/chat_bot/presentation/view_model/events/chat_bot_events.dart';
 import 'package:flowery/features/edit_profile/presentation/view/pages/edit_profile_page.dart';
 import 'package:flowery/features/exercises/presentation/arg/exercise_screen_args.dart';
 import 'package:flowery/features/exercises/presentation/screens/exercises_screen.dart';
@@ -30,6 +34,21 @@ class RouteGenerator {
   static Route<dynamic> getRoute(RouteSettings settings) {
     try {
       switch (settings.name) {
+        case AppRoutes.chatBot:
+          final args =
+              settings.arguments as ChatBotArgs? ?? const ChatBotArgs();
+          return MaterialPageRoute(
+            builder: (_) => BlocProvider(
+              create: (context) =>
+                  getIt<ChatBotCubit>()
+                    ..doEvent(GetPreviousChatsEvent(userId: args.userId)),
+              child: ChatBotScreen(
+                userId: args.userId,
+                userFirstName: args.userFirstName,
+                userImage: args.userImage,
+              ),
+            ),
+          );
         case AppRoutes.login:
           return MaterialPageRoute(builder: (_) => const LoginPage());
         case AppRoutes.editProfile:

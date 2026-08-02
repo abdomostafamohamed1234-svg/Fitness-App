@@ -1,10 +1,12 @@
 import 'package:flowery/config/di/di_config.dart';
+import 'package:flowery/config/routing/app_routes.dart';
+import 'package:flowery/config/routing/routing_extensions.dart';
 import 'package:flowery/core/theme/app_assets.dart';
 import 'package:flowery/features/app_sections/domain/entities/custom_nav_item_model.dart';
 import 'package:flowery/features/app_sections/presentation/view/widgets/custom_nav_bar.dart';
 import 'package:flowery/features/app_sections/presentation/view_model/cubit/app_sections_cubit.dart';
 import 'package:flowery/features/app_sections/presentation/view_model/cubit/app_sections_states.dart';
-import 'package:flowery/features/chat_bot/presentation/screens/chat_bot_screen.dart';
+import 'package:flowery/features/chat_bot/presentation/args/chat_bot_args.dart';
 import 'package:flowery/features/home/presentation/view/screen/home_Page.dart';
 import 'package:flowery/features/home/presentation/view_model/home_event.dart'
     hide GetProfileDataEvent;
@@ -59,15 +61,7 @@ class AppSectionsPage extends StatelessWidget {
               physics: const NeverScrollableScrollPhysics(),
               children: [
                 const HomePage(),
-                BlocBuilder<ProfileCubit, ProfileStates>(
-                  builder: (context, state) {
-                    return ChatBotScreen(
-                      userId: state.profileState.data?.id ?? "",
-                      userFirstName: state.profileState.data?.firstName ?? "",
-                      userImage: state.profileState.data?.profileImage ?? "",
-                    );
-                  },
-                ),
+                const SizedBox.shrink(),
                 const WorkoutsPage(),
                 const ProfileScreen(),
               ],
@@ -75,12 +69,32 @@ class AppSectionsPage extends StatelessWidget {
           },
         ),
         bottomNavigationBar: BlocBuilder<AppSectionsCubit, AppSectionsStates>(
-          builder: (context, state) {
+          builder: (context, appSectionState) {
             final cubit = context.read<AppSectionsCubit>();
-            return CustomNavBar(
-              items: _navItems,
-              currentIndex: state.currentIndex,
-              onTap: cubit.setCurrentIndex,
+            return BlocBuilder<ProfileCubit, ProfileStates>(
+              builder: (context, state) {
+                return CustomNavBar(
+                  items: _navItems,
+                  currentIndex: appSectionState.currentIndex,
+                  onTap: (index) {
+                    final int lastIndex = cubit.getLastIndex();
+                    cubit.setCurrentIndex(index);
+                    if (index == 1) {
+                      context.pushNamed(
+                        AppRoutes.chatBot,
+                        arguments: ChatBotArgs(
+                          userId: state.profileState.data?.id ?? "",
+                          userImage:
+                              state.profileState.data?.profileImage ?? "",
+                          userFirstName:
+                              state.profileState.data?.firstName ?? "",
+                        ),
+                      );
+                      cubit.setCurrentIndex(lastIndex);
+                    }
+                  },
+                );
+              },
             );
           },
         ),

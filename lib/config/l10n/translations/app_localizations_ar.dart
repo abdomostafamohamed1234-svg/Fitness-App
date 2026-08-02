@@ -12,7 +12,8 @@ class AppLocalizationsAr extends AppLocalizations {
   String get connectionTimeout => 'انتهت مهلة الاتصال';
 
   @override
-  String get requestTimeout => 'انتهت مهلة الطلب';
+  String get requestTimeout =>
+      'استغرقت العملية وقتًا طويلًا جدًا. يرجى المحاولة مرة أخرى.';
 
   @override
   String get responseTimeout => 'انتهت مهلة الاستجابة';
@@ -33,7 +34,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get transformTimeout => 'انتهت مهلة المعالجة';
 
   @override
-  String get unexpectedError => 'حدث خطأ غير متوقع';
+  String get unexpectedError => 'حدث خطأ ما. يرجى المحاولة مرة أخرى.';
 
   @override
   String get follow_the_plan =>
@@ -207,7 +208,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get emailRequired => 'البريد الإلكتروني مطلوب';
 
   @override
-  String get invalidEmail => 'أدخل بريد إلكتروني صالح';
+  String get invalidEmail => 'يرجى إدخال بريد إلكتروني صالح.';
 
   @override
   String get passwordRequired => 'كلمة المرور مطلوبة';
@@ -409,4 +410,47 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get you_cant_send_empty_message => 'لا يمكنك ارسال رسالة فارغة';
+
+  @override
+  String get permissionDenied => 'ليس لديك صلاحية لتنفيذ هذا الإجراء.';
+
+  @override
+  String get notFound => 'لم يتم العثور على البيانات المطلوبة.';
+
+  @override
+  String get alreadyExists => 'البيانات المطلوبة موجودة بالفعل.';
+
+  @override
+  String get resourceExhausted =>
+      'تم تجاوز الحد المسموح للخدمة. يرجى المحاولة مرة أخرى لاحقًا.';
+
+  @override
+  String get failedPrecondition => 'لا يمكن إتمام العملية في الحالة الحالية.';
+
+  @override
+  String get operationAborted => 'تم إلغاء العملية. يرجى المحاولة مرة أخرى.';
+
+  @override
+  String get serviceUnavailable =>
+      'الخدمة غير متاحة حاليًا. يرجى المحاولة مرة أخرى لاحقًا.';
+
+  @override
+  String get userDisabled => 'تم تعطيل هذا الحساب.';
+
+  @override
+  String get userNotFound => 'لم يتم العثور على مستخدم بهذه البيانات.';
+
+  @override
+  String get invalidCredentials =>
+      'البريد الإلكتروني أو كلمة المرور غير صحيحة.';
+
+  @override
+  String get emailAlreadyInUse => 'عنوان البريد الإلكتروني مستخدم بالفعل.';
+
+  @override
+  String get weakPassword => 'كلمة المرور ضعيفة جدًا.';
+
+  @override
+  String get tooManyRequests =>
+      'تم إرسال عدد كبير جدًا من الطلبات. يرجى المحاولة مرة أخرى لاحقًا.';
 }

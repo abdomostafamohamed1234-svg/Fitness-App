@@ -17,6 +17,10 @@ class AppSectionsCubit extends Cubit<AppSectionsStates> {
     }
   }
 
+  int getLastIndex() {
+    return state.currentIndex;
+  }
+
   @override
   Future<void> close() {
     pageController.dispose();
