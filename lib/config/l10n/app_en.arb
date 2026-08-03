@@ -7,5 +7,12 @@
   "requestCancelled": "Request cancelled",
   "serverError": "Server error",
   "transformTimeout": "Transform timeout",
-  "unexpectedError": "Unexpected error"
+  "unexpectedError": "Unexpected error",
+  "validation_required": "This field is required",
+  "validation_invalid_name": "Enter a valid name",
+  "validation_invalid_email": "Enter a valid email",
+  "validation_invalid_password": "Password must be at least 8 characters and include an uppercase letter, a lowercase letter, a number and a special character",
+  "validation_invalid_confirm_password": "Confirm password must be at least 8 characters and include an uppercase letter, a lowercase letter, a number and a special character",
+  "validation_password_mismatch": "Passwords do not match",
+  "validation_invalid_phone_number": "Enter a valid phone number"
 }

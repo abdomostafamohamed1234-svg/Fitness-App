@@ -151,6 +151,48 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Unexpected error'**
   String get unexpectedError;
+
+  /// No description provided for @validation_required.
+  ///
+  /// In en, this message translates to:
+  /// **'This field is required'**
+  String get validation_required;
+
+  /// No description provided for @validation_invalid_name.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter a valid name'**
+  String get validation_invalid_name;
+
+  /// No description provided for @validation_invalid_email.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter a valid email'**
+  String get validation_invalid_email;
+
+  /// No description provided for @validation_invalid_password.
+  ///
+  /// In en, this message translates to:
+  /// **'Password must be at least 8 characters and include an uppercase letter, a lowercase letter, a number and a special character'**
+  String get validation_invalid_password;
+
+  /// No description provided for @validation_invalid_confirm_password.
+  ///
+  /// In en, this message translates to:
+  /// **'Confirm password must be at least 8 characters and include an uppercase letter, a lowercase letter, a number and a special character'**
+  String get validation_invalid_confirm_password;
+
+  /// No description provided for @validation_password_mismatch.
+  ///
+  /// In en, this message translates to:
+  /// **'Passwords do not match'**
+  String get validation_password_mismatch;
+
+  /// No description provided for @validation_invalid_phone_number.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter a valid phone number'**
+  String get validation_invalid_phone_number;
 }
 
 class _AppLocalizationsDelegate

@@ -10,5 +10,3 @@ class LoginEvent extends LoginEvents {
   });
 }
 
-class NavigateToRegisterEvent extends LoginEvents {}
-

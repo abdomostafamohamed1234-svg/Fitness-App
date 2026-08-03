@@ -34,4 +34,27 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get unexpectedError => 'حدث خطأ غير متوقع';
+
+  @override
+  String get validation_required => 'هذا الحقل مطلوب';
+
+  @override
+  String get validation_invalid_name => 'أدخل اسمًا صحيحًا';
+
+  @override
+  String get validation_invalid_email => 'أدخل بريدًا إلكترونيًا صحيحًا';
+
+  @override
+  String get validation_invalid_password =>
+      'يجب أن تتكون كلمة المرور من 8 أحرف على الأقل وتحتوي على حرف كبير وحرف صغير ورقم ورمز خاص';
+
+  @override
+  String get validation_invalid_confirm_password =>
+      'يجب أن تتكون كلمة المرور من 8 أحرف على الأقل وتحتوي على حرف كبير وحرف صغير ورقم ورمز خاص';
+
+  @override
+  String get validation_password_mismatch => 'كلمتا المرور غير متطابقتين';
+
+  @override
+  String get validation_invalid_phone_number => 'أدخل رقم هاتف صحيح';
 }

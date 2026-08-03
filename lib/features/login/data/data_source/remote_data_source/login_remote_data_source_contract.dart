@@ -3,6 +3,6 @@ import 'package:flowery/features/login/data/models/response/login_response_model
 
 import '../../../../../core/base/base_response.dart';
 
-abstract class LoginRemoteDataSourceContract {
+abstract interface  class LoginRemoteDataSourceContract {
   Future<Result<LoginResponse>> login(LoginRequestModel request);
 }

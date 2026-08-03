@@ -1,3 +1,6 @@
+import 'package:flowery/config/helpers/validations/validation_messages.dart';
+import 'package:flowery/config/helpers/validations/validators.dart';
+import 'package:flowery/config/l10n/translations/app_localizations.dart';
 import 'package:flowery/core/base/base_state.dart';
 import 'package:flowery/core/theme/app_colors.dart';
 import 'package:flowery/core/widgets/glass_container.dart';
@@ -20,17 +23,23 @@ class LoginBody extends StatefulWidget {
 class _LoginBodyState extends State<LoginBody> {
   bool _obscure = true;
 
+  final formKey = GlobalKey<FormState>();
+  final emailController = TextEditingController();
+  final passwordController = TextEditingController();
+
+  @override
+  void dispose() {
+    emailController.dispose();
+    passwordController.dispose();
+    super.dispose();
+  }
+
   String? _validateEmail(String? value) {
-    if (value == null || value.trim().isEmpty) return 'Email is required';
-    final emailRegex = RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$');
-    if (!emailRegex.hasMatch(value.trim())) return 'Enter a valid email';
-    return null;
+    return Validations.validateEmail(value)?.message(AppLocalizations.of(context)!);
   }
 
   String? _validatePassword(String? value) {
-    if (value == null || value.isEmpty) return 'Password is required';
-    if (value.length < 8) return 'Password must be at least 8 characters';
-    return null;
+    return Validations.validatePassword(value)?.message(AppLocalizations.of(context)!);
   }
 
   InputDecoration _fieldDecoration({
@@ -69,7 +78,7 @@ class _LoginBodyState extends State<LoginBody> {
   Widget build(BuildContext context) {
     final height = MediaQuery.of(context).size.height;
     return Form(
-      key: widget.loginCubit.formKey,
+      key: formKey,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -90,7 +99,7 @@ class _LoginBodyState extends State<LoginBody> {
 
               // Email field
               TextFormField(
-                controller: widget.loginCubit.emailController,
+                controller: emailController,
                 validator: _validateEmail,
                 keyboardType: TextInputType.emailAddress,
                 style: const TextStyle(color: Colors.white, fontSize: 16),
@@ -104,7 +113,7 @@ class _LoginBodyState extends State<LoginBody> {
 
               // Password field
               TextFormField(
-                controller: widget.loginCubit.passwordController,
+                controller: passwordController,
                 validator: _validatePassword,
                 obscureText: _obscure,
                 style: const TextStyle(color: Colors.white, fontSize: 16),
@@ -167,7 +176,12 @@ class _LoginBodyState extends State<LoginBody> {
               ),
               SizedBox(height: height * 0.03),
 
-              _LoginButton(loginCubit: widget.loginCubit),
+              _LoginButton(
+                loginCubit: widget.loginCubit,
+                formKey: formKey,
+                emailController: emailController,
+                passwordController: passwordController,
+              ),
               SizedBox(height: height * 0.02),
 
               // Bottom link row
@@ -179,7 +193,7 @@ class _LoginBodyState extends State<LoginBody> {
                     style: TextStyle(color: Colors.white70, fontSize: 13),
                   ),
                   GestureDetector(
-                    onTap: () => widget.loginCubit.doEvent(NavigateToRegisterEvent()),
+                    onTap: () {},
                     child: const Text(
                       'Register',
                       style: TextStyle(
@@ -202,9 +216,17 @@ class _LoginBodyState extends State<LoginBody> {
 }
 
 class _LoginButton extends StatelessWidget {
-  const _LoginButton({required this.loginCubit});
+  const _LoginButton({
+    required this.loginCubit,
+    required this.formKey,
+    required this.emailController,
+    required this.passwordController,
+  });
 
   final LoginCubit loginCubit;
+  final GlobalKey<FormState> formKey;
+  final TextEditingController emailController;
+  final TextEditingController passwordController;
 
   @override
   Widget build(BuildContext context) {
@@ -219,11 +241,11 @@ class _LoginButton extends StatelessWidget {
             onPressed: isLoading
                 ? null
                 : () {
-                    if (loginCubit.formKey.currentState!.validate()) {
+                    if (formKey.currentState!.validate()) {
                       loginCubit.doEvent(
                         LoginEvent(
-                          email: loginCubit.emailController.text,
-                          password: loginCubit.passwordController.text,
+                          email: emailController.text,
+                          password: passwordController.text,
                         ),
                       );
                     }

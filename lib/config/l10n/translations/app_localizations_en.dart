@@ -34,4 +34,27 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get unexpectedError => 'Unexpected error';
+
+  @override
+  String get validation_required => 'This field is required';
+
+  @override
+  String get validation_invalid_name => 'Enter a valid name';
+
+  @override
+  String get validation_invalid_email => 'Enter a valid email';
+
+  @override
+  String get validation_invalid_password =>
+      'Password must be at least 8 characters and include an uppercase letter, a lowercase letter, a number and a special character';
+
+  @override
+  String get validation_invalid_confirm_password =>
+      'Confirm password must be at least 8 characters and include an uppercase letter, a lowercase letter, a number and a special character';
+
+  @override
+  String get validation_password_mismatch => 'Passwords do not match';
+
+  @override
+  String get validation_invalid_phone_number => 'Enter a valid phone number';
 }

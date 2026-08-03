@@ -1,4 +1,5 @@
 import 'package:bloc_test/bloc_test.dart';
+import 'package:flowery/config/l10n/translations/app_localizations.dart';
 import 'package:flowery/core/base/base_state.dart';
 import 'package:flowery/core/theme/app_theme.dart';
 import 'package:flowery/features/login/domain/use_case/login_use_case.dart';
@@ -32,6 +33,8 @@ void main() {
         designSize: const Size(375, 812),
         builder: (context, child) => MaterialApp(
           theme: AppTheme.darkTheme,
+          localizationsDelegates: AppLocalizations.localizationsDelegates,
+          supportedLocales: AppLocalizations.supportedLocales,
           home: Scaffold(
             body: SingleChildScrollView(
               child: BlocProvider<LoginCubit>.value(
@@ -84,15 +87,15 @@ void main() {
     await tester.tap(find.widgetWithText(ElevatedButton, 'Login'));
     await tester.pumpAndSettle();
 
-    expect(find.text('Email is required'), findsOneWidget);
-    expect(find.text('Password is required'), findsOneWidget);
+    // Both empty fields share the same "required" message.
+    expect(find.text('This field is required'), findsNWidgets(2));
   });
 
   testWidgets('shows an email format error for an invalid email', (tester) async {
     await pumpLoginBody(tester, loginCubit);
 
     await tester.enterText(find.widgetWithText(TextFormField, 'Email'), 'not-an-email');
-    await tester.enterText(find.widgetWithText(TextFormField, 'Password'), 'password123');
+    await tester.enterText(find.widgetWithText(TextFormField, 'Password'), 'Password123!');
     await tester.tap(find.widgetWithText(ElevatedButton, 'Login'));
     await tester.pumpAndSettle();
 
@@ -103,9 +106,6 @@ void main() {
     final mockCubit = _MockLoginCubit();
     addTearDown(() => mockCubit.close());
 
-    when(() => mockCubit.formKey).thenReturn(loginCubit.formKey);
-    when(() => mockCubit.emailController).thenReturn(loginCubit.emailController);
-    when(() => mockCubit.passwordController).thenReturn(loginCubit.passwordController);
     whenListen(
       mockCubit,
       const Stream<LoginStates>.empty(),

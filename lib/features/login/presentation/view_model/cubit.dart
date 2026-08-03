@@ -5,7 +5,6 @@ import 'package:flowery/features/login/domain/entity/login_entity.dart';
 import 'package:flowery/features/login/domain/use_case/login_use_case.dart';
 import 'package:flowery/features/login/presentation/view_model/event.dart';
 import 'package:flowery/features/login/presentation/view_model/state.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
 
@@ -15,19 +14,10 @@ class LoginCubit extends Cubit<LoginStates> {
 
   final LoginUseCase _loginUseCase;
 
-  final formKey = GlobalKey<FormState>();
-
-  final emailController = TextEditingController();
-  final passwordController = TextEditingController();
-
   void doEvent(LoginEvents event) {
     switch (event) {
       case LoginEvent():
         _login(event);
-        break;
-
-      case NavigateToRegisterEvent():
-        _navigateToRegister();
         break;
     }
   }
@@ -63,16 +53,5 @@ class LoginCubit extends Cubit<LoginStates> {
         );
         break;
     }
-  }
-
-  void _navigateToRegister() {
-    // Navigation هيتم من الـ UI أو TempEvent حسب الـ Architecture
-  }
-
-  @override
-  Future<void> close() {
-    emailController.dispose();
-    passwordController.dispose();
-    return super.close();
   }
 }

@@ -7,5 +7,12 @@
   "requestCancelled": "تم إلغاء الطلب",
   "serverError": "خطأ في الخادم",
   "transformTimeout": "انتهت مهلة المعالجة",
-  "unexpectedError": "حدث خطأ غير متوقع"
+  "unexpectedError": "حدث خطأ غير متوقع",
+  "validation_required": "هذا الحقل مطلوب",
+  "validation_invalid_name": "أدخل اسمًا صحيحًا",
+  "validation_invalid_email": "أدخل بريدًا إلكترونيًا صحيحًا",
+  "validation_invalid_password": "يجب أن تتكون كلمة المرور من 8 أحرف على الأقل وتحتوي على حرف كبير وحرف صغير ورقم ورمز خاص",
+  "validation_invalid_confirm_password": "يجب أن تتكون كلمة المرور من 8 أحرف على الأقل وتحتوي على حرف كبير وحرف صغير ورقم ورمز خاص",
+  "validation_password_mismatch": "كلمتا المرور غير متطابقتين",
+  "validation_invalid_phone_number": "أدخل رقم هاتف صحيح"
 }
