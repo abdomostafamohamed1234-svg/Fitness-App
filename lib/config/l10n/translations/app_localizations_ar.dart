@@ -34,4 +34,43 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get unexpectedError => 'حدث خطأ غير متوقع';
+
+  @override
+  String get profile => 'الملف الشخصي';
+
+  @override
+  String get editProfile => 'تعديل الملف الشخصي';
+
+  @override
+  String get changePassword => 'تغيير كلمة المرور';
+
+  @override
+  String get selectLanguage => 'اختر اللغة';
+
+  @override
+  String get english => 'الإنجليزية';
+
+  @override
+  String get arabic => 'العربية';
+
+  @override
+  String get security => 'الأمان';
+
+  @override
+  String get privacyPolicy => 'سياسة الخصوصية';
+
+  @override
+  String get help => 'المساعدة';
+
+  @override
+  String get logout => 'تسجيل الخروج';
+
+  @override
+  String get areYouSureToCloseApplication => 'هل أنت متأكد من إغلاق التطبيق؟';
+
+  @override
+  String get no => 'لا';
+
+  @override
+  String get yes => 'نعم';
 }

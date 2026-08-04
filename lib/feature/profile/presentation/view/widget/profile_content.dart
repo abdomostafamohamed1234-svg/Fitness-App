@@ -3,9 +3,9 @@ import 'package:flowery/feature/logout/presentation/veiw_model.dart/logout_cubit
 import 'package:flowery/feature/logout/presentation/veiw_model.dart/logout_event.dart';
 import 'package:flowery/feature/profile/presentation/view/widget/profile_menu_item.dart';
 import 'package:flowery/feature/profile/presentation/view/widget/web_view_screen.dart';
+import 'package:flowery/config/l10n/translations/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 class ProfileContent extends StatelessWidget {
   const ProfileContent({
@@ -23,15 +23,6 @@ class ProfileContent extends StatelessWidget {
 
   static const Color _accent = Color(0xFFFF5A36);
 
-  Future<void> _openLink(BuildContext context, String url) async {
-    final uri = Uri.parse(url);
-    final launched = await launchUrl(uri, mode: LaunchMode.externalApplication);
-    if (!launched && context.mounted) {
-      ScaffoldMessenger.of(
-        context,
-      ).showSnackBar(const SnackBar(content: Text('تعذر فتح الرابط')));
-    }
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -42,9 +33,9 @@ class ProfileContent extends StatelessWidget {
         Stack(
           alignment: Alignment.center,
           children: [
-            const Text(
-              'Profile',
-              style: TextStyle(
+            Text(
+              AppLocalizations.of(context)!.profile,
+              style: const TextStyle(
                 color: Colors.white,
                 fontSize: 20,
                 fontWeight: FontWeight.bold,
@@ -121,7 +112,7 @@ class ProfileContent extends StatelessWidget {
                 children: [
                   ProfileMenuItem(
                     icon: Icons.person_outline,
-                    title: 'Edit Profile',
+                    title: AppLocalizations.of(context)!.editProfile,
                     onTap: () {
                       // final profileCubit = context.read<ProfileCubit>();
 
@@ -133,15 +124,15 @@ class ProfileContent extends StatelessWidget {
                   ),
                   ProfileMenuItem(
                     icon: Icons.lock_reset,
-                    title: 'Change Password',
+                    title: AppLocalizations.of(context)!.changePassword,
                     onTap: () {
                       // context.pushNamed(AppRoutes.changePassword);
                     },
                   ),
                   ProfileMenuItem(
                     icon: Icons.language,
-                    title: 'Select Language',
-                    trailingText: isEnglish ? 'English' : 'Arabic',
+                    title: AppLocalizations.of(context)!.selectLanguage,
+                    trailingText: isEnglish ? AppLocalizations.of(context)!.english : AppLocalizations.of(context)!.arabic,
                     showSwitch: true,
                     switchValue: isEnglish,
                     onSwitchChanged: onLanguageChanged,
@@ -149,14 +140,14 @@ class ProfileContent extends StatelessWidget {
 
                   ProfileMenuItem(
                     icon: Icons.settings_outlined,
-                    title: 'Security',
+                    title: AppLocalizations.of(context)!.security,
                     onTap: () {
                       Navigator.of(context).push(
                         MaterialPageRoute(
-                          builder: (_) => const WebViewScreen(
+                          builder: (_) => WebViewScreen(
                             url:
                                 'https://elevate-flutter-team.github.io/fitness-app-webviews/security.html',
-                            title: 'Security',
+                            title: AppLocalizations.of(context)!.security,
                           ),
                         ),
                       );
@@ -164,15 +155,15 @@ class ProfileContent extends StatelessWidget {
                   ),
                   ProfileMenuItem(
                     icon: Icons.settings_outlined,
-                    title: 'Privacy Policy',
+                    title: AppLocalizations.of(context)!.privacyPolicy,
                     onTap: () {
                       Navigator.of(context).push(
                         MaterialPageRoute(
-                          builder: (_) => const WebViewScreen(
+                          builder: (_) => WebViewScreen(
                             url:
                                 'https://elevate-flutter-team.github.io/fitness-app-webviews/privacy-policy.html',
 
-                            title: 'Privacy Policy',
+                            title: AppLocalizations.of(context)!.privacyPolicy,
                           ),
                         ),
                       );
@@ -180,14 +171,14 @@ class ProfileContent extends StatelessWidget {
                   ),
                   ProfileMenuItem(
                     icon: Icons.settings_outlined,
-                    title: 'Help',
+                    title: AppLocalizations.of(context)!.help,
                     onTap: () {
                       Navigator.of(context).push(
                         MaterialPageRoute(
-                          builder: (_) => const WebViewScreen(
+                          builder: (_) => WebViewScreen(
                             url:
                                 'https://elevate-flutter-team.github.io/fitness-app-webviews/help.html',
-                            title: 'Help',
+                            title: AppLocalizations.of(context)!.help,
                           ),
                         ),
                       );
@@ -196,7 +187,7 @@ class ProfileContent extends StatelessWidget {
 
                   ProfileMenuItem(
                     icon: Icons.logout,
-                    title: 'Logout',
+                    title: AppLocalizations.of(context)!.logout,
                     isDestructive: true,
                     onTap: () async {
                       final confirm = await showDialog<bool>(
@@ -216,10 +207,10 @@ class ProfileContent extends StatelessWidget {
                             child: Column(
                               mainAxisSize: MainAxisSize.min,
                               children: [
-                                const Text(
-                                  'Are You Sure To Close Application?',
+                                Text(
+                                  AppLocalizations.of(context)!.areYouSureToCloseApplication,
                                   textAlign: TextAlign.center,
-                                  style: TextStyle(
+                                  style: const TextStyle(
                                     color: Colors.white,
                                     fontSize: 18,
                                     fontWeight: FontWeight.bold,
@@ -247,9 +238,9 @@ class ProfileContent extends StatelessWidget {
                                             ),
                                           ),
                                         ),
-                                        child: const Text(
-                                          'NO',
-                                          style: TextStyle(
+                                        child: Text(
+                                          AppLocalizations.of(context)!.no,
+                                          style: const TextStyle(
                                             color: AppColors.primaryColor,
                                             fontWeight: FontWeight.bold,
                                           ),
@@ -275,9 +266,9 @@ class ProfileContent extends StatelessWidget {
                                             ),
                                           ),
                                         ),
-                                        child: const Text(
-                                          'Yes',
-                                          style: TextStyle(
+                                        child: Text(
+                                          AppLocalizations.of(context)!.yes,
+                                          style: const TextStyle(
                                             fontWeight: FontWeight.bold,
                                           ),
                                         ),

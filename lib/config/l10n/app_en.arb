@@ -7,5 +7,18 @@
   "requestCancelled": "Request cancelled",
   "serverError": "Server error",
   "transformTimeout": "Transform timeout",
-  "unexpectedError": "Unexpected error"
+  "unexpectedError": "Unexpected error",
+  "profile": "Profile",
+  "editProfile": "Edit Profile",
+  "changePassword": "Change Password",
+  "selectLanguage": "Select Language",
+  "english": "English",
+  "arabic": "Arabic",
+  "security": "Security",
+  "privacyPolicy": "Privacy Policy",
+  "help": "Help",
+  "logout": "Logout",
+  "areYouSureToCloseApplication": "Are You Sure To Close Application?",
+  "no": "NO",
+  "yes": "Yes"
 }
