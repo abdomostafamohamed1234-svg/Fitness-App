@@ -1,5 +1,6 @@
 import 'package:flowery/config/di/di_config.dart';
-import 'package:flowery/config/routing/app_routes.dart';
+import 'package:flowery/feature/logout/presentation/veiw_model.dart/logout_cubit.dart';
+import 'package:flowery/feature/logout/presentation/veiw_model.dart/logout_state.dart';
 import 'package:flowery/feature/profile/presentation/view/widget/profile_content.dart';
 import 'package:flowery/feature/profile/presentation/view_model/profile_cubit.dart';
 import 'package:flowery/feature/profile/presentation/view_model/profile_state.dart';
@@ -38,9 +39,9 @@ class _ProfileViewState extends State<_ProfileView> {
           initial: () {},
           loading: () {},
           success: (_) {
-            Navigator.of(
-              context,
-            ).pushNamedAndRemoveUntil(AppRoutes.login, (route) => false);
+            // Navigator.of(
+            //   context,
+            // ).pushNamedAndRemoveUntil(AppRoutes.login, (route) => false);
           },
           error: (exception) {
             ScaffoldMessenger.of(context).showSnackBar(
