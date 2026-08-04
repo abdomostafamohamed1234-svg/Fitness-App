@@ -10,4 +10,8 @@ abstract class AppRoutes {
   static const String home = '/home';
     static const String workouts = '/workouts';
 
+  static const String changePassword = "/change-password";
+  
+
+  static const String appSections = '/appSections';
 }
