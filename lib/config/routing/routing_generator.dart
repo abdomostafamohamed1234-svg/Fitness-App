@@ -1,3 +1,5 @@
+import 'package:flowery/config/routing/app_routes.dart';
+import 'package:flowery/feature/profile/presentation/view/screen/profile_screen.dart';
 import 'package:flutter/material.dart';
 
 class RouteGenerator {
@@ -5,19 +7,10 @@ class RouteGenerator {
     try {
       switch (settings.name) {
 
-        // case AppRoutes.:
-        //   return MaterialPageRoute(
-        //     builder: (context) {
-        //       return MultiBlocProvider(
-        //         providers: [
-        //           BlocProvider(
-        //             create: (_) => 
-        //           ),
-        //         ],
-        //         child: ,
-        //       );
-        //     },
-        //   );
+        case AppRoutes.profile:
+          return MaterialPageRoute(
+            builder: (_) => const ProfileScreen(),
+          );
 
         default:
           return unDefinedRoute();
