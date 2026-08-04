@@ -12,7 +12,7 @@ import 'package:flowery/features/home/domian/entities/food_for_you_model.dart';
 /// the `_category(...)` helper below accordingly — the rest of the test
 /// file doesn't need to change.
 CategoryModel _category({required String name, required String imageUrl}) {
-  return CategoryModel(name: name, imageUrl: imageUrl);
+  return CategoryModel(name: name, imageUrl: imageUrl, id: '', description: '');
 }
 
 Widget _wrap(Widget child) {

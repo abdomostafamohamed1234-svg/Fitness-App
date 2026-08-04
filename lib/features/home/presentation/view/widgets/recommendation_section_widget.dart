@@ -1,3 +1,5 @@
+import 'package:flowery/config/routing/app_routes.dart';
+import 'package:flowery/features/exercises/presentation/arg/exercise_screen_args.dart';
 import 'package:flowery/features/home/domian/entities/recommendation_model.dart';
 import 'package:flutter/material.dart';
 
@@ -30,16 +32,16 @@ class RecommendationSectionWidget extends StatelessWidget {
               final muscle = muscles[index];
               return GestureDetector(
                 onTap: () {
-                //  Navigator.pushNamed(
-                  //   context,
-                  //   AppRoutes.exercise,
-                  //   arguments: ExerciseScreenArgs(
-                  //     muscleId: muscle.id,
-                  //     muscleName: muscle.name,
-                  //     backgroundImageUrl: muscle.image,
-                  //     trainerImageUrl: null,
-                  //   ),
-                  // );
+                  Navigator.pushNamed(
+                    context,
+                    AppRoutes.exercise,
+                    arguments: ExerciseScreenArgs(
+                      muscleId: muscle.id,
+                      muscleName: muscle.name,
+                      backgroundImageUrl: muscle.image,
+                      trainerImageUrl: null,
+                    ),
+                  );
                 },
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(16),

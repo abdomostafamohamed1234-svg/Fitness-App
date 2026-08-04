@@ -1,8 +1,7 @@
 
 import 'package:flowery/config/di/di_config.dart';
 import 'package:flowery/core/base/base_state.dart';
-import 'package:flowery/core/theme/app-assets.dart';
-
+import 'package:flowery/core/theme/app_assets.dart';
 import 'package:flowery/features/home/presentation/view/widgets/category_section_widget.dart';
 import 'package:flowery/features/home/presentation/view/widgets/food_section_widget.dart';
 import 'package:flowery/features/home/presentation/view/widgets/home_header_widget.dart';
@@ -12,8 +11,8 @@ import 'package:flowery/features/home/presentation/view/widgets/workout_section_
 import 'package:flowery/features/home/presentation/view_model/home_cubit.dart';
 import 'package:flowery/features/home/presentation/view_model/home_event.dart';
 import 'package:flowery/features/home/presentation/view_model/home_state.dart';
-
-
+import 'package:flowery/features/popular_training/presentation/view/widget/popular_training_secton.dart';
+import 'package:flowery/features/popular_training/presentation/view_model/popular_training_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -28,7 +27,7 @@ class HomeBody extends StatelessWidget {
       child: Stack(
         children: [
           Image.asset(
-            AssetsImage.BackGroundHome,
+            AppAssets.backGroundHome,
             height: double.infinity,
             width: double.infinity,
             fit: BoxFit.cover,
@@ -69,7 +68,7 @@ class HomeBody extends StatelessWidget {
                         const SizedBox(height: 24),
 
                  
-                       // const WorkoutSectionWidget(),
+                        const WorkoutSectionWidget(),
 
                         const SizedBox(height: 24),
 
@@ -84,11 +83,11 @@ class HomeBody extends StatelessWidget {
                         ),
                         const SizedBox(height: 24),
                   
-                        // BlocProvider(
-                        //   key: const ValueKey('popular_training_provider'),
-                        //   create: (_) => getIt<PopularTrainingCubit>(),
-                        //   child: const PopularTrainingSection(),
-                        // ),
+                        BlocProvider(
+                          key: const ValueKey('popular_training_provider'),
+                          create: (_) => getIt<PopularTrainingCubit>(),
+                          child: const PopularTrainingSection(),
+                        ),
                         const SizedBox(height: 32),
                       ],
                     ),

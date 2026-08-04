@@ -1,6 +1,7 @@
 import 'package:flowery/config/routing/app_routes.dart';
 import 'package:flowery/config/routing/routing_extensions.dart';
 import 'package:flowery/core/theme/app_colors.dart';
+import 'package:flowery/features/food/presentation/arg/food_screen_args.dart';
 import 'package:flowery/features/home/domian/entities/food_for_you_model.dart';
 import 'package:flutter/material.dart';
 
@@ -59,10 +60,10 @@ class FoodSectionWidget extends StatelessWidget {
               final category = categories[index];
               return GestureDetector(
                 onTap: () {
-                  // context.pushNamed(
-                  //   AppRoutes.food,
-                  //   arguments: FoodScreenArgs(categoryName: category.name),
-                  // );
+                  context.pushNamed(
+                    AppRoutes.food,
+                    arguments: FoodScreenArgs(categoryName: category.name),
+                  );
                 },
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(16),
