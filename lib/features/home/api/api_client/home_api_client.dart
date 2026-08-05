@@ -2,6 +2,9 @@ import 'package:dio/dio.dart';
 
 import 'package:flowery/config/api/api_endpoints.dart';
 import 'package:flowery/features/home/data/models/food_for_you_response_dto.dart';
+import 'package:flowery/config/api/api_endpoints.dart';
+import 'package:flowery/features/home/data/models/food_for_you_response_dto.dart';
+import 'package:flowery/features/home/data/models/profile_response_dto.dart';
 import 'package:flowery/features/home/data/models/recommendation_to_day_response_dto.dart';
 import 'package:flowery/features/home/data/models/work_out_response_dto.dart';
 import 'package:injectable/injectable.dart';
@@ -23,4 +26,7 @@ abstract class HomeApiClient {
 
   @GET(AppEndPoints.foodForYou)
    Future<FoodForYouResponseDto> getFoodData();
+
+  @GET(AppEndPoints.profileData)
+   Future<ProfileResponseDto> getProfileData();
 }

@@ -13,6 +13,7 @@ abstract final class AppColors {
   static const splashBackgroundColor = Color(0x1A1A1A80);
   // Text
   static const whiteColor = Color(0xffffffff);
+  
   static const greyColor = Color(0xffD9D9D9);
   static const lightGreyColor = Color(0xff9E9E9E);
 

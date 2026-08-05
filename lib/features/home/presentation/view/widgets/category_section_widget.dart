@@ -24,6 +24,7 @@ class CategorySectionWidget extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
+        const SizedBox(height: 12),
         const Text(
           'Category',
           style: TextStyle(
@@ -32,7 +33,7 @@ class CategorySectionWidget extends StatelessWidget {
             fontWeight: FontWeight.bold,
           ),
         ),
-        const SizedBox(height: 12),
+
 
         SizedBox(
           width: double.infinity,

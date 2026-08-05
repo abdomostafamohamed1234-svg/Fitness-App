@@ -2,6 +2,10 @@ import 'package:flowery/config/di/di_config.dart';
 import 'package:flowery/core/base/base_state.dart';
 import 'package:flowery/core/theme/app-assets.dart';
 
+
+import 'package:flowery/config/di/di_config.dart';
+import 'package:flowery/core/base/base_state.dart';
+import 'package:flowery/core/theme/app_assets.dart';
 import 'package:flowery/features/home/presentation/view/widgets/category_section_widget.dart';
 import 'package:flowery/features/home/presentation/view/widgets/food_section_widget.dart';
 import 'package:flowery/features/home/presentation/view/widgets/home_header_widget.dart';
@@ -12,6 +16,8 @@ import 'package:flowery/features/home/presentation/view/widgets/workout_section_
 import 'package:flowery/features/home/presentation/view_model/home_cubit.dart';
 import 'package:flowery/features/home/presentation/view_model/home_event.dart';
 import 'package:flowery/features/home/presentation/view_model/home_state.dart';
+import 'package:flowery/features/popular_training/presentation/view/widget/popular_training_secton.dart';
+import 'package:flowery/features/popular_training/presentation/view_model/popular_training_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -26,7 +32,9 @@ class HomeBody extends StatelessWidget {
       child: Stack(
         children: [
           Image.asset(
-            AssetsImage.BackGroundHome,
+
+            AppAssets.backGroundHome,
+
             height: double.infinity,
             width: double.infinity,
             fit: BoxFit.cover,
@@ -46,6 +54,7 @@ class HomeBody extends StatelessWidget {
 
                         // ===== CATEGORY (filter chips) =====
                         _buildSection(
+                          key: const ValueKey('category_section'),
                           state: state.workOutState,
                           shimmer: const CategoryShimmer(),
                           loadedBuilder: (data) => CategorySectionWidget(
@@ -56,6 +65,7 @@ class HomeBody extends StatelessWidget {
 
                         // ===== RECOMMENDATION TO DAY =====
                         _buildSection(
+                          key: const ValueKey('recommendation_section'),
                           state: state.recommendationState,
                           shimmer: const RecommendationShimmer(),
                           loadedBuilder: (data) => RecommendationSectionWidget(
@@ -68,17 +78,17 @@ class HomeBody extends StatelessWidget {
                         const WorkoutSectionWidget(),
                         const SizedBox(height: 24),
 
-                        // _buildSection(
-                        //   state: state.workOutState,
-                        //   shimmer: const WorkoutShimmer(),
-                        //   loadedBuilder: (data) => WorkoutSectionWidget(
-                        //     musclesGroup: data.musclesGroup,
-                        //   ),
-                        // ),
-                        // const SizedBox(height: 24),
-
                         // ===== FOOD / RECOMMENDATION FOR YOU =====
                         _buildSection(
+                 
+                        const WorkoutSectionWidget(),
+
+                        const SizedBox(height: 24),
+
+                      
+                        // ===== FOOD / RECOMMENDATION FOR YOU =====
+                        _buildSection(
+                          key: const ValueKey('food_section'),
                           state: state.foodState,
                           shimmer: const FoodShimmer(),
                           loadedBuilder: (data) =>
@@ -86,8 +96,12 @@ class HomeBody extends StatelessWidget {
                         ),
                         const SizedBox(height: 24),
 
-                        // ===== POPULAR TRAINING (static) =====
-                        const PopularTrainingSectionWidget(),
+                        BlocProvider(
+                          key: const ValueKey('popular_training_provider'),
+                          create: (_) => getIt<PopularTrainingCubit>(),
+                          child: const PopularTrainingSection(),
+                        ),
+
                         const SizedBox(height: 32),
                       ],
                     ),
@@ -101,35 +115,16 @@ class HomeBody extends StatelessWidget {
     );
   }
 
-  //   Widget _buildSection<T>({
-  //     required BaseState<T> state,
-  //     required Widget shimmer,
-  //     required Widget Function(T data) loadedBuilder,
-  //   }) {
-  //     if (state.isLoading == true) {
-  //       return shimmer;
-  //     }
-  //     if (state.error != null) {
-  //       return Center(
-  //         child: Text(
-  //           state.error.toString(),
-  //           style: const TextStyle(color: Colors.red),
-  //         ),
-  //       );
-  //     }
-  //     if (state.data != null) {
-  //       return loadedBuilder(state.data as T);
-  //     }
-  //     return const SizedBox.shrink();
-  //   }
-  // }
+Widget _buildSection<T>({
+  Key? key,
+  required BaseState<T> state,
+  required Widget shimmer,
+  required Widget Function(T data) loadedBuilder,
+}) {
+  return KeyedSubtree(
+    key: key,
+    child: state.when(
 
-  Widget _buildSection<T>({
-    required BaseState<T> state,
-    required Widget shimmer,
-    required Widget Function(T data) loadedBuilder,
-  }) {
-    return state.when(
       initial: () => const SizedBox.shrink(),
       loading: () => shimmer,
       success: (data) => loadedBuilder(data),
@@ -138,7 +133,9 @@ class HomeBody extends StatelessWidget {
           exception.toString(),
           style: const TextStyle(color: Colors.red),
         ),
+
+
       ),
-    );
-  }
-}
+    ),
+  );
+}}

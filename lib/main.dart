@@ -44,7 +44,7 @@ class FitnessApp extends StatelessWidget {
               theme: AppTheme.darkTheme,
 
                initialRoute: AppRoutes.home,
-
+              //home: const TestScreen(
             );
           },
         );
