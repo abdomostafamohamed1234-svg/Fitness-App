@@ -82,6 +82,8 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get navProfile => 'الملف الشخصي';
+
+  @override
   String get food_recommendation => 'اقتراحات الطعام';
 
   @override
@@ -121,7 +123,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get create_pass => 'اعمل رقم سري';
 
   @override
-  String get create_new_password => 'اعمل رقم سري جديد';
+  String get create_new_password => 'عمل رقم سري جديد';
 
   @override
   String get make_sure_its_8_character_or_more =>
@@ -138,7 +140,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get password_do_not_match => 'الرقم السري لا يتطابق';
 
   @override
-  String get done => 'تمام';
+  String get done => 'انهاء';
 
   @override
   String get otp => 'الرقم المرسل';
@@ -160,6 +162,8 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get resend_code => 'ارسل الكود مره اخري?';
+
+  @override
   String get old_password => 'الرقم السري القديم';
 
   @override
@@ -170,10 +174,4 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get make_sure_8_chara => 'تأكد انه ثمانة احرف او اكثر';
-
-  @override
-  String get create_new_password => 'عمل رقم سري جديد';
-
-  @override
-  String get done => 'انهاء';
 }

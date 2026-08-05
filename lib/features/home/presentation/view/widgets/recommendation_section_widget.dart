@@ -1,5 +1,5 @@
 import 'package:flowery/config/routing/app_routes.dart';
-import 'package:flowery/features/exercises/presentation/arg/exercise_screen_args.dart';
+import 'package:flowery/features/exercises/presentation/arg/execrises_screen_arg.dart';
 import 'package:flowery/features/home/domian/entities/recommendation_model.dart';
 import 'package:flutter/material.dart';
 

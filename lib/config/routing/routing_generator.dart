@@ -124,7 +124,7 @@ class RouteGenerator {
           return MaterialPageRoute(
             builder: (_) => BlocProvider(
               create: (_) => getIt<ForgetPasswordViewModel>(),
-              child: const ForgetPasswordScreen(),
+              child: const ForgetPasswordScreen()));
         case AppRoutes.changePassword:
           return MaterialPageRoute(
             builder: (_) => BlocProvider(
