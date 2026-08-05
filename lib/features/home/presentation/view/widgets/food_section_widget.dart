@@ -1,3 +1,4 @@
+
 import 'package:flowery/config/routing/app_routes.dart';
 import 'package:flowery/config/routing/routing_extensions.dart';
 import 'package:flowery/core/theme/app_colors.dart';
@@ -30,6 +31,7 @@ class FoodSectionWidget extends StatelessWidget {
               ),
             ),
             const SizedBox(width: 8),
+
             TextButton(
               onPressed: () {
                 // "See All" -> no specific category, food screen defaults
@@ -58,6 +60,7 @@ class FoodSectionWidget extends StatelessWidget {
             separatorBuilder: (_, _) => const SizedBox(width: 12),
             itemBuilder: (context, index) {
               final category = categories[index];
+
               return GestureDetector(
                 onTap: () {
                   context.pushNamed(

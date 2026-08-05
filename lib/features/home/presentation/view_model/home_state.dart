@@ -36,6 +36,7 @@ class HomeStates {
       foodState: foodState ?? this.foodState,
       workOutState: workOutState ?? this.workOutState,
       recommendationState: recommendationState ?? this.recommendationState,
+
       profileState: profileState ?? this.profileState,
     );
   }

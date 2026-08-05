@@ -9,6 +9,7 @@ class HomeHeaderWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
     return BlocBuilder<HomeCubit, HomeStates>(
       buildWhen: (previous, current) =>
           previous.profileState != current.profileState,

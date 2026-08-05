@@ -30,6 +30,7 @@ class RecommendationSectionWidget extends StatelessWidget {
             separatorBuilder: (_, _) => const SizedBox(width: 12),
             itemBuilder: (context, index) {
               final muscle = muscles[index];
+
               return GestureDetector(
                 onTap: () {
                   Navigator.pushNamed(

@@ -1,7 +1,4 @@
 
-import 'package:flowery/config/di/di_config.dart';
-import 'package:flowery/config/routing/app_routes.dart';
-import 'package:flowery/core/theme/app_colors.dart';
 import 'package:flowery/features/exercises/presentation/arg/execrises_screen_arg.dart';
 import 'package:flowery/features/exercises/presentation/arg/exercise_screen_args.dart';
 import 'package:flowery/features/workouts/presentation/view_model/cubit/workouts_cubit.dart';
@@ -48,6 +45,8 @@ class _WorkoutSectionBody extends StatelessWidget {
                   onPressed: () {
                     Navigator.pushNamed(context, AppRoutes.workouts);
                   },
+                  // onPressed: () =>
+                  //     Navigator.pushNamed(context, Routes.workouts),
                   child: const Text(
                     'See All',
                     style: TextStyle(
@@ -68,6 +67,7 @@ class _WorkoutSectionBody extends StatelessWidget {
             const SizedBox(height: 14),
 
             // ===== Workout Cards =====
+
             _buildWorkoutCards(context, state),
           ],
         );
@@ -135,6 +135,7 @@ class _WorkoutSectionBody extends StatelessWidget {
     );
   }
 
+
   Widget _buildWorkoutCards(BuildContext context, WorkoutsState state) {
     return state.workoutsState.when(
       initial: () => const SizedBox.shrink(),
@@ -158,6 +159,7 @@ class _WorkoutSectionBody extends StatelessWidget {
             separatorBuilder: (_, __) => const SizedBox(width: 12),
             itemBuilder: (context, index) {
               final muscle = muscles[index];
+
               return GestureDetector(
                 onTap: () {
                   Navigator.pushNamed(
@@ -175,6 +177,7 @@ class _WorkoutSectionBody extends StatelessWidget {
                   name: muscle.name ?? '',
                   imageUrl: muscle.image,
                 ),
+
               );
             },
           ),
@@ -294,4 +297,5 @@ class _WorkoutCardsShimmer extends StatelessWidget {
       ),
     );
   }
+
 }

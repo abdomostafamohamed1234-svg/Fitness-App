@@ -34,6 +34,7 @@ class CategorySectionWidget extends StatelessWidget {
           ),
         ),
 
+
         SizedBox(
           width: double.infinity,
           child: Row(

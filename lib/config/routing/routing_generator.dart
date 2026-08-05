@@ -1,3 +1,8 @@
+
+import 'package:flowery/config/routing/app_routes.dart';
+import 'package:flowery/features/home/presentation/view/screen/home_Page.dart';
+import 'package:flowery/features/workouts/presentation/view/pages/workouts_page.dart';
+
 import 'package:flowery/config/di/di_config.dart';
 import 'package:flowery/config/routing/app_routes.dart';
 
@@ -21,6 +26,19 @@ class RouteGenerator {
   static Route<dynamic> getRoute(RouteSettings settings) {
     try {
       switch (settings.name) {
+
+             case AppRoutes.home:
+          return MaterialPageRoute(
+            builder: (_) => const HomePage(),
+          );
+    case AppRoutes.workouts:
+          return MaterialPageRoute(
+            builder: (_) => const WorkoutsPage(),
+          );
+
+
+        // case AppRoutes.:
+
         // case AppRoutes.login:
         //   return MaterialPageRoute(builder: (_) => const LoginPage());
 
@@ -35,8 +53,6 @@ class RouteGenerator {
         //     },
         //   );
 
-        case AppRoutes.home:
-          return MaterialPageRoute(builder: (_) => const HomePage());
 
 
         // case AppRoutes.workouts:
@@ -58,6 +74,7 @@ class RouteGenerator {
           
           
         //  case AppRoutes.exercise:
+
         //   return MaterialPageRoute(
         //     builder: (context) {
         //       final args = settings.arguments;

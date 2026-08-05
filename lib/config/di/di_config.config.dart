@@ -93,6 +93,22 @@ import '../../features/home/domian/repository/home_repository_contract.dart'
     as _i689;
 import '../../features/home/domian/use_case/use_case.dart' as _i497;
 import '../../features/home/presentation/view_model/home_cubit.dart' as _i940;
+import '../../features/workouts/api/api_client/workouts_api_client.dart'
+    as _i123;
+import '../../features/workouts/api/datasources/workouts_remote_data_source_impl.dart'
+    as _i355;
+import '../../features/workouts/data/datasources/workouts_remote_data_source_contract.dart'
+    as _i668;
+import '../../features/workouts/data/repositories/workouts_repository_impl.dart'
+    as _i774;
+import '../../features/workouts/domain/repositories/workouts_repository.dart'
+    as _i243;
+import '../../features/workouts/domain/use_cases/get_muscles_group_by_id_use_case.dart'
+    as _i350;
+import '../../features/workouts/domain/use_cases/get_muscles_group_use_case.dart'
+    as _i249;
+import '../../features/workouts/presentation/view_model/cubit/workouts_cubit.dart'
+    as _i152;
 import '../../features/on_boarding/presentation/view_model/cubit/on_boarding_cubit.dart'
     as _i786;
 import '../../features/popular_training/api/api_client/popular_training_api_client.dart'
@@ -134,6 +150,15 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i273.LocaleCubit>(
       () => _i273.LocaleCubit(gh<_i425.SharedPreferencesHelper>()),
     );
+    gh.lazySingleton<_i123.WorkoutsApiClient>(
+      () => _i123.WorkoutsApiClient(gh<_i361.Dio>()),
+    );
+    gh.factory<_i592.HomeApiClient>(() => _i592.HomeApiClient(gh<_i361.Dio>()));
+    gh.factory<_i656.HomeRemoteDataSourceContract>(
+      () => _i792.HomeRemoteDataSourceImpl(gh<_i592.HomeApiClient>()),
+    );
+    gh.factory<_i668.WorkoutRemoteDataSourceContract>(
+      () => _i355.WorkoutsRemoteDataSourceImpl(gh<_i123.WorkoutsApiClient>()),
     gh.lazySingleton<_i244.ChangePasswordApiClient>(
       () => _i244.ChangePasswordApiClient(gh<_i361.Dio>()),
     );
@@ -201,6 +226,25 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i689.HomeRepositoryContract>(
       () => _i9.HomeRepositoryImpl(gh<_i656.HomeRemoteDataSourceContract>()),
     );
+    gh.factory<_i497.HomeUseCase>(
+      () => _i497.HomeUseCase(gh<_i689.HomeRepositoryContract>()),
+    );
+    gh.factory<_i243.WorkoutRepository>(
+      () => _i774.WorkoutsRepositoryImpl(
+        gh<_i668.WorkoutRemoteDataSourceContract>(),
+      ),
+    );
+    gh.factory<_i350.GetMusclesGroupByIdUseCase>(
+      () => _i350.GetMusclesGroupByIdUseCase(gh<_i243.WorkoutRepository>()),
+    );
+    gh.factory<_i249.GetMusclesGroupUseCase>(
+      () => _i249.GetMusclesGroupUseCase(gh<_i243.WorkoutRepository>()),
+    );
+    gh.factory<_i940.HomeCubit>(() => _i940.HomeCubit(gh<_i497.HomeUseCase>()));
+    gh.factory<_i152.WorkoutsCubit>(
+      () => _i152.WorkoutsCubit(
+        gh<_i249.GetMusclesGroupUseCase>(),
+        gh<_i350.GetMusclesGroupByIdUseCase>(),
     gh.factory<_i523.ExerciseRepoContract>(
       () => _i42.ExerciseRepoImpl(gh<_i675.ExerciseDataSourceContract>()),
     );

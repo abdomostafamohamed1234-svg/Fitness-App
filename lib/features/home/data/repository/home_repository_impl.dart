@@ -1,7 +1,4 @@
-import 'package:flowery/features/home/data/datasourse/home_remote_datasourse_impl.dart';
-import 'package:flowery/features/home/data/models/mapper.dart';
-import 'package:flowery/features/home/domian/entities/food_for_you_model.dart';
-import 'package:flowery/features/home/domian/entities/profile_model.dart';
+
 import 'package:flowery/features/home/domian/entities/recommendation_model.dart';
 import 'package:flowery/features/home/domian/entities/work_out_model.dart';
 import 'package:flowery/features/home/domian/repository/home_repository_contract.dart';

@@ -1,3 +1,7 @@
+import 'package:flowery/config/di/di_config.dart';
+import 'package:flowery/core/base/base_state.dart';
+import 'package:flowery/core/theme/app-assets.dart';
+
 
 import 'package:flowery/config/di/di_config.dart';
 import 'package:flowery/core/base/base_state.dart';
@@ -6,6 +10,7 @@ import 'package:flowery/features/home/presentation/view/widgets/category_section
 import 'package:flowery/features/home/presentation/view/widgets/food_section_widget.dart';
 import 'package:flowery/features/home/presentation/view/widgets/home_header_widget.dart';
 import 'package:flowery/features/home/presentation/view/widgets/home_shimmer_widget.dart';
+import 'package:flowery/features/home/presentation/view/widgets/popular_training_widget.dart';
 import 'package:flowery/features/home/presentation/view/widgets/recommendation_section_widget.dart';
 import 'package:flowery/features/home/presentation/view/widgets/workout_section_widget.dart';
 import 'package:flowery/features/home/presentation/view_model/home_cubit.dart';
@@ -27,7 +32,9 @@ class HomeBody extends StatelessWidget {
       child: Stack(
         children: [
           Image.asset(
+
             AppAssets.backGroundHome,
+
             height: double.infinity,
             width: double.infinity,
             fit: BoxFit.cover,
@@ -67,6 +74,12 @@ class HomeBody extends StatelessWidget {
                         ),
                         const SizedBox(height: 24),
 
+                        // ===== UPCOMING WORKOUTS (chips + cards) =====
+                        const WorkoutSectionWidget(),
+                        const SizedBox(height: 24),
+
+                        // ===== FOOD / RECOMMENDATION FOR YOU =====
+                        _buildSection(
                  
                         const WorkoutSectionWidget(),
 
@@ -82,12 +95,13 @@ class HomeBody extends StatelessWidget {
                               FoodSectionWidget(categories: data.categories),
                         ),
                         const SizedBox(height: 24),
-                  
+
                         BlocProvider(
                           key: const ValueKey('popular_training_provider'),
                           create: (_) => getIt<PopularTrainingCubit>(),
                           child: const PopularTrainingSection(),
                         ),
+
                         const SizedBox(height: 32),
                       ],
                     ),
@@ -100,6 +114,7 @@ class HomeBody extends StatelessWidget {
       ),
     );
   }
+
 Widget _buildSection<T>({
   Key? key,
   required BaseState<T> state,
@@ -109,6 +124,7 @@ Widget _buildSection<T>({
   return KeyedSubtree(
     key: key,
     child: state.when(
+
       initial: () => const SizedBox.shrink(),
       loading: () => shimmer,
       success: (data) => loadedBuilder(data),
@@ -117,6 +133,7 @@ Widget _buildSection<T>({
           exception.toString(),
           style: const TextStyle(color: Colors.red),
         ),
+
 
       ),
     ),
