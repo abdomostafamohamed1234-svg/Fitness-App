@@ -4,6 +4,8 @@ abstract class AppRoutes {
   static const String foodDetails = "/food-details";
   static const String onBoarding = "/on-boarding";
   static const String login = "/login";
+  static const String profile= "/login";
+
 
   static const String forgetPassword = "/forget-password";
   static const String register = '/register';

@@ -1,4 +1,6 @@
 
+import 'package:flowery/features/home/domian/entities/food_for_you_model.dart';
+import 'package:flowery/features/home/domian/entities/profile_model.dart';
 import 'package:flowery/features/home/domian/entities/recommendation_model.dart';
 import 'package:flowery/features/home/domian/entities/work_out_model.dart';
 import 'package:flowery/core/base/base_response.dart';

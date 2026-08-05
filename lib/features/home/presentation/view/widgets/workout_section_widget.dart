@@ -1,6 +1,8 @@
 
+import 'package:flowery/config/di/di_config.dart';
+import 'package:flowery/config/routing/app_routes.dart';
+import 'package:flowery/core/theme/app_colors.dart';
 import 'package:flowery/features/exercises/presentation/arg/execrises_screen_arg.dart';
-import 'package:flowery/features/exercises/presentation/arg/exercise_screen_args.dart';
 import 'package:flowery/features/workouts/presentation/view_model/cubit/workouts_cubit.dart';
 import 'package:flowery/features/workouts/presentation/view_model/cubit/workouts_event.dart';
 import 'package:flowery/features/workouts/presentation/view_model/cubit/workouts_states.dart';

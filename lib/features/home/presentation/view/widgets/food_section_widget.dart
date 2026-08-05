@@ -2,7 +2,7 @@
 import 'package:flowery/config/routing/app_routes.dart';
 import 'package:flowery/config/routing/routing_extensions.dart';
 import 'package:flowery/core/theme/app_colors.dart';
-import 'package:flowery/features/food/presentation/arg/food_screen_args.dart';
+import 'package:flowery/features/food/presentation/arg/food_screen_arg.dart';
 import 'package:flowery/features/home/domian/entities/food_for_you_model.dart';
 import 'package:flutter/material.dart';
 
