@@ -152,7 +152,6 @@ abstract class AppLocalizations {
   /// **'Unexpected error'**
   String get unexpectedError;
 
-
   /// No description provided for @follow_the_plan.
   ///
   /// In en, this message translates to:
@@ -170,7 +169,6 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'No exercises found for this level'**
   String get no_exercises_found;
-
 
   /// No description provided for @motivation.
   ///
@@ -243,6 +241,7 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Profile'**
   String get navProfile;
+
   /// No description provided for @food_recommendation.
   ///
   /// In en, this message translates to:
@@ -320,29 +319,6 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'create pass'**
   String get create_pass;
-  /// No description provided for @old_password.
-  ///
-  /// In en, this message translates to:
-  /// **'Old Password'**
-  String get old_password;
-
-  /// No description provided for @new_password.
-  ///
-  /// In en, this message translates to:
-  /// **'New Password'**
-  String get new_password;
-
-  /// No description provided for @confirm_password.
-  ///
-  /// In en, this message translates to:
-  /// **'Confirm Password'**
-  String get confirm_password;
-
-  /// No description provided for @make_sure_8_chara.
-  ///
-  /// In en, this message translates to:
-  /// **'Make Sure Its 8 Characters Or More'**
-  String get make_sure_8_chara;
 
   /// No description provided for @create_new_password.
   ///
@@ -421,6 +397,30 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Resend Code?'**
   String get resend_code;
+
+  /// No description provided for @old_password.
+  ///
+  /// In en, this message translates to:
+  /// **'Old Password'**
+  String get old_password;
+
+  /// No description provided for @new_password.
+  ///
+  /// In en, this message translates to:
+  /// **'New Password'**
+  String get new_password;
+
+  /// No description provided for @confirm_password.
+  ///
+  /// In en, this message translates to:
+  /// **'Confirm Password'**
+  String get confirm_password;
+
+  /// No description provided for @make_sure_8_chara.
+  ///
+  /// In en, this message translates to:
+  /// **'Make Sure Its 8 Characters Or More'**
+  String get make_sure_8_chara;
 }
 
 class _AppLocalizationsDelegate
