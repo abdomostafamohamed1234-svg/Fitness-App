@@ -40,6 +40,7 @@ class AppEndPoints {
   static const String mealDetails = "/lookup.php";
 
 
+
   // ===================== Home =====================
 
   static const String recommendationToDay = "/muscles/random";
