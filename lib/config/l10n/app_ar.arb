@@ -22,7 +22,7 @@
   "navExplore": "استكشاف",
   "navChat": "المحادثة",
   "navWorkouts": "التمارين",
-  "navProfile": "الملف الشخصي"
+  "navProfile": "الملف الشخصي",
   "food_recommendation": "اقتراحات الطعام",
   "instructions": "الوصفة",
   "ingredients": "المقادير",
@@ -48,7 +48,7 @@
   "invalid_code_please_try_again":"الكود خطأ",
   "confirm":"تأكيد",
   "did_not_receive_verification_code":"لم يتم استلام الكود?",
-  "resend_code":"ارسل الكود مره اخري?"
+  "resend_code":"ارسل الكود مره اخري?",
     "old_password":"الرقم السري القديم",
   "new_password":"الرقم السري الجديد",
   "confirm_password":"تأكيد الرقم السري",

@@ -81,6 +81,8 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get navProfile => 'Profile';
+
+  @override
   String get food_recommendation => 'Food Recommendation';
 
   @override
@@ -118,16 +120,6 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get create_pass => 'create pass';
-  String get old_password => 'Old Password';
-
-  @override
-  String get new_password => 'New Password';
-
-  @override
-  String get confirm_password => 'Confirm Password';
-
-  @override
-  String get make_sure_8_chara => 'Make Sure Its 8 Characters Or More';
 
   @override
   String get create_new_password => 'Create New Password';
@@ -171,5 +163,16 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get resend_code => 'Resend Code?';
-  String get done => 'Done';
+
+  @override
+  String get old_password => 'Old Password';
+
+  @override
+  String get new_password => 'New Password';
+
+  @override
+  String get confirm_password => 'Confirm Password';
+
+  @override
+  String get make_sure_8_chara => 'Make Sure Its 8 Characters Or More';
 }
