@@ -16,6 +16,22 @@ import 'package:injectable/injectable.dart' as _i526;
 import 'package:shared_preferences/shared_preferences.dart' as _i460;
 
 import '../../core/cubits/locale/locale_cubit.dart' as _i273;
+import '../../features/on_boarding/presentation/view_model/cubit/on_boarding_cubit.dart'
+    as _i786;
+import '../../features/register/api/api_client/register_api_client.dart'
+    as _i656;
+import '../../features/register/api/datasources/register_remote_data_source_impl.dart'
+    as _i754;
+import '../../features/register/data/datasources/register_remote_data_source_contract.dart'
+    as _i703;
+import '../../features/register/data/repositories/register_repository_impl.dart'
+    as _i68;
+import '../../features/register/domain/repositories/register_repository.dart'
+    as _i994;
+import '../../features/register/domain/use_cases/register_usecase.dart'
+    as _i679;
+import '../../features/register/presentation/view_model/cubit/register_cubit.dart'
+    as _i278;
 import '../../features/app_sections/presentation/view_model/cubit/app_sections_cubit.dart'
     as _i1038;
 import '../../features/change_password/api/api_client/change_password_api_client.dart'
@@ -152,6 +168,8 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i273.LocaleCubit>(
       () => _i273.LocaleCubit(gh<_i425.SharedPreferencesHelper>()),
     );
+    gh.factory<_i656.RegisterApiClient>(
+      () => _i656.RegisterApiClient(gh<_i361.Dio>()),
     gh.lazySingleton<_i244.ChangePasswordApiClient>(
       () => _i244.ChangePasswordApiClient(gh<_i361.Dio>()),
     );
@@ -177,6 +195,19 @@ extension GetItInjectableX on _i174.GetIt {
       () => diModule.mealsDio(),
       instanceName: 'mealsDio',
     );
+    gh.factory<_i703.RegisterRemoteDataSourceContract>(
+      () => _i754.RegisterRemoteDataSourceImpl(gh<_i656.RegisterApiClient>()),
+    );
+    gh.factory<_i994.RegisterRepository>(
+      () => _i68.RegisterRepositoryImpl(
+        gh<_i703.RegisterRemoteDataSourceContract>(),
+      ),
+    );
+    gh.factory<_i679.RegisterUsecase>(
+      () => _i679.RegisterUsecase(gh<_i994.RegisterRepository>()),
+    );
+    gh.factory<_i278.RegisterCubit>(
+      () => _i278.RegisterCubit(gh<_i679.RegisterUsecase>()),
     gh.factory<_i793.ChangePasswordLocalDataSourceImplementation>(
       () => _i793.ChangePasswordLocalDataSourceImplementation(
         gh<_i558.FlutterSecureStorage>(),

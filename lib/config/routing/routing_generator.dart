@@ -14,6 +14,7 @@ import 'package:flowery/features/change_password/presentation/screens/change_pas
 import 'package:flowery/features/change_password/presentation/view_model/change_password_view_model.dart';
 import 'package:flowery/features/on_boarding/presentation/screens/on_boarding_screen.dart';
 import 'package:flowery/features/on_boarding/presentation/view_model/cubit/on_boarding_cubit.dart';
+import 'package:flowery/features/register/presentation/view/pages/register_page.dart';
 import 'package:flowery/features/app_sections/presentation/view/pages/app_sections_page.dart';
 import 'package:flowery/features/food/presentation/screens/food_recommendation_screen.dart';
 import 'package:flowery/features/food/presentation/view_model/cubit/food_cubit.dart';
@@ -114,6 +115,13 @@ class RouteGenerator {
               child: const OnBoardingScreen(),
             ),
           );
+        case AppRoutes.register:
+          return MaterialPageRoute(
+            builder: (_) => const RegisterPage(),
+          );
+
+        // case AppRoutes.login:
+        //   return MaterialPageRoute(builder: (_) => const LoginPage());
 
         case AppRoutes.appSections:
           return MaterialPageRoute(

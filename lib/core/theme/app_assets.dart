@@ -1,4 +1,9 @@
+
+const String imagePath = "assets";
+
 abstract class AppAssets {
+  static const String registerBackGround = '$imagePath/RegisterBackGround.png';
+    static const String fitnessSplash = '$imagePath/FitnessSplash.png';
    static const String fitnessLaunchiconSvg = 'assets/svg/FitnessSplash.svg';
    static const String homeIconSvg = 'assets/svg/HomeIcon.svg';
    static const String workoutIconSvg = 'assets/svg/WorkoutIcon.svg';
@@ -8,3 +13,4 @@ abstract class AppAssets {
   static const String workoutsBackGround = 'assets/workoutsBackGround.png';
 
 }
+
