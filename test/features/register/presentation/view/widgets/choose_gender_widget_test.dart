@@ -8,6 +8,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 
+import '../../../../../helpers/l10n.dart';
 import '../../../../../helpers/pump_app.dart';
 
 class MockRegisterUsecase extends Mock implements RegisterUsecase {}
@@ -36,8 +37,8 @@ void main() {
   testWidgets('Displays both Male and Female options', (tester) async {
     await tester.pumpApp(wrap(const ChooseGenderWidget()));
 
-    expect(find.text('Male'), findsOneWidget);
-    expect(find.text('Female'), findsOneWidget);
+    expect(find.text(l10n.male), findsOneWidget);
+    expect(find.text(l10n.female), findsOneWidget);
   });
 
   testWidgets('The Next button is hidden before you make a selection', (
@@ -54,7 +55,7 @@ void main() {
   ) async {
     await tester.pumpApp(wrap(const ChooseGenderWidget()));
 
-    await tester.tap(find.text('Male'));
+    await tester.tap(find.text(l10n.male));
     await tester.pump();
 
     expect(cubit.gender, 'male');
@@ -65,7 +66,7 @@ void main() {
   testWidgets('Choosing Female preserves the correct value', (tester) async {
     await tester.pumpApp(wrap(const ChooseGenderWidget()));
 
-    await tester.tap(find.text('Female'));
+    await tester.tap(find.text(l10n.female));
     await tester.pump();
 
     expect(cubit.gender, 'female');
@@ -76,15 +77,15 @@ void main() {
   ) async {
     await tester.pumpApp(wrap(const ChooseGenderWidget()));
 
-    await tester.tap(find.text('Male'));
+    await tester.tap(find.text(l10n.male));
     await tester.pump();
 
     // First tap only moves currentStepState from null to BaseState(data: 0)
-    await tester.tap(find.text('Next'));
+    await tester.tap(find.text(l10n.next));
     await tester.pump();
 
     // Second tap actually increments the value to 1
-    await tester.tap(find.text('Next'));
+    await tester.tap(find.text(l10n.next));
     await tester.pump();
 
     expect(cubit.state.currentStepState?.data, 1);

@@ -1,9 +1,12 @@
 import 'package:flowery/features/register/domain/use_cases/register_usecase.dart';
 import 'package:flowery/features/register/presentation/view/widgets/choose_age_widget.dart';
 import 'package:flowery/features/register/presentation/view_model/cubit/register_cubit.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 
+import '../../../../../helpers/l10n.dart';
 import '../../../../../helpers/pump_app.dart';
 
 class MockRegisterUsecase extends Mock implements RegisterUsecase {}
@@ -19,15 +22,40 @@ void main() {
 
   tearDown(() async => cubit.close());
 
-  testWidgets('It starts with a lifespan of 20 years if there is no retained value', (tester) async {
-    await tester.pumpApp(ChooseAgeWidget(registerCubit: cubit));
-    expect(cubit.age, '20');
-  });
+  // ChooseAgeWidget reads the cubit from the widget tree via
+  // context.read<RegisterCubit>(), so it must be wrapped in a BlocProvider
+  // to be tested in isolation.
+  Widget wrap(Widget child) =>
+      BlocProvider<RegisterCubit>.value(value: cubit, child: child);
 
-  testWidgets('If there is a pre-saved age, it is used instead of the default one', (tester) async {
-    cubit.age = '35';
-    await tester.pumpApp(ChooseAgeWidget(registerCubit: cubit));
-    expect(cubit.age, '35');
-  });
+  testWidgets(
+    'It starts with an age of 20 if there is no retained value',
+    (tester) async {
+      await tester.pumpApp(wrap(const ChooseAgeWidget()));
+      expect(cubit.age, 20);
+    },
+  );
 
+  testWidgets(
+    'If there is a pre-saved age, it is used instead of the default one',
+    (tester) async {
+      cubit.age = 35;
+      await tester.pumpApp(wrap(const ChooseAgeWidget()));
+      expect(cubit.age, 35);
+    },
+  );
+
+  testWidgets('Pressing Next advances the step', (tester) async {
+    await tester.pumpApp(wrap(const ChooseAgeWidget()));
+
+    // First tap only moves currentStepState from null to BaseState(data: 0)
+    await tester.tap(find.text(l10n.next));
+    await tester.pump();
+
+    // Second tap actually increments the value to 1
+    await tester.tap(find.text(l10n.next));
+    await tester.pump();
+
+    expect(cubit.state.currentStepState?.data, 1);
+  });
 }

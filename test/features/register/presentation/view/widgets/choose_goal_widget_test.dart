@@ -7,6 +7,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 
+import '../../../../../helpers/l10n.dart';
 import '../../../../../helpers/pump_app.dart';
 
 class MockRegisterUsecase extends Mock implements RegisterUsecase {}
@@ -31,11 +32,11 @@ void main() {
   testWidgets('Displays all five goals', (tester) async {
     await tester.pumpApp(wrap(const ChooseGoalWidget()));
 
-    expect(find.text('Gain Weight'), findsOneWidget);
-    expect(find.text('Lose Weight'), findsOneWidget);
-    expect(find.text('Get Fitter'), findsOneWidget);
-    expect(find.text('Gain More Flexible'), findsOneWidget);
-    expect(find.text('Learn The Basics'), findsOneWidget);
+    expect(find.text(l10n.gainWeight), findsOneWidget);
+    expect(find.text(l10n.loseWeight), findsOneWidget);
+    expect(find.text(l10n.getFitter), findsOneWidget);
+    expect(find.text(l10n.gainMoreFlexible), findsOneWidget);
+    expect(find.text(l10n.learnTheBasics), findsOneWidget);
   });
 
   testWidgets('Choosing a goal stores its value in the cubit', (
@@ -43,10 +44,10 @@ void main() {
   ) async {
     await tester.pumpApp(wrap(const ChooseGoalWidget()));
 
-    await tester.tap(find.text('Lose Weight'));
+    await tester.tap(find.text(l10n.loseWeight));
     await tester.pump();
 
-    expect(cubit.goal, 'Lose Weight');
+    expect(cubit.goal, l10n.loseWeight);
   });
 
   testWidgets('The Next button is hidden before a goal is chosen', (
@@ -63,7 +64,7 @@ void main() {
   ) async {
     await tester.pumpApp(wrap(const ChooseGoalWidget()));
 
-    await tester.tap(find.text('Get Fitter'));
+    await tester.tap(find.text(l10n.getFitter));
     await tester.pump();
 
     final visibility = tester.widget<Visibility>(find.byType(Visibility));

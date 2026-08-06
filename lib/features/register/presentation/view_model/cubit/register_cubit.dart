@@ -30,6 +30,29 @@ class RegisterCubit extends CustomCubit<RegisterTempEvents, RegisterState> {
   // Shared between normal register and social register (Google/Facebook).
   final RegisterSurveyData surveyData = RegisterSurveyData();
 
+  // ---------------------------------------------------------------------------
+  // Convenience getters/setters – delegate to surveyData so tests (and widgets)
+  // can write  cubit.age = 25  instead of  cubit.surveyData.age = 25.
+  // ---------------------------------------------------------------------------
+  int? get age => surveyData.age;
+  set age(int? value) => surveyData.age = value;
+
+  int? get weight => surveyData.weight;
+  set weight(int? value) => surveyData.weight = value;
+
+  int? get height => surveyData.height;
+  set height(int? value) => surveyData.height = value;
+
+  String? get gender => surveyData.gender;
+  set gender(String? value) => surveyData.gender = value;
+
+  String? get goal => surveyData.goal;
+  set goal(String? value) => surveyData.goal = value;
+
+  String? get physicalActivityLevel => surveyData.physicalActivityLevel;
+  set physicalActivityLevel(String? value) =>
+      surveyData.physicalActivityLevel = value;
+
   void doIntent(RegisterEvent event) {
     switch (event) {
       case Register():

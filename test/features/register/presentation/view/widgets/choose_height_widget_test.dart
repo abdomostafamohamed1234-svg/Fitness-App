@@ -6,6 +6,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 
+import '../../../../../helpers/l10n.dart';
 import '../../../../../helpers/pump_app.dart';
 
 class MockRegisterUsecase extends Mock implements RegisterUsecase {}
@@ -57,11 +58,11 @@ void main() {
     await tester.pumpApp(wrap(const ChooseHeightWidget()));
 
     // First tap only moves currentStepState from null to BaseState(data: 0)
-    await tester.tap(find.text('Next'));
+    await tester.tap(find.text(l10n.next));
     await tester.pump();
 
     // Second tap actually increments the value to 1
-    await tester.tap(find.text('Next'));
+    await tester.tap(find.text(l10n.next));
     await tester.pump();
 
     expect(cubit.state.currentStepState?.data, 1);

@@ -8,6 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 
+import '../../../../../helpers/l10n.dart';
 import '../../../../../helpers/pump_app.dart';
 
 class MockRegisterUsecase extends Mock implements RegisterUsecase {}
@@ -30,31 +31,32 @@ void main() {
     await getIt.reset();
   });
 
-  testWidgets('أول ما تفتح الصفحة بتبدأ بخطوة الفورم', (tester) async {
+  testWidgets('Opening the page starts at the form step', (tester) async {
     await tester.pumpApp(const RegisterPage());
-    expect(find.text('Register'), findsWidgets);
+    expect(find.text(l10n.register), findsWidgets);
   });
 
-  testWidgets('ShowLoadingTempEvent بيعرض CircularProgressIndicator كـ Dialog', (tester) async {
+  testWidgets('ShowLoadingEvent displays a CircularProgressIndicator as a Dialog', (tester) async {
     await tester.pumpApp(const RegisterPage());
 
     cubit.doIntent(ShowLoadingEvent());
-    await tester.pump();
+    // Use pump with a fixed duration instead of pumpAndSettle() because the
+    // CircularProgressIndicator has an infinite animation that never settles.
+    await tester.pump(const Duration(milliseconds: 100));
 
     expect(find.byType(CircularProgressIndicator), findsWidgets);
   });
 
-  testWidgets('ShowMassageTempEvent بيعرض AlertDialog بالرسالة الصح', (tester) async {
+  testWidgets('ShowMassageEvent displays an AlertDialog with the correct message', (tester) async {
     await tester.pumpApp(const RegisterPage());
-cubit.doIntent(ShowMassageEvent('Test Message'));
-await tester.pumpAndSettle();
+    cubit.doIntent(ShowMassageEvent('Test Message'));
+    await tester.pumpAndSettle();
 
-expect(find.text('Test Message'), findsOneWidget);
-expect(find.text('OK'), findsOneWidget);
- 
+    expect(find.text('Test Message'), findsOneWidget);
+    expect(find.text(l10n.ok), findsOneWidget);
   });
 
-  testWidgets('NavigateToLoginTempEvent بيعمل navigate لصفحة اللوجن', (tester) async {
+  testWidgets('NavigateToLoginEvent navigates to the login page', (tester) async {
     await tester.pumpApp(
       const RegisterPage(),
       routes: {

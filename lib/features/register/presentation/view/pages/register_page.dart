@@ -96,10 +96,10 @@ class _RegisterPageState extends State<RegisterPage> {
 
   @override
   void dispose() {
-    registerCubit.emailController.dispose();
-    registerCubit.firstNameController.dispose();
-    registerCubit.lastNameController.dispose();
-    registerCubit.passwordController.dispose();
+    // NOTE: The TextEditingControllers are owned by RegisterCubit and are
+    // disposed inside RegisterCubit.close(). Do NOT dispose them here to
+    // avoid a double-dispose crash (the cubit may already be closed by the
+    // DI container before this widget is unmounted).
     super.dispose();
   }
 

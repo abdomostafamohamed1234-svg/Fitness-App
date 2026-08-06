@@ -10,6 +10,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
 
+import '../../../../../helpers/l10n.dart';
 import '../../../../../helpers/pump_app.dart';
 
 class MockRegisterUsecase extends Mock implements RegisterUsecase {}
@@ -40,7 +41,7 @@ void main() {
   ) async {
     await tester.pumpApp(wrap(const ChooseRpalWidget()));
 
-    await tester.tap(find.text('Intermediate'));
+    await tester.tap(find.text(l10n.intermediate));
     await tester.pump();
 
     expect(cubit.physicalActivityLevel, 'level3');
@@ -63,9 +64,9 @@ void main() {
 
     await tester.pumpApp(wrap(const ChooseRpalWidget()));
 
-    await tester.tap(find.text('Rookie'));
+    await tester.tap(find.text(l10n.rookie));
     await tester.pump();
-    await tester.tap(find.text('Submit'));
+    await tester.tap(find.text(l10n.submit));
 
     await tester.pump(const Duration(seconds: 3));
 
