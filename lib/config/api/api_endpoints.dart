@@ -39,6 +39,9 @@ class AppEndPoints {
   static const String mealsByCategory = "/filter.php";
   static const String mealDetails = "/lookup.php";
 
+  // ===================== Profile =====================
+
+  static const String profile = "/auth/profile-data";
 
   // ===================== Home =====================
 

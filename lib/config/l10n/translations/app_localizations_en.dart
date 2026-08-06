@@ -36,6 +36,44 @@ class AppLocalizationsEn extends AppLocalizations {
   String get unexpectedError => 'Unexpected error';
 
   @override
+  String get profile => 'Profile';
+
+  @override
+  String get editProfile => 'Edit Profile';
+
+  @override
+  String get changePassword => 'Change Password';
+
+  @override
+  String get selectLanguage => 'Select Language';
+
+  @override
+  String get english => 'English';
+
+  @override
+  String get arabic => 'Arabic';
+
+  @override
+  String get security => 'Security';
+
+  @override
+  String get privacyPolicy => 'Privacy Policy';
+
+  @override
+  String get help => 'Help';
+
+  @override
+  String get logout => 'Logout';
+
+  @override
+  String get areYouSureToCloseApplication =>
+      'Are You Sure To Close Application?';
+
+  @override
+  String get no => 'NO';
+
+  @override
+  String get yes => 'Yes';
   String get follow_the_plan =>
       'Follow the plan below and pick your difficulty level to get started.';
 
