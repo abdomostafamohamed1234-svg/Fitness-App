@@ -62,4 +62,11 @@
   "invalidConfirmPassword": "أدخل كلمة مرور صالحة",
   "passwordMismatch": "كلمتا المرور غير متطابقتين",
   "invalidPhoneNumber": "أدخل رقم هاتف صالح"
+  "food_recommendation": "اقتراحات الطعام",
+  "instructions": "الوصفة",
+  "ingredients": "المقادير",
+  "energy" : "الطاقة",
+  "protein" : "البروتين",
+  "carbs" : "الكربوهيدرات",
+  "fats" : "الدهون"
 }

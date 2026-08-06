@@ -63,4 +63,11 @@
   "invalidConfirmPassword": "Enter a valid password",
   "passwordMismatch": "Passwords do not match",
   "invalidPhoneNumber": "Enter a valid phone number"
+  "food_recommendation": "Food Recommendation",
+  "instructions": "Instructions",
+  "ingredients": "Ingredients",
+  "energy" : "Energy",
+  "protein" : "Protein",
+  "carbs" : "Carbs",
+  "fats" : "Fats"
 }
