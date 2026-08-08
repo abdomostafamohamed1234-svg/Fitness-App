@@ -36,6 +36,44 @@ class AppLocalizationsEn extends AppLocalizations {
   String get unexpectedError => 'Unexpected error';
 
   @override
+  String get profile => 'Profile';
+
+  @override
+  String get editProfile => 'Edit Profile';
+
+  @override
+  String get changePassword => 'Change Password';
+
+  @override
+  String get selectLanguage => 'Select Language';
+
+  @override
+  String get english => 'English';
+
+  @override
+  String get arabic => 'Arabic';
+
+  @override
+  String get security => 'Security';
+
+  @override
+  String get privacyPolicy => 'Privacy Policy';
+
+  @override
+  String get help => 'Help';
+
+  @override
+  String get logout => 'Logout';
+
+  @override
+  String get areYouSureToCloseApplication =>
+      'Are You Sure To Close Application?';
+
+  @override
+  String get no => 'NO';
+
+  @override
+  String get yes => 'Yes';
   String get follow_the_plan =>
       'Follow the plan below and pick your difficulty level to get started.';
 
@@ -71,6 +109,101 @@ class AppLocalizationsEn extends AppLocalizations {
   String get do_it => 'Do IT';
 
   @override
+  String get message => 'Message';
+
+  @override
+  String get ok => 'OK';
+
+  @override
+  String get howOldAreYou => 'How Old Are You?';
+
+  @override
+  String get personalizedPlanHint =>
+      'This helps us create your personalized plan';
+
+  @override
+  String get year => 'Year';
+
+  @override
+  String get tellUsAboutYourself => 'Tell Us About Yourself!';
+
+  @override
+  String get weNeedToKnowYourGender => 'We need to know your gender';
+
+  @override
+  String get male => 'Male';
+
+  @override
+  String get female => 'Female';
+
+  @override
+  String get whatIsYourGoal => 'What is Your Goal?';
+
+  @override
+  String get gainWeight => 'Gain Weight';
+
+  @override
+  String get loseWeight => 'Lose Weight';
+
+  @override
+  String get getFitter => 'Get Fitter';
+
+  @override
+  String get gainMoreFlexible => 'Gain More Flexible';
+
+  @override
+  String get learnTheBasics => 'Learn The Basics';
+
+  @override
+  String get whatIsYourHeight => 'What is Your Height?';
+
+  @override
+  String get cm => 'CM';
+
+  @override
+  String get physicalActivityLevel => 'Your Regular Physical Activity Level';
+
+  @override
+  String get rookie => 'Rookie';
+
+  @override
+  String get beginner => 'Beginner';
+
+  @override
+  String get intermediate => 'Intermediate';
+
+  @override
+  String get advance => 'Advance';
+
+  @override
+  String get trueBeast => 'True Beast';
+
+  @override
+  String get submit => 'Submit';
+
+  @override
+  String get whatIsYourWeight => 'What is Your Weight?';
+
+  @override
+  String get kg => 'Kg';
+
+  @override
+  String get heyThere => 'Hey there';
+
+  @override
+  String get createAnAccount => 'Create an Account';
+
+  @override
+  String get register => 'Register';
+
+  @override
+  String get firstName => 'First Name';
+
+  @override
+  String get lastName => 'Last Name';
+
+  @override
+  String get email => 'Email';
   String get navExplore => 'Explore';
 
   @override
@@ -81,6 +214,8 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get navProfile => 'Profile';
+
+  @override
   String get food_recommendation => 'Food Recommendation';
 
   @override
@@ -118,16 +253,6 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get create_pass => 'create pass';
-  String get old_password => 'Old Password';
-
-  @override
-  String get new_password => 'New Password';
-
-  @override
-  String get confirm_password => 'Confirm Password';
-
-  @override
-  String get make_sure_8_chara => 'Make Sure Its 8 Characters Or More';
 
   @override
   String get create_new_password => 'Create New Password';
@@ -140,6 +265,47 @@ class AppLocalizationsEn extends AppLocalizations {
   String get password => 'Password';
 
   @override
+  String get or => 'Or';
+
+  @override
+  String get alreadyHaveAnAccount => 'Already Have An Account Yet ? ';
+
+  @override
+  String get login => 'Login';
+
+  @override
+  String get firstNameRequired => 'First Name is required';
+
+  @override
+  String get firstNameMinLength => 'First Name must be at least 2 letters';
+
+  @override
+  String get lastNameRequired => 'Last Name is required';
+
+  @override
+  String get lastNameMinLength => 'Last Name must be at least 2 letters';
+
+  @override
+  String get emailRequired => 'Email is required';
+
+  @override
+  String get invalidEmail => 'Enter a valid email';
+
+  @override
+  String get passwordRequired => 'Password is required';
+
+  @override
+  String get invalidPassword =>
+      'Password must be at least 8 characters and include an uppercase letter, a lowercase letter, a number and a special character';
+
+  @override
+  String get invalidConfirmPassword => 'Enter a valid password';
+
+  @override
+  String get passwordMismatch => 'Passwords do not match';
+
+  @override
+  String get invalidPhoneNumber => 'Enter a valid phone number';
   String get password_must_be_8_character_or_more =>
       'Password must be 8 characters or more';
 
@@ -171,5 +337,16 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get resend_code => 'Resend Code?';
-  String get done => 'Done';
+
+  @override
+  String get old_password => 'Old Password';
+
+  @override
+  String get new_password => 'New Password';
+
+  @override
+  String get confirm_password => 'Confirm Password';
+
+  @override
+  String get make_sure_8_chara => 'Make Sure Its 8 Characters Or More';
 }
