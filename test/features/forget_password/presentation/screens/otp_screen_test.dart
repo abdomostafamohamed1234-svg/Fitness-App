@@ -1,12 +1,8 @@
 import 'dart:async';
 import 'dart:convert';
-import 'dart:typed_data';
-
 import 'package:bloc_test/bloc_test.dart';
 import 'package:flowery/config/l10n/translations/app_localizations.dart';
 import 'package:flowery/core/base/base_state.dart';
-import 'package:flowery/features/forget_password/data/models/requestes/forget_password_request.dart';
-import 'package:flowery/features/forget_password/data/models/requestes/verify_reset_password_request.dart';
 import 'package:flowery/features/forget_password/data/models/responses/verify_email_response.dart';
 // NOTE: adjust these imports if the real file locations differ.
 import 'package:flowery/features/forget_password/presentation/screens/create_password_screen.dart';

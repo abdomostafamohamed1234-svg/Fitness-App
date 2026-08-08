@@ -12,4 +12,5 @@ abstract class AppRoutes {
   static const String workouts = '/workouts';
   static const String changePassword = "/change-password";
   static const String appSections = '/appSections';
+  static const String chatBot = "/chat-bot";
 }

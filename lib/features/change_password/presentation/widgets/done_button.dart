@@ -37,7 +37,7 @@ class DoneButton extends StatelessWidget {
               )
             :  Text(
                 localizations.done,
-                style: TextStyle(
+                style: const TextStyle(
                   color: AppColors.whiteColor,
                   fontWeight: FontWeight.bold,
                   fontSize: 16,

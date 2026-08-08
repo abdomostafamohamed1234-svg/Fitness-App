@@ -12,6 +12,10 @@ import 'package:flowery/features/forget_password/presentation/screens/forget_pas
 import 'package:flowery/features/forget_password/presentation/view_models/cubit/forget_password_view_model.dart';
 import 'package:flowery/features/change_password/presentation/screens/change_password_screen.dart';
 import 'package:flowery/features/change_password/presentation/view_model/change_password_view_model.dart';
+import 'package:flowery/features/chat_bot/presentation/args/chat_bot_args.dart';
+import 'package:flowery/features/chat_bot/presentation/screens/chat_bot_screen.dart';
+import 'package:flowery/features/chat_bot/presentation/view_model/cubit/chat_bot_cubit.dart';
+import 'package:flowery/features/chat_bot/presentation/view_model/events/chat_bot_events.dart';
 import 'package:flowery/features/on_boarding/presentation/screens/on_boarding_screen.dart';
 import 'package:flowery/features/on_boarding/presentation/view_model/cubit/on_boarding_cubit.dart';
 import 'package:flowery/features/register/presentation/view/pages/register_page.dart';
@@ -27,6 +31,22 @@ class RouteGenerator {
   static Route<dynamic> getRoute(RouteSettings settings) {
     try {
       switch (settings.name) {
+        case AppRoutes.chatBot:
+          final args =
+              settings.arguments as ChatBotArgs? ?? const ChatBotArgs();
+          return MaterialPageRoute(
+            builder: (_) => BlocProvider(
+              create: (context) =>
+                  getIt<ChatBotCubit>()
+                    ..doEvent(GetPreviousChatsEvent(userId: args.userId)),
+              child: ChatBotScreen(
+                userId: args.userId,
+                userFirstName: args.userFirstName,
+                userImage: args.userImage,
+              ),
+            ),
+          );
+
 
              case AppRoutes.home:
           return MaterialPageRoute(
@@ -124,6 +144,7 @@ class RouteGenerator {
         //   return MaterialPageRoute(builder: (_) => const LoginPage());
 
         case AppRoutes.appSections:
+          return MaterialPageRoute(builder: (_) => const AppSectionsPage());
           return MaterialPageRoute(
             builder: (_) => const AppSectionsPage(),
           );
@@ -157,6 +178,14 @@ class RouteGenerator {
               child: const ChangePasswordScreen(),
             ),
           );
+        case AppRoutes.forgetPassword:
+          return MaterialPageRoute(
+            builder: (_) => BlocProvider(
+              create: (_) => getIt<ForgetPasswordViewModel>(),
+              child: const ForgetPasswordScreen(),
+            ),
+          );
+
         default:
           return unDefinedRoute();
       }

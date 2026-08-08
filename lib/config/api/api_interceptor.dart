@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:flowery/config/api/api_endpoints.dart';
 import 'package:flowery/config/api/api_keys.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
@@ -12,9 +13,14 @@ class ApiInterceptor extends Interceptor {
     RequestOptions options,
     RequestInterceptorHandler handler,
   ) async {
-    // final String? token = await fss.read(key: ApiKeys.token);
-    final String token =
-        'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiNmE2NmRmMmNlYTk2NThjZWEyNDg4ZmRiIiwiaWF0IjoxNzg1MTI2Nzc5fQ.8RyoyRzfWvdCnUcYM_-9iKIdOKbwl0LSOJ5OJt7r3YI';
+    String? token;
+    if(dio.options.baseUrl == AppEndPoints.chatBotBaseURL){
+      token = "cf8c8aa4eb384d9d8110b329bf90a49c.RarLlRJY4ZSkE5mkQ9xuLWsb";
+    }
+    else{
+      token = await fss.read(key: ApiKeys.token);
+    }
+
     if (token != null && token.isNotEmpty) {
       options.headers[ApiKeys.authorization] = '${ApiKeys.bearer} $token';
     }
